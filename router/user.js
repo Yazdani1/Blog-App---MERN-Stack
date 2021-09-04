@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+require("dotenv").config();
 
 //post route for registraion
 
@@ -11,14 +14,16 @@ router.post("/register", async (req, res) => {
     if (user) {
       return res.status(400).json({ error: "User already exist" });
     }
-    const hash_password = await bcrypt.hash(password, 10);
+    const hash_password = await bcrypt.hash(password, 12);
     user = new User({
       name,
       email,
       password: hash_password,
     });
 
-    await user.save();
+    await user.save().then((registerData) => {
+      res.json(registerData);
+    });
     return res.status(201).json({ message: "User created successfully" });
   } catch (err) {
     console.log(err);
@@ -27,7 +32,7 @@ router.post("/register", async (req, res) => {
 
 //login
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -40,6 +45,11 @@ router.post("/login", (req, res) => {
     if (!isMatchData) {
       return res.status(400).json({ error: "Invalid email or password" });
     }
+
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    return res.json({token});
   } catch (err) {
     console.log(err);
   }
