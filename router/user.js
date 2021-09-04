@@ -56,6 +56,8 @@ router.post("/login", async (req, res) => {
   }
 });
 
+//protected route
+
 router.get("/",requireLogin, async(req, res) => {
   console.log(req.user);
     try {
