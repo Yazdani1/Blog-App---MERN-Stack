@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const {requireLogin} = require('../middleware/auth');
 
 require("dotenv").config();
 
@@ -49,7 +50,17 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
-    return res.json({token});
+    return res.json({ token });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/",requireLogin, async(req, res) => {
+  console.log(req.user);
+    try {
+      const user = await User.findById(req.user._id).select('-password');
+      res.json(user)
   } catch (err) {
     console.log(err);
   }
