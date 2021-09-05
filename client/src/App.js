@@ -2,10 +2,12 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
-import Details from "./components/Details";
+import Details from "./Details";
 import Nav from "./Nav";
 import SignIn from "./components/SignIn";
 import ProtectedRoute from "./components/Protectedroute";
+import Profile from "./components/Profile";
+import Post from "./components/Post";
 
 function App() {
   return (
@@ -25,6 +27,12 @@ function App() {
 
         <Route path="/details">
           <ProtectedRoute procomp={Details} />
+        </Route>
+        <Route path="/profile">
+          <ProtectedRoute procomp={Profile} />
+        </Route>
+        <Route path="/post">
+          <ProtectedRoute procomp={Post} />
         </Route>
       </Switch>
     </BrowserRouter>

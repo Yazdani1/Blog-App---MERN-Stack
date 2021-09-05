@@ -2,8 +2,24 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
 function SignIn() {
+  const notify = () => {
+    toast.success("Signed In Successfully!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 9000,
+    });
+  };
+
+  const notifyError = () => {
+    toast.warn("Wrong Details", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 9000,
+    });
+  };
+
   const history = useHistory();
   const [data, setData] = useState({
     email: "",
@@ -36,6 +52,7 @@ function SignIn() {
       );
 
       localStorage.setItem("tokenLogin", res.data.token);
+
       history.push("/");
     } catch (err) {
       setData({ ...data, error: err.response.data.error });
@@ -74,9 +91,12 @@ function SignIn() {
               />
             </div>
             {error ? <p className="text-danger">{error}</p> : null}
+
             <button
               type="submit"
-              onClick={submitData}
+              onClick={(e) => {
+                submitData(e);
+              }}
               class="btn btn-primary custBtn"
             >
               Sign In
@@ -84,6 +104,7 @@ function SignIn() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

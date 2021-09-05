@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import "../App.css";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-
+import { ToastContainer, toast } from "react-toastify";
+import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
 function SignUp() {
   const history = useHistory();
+
+  //react toast message
+
+  const notify = () => {
+    toast.success("Post Added Successfully!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
 
   const [data, setData] = useState({
     name: "",
@@ -27,7 +36,7 @@ function SignUp() {
     e.preventDefault();
     const addItem = { name, email, password };
     try {
-      setData({ ...data, error: null });
+      setData({ ...data, error: null }); //to get error
       await axios.post("/auth/register", addItem, {
         headers: {
           "Content-Type": "application/json",
@@ -41,9 +50,7 @@ function SignUp() {
 
   return (
     <div>
-     
-
-      <div className="containe design card">
+      <div className="container design card">
         <div className="row">
           <h1 className="toptest">Create Account</h1>
           <form>
@@ -87,15 +94,18 @@ function SignUp() {
 
             <button
               type="submit"
-              onClick={dataSubmit}
+              onClick={(e)=>{notify();dataSubmit(e)}}
               class="btn btn-success custBtn"
             >
               Sign Up
             </button>
           </form>
         </div>
+        <ToastContainer autoClose={8000}/>
       </div>
+      
     </div>
+    
   );
 }
 export default SignUp;

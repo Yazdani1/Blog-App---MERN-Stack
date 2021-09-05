@@ -4,12 +4,9 @@ import Nav from "../Nav";
 
 import { Link, useHistory } from "react-router-dom";
 
-
 function Home() {
   const [user, setUser] = useState(null);
   const history = useHistory();
-
-
 
   const getUser = async () => {
     const res = await axios.get("/auth", {
@@ -22,7 +19,6 @@ function Home() {
 
   useEffect(() => {
     getUser();
-   
   }, []);
 
   // const logOut = () => {
@@ -32,11 +28,20 @@ function Home() {
 
   return (
     <div className="home">
-     
-      <h2>Home page {user && user.name}</h2>
-      <h2>Home page {user && user.email}</h2>
-      <h2>Home page {user && user.createdAt}</h2>
-{/* 
+      {user ? (
+        <div>
+          <h2>Home page {user && user.name}</h2>
+          <h2>Home page {user && user.email}</h2>
+          <h2>Home page {user && user.createdAt}</h2>
+        </div>
+      ) : (
+        <center>
+          {" "}
+          <h1>Loading.....</h1>
+        </center>
+      )}
+
+      {/* 
       <button type="submit" onClick={logOut} class="btn btn-danger custBtn">
         Log Out
       </button> */}

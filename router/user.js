@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const {requireLogin} = require('../middleware/auth');
+const { requireLogin } = require("../middleware/auth");
 
 require("dotenv").config();
 
@@ -58,14 +58,24 @@ router.post("/login", async (req, res) => {
 
 //protected route
 
-router.get("/",requireLogin, async(req, res) => {
-  console.log(req.user);
-    try {
-      const user = await User.findById(req.user._id).select('-password');
-      res.json(user)
-  } catch (err) {
-    console.log(err);
-  }
+router.get("/",requireLogin, (req, res) => {
+  User.findOne({ _id: req.user._id })
+    .then((userData) => {
+      res.json(userData);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
+
+// router.get("/", requireLogin, async (req, res) => {
+//   console.log(req.user);
+//   try {
+//     const user = await User.findById(req.user._id).select("-password");
+//     res.json(user);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 module.exports = router;
