@@ -28,9 +28,6 @@ function Nav() {
     await localStorage.removeItem("tokenLogin");
   };
 
-  const [dropdown, setDropdown] = useState(false);
-  const toggleOpen = () => setDropdown(!dropdown);
-
   return (
     <nav className="nav">
       <ul className="listItems">
@@ -43,18 +40,44 @@ function Nav() {
             <Link to="/details" className="eachitem">
               <li>Details</li>
             </Link>
-            <Link to="/profile" className="eachitem">
-              <li>Profile</li>
-            </Link>
-            <Link to="/post" className="eachitem">
-              <li>Create Post</li>
-            </Link>
-            <li>{user && user.name}</li>
-            <Link to="/signin" className="eachitem">
-              <li type="submit" onClick={logOut}>
-                Log Out
-              </li>
-            </Link>
+
+            <div>{user && user.name}</div>
+
+            <div className="dropdown show">
+              <div
+                className="dropdown-toggle"
+                href="#"
+                role="button"
+                id="dropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              ></div>
+
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <Link to="/post" className="dropdown-item each">
+                  Create Post
+                </Link>
+                <Link to="/profile" className="dropdown-item each">
+                  Profile
+                </Link>
+
+                <Link to="/profile" className="dropdown-item each">
+                  Dashboard
+                </Link>
+
+          
+                <Link to="/profile" className="dropdown-item each">
+                  Setting
+                </Link>
+                <hr />
+                <Link to="/signin" className="dropdown-item each">
+                  <div onClick={logOut}>
+                    Sign Out
+                  </div>
+                </Link>
+              </div>
+            </div>
           </>
         ) : (
           <>
