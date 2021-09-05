@@ -5,16 +5,27 @@ import Signup from "./components/Signup";
 import Details from "./components/Details";
 import Nav from "./Nav";
 import SignIn from "./components/SignIn";
+import ProtectedRoute from "./components/Protectedroute";
 
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/signin" component={SignIn}/>
-        <Route path="/details" component={Details} />
+        <Route path="/" exact>
+          <ProtectedRoute procomp={Home} />
+        </Route>
+
+        <Route path="/signup">
+          <ProtectedRoute procomp={Signup} />
+        </Route>
+
+        <Route path="/signin">
+          <ProtectedRoute procomp={SignIn} />
+        </Route>
+
+        <Route path="/details">
+          <ProtectedRoute procomp={Details} />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
