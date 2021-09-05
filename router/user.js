@@ -13,7 +13,7 @@ router.post("/register", async (req, res) => {
   try {
     let user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({ error: "User already exist" });
+      return res.status(400).json({ errort: "User already exist" });
     }
     const hash_password = await bcrypt.hash(password, 12);
     user = new User({
@@ -39,12 +39,12 @@ router.post("/login", async (req, res) => {
   try {
     let user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ error: "Invalid email or password" });
+      return res.status(400).json({ error: "Account could not found " });
     }
 
     const isMatchData = await bcrypt.compare(password, user.password);
     if (!isMatchData) {
-      return res.status(400).json({ error: "Invalid email or password" });
+      return res.status(400).json({ error: "Wrong password" });
     }
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
