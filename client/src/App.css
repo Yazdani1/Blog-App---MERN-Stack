@@ -1,35 +1,31 @@
-
-.nav{
+.nav {
   display: flex;
   justify-content: space-around;
   height: 8vh;
   background-color: rgb(39, 17, 92);
 }
 
-.listItems{
+.listItems {
   display: flex;
   justify-content: space-around;
   width: 30%;
   color: turquoise;
   text-align: center;
   align-items: center;
-  
 }
-.eachitem{
+.eachitem {
   list-style-type: none;
   text-decoration: none;
   color: aliceblue;
   font-size: 16px;
 }
-.dataPost{
-
-  
+.dataPost {
   color: rgb(11, 12, 12);
   padding: 5px;
   margin: 20px;
   border: 1px solid black;
 }
-.tt{
+.tt {
   margin-left: 10px;
 }
 
@@ -42,7 +38,7 @@
 .btn {
   margin-top: 20px;
 }
-.detailss{
+.detailss {
   border: 1px solid black;
   padding: 10px;
 
@@ -52,10 +48,17 @@
 
 .design {
   height: 50%;
-  width: 80%;
-  margin-top: 20px;
-  margin: 50px;
+  margin: auto;
+  width: 50%;
+  margin-top: 10px;
   padding: 10px;
-  -webkit-box-shadow: 5px 2px 15px 3px #000000; 
-box-shadow: 5px 2px 15px 3px #000000;
+  -webkit-box-shadow: 5px 2px 15px 3px #000000;
+  box-shadow: 5px 2px 15px 3px #000000;
+}
+.custBtn{
+  margin: auto;
+  width: 20%;
+  margin-top: 10px;
+  padding: 10px;
+ 
 }
