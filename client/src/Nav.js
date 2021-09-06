@@ -36,7 +36,7 @@ function Nav() {
             <Link to="/" className="eachitem">
               <li>Home</li>
             </Link>
-            
+
             <Link to="/details" className="eachitem">
               <li>Details</li>
             </Link>
@@ -56,6 +56,9 @@ function Nav() {
               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <Link to="/post" className="dropdown-item each">
                   Create Post
+                </Link>
+                <Link to="/myPost" className="dropdown-item each">
+                  <li>My Post</li>
                 </Link>
                 <Link to="/profile" className="dropdown-item each">
                   Profile

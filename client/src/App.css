@@ -49,39 +49,99 @@
 .design {
   height: 80% auto;
   margin: auto;
-  width:  50% ;
+  width: 50%;
   margin-top: 10px;
   padding: 10px;
   -webkit-box-shadow: 5px 2px 15px 3px #000000;
   box-shadow: 5px 2px 15px 3px #000000;
 }
-.custBtn{
+.custBtn {
   margin: auto;
   width: 20%;
   margin-top: 10px;
   padding: 10px;
- 
 }
-.designdata{
+.designdata {
   height: 80% auto;
   margin: auto;
-  width:  50% ;
+  width: 50%;
   margin-top: 10px;
   padding: 50px;
- 
 }
 
-.dropbtn{
+.dropbtn {
   cursor: pointer;
 }
 .dropdown-menu {
   width: 300px !important;
-  height: 220px !important;
+  height: 240px !important;
 }
 
-.each:hover{
+.each:hover {
   background-color: darkgreen !important;
   color: aliceblue !important;
-
 }
 
+.top {
+  margin: 10px;
+  padding: 10px;
+}
+.read {
+  color: blueviolet;
+  cursor: pointer;
+}
+
+.latestPosts {
+  margin: 10px;
+  padding: 10px;
+}
+.lstestpostTitle {
+  margin: 10px;
+  background-color: crimson;
+  color: aliceblue;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
+.total_post {
+  height: 150px;
+  width: 300px;
+  background: crimson;
+  margin: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  align-items: center;
+}
+.mamber_since {
+  height: 150px;
+  width: 300px;
+  background: rgb(20, 220, 177);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  text-align: center;
+  color: rgb(44, 31, 31);
+  align-items: center;
+}
+.profile_visitor {
+  height: 150px;
+  width: 300px;
+  background: rgb(208, 221, 22);
+  margin: 10px;
+  border-radius: 20px;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  color: rgb(20, 20, 19);
+  align-items: center;
+}
+
+.main_container{
+  margin: 20px;
+}

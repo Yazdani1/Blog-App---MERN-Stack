@@ -53,7 +53,7 @@ function SignIn() {
 
       localStorage.setItem("tokenLogin", res.data.token);
 
-      history.push("/");
+      history.push("/myPost");
     } catch (err) {
       setData({ ...data, error: err.response.data.error });
     }

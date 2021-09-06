@@ -9,6 +9,8 @@ import ProtectedRoute from "./components/Protectedroute";
 import Profile from "./components/Profile";
 import Post from "./components/Post";
 import See from "./components/See";
+import myPost from "./components/myPost";
+
 
 function App() {
   return (
@@ -18,6 +20,10 @@ function App() {
 
         <Route path="/" exact>
           <ProtectedRoute procomp={Home} />
+        </Route>
+
+        <Route path="/myPost" exact>
+          <ProtectedRoute procomp={myPost} />
         </Route>
 
         <Route path="/signup">

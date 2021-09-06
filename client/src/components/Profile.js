@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
 const Profile = () => {
+  
   const [user, setUser] = useState(null);
 
   const getUser = async () => {
