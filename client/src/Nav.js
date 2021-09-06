@@ -41,18 +41,17 @@ function Nav() {
               <li>Details</li>
             </Link>
 
-            <div>{user && user.name}</div>
-
             <div className="dropdown show">
               <div
                 className="dropdown-toggle"
+                data-toggle="dropdown"
                 href="#"
                 role="button"
-                id="dropdownMenuLink"
-                data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              ></div>
+              >
+                {user && user.name}
+              </div>
 
               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <Link to="/post" className="dropdown-item each">
@@ -66,15 +65,12 @@ function Nav() {
                   Dashboard
                 </Link>
 
-          
                 <Link to="/profile" className="dropdown-item each">
                   Setting
                 </Link>
                 <hr />
                 <Link to="/signin" className="dropdown-item each">
-                  <div onClick={logOut}>
-                    Sign Out
-                  </div>
+                  <div onClick={logOut}>Sign Out</div>
                 </Link>
               </div>
             </div>
