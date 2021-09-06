@@ -44,6 +44,8 @@ function Mypost() {
     getMypost();
   }
 
+
+
   return (
     <div className="card container main_container">
       <div className="row">
@@ -67,10 +69,13 @@ function Mypost() {
 
       <div className="row">
         <div className="col-md-8">
-          {mypost.map((item) => (
+          
+          {mypost.map((item, index) => (
+
             <div className="card top">
               {/* <h3>{item.postedBy.name}</h3>
             <h3>{item.postedBy.email}</h3> */}
+              <h1>{index}</h1>
               <h5>{item.title}</h5>
               <p>{item.des.substring(0, 50)}</p>
               <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
@@ -89,6 +94,8 @@ function Mypost() {
               </div>
             </div>
           ))}
+
+          
         </div>
       </div>
     </div>
