@@ -72,9 +72,13 @@ router.get("/mypost", requireLogin, (req, res) => {
     });
 });
 
+//total post
+
+
+
 //delete route
 
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", requireLogin, (req, res) => {
   var deleteData = { _id: req.params.id };
 
   Post.findByIdAndDelete(deleteData)

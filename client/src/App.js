@@ -9,7 +9,7 @@ import ProtectedRoute from "./components/Protectedroute";
 import Profile from "./components/Profile";
 import Post from "./components/Post";
 import See from "./components/See";
-import myPost from "./components/myPost";
+import Mypost from "./components/Mypost";
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         </Route>
 
         <Route path="/myPost" exact>
-          <ProtectedRoute procomp={myPost} />
+          <ProtectedRoute procomp={Mypost} />
         </Route>
 
         <Route path="/signup">

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
-import moment from 'moment';
+import moment from "moment";
 
 function Mypost() {
   const [mypost, setData] = useState([]);
+  const [user, setUser] = useState(null);
 
   const getMypost = () => {
     axios
@@ -17,8 +18,6 @@ function Mypost() {
         setData(res.data);
       });
   };
-
-  const [user, setUser] = useState(null);
 
   const getUser = async () => {
     const res = await axios.get("/auth", {
@@ -56,7 +55,7 @@ function Mypost() {
         <div className="col-md-4">
           <div className="mamber_since">
             <h3>Member Since</h3>
-            {moment(user && user.createdAt).format('MMMM Do YYYY')}
+            <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
           </div>
         </div>
         <div className="col-md-4">
@@ -74,14 +73,13 @@ function Mypost() {
             <h3>{item.postedBy.email}</h3> */}
               <h5>{item.title}</h5>
               <p>{item.des.substring(0, 50)}</p>
-              <p>Published on:{moment(item.date).format('MMMM Do YYYY')}</p>
+              <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
               <p>Posted by: {item.postedBy.name}</p>
               <span className="read">Read More ...</span>
 
               <div className="row">
                 <div className="col-md-8">
                   <button
-                    type="button"
                     className="btn btn-danger"
                     onClick={() => deletePost(item._id)}
                   >
