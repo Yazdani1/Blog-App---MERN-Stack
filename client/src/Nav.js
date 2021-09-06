@@ -24,8 +24,9 @@ function Nav() {
 
   const history = useHistory();
   const logOut = async () => {
-    history.push("/signin");
+    
     await localStorage.removeItem("tokenLogin");
+    history.push("/signin");
   };
 
   return (
