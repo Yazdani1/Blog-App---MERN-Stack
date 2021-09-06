@@ -66,6 +66,7 @@ function SignUp() {
                 className="form-control"
               />
             </div>
+            {error ? <p className="text-danger">{error} Name </p> : null}
             <div className="form-group">
               <label for="exampleInputPassword1" className="form-label">
                 E-mail
@@ -78,6 +79,7 @@ function SignUp() {
                 className="form-control"
               />
             </div>
+            {error ? <p className="text-danger">{error} E-mail</p> : null}
             <div className="form-group">
               <label for="exampleInputPassword1" className="form-label">
                 Password
@@ -90,7 +92,7 @@ function SignUp() {
                 className="form-control"
               />
             </div>
-            {error ? <p className="text-danger">{error}</p> : null}
+            {error ? <p className="text-danger">{error} Password</p> : null}
 
             <button
               type="submit"

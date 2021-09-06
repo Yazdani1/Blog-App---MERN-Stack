@@ -35,7 +35,7 @@ const Profile = () => {
         </div>
         <div className="col-md-12">
           <div className="card">
-              <h3>{user && user.createdAt}</h3>
+              <h3>{user && user._id}</h3>
           </div>
         </div>
       </div>

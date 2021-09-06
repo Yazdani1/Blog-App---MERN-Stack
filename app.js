@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/auth',require('./router/user'));
 
+app.use('/auth',require('./router/post'));
+
 
 
 

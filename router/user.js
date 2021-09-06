@@ -11,6 +11,11 @@ require("dotenv").config();
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
+    if (!name || !email || !password) {
+      return res.status(400).json({ errort: "Please Add " });
+    }
+    
+
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ errort: "User already exist" });
@@ -37,6 +42,10 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    if (!email || !password) {
+      return res.status(400).json({ error: "Add all the field" });
+    }
+
     let user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ error: "Account could not found " });
@@ -58,7 +67,7 @@ router.post("/login", async (req, res) => {
 
 //protected route
 
-router.get("/",requireLogin, (req, res) => {
+router.get("/", requireLogin, (req, res) => {
   User.findOne({ _id: req.user._id })
     .then((userData) => {
       res.json(userData);
