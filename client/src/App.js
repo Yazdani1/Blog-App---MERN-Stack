@@ -8,11 +8,14 @@ import SignIn from "./components/SignIn";
 import ProtectedRoute from "./components/Protectedroute";
 import Profile from "./components/Profile";
 import Post from "./components/Post";
+import See from "./components/See";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/see" exact component={See} />
+
         <Route path="/" exact>
           <ProtectedRoute procomp={Home} />
         </Route>

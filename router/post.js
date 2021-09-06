@@ -15,12 +15,12 @@ router.post("/post", requireLogin, (req, res) => {
     const postData = Post({
       title,
       des,
-      postedBy: req.user,
+      //postedBy: req.user,
     });
 
     Post.create(postData)
       .then((ourPostData) => {
-        res.json({ post: ourPostData, message: "Please add all the fields" });
+        res.json({ ourPostData });
       })
       .catch((err) => {
         console.log(err);
@@ -32,12 +32,12 @@ router.post("/post", requireLogin, (req, res) => {
 
 //get all post api
 
-router.get("/getpost", requireLogin, (req, res) => {
+router.get("/getpost",(req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
-    .populate("postedBy", "name email")
+    //.populate("postedBy", "name email")
     .then((resultGet) => {
-      res.json({ resultGet });
+      res.json(resultGet);
     })
     .catch((err) => {
       console.log(err);

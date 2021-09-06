@@ -24,7 +24,6 @@ function Nav() {
 
   const history = useHistory();
   const logOut = async () => {
-    
     await localStorage.removeItem("tokenLogin");
     history.push("/signin");
   };
@@ -37,7 +36,7 @@ function Nav() {
             <Link to="/" className="eachitem">
               <li>Home</li>
             </Link>
-
+            
             <Link to="/details" className="eachitem">
               <li>Details</li>
             </Link>
@@ -78,6 +77,9 @@ function Nav() {
           </>
         ) : (
           <>
+            <Link to="/" className="eachitem">
+              <li>Home</li>
+            </Link>
             <Link to="/signup" className="eachitem">
               <li>Sign Up</li>
             </Link>

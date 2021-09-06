@@ -6,6 +6,38 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
 const Post = () => {
+  const history = useHistory();
+
+  const [data, setData] = useState({
+    title: "",
+    des: "",
+    error: null,
+  });
+
+  const { title, des,error } = data;
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const dataSubmit = async (e) => {
+    e.preventDefault();
+    const addItem = { title, des };
+    try {
+      setData({ ...data, error: null });
+      await axios.post("/auth/post", addItem, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+        },
+      });
+      history.push("/");
+    } catch (err) {
+      setData({ ...data, error: err.response.data.error });
+    }
+  };
+
   return (
     <div>
       <div className="container designdata card">
@@ -16,19 +48,31 @@ const Post = () => {
               <label for="exampleInputEmail1" className="form-label">
                 Title
               </label>
-              <input type="text" className="form-control" />
+              <input
+                type="text"
+                name="title"
+                value={title}
+                onChange={handleChange}
+                className="form-control"
+              />
             </div>
 
             <div class="form-group">
               <label for="exampleFormControlTextarea2">Description</label>
-              <textarea
+              <input
                 class="form-control rounded-0"
-                id="exampleFormControlTextarea2"
-                rows="5"
-              ></textarea>
+                name="des"
+                value={des}
+                onChange={handleChange}
+              />
             </div>
+            {error ? <p className="text-danger">{error}</p> : null}
 
-            <button type="submit" class="btn btn-success custBtn">
+            <button
+              type="submit"
+              onClick={dataSubmit}
+              class="btn btn-success custBtn"
+            >
               Create Post
             </button>
           </form>
