@@ -12,11 +12,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("/auth/getpost", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-        },
-      })
+      .get("/auth/getpost")
       .then((res) => {
         setData(res.data.resultGet);
         console.log(res.data);

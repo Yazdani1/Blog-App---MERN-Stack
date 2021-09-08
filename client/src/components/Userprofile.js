@@ -5,21 +5,17 @@ import moment from "moment";
 import { Link, useHistory, useParams } from "react-router-dom";
 
 const Userprofile = () => {
-  const [mypost, setData] = useState([]);
+  const [mypost, setData] = useState();
 
   const { id } = useParams();
 
-  const getMypost = async () => {
-    await axios
-      .get(`/auth/userprofileda/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-        },
-      })
-
+  const getMypost = () => {
+    axios.get(`/auth/userprofileda/${id}`)
+      
       .then((result) => {
         setData(result.data);
-        console.log(result);
+
+        console.log(result.data);
       });
   };
 
@@ -28,19 +24,37 @@ const Userprofile = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        {mypost.map((item) => (
-          <div className="col-md-3">
-            <div className="userprofile card">
-              <h4>{item.title}</h4>
-              <p>{item.des}</p>
-              <h5>Published:{moment(item.date).format("MMMM Do YYYY")}</h5>
+    <>
+      {mypost ? (
+        <div className="container">
+          <div className="row">
+            <div className="col-md-9">
+              <div className="row">
+                {mypost.postsData.map((item) => (
+                  <div className="col-md-4">
+                    <div className="userprofile card">
+                      <h4>{item.title}</h4>
+                      <p>{item.des}</p>
+                      <h5>
+                        Published:{moment(item.date).format("MMMM Do YYYY")}
+                      </h5>
+                      <h5>Published By:{item.postedBy.name}</h5>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="col-md-3 card userdetails">
+              <h1>{mypost.userInfo.name}</h1>
+              <h5>{mypost.userInfo.email}</h5>
+              <p>Total posts: {mypost.postsData.length}</p>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      ) : (
+        <h1>Loading...</h1>
+      )}
+    </>
   );
 };
 export default Userprofile;

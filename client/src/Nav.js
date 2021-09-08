@@ -90,6 +90,10 @@ function Nav() {
             <Link to="/signin" className="eachitem">
               <li>Sign In</li>
             </Link>
+
+            <Link to="/" className="eachitem">
+              <li>Home</li>
+            </Link>
           </>
         )}
       </ul>
