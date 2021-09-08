@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import Post from "./components/Post";
 import See from "./components/See";
 import Mypost from "./components/Mypost";
+import Postaccouncement from "./components/Postannouncement";
 
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
 
         <Route path="/" exact>
           <ProtectedRoute procomp={Home} />
+        </Route>
+
+        <Route path="/postannouncement" exact>
+          <ProtectedRoute procomp={Postaccouncement} />
         </Route>
 
         <Route path="/myPost" exact>

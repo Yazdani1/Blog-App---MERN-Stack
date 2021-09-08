@@ -1,11 +1,11 @@
-const express= require('express');
+const express = require("express");
 const app = express();
-const PORT= process.env.PORT || 8080;
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const PORT = process.env.PORT || 8080;
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 //db connection
-require('./models/db');
+require("./models/db");
 
 app.use(cors());
 
@@ -14,14 +14,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //router
 
+app.use("/auth", require("./router/user"));
 
-app.use('/auth',require('./router/user'));
+app.use("/auth", require("./router/post"));
+app.use("/auth", require("./router/announcement"));
 
-app.use('/auth',require('./router/post'));
-
-
-
-
-app.listen(PORT,(req,res)=>{
-    console.log("Server connected")
+app.listen(PORT, (req, res) => {
+  console.log("Server connected");
 });

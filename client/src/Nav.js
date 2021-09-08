@@ -60,6 +60,9 @@ function Nav() {
                 <Link to="/myPost" className="dropdown-item each">
                   <li>My Post</li>
                 </Link>
+                <Link to="/postannouncement" className="dropdown-item each">
+                  <li>Announcement</li>
+                </Link>
                 <Link to="/profile" className="dropdown-item each">
                   Profile
                 </Link>

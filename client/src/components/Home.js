@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
 import moment from 'moment';
+import Announcement from "./Announcement";
 
 import { Link, useHistory } from "react-router-dom";
 
@@ -23,6 +24,7 @@ function Home() {
 
   return (
     <div className="container">
+      <Announcement/>
       <div className="row">
         <div className="col-md-8">
           {dataItem.map((item) => (

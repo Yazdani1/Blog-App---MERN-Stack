@@ -44,7 +44,15 @@ function Mypost() {
     getMypost();
   }
 
+  function postTag(time) {
+    var max = 36000;
 
+    if (time >= max) {
+      <h1>New</h1>;
+    } else {
+      <h2>Old</h2>;
+    }
+  }
 
   return (
     <div className="card container main_container">
@@ -69,9 +77,7 @@ function Mypost() {
 
       <div className="row">
         <div className="col-md-8">
-          
           {mypost.map((item, index) => (
-
             <div className="card top">
               {/* <h3>{item.postedBy.name}</h3>
             <h3>{item.postedBy.email}</h3> */}
@@ -94,8 +100,6 @@ function Mypost() {
               </div>
             </div>
           ))}
-
-          
         </div>
       </div>
     </div>
