@@ -9,15 +9,16 @@ const Userprofile = () => {
 
   const { id } = useParams();
 
-  const getMypost = () => {
-    fetch(`/auth/userprofileda/${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-    })
-      .then((res) => res.json())
+  const getMypost = async () => {
+    await axios
+      .get(`/auth/userprofileda/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+        },
+      })
+
       .then((result) => {
-        setData(result);
+        setData(result.data);
         console.log(result);
       });
   };
@@ -27,12 +28,17 @@ const Userprofile = () => {
   }, []);
 
   return (
-    <div className="card container main_container">
+    <div className="container">
       <div className="row">
-       
-        <div className="col-md-8">
-       
-        </div>
+        {mypost.map((item) => (
+          <div className="col-md-3">
+            <div className="userprofile card">
+              <h4>{item.title}</h4>
+              <p>{item.des}</p>
+              <h5>Published:{moment(item.date).format("MMMM Do YYYY")}</h5>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

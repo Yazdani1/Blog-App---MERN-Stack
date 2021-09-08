@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
-import moment from 'moment';
+import moment from "moment";
 import Announcement from "./Announcement";
 
 import { Link, useHistory } from "react-router-dom";
@@ -11,10 +11,16 @@ function Home() {
   const [latestPost, setLatestpost] = useState([]);
 
   useEffect(() => {
-    axios.get("/auth/getpost").then((res) => {
-      setData(res.data.resultGet);
-      console.log(res.data);
-    });
+    axios
+      .get("/auth/getpost", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+        },
+      })
+      .then((res) => {
+        setData(res.data.resultGet);
+        console.log(res.data);
+      });
 
     axios.get("/auth/latestpost").then((res) => {
       setLatestpost(res.data);
@@ -30,13 +36,13 @@ function Home() {
             <div className="card top">
               {/* <h3>{item.postedBy.name}</h3>
               <h3>{item.postedBy.email}</h3> */}
-              <p>Published on:{moment(item.date).format('MMMM Do YYYY')}</p>
+              <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
               <h5>{item.title}</h5>
               <p>{item.des.substring(0, 50)}</p>
-              <Link to={"/userprofile/"+item.postedBy._id}>
-              <p>Posted by: {item.postedBy.name}</p>
+              <Link to={"/userprofile/" + item.postedBy._id}>
+                <p>Posted by: {item.postedBy.name}</p>
               </Link>
-              
+
               <span className="read">Read More ...</span>
             </div>
           ))}

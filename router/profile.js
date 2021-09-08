@@ -9,14 +9,15 @@ router.get("/userprofileda/:id", requireLogin, (req, res) => {
     .then((userInfo) => {
       Post.find({ postedBy: req.params.id })
         .populate("postedBy", "_id name email")
-        .exec(err, postsData => {
+        .exec((err, postsData) => {
           if (err) {
             return res.status(400).json({ error: err });
           }
-          res.json({ userInfo:userInfo, postsData:postsData });
+         
+          res.json(postsData);
         })
         .catch((err) => {
-          return res.status(404).json({ error: "Use not found" });
+          return res.status(404).json({ error: err });
         });
     });
 });

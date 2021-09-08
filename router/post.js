@@ -32,7 +32,7 @@ router.post("/post", requireLogin, (req, res) => {
 
 //get all post api
 
-router.get("/getpost", (req, res) => {
+router.get("/getpost",requireLogin, (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
     .populate("postedBy", "name email")

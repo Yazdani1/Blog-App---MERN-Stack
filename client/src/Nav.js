@@ -83,9 +83,7 @@ function Nav() {
           </>
         ) : (
           <>
-            <Link to="/" className="eachitem">
-              <li>Home</li>
-            </Link>
+          
             <Link to="/signup" className="eachitem">
               <li>Sign Up</li>
             </Link>
