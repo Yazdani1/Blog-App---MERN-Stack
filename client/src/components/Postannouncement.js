@@ -29,9 +29,10 @@ const Postaccouncement = () => {
 
   const [data, setData] = useState({
     des: "",
+    error: null,
   });
 
-  const { des } = data;
+  const { des, error } = data;
   const handleChange = (e) => {
     setData({
       ...data,
@@ -44,7 +45,7 @@ const Postaccouncement = () => {
     try {
       await axios.post(
         "/auth/announcement",
-        { des },
+        { des, error },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
@@ -54,7 +55,7 @@ const Postaccouncement = () => {
       setData({ des: "" });
       history.push("/postannouncement");
     } catch (err) {
-      console.log(err);
+      setData({...data, error: err.response.data.error})
     }
   };
 
@@ -83,7 +84,7 @@ const Postaccouncement = () => {
                 value={des}
               ></textarea>
             </div>
-
+            {error ? <p className="text-danger">{error}</p> : null }
             <button
               type="submit"
               onClick={submitData}

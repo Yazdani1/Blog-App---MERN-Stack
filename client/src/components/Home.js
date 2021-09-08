@@ -12,7 +12,7 @@ function Home() {
 
   useEffect(() => {
     axios.get("/auth/getpost").then((res) => {
-      setData(res.data);
+      setData(res.data.resultGet);
       console.log(res.data);
     });
 
@@ -24,7 +24,6 @@ function Home() {
 
   return (
     <div className="container">
-      <Announcement/>
       <div className="row">
         <div className="col-md-8">
           {dataItem.map((item) => (
@@ -34,7 +33,10 @@ function Home() {
               <p>Published on:{moment(item.date).format('MMMM Do YYYY')}</p>
               <h5>{item.title}</h5>
               <p>{item.des.substring(0, 50)}</p>
+              <Link to={"/userprofile/"+item.postedBy._id}>
               <p>Posted by: {item.postedBy.name}</p>
+              </Link>
+              
               <span className="read">Read More ...</span>
             </div>
           ))}

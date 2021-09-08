@@ -37,7 +37,7 @@ router.get("/getpost", (req, res) => {
     .sort({ date: "DESC" })
     .populate("postedBy", "name email")
     .then((resultGet) => {
-      res.json(resultGet);
+      res.json({resultGet:resultGet});
     })
     .catch((err) => {
       console.log(err);
@@ -65,12 +65,26 @@ router.get("/mypost", requireLogin, (req, res) => {
   Post.find({ postedBy: req.user._id })
     .populate("postedBy", "_id name email")
     .then((mypostdata) => {
-      res.json(mypostdata);
+      res.json({mypostdata:mypostdata});
     })
     .catch((err) => {
       console.log(err);
     });
 });
+
+
+// //user profile
+
+// router.get("/userprofile",requireLogin, (req, res) => {
+//   Post.find({ postedBy: req.user._id })
+//     .populate("postedBy", "_id name email")
+//     .then((mypostdata) => {
+//       res.json(mypostdata);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
 
 //total post
 

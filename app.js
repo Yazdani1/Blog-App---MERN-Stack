@@ -18,6 +18,7 @@ app.use("/auth", require("./router/user"));
 
 app.use("/auth", require("./router/post"));
 app.use("/auth", require("./router/announcement"));
+app.use("/auth", require("./router/profile"));
 
 app.listen(PORT, (req, res) => {
   console.log("Server connected");

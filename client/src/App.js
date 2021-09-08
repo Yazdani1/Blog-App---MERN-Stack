@@ -11,13 +11,17 @@ import Post from "./components/Post";
 import See from "./components/See";
 import Mypost from "./components/Mypost";
 import Postaccouncement from "./components/Postannouncement";
-
+import Userprofile from "./components/Userprofile";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/see" exact component={See} />
+
+        <Route path="/userprofile/:id" exact>
+          <ProtectedRoute procomp={Userprofile} />
+        </Route>
 
         <Route path="/" exact>
           <ProtectedRoute procomp={Home} />
