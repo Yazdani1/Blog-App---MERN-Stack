@@ -74,7 +74,7 @@
 }
 .dropdown-menu {
   width: 300px !important;
-  height: 240px !important;
+  height: 280px !important;
 }
 
 .each:hover {
@@ -144,4 +144,18 @@
 
 .main_container{
   margin: 20px;
+}
+.announce_main{
+  padding: 30px;
+  margin: 30px;
+}
+.announce_data{
+  padding: 10px;
+  margin: 20px;
+}
+.announce_main:hover{
+  cursor: pointer;
+  box-shadow: -6px 11px 5px -4px rgba(0,0,0,0.42);
+-webkit-box-shadow: -6px 11px 5px -4px rgba(0,0,0,0.42);
+-moz-box-shadow: -6px 11px 5px -4px rgba(0,0,0,0.42);
 }
