@@ -95,7 +95,6 @@ const Postaccouncement = () => {
           </form>
         </div>
       </div>
-
       <div className="container card announce_main">
         {getAnnounce.map((item) => (
           <div className="row">
@@ -106,7 +105,6 @@ const Postaccouncement = () => {
                 <h5>Posted by: {item.postedBy.name}</h5>
               </marquee>
             </div>
-
             <div className="col-md-2 col-sm-12 card announce_data">
               <button
                 type="submit"
