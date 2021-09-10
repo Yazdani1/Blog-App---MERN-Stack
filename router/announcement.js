@@ -19,8 +19,6 @@ router.post("/announcement",requireLogin, (req, res) => {
       console.log(err);
     });
 });
-
-
 router.delete("/deleteannounce/:id", requireLogin, (req, res) => {
   var deleteData = { _id: req.params.id };
 
@@ -33,8 +31,6 @@ router.delete("/deleteannounce/:id", requireLogin, (req, res) => {
     });
 });
 // get all the post
-
-
 router.get("/getannouncement", requireLogin, (req, res) => {
   Announcement.find({ postedBy: req.user._id })
     .populate("postedBy", "_id name email")
@@ -45,5 +41,4 @@ router.get("/getannouncement", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-
 module.exports = router;
