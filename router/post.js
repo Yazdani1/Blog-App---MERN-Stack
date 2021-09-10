@@ -30,6 +30,8 @@ router.post("/post", requireLogin, (req, res) => {
   }
 });
 
+
+
 //get all post api
 
 router.get("/getpost", (req, res) => {
