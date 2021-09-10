@@ -30,8 +30,6 @@ router.post("/post", requireLogin, (req, res) => {
   }
 });
 
-
-
 //get all post api
 
 router.get("/getpost", (req, res) => {
@@ -73,8 +71,6 @@ router.get("/mypost", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-
-
 // //user profile
 
 // router.get("/userprofile",requireLogin, (req, res) => {
@@ -89,8 +85,6 @@ router.get("/mypost", requireLogin, (req, res) => {
 // });
 
 //total post
-
-
 
 //delete route
 
