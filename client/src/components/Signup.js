@@ -7,7 +7,6 @@ import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
 function SignUp() {
   const history = useHistory();
-
   //react toast message
 
   const notify = () => {
@@ -31,7 +30,6 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
   };
-
   const dataSubmit = async (e) => {
     e.preventDefault();
     const addItem = { name, email, password };
