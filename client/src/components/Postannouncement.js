@@ -68,6 +68,8 @@ const Postaccouncement = () => {
     getAllannouncement();
   }
 
+
+  
   return (
     <div>
       <div className="container designdata card">
@@ -95,6 +97,8 @@ const Postaccouncement = () => {
           </form>
         </div>
       </div>
+
+
       <div className="container card announce_main">
         {getAnnounce.map((item) => (
           <div className="row">
