@@ -43,7 +43,6 @@ router.get("/getpost", (req, res) => {
       console.log(err);
     });
 });
-
 //latest post
 
 router.get("/latestpost", (req, res) => {
