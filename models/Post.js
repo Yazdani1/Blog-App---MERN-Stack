@@ -5,19 +5,13 @@ var postSchema = mongoose.Schema({
   title: {
     type: String,
   },
-
-  
   des: {
     type: String,
   },
-
-
   date: {
     type: Date,
     default: Date.now,
   },
-
-
   postedBy:{
     type:ObjectId,
     ref:"User"
