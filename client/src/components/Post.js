@@ -58,9 +58,6 @@ const Post = () => {
                 className="form-control"
               />
             </div>
-
-            
-
             <div class="form-group">
               <label for="exampleFormControlTextarea2">Description</label>
               <input
@@ -71,7 +68,6 @@ const Post = () => {
               />
             </div>
             {error ? <p className="text-danger">{error}</p> : null}
-
             <button
               type="submit"
               onClick={dataSubmit}
