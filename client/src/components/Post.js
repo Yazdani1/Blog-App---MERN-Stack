@@ -38,6 +38,8 @@ const Post = () => {
     }
   };
 
+
+
   return (
     <div>
       <div className="container designdata card">
@@ -56,6 +58,8 @@ const Post = () => {
                 className="form-control"
               />
             </div>
+
+            
 
             <div class="form-group">
               <label for="exampleFormControlTextarea2">Description</label>
