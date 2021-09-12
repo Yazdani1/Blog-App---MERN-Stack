@@ -1,9 +1,7 @@
 const router = require("express").Router();
 const { requireLogin } = require("../middleware/auth");
 const Post = require("../models/Post");
-
 //post data api
-
 router.post("/post", requireLogin, (req, res) => {
   const { title, des } = req.body;
 
@@ -29,9 +27,7 @@ router.post("/post", requireLogin, (req, res) => {
     console.log(err);
   }
 });
-
 //get all post api
-
 router.get("/getpost", (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
@@ -57,9 +53,7 @@ router.get("/latestpost", (req, res) => {
       console.log(err);
     });
 });
-
 //my post api
-
 router.get("/mypost", requireLogin, (req, res) => {
   Post.find({ postedBy: req.user._id })
     .populate("postedBy", "_id name email")
