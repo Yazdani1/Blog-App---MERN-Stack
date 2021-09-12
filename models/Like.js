@@ -7,7 +7,12 @@ var likeSchema = mongoose.Schema({
     title:{
         type: String,
         
+    },
+    title:{
+        type: String,
+        
     }
+
 });
 
 module.exports = mongoose.model("Like", likeSchema);
