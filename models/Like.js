@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 var likeSchema = mongoose.Schema({
     count:{
         type: String
+    },
+    title:{
+        type: String,
+        
     }
 });
 
