@@ -1,7 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-var likeSchema = mongoose.Schema({
+var likeSchema = mongoose.Schema({});
 
-});
-
-
+module.exports = mongoose.model("Like", likeSchema);
