@@ -14,7 +14,11 @@ const Post = () => {
     error: null,
   });
 
+
+
   const { title, des,error } = data;
+
+  
 
   const handleChange = (e) => {
     setData({
