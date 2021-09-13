@@ -20,9 +20,6 @@ const Userprofile = () => {
   useEffect(() => {
     getMypost();
   }, []);
-
-
-  
   return (
     <>
       {mypost ? (
@@ -38,7 +35,7 @@ const Userprofile = () => {
                       <h5>
                         Published:{moment(item.date).format("MMMM Do YYYY")}
                       </h5>
-                      <h5>Published By:{item.postedBy.name}</h5>
+                      <h5>Published by:{item.postedBy.name}</h5>
                     </div>
                   </div>
                 ))}
