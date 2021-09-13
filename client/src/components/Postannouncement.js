@@ -57,7 +57,6 @@ const Postaccouncement = () => {
       setData({...data, error: err.response.data.error})
     }
   };
-
   function deletePost(id) {
     axios.delete("/auth/deleteannounce/" + id, {
       headers: {
@@ -66,7 +65,6 @@ const Postaccouncement = () => {
     });
     getAllannouncement();
   }
-
 
   
   return (
