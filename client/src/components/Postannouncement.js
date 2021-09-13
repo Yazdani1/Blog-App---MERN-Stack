@@ -95,13 +95,11 @@ const Postaccouncement = () => {
         </div>
       </div>
 
-
       <div className="container card announce_main">
         {getAnnounce.map((item) => (
           <div className="row">
             <div className="col-md-8 card announce_data">
               <p>{item.des}</p>
-
               <marquee width="100%" direction="left">
                 <h5>Posted by: {item.postedBy.name}</h5>
               </marquee>
@@ -121,5 +119,4 @@ const Postaccouncement = () => {
     </div>
   );
 };
-
 export default Postaccouncement;
