@@ -39,7 +39,6 @@ const Postaccouncement = () => {
       [e.target.name]: e.target.value,
     });
   };
-
   const submitData = async (e) => {
     e.preventDefault();
     try {

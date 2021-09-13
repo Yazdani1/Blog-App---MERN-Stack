@@ -8,9 +8,8 @@ router.post("/announcement",requireLogin, (req, res) => {
   if (!des) {
     return res.status(400).json({ error: "This field can't be empty" });
   }
-
   const postData = Announcement({ des,postedBy: req.user });
-
+  
   Announcement.create(postData)
     .then((result) => {
       res.json({ result, message: "Announcement published" });
