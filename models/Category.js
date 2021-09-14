@@ -10,4 +10,4 @@ var mongoSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.Schema("Category",)
+module.exports = mongoose.Schema("Category", mongoSchema);
