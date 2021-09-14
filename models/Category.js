@@ -9,3 +9,5 @@ var mongoSchema = mongoose.Schema({
     default: Date.now,
   },
 });
+
+module.exports = mongoose.Schema("Category",)
