@@ -1,17 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 var mongoSchema = mongoose.Schema({
-
-    title: {
-        type: String,
-        
-    },
-    date: {
-        type: String
-    }
-
-
+  title: {
+    type: String,
+  },
+  date: {
+    type: String,
+    default: Date.now,
+  },
 });
-
-
-
