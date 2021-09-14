@@ -6,7 +6,10 @@ var mongoSchema = mongoose.Schema({
         type: String,
         
     },
-    
+    date: {
+        type: String
+    }
+
 
 });
 
