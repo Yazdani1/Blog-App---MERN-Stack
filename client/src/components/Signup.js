@@ -40,6 +40,7 @@ function SignUp() {
           "Content-Type": "application/json",
         },
       });
+
       history.push("/signin");
     } catch (err) {
       setData({ ...data, error: err.response.data.errort });

@@ -11,12 +11,10 @@ function Home() {
   const [latestPost, setLatestpost] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/auth/getpost")
-      .then((res) => {
-        setData(res.data.resultGet);
-        console.log(res.data);
-      });
+    axios.get("/auth/getpost").then((res) => {
+      setData(res.data.resultGet);
+      console.log(res.data);
+    });
 
     axios.get("/auth/latestpost").then((res) => {
       setLatestpost(res.data);
@@ -38,7 +36,6 @@ function Home() {
               <Link to={"/userprofile/" + item.postedBy._id}>
                 <p>Posted by: {item.postedBy.name}</p>
               </Link>
-
               <span className="read">Read More ...</span>
             </div>
           ))}
