@@ -7,6 +7,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 const Userprofile = () => {
   const [mypost, setData] = useState();
   const { id } = useParams();
+  
   const getMypost = () => {
     axios.get(`/auth/userprofileda/${id}`)
       

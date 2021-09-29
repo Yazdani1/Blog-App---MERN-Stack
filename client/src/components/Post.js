@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
 const Post = () => {
+  
   const history = useHistory();
 
   const [data, setData] = useState({
@@ -14,11 +15,7 @@ const Post = () => {
     error: null,
   });
 
-
-
   const { title, des,error } = data;
-
-  
 
   const handleChange = (e) => {
     setData({
@@ -26,6 +23,7 @@ const Post = () => {
       [e.target.name]: e.target.value,
     });
   };
+  
   const dataSubmit = async (e) => {
     e.preventDefault();
     const addItem = { title, des };
@@ -41,8 +39,6 @@ const Post = () => {
       setData({ ...data, error: err.response.data.error });
     }
   };
-
-
 
   return (
     <div>

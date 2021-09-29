@@ -27,6 +27,8 @@ router.post("/post", requireLogin, (req, res) => {
     console.log(err);
   }
 });
+
+
 //get all post api
 router.get("/getpost", (req, res) => {
   Post.find({})
