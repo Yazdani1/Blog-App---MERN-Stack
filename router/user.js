@@ -11,8 +11,14 @@ require("dotenv").config();
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
-    if (!name || !email || !password) {
-      return res.status(400).json({ errort: "Please Add " });
+    if (!name) {
+      return res.status(400).json({ errort: "Please Add Your Full Name" });
+    }
+    if (!email ) {
+      return res.status(400).json({ errort: "Please Add Your valid E-mail Address" });
+    }
+    if (!password) {
+      return res.status(400).json({ errort: "Please Add Your Password" });
     }
     
 

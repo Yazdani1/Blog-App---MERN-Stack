@@ -51,6 +51,12 @@ function SignUp() {
       <div className="container design card">
         <div className="row">
           <h1 className="toptest">Create Account</h1>
+          <div
+            className="alert alert-danger"
+            style={{ display: error ? "" : "none" }}
+          >
+            {error}
+          </div>
           <form>
             <div className="form-group">
               <label for="exampleInputEmail1" className="form-label">
@@ -64,7 +70,7 @@ function SignUp() {
                 className="form-control"
               />
             </div>
-            {error ? <p className="text-danger">{error} Name </p> : null}
+            {/* {error ? <p className="text-danger">{error} Name </p> : null} */}
             <div className="form-group">
               <label for="exampleInputPassword1" className="form-label">
                 E-mail
@@ -77,7 +83,7 @@ function SignUp() {
                 className="form-control"
               />
             </div>
-            {error ? <p className="text-danger">{error} E-mail</p> : null}
+            {/* {error ? <p className="text-danger">{error} E-mail</p> : null} */}
             <div className="form-group">
               <label for="exampleInputPassword1" className="form-label">
                 Password
@@ -90,22 +96,23 @@ function SignUp() {
                 className="form-control"
               />
             </div>
-            {error ? <p className="text-danger">{error} Password</p> : null}
+            {/* {error ? <p className="text-danger">{error} Password</p> : null} */}
 
             <button
               type="submit"
-              onClick={(e)=>{notify();dataSubmit(e)}}
+              onClick={(e) => {
+                notify();
+                dataSubmit(e);
+              }}
               class="btn btn-success custBtn"
             >
               Sign Up
             </button>
           </form>
         </div>
-        <ToastContainer autoClose={8000}/>
+        <ToastContainer autoClose={8000} />
       </div>
-      
     </div>
-    
   );
 }
 export default SignUp;
