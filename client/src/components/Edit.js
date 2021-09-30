@@ -30,7 +30,7 @@ const Post = () => {
     const addItem = { title, des };
     try {
       setData({ ...data, error: null });
-      await axios.put("/auth/update/"+id, addItem, {
+      await axios.put("/auth/update/" + id, addItem, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
         },
@@ -105,7 +105,7 @@ const Post = () => {
               onClick={dataSubmit}
               class="btn btn-success custBtn"
             >
-              Create Post
+              Update Post
             </button>
           </form>
         </div>
