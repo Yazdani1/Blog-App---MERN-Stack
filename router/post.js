@@ -57,6 +57,7 @@ router.get("/latestpost", (req, res) => {
 //my post api
 router.get("/mypost", requireLogin, (req, res) => {
   Post.find({ postedBy: req.user._id })
+    .sort({ date: "DESC" })
     .populate("postedBy", "_id name email")
     .then((mypostdata) => {
       res.json({ mypostdata: mypostdata });
@@ -84,7 +85,7 @@ router.get("/mypost", requireLogin, (req, res) => {
 
 //get edit data
 
-router.get("/edit/:id",requireLogin, (req, res) => {
+router.get("/edit/:id", requireLogin, (req, res) => {
   var editQuery = { _id: req.params.id };
   Post.findOne(editQuery)
     .then((result) => {
@@ -92,6 +93,26 @@ router.get("/edit/:id",requireLogin, (req, res) => {
     })
     .catch((err) => {
       return res.status(400).json({ error: err });
+    });
+});
+
+//update data tot the database
+
+router.put("/update/:id", requireLogin, (req, res) => {
+  var updateQuery = { _id: req.params.id };
+
+  Post.updateOne(updateQuery, {
+    $set: {
+      title: req.body.title,
+      des: req.body.des,
+      date: Date.now(),
+    },
+  })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 });
 

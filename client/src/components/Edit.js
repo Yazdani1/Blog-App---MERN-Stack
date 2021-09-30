@@ -30,7 +30,7 @@ const Post = () => {
     const addItem = { title, des };
     try {
       setData({ ...data, error: null });
-      await axios.post("/auth/post", addItem, {
+      await axios.put("/auth/update/"+id, addItem, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
         },
