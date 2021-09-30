@@ -94,6 +94,16 @@ function Mypost() {
                     Delete
                   </button>
                 </div>
+                <div className="col-md-4">
+                <Link to={"/editpost/" + item._id}>
+                  <button
+                    className="btn btn-danger"
+                    
+                  >
+                    Edit
+                  </button>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

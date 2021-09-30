@@ -28,22 +28,19 @@ router.post("/post", requireLogin, (req, res) => {
   }
 });
 
-
 //get all post api
 router.get("/getpost", (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
     .populate("postedBy", "name email")
     .then((resultGet) => {
-      res.json({resultGet:resultGet});
+      res.json({ resultGet: resultGet });
     })
     .catch((err) => {
       console.log(err);
     });
 });
 //latest post
-
-
 
 router.get("/latestpost", (req, res) => {
   Post.find({})
@@ -62,7 +59,7 @@ router.get("/mypost", requireLogin, (req, res) => {
   Post.find({ postedBy: req.user._id })
     .populate("postedBy", "_id name email")
     .then((mypostdata) => {
-      res.json({mypostdata:mypostdata});
+      res.json({ mypostdata: mypostdata });
     })
     .catch((err) => {
       console.log(err);
@@ -84,6 +81,19 @@ router.get("/mypost", requireLogin, (req, res) => {
 //total post
 
 //delete route
+
+//get edit data
+
+router.get("/edit/:id",requireLogin, (req, res) => {
+  var editQuery = { _id: req.params.id };
+  Post.findOne(editQuery)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      return res.status(400).json({ error: err });
+    });
+});
 
 router.delete("/delete/:id", requireLogin, (req, res) => {
   var deleteData = { _id: req.params.id };

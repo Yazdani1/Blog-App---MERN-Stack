@@ -12,6 +12,9 @@ import See from "./components/See";
 import Mypost from "./components/Mypost";
 import Postaccouncement from "./components/Postannouncement";
 import Userprofile from "./components/Userprofile";
+import Edit from "./components/Edit";
+
+
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
 
         <Route path="/userprofile/:id" exact>
           <ProtectedRoute procomp={Userprofile} />
+        </Route>
+        <Route path="/editpost/:id">
+          <ProtectedRoute procomp={Edit} />
         </Route>
 
         <Route path="/" exact>
