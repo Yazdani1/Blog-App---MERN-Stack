@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { requireLogin } = require("../middleware/auth");
 const Post = require("../models/Post");
+
+
 //post data api
 router.post("/post", requireLogin, (req, res) => {
   const { title, des } = req.body;
@@ -40,6 +42,7 @@ router.get("/getpost", (req, res) => {
       console.log(err);
     });
 });
+
 //latest post
 
 router.get("/latestpost", (req, res) => {
@@ -54,6 +57,7 @@ router.get("/latestpost", (req, res) => {
       console.log(err);
     });
 });
+
 //my post api
 router.get("/mypost", requireLogin, (req, res) => {
   Post.find({ postedBy: req.user._id })
@@ -66,6 +70,8 @@ router.get("/mypost", requireLogin, (req, res) => {
       console.log(err);
     });
 });
+
+
 // //user profile
 
 // router.get("/userprofile",requireLogin, (req, res) => {
