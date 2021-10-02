@@ -193,3 +193,16 @@
   list-style: none;
 }
 
+.desing_home{
+  padding: 10px;
+  margin: 10px;
+  height: 400px;
+}
+
+.images{
+  background-position: center top;
+  background-size: 100% 100%;;
+  height:200px;
+  width:100%;
+  background-repeat: no-repeat;
+}

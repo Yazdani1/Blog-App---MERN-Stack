@@ -50,16 +50,16 @@ function SignUp() {
 
   return (
     <div>
-      <div className="container design card">
-        <div className="row">
+      <div className="container">
+        <div className="row card">
           <h1 className="toptest">Create Account</h1>
-          <div
+          <div 
             className="alert alert-danger"
             style={{ display: error ? "" : "none" }}
           >
             {error}
           </div>
-          <form>
+          <form >
             <div className="form-group">
               <label for="exampleInputEmail1" className="form-label">
                 Name

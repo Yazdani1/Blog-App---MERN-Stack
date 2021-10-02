@@ -26,6 +26,7 @@ const Userprofile = () => {
       {mypost ? (
         <div className="container">
           <div className="row">
+
             <div className="col-md-9">
               <div className="row">
                 {mypost.postsData.map((item) => (
@@ -43,11 +44,13 @@ const Userprofile = () => {
                 ))}
               </div>
             </div>
+            
             <div className="col-md-3 card userdetails">
               <h1>{mypost.userInfo.name}</h1>
               <h5>{mypost.userInfo.email}</h5>
               <p>Total posts: {mypost.postsData.length}</p>
             </div>
+
           </div>
         </div>
       ) : (
