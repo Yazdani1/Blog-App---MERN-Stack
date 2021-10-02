@@ -35,14 +35,15 @@ function Home() {
               {dataItem.map((item) => (
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   <div className="desing_home card mb-5 shadow-sm">
-                  <h5>Published by:{item.postedBy.name}</h5>
-                    <img src={item.photo}  className="images" />
+                    <Link to={"/userprofile/" + item.postedBy._id}>
+                      <p>Posted by: {item.postedBy.name}</p>
+                    </Link>
+                    <img src={item.photo} className="images" />
                     <h4>{item.title}</h4>
                     <p>{item.des}</p>
                     <h5>
                       Published:{moment(item.date).format("MMMM Do YYYY")}
                     </h5>
-                   
                   </div>
                 </div>
               ))}

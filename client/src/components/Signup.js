@@ -5,6 +5,9 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
+
+
+
 function SignUp() {
   const history = useHistory();
   //react toast message

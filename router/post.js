@@ -1,7 +1,18 @@
 const router = require("express").Router();
 const { requireLogin } = require("../middleware/auth");
 const Post = require("../models/Post");
+const User = require("../models/User");
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
 
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key:
+        "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",
+    },
+  })
+);
 
 //post data api
 router.post("/post", requireLogin, (req, res) => {
@@ -16,7 +27,7 @@ router.post("/post", requireLogin, (req, res) => {
       title,
       des,
       postedBy: req.user,
-      photo:pic
+      photo: pic,
     });
 
     Post.create(postData)
@@ -71,7 +82,6 @@ router.get("/mypost", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-
 
 // //user profile
 

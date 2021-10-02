@@ -4,7 +4,19 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { requireLogin } = require("../middleware/auth");
 
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+
 require("dotenv").config();
+
+
+
+const transporter = nodemailer.createTransport(sendgridTransport({
+  auth:{
+    api_key:"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"
+  }
+}));
+
 
 //post route for registraion
 
@@ -34,6 +46,12 @@ router.post("/register", async (req, res) => {
     });
 
     await user.save().then((registerData) => {
+      transporter.sendMail({
+        to:registerData.email,
+        from:"shaon1132@gmail.com",
+        subject:"Signup Success",
+        html:"<h1>Welcome to this blog site. You have become a member</h1>"
+      });
       res.json(registerData);
     });
     return res.status(201).json({ message: "User created successfully" });
