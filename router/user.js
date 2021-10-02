@@ -4,19 +4,19 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { requireLogin } = require("../middleware/auth");
 
-const nodemailer = require('nodemailer');
-const sendgridTransport = require('nodemailer-sendgrid-transport');
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 require("dotenv").config();
 
-
-
-const transporter = nodemailer.createTransport(sendgridTransport({
-  auth:{
-    api_key:"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"
-  }
-}));
-
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: process.env.API
+        
+    },
+  })
+);
 
 //post route for registraion
 
@@ -26,19 +26,21 @@ router.post("/register", async (req, res) => {
     if (!name) {
       return res.status(400).json({ errort: "Please Add Your Full Name" });
     }
-    if (!email ) {
-      return res.status(400).json({ errort: "Please Add Your valid E-mail Address" });
+    if (!email) {
+      return res
+        .status(400)
+        .json({ errort: "Please Add Your valid E-mail Address" });
     }
     if (!password) {
       return res.status(400).json({ errort: "Please Add Your Password" });
     }
-    
 
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ errort: "User already exist" });
     }
     const hash_password = await bcrypt.hash(password, 12);
+
     user = new User({
       name,
       email,
@@ -47,10 +49,10 @@ router.post("/register", async (req, res) => {
 
     await user.save().then((registerData) => {
       transporter.sendMail({
-        to:registerData.email,
-        from:"shaon1132@gmail.com",
-        subject:"Signup Success",
-        html:"<h1>Welcome to this blog site. You have become a member</h1>"
+        to: registerData.email,
+        from: "shaon1132@gmail.com",
+        subject: "Signup Success",
+        html: "<h1>Welcome to this blog site. You have become a member</h1>",
       });
       res.json(registerData);
     });
