@@ -19,11 +19,11 @@ function SignUp() {
     name: "",
     email: "",
     password: "",
-    imgUrl:"",
+
     error: null,
   });
 
-  const { name, email, password, error,imgUrl } = data;
+  const { name, email, password, error, } = data;
 
   const handleChange = (e) => {
     setData({
@@ -98,7 +98,7 @@ function SignUp() {
                 className="form-control"
               />
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <label for="exampleInputPassword1" className="form-label">
                 Profile Picture
               </label>
@@ -109,7 +109,7 @@ function SignUp() {
                 onChange={handleChange}
                 className="form-control"
               />
-            </div>
+            </div> */}
             {/* {error ? <p className="text-danger">{error} Password</p> : null} */}
 
             <button

@@ -31,6 +31,7 @@ const Userprofile = () => {
                 {mypost.postsData.map((item) => (
                   <div className="col-md-4">
                     <div className="userprofile card">
+                    <img src={item.photo}  height="200px"/>
                       <h4>{item.title}</h4>
                       <p>{item.des}</p>
                       <h5>

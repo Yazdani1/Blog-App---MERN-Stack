@@ -12,10 +12,14 @@ var postSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  postedBy:{
-    type:ObjectId,
-    ref:"User"
-  }
+  photo: {
+    type: String,
+    required:true
+  },
+  postedBy: {
+    type: ObjectId,
+    ref: "User",
+  },
 });
 
 module.exports = mongoose.model("Post", postSchema);

@@ -5,10 +5,10 @@ const Post = require("../models/Post");
 
 //post data api
 router.post("/post", requireLogin, (req, res) => {
-  const { title, des } = req.body;
+  const { title, des, pic } = req.body;
 
   try {
-    if (!title || !des) {
+    if (!title || !des || !pic) {
       return res.status(400).json({ error: "Please add all fields.." });
     }
 
@@ -16,6 +16,7 @@ router.post("/post", requireLogin, (req, res) => {
       title,
       des,
       postedBy: req.user,
+      photo:pic
     });
 
     Post.create(postData)

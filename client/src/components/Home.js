@@ -28,6 +28,7 @@ function Home() {
         <div className="col-md-8">
           {dataItem.map((item) => (
             <div className="card top">
+              <img src={item.photo}  height="200px"/>
               {/* <h3>{item.postedBy.name}</h3>
               <h3>{item.postedBy.email}</h3> */}
               <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
