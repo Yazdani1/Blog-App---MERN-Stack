@@ -6,7 +6,6 @@ const Post = require("../models/Post");
 //post data api
 router.post("/post", requireLogin, (req, res) => {
   const { title, des, pic } = req.body;
-
   try {
     if (!title || !des || !pic) {
       return res.status(400).json({ error: "Please add all fields.." });
