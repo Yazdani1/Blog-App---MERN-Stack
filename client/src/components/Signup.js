@@ -5,9 +5,6 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
-
-
-
 function SignUp() {
   const history = useHistory();
   //react toast message
@@ -22,11 +19,10 @@ function SignUp() {
     name: "",
     email: "",
     password: "",
-
     error: null,
   });
 
-  const { name, email, password, error, } = data;
+  const { name, email, password, error } = data;
 
   const handleChange = (e) => {
     setData({
@@ -53,16 +49,88 @@ function SignUp() {
 
   return (
     <div>
-      <div className="container">
-        <div className="row card">
+      <div class="container contact-form">
+        <div class="contact-image">
+          <img
+            src="https://image.ibb.co/kUagtU/rocket_contact.png"
+            alt="rocket_contact"
+          />
+        </div>
+        <form method="post">
+          <h3>Create Your Account</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="txtName"
+                  class="form-control"
+                  placeholder="Your Name *"
+                  value=""
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="txtEmail"
+                  class="form-control"
+                  placeholder="Your Email *"
+                  value=""
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="txtPhone"
+                  class="form-control"
+                  placeholder="Your Phone Number *"
+                  value=""
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="txtPhone"
+                  class="form-control"
+                  placeholder="Your Phone Number *"
+                  value=""
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="txtPhone"
+                  class="form-control"
+                  placeholder="Your Phone Number *"
+                  value=""
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="submit"
+                name="btnSubmit"
+                class="btnContact"
+                value="Sign Up"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div className="container main_form">
+        <div className="row">
           <h1 className="toptest">Create Account</h1>
-          <div 
+          <div
             className="alert alert-danger"
             style={{ display: error ? "" : "none" }}
           >
             {error}
           </div>
-          <form >
+          <form className="card form_Design">
             <div className="form-group">
               <label for="exampleInputEmail1" className="form-label">
                 Name
@@ -97,10 +165,12 @@ function SignUp() {
                 type="text"
                 name="password"
                 value={password}
-                onChange={handleChange}
                 className="form-control"
+                onChange={handleChange}
+                className="inputfielddesign"
               />
             </div>
+
             {/* <div className="form-group">
               <label for="exampleInputPassword1" className="form-label">
                 Profile Picture
@@ -121,7 +191,7 @@ function SignUp() {
                 notify();
                 dataSubmit(e);
               }}
-              class="btn btn-success custBtn"
+              class="btn btn-success"
             >
               Sign Up
             </button>
