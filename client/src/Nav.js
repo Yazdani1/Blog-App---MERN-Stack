@@ -53,9 +53,13 @@ function Nav() {
                 <li>Home</li>
               </Link>
 
-              <Link to={"/userprofile/" + user._id} className="eachitem">
+              {/* <Link to={"/userprofile/" + user._id} className="eachitem">
                 <li>{user && user.name}</li>
-              </Link>
+              </Link> */}
+
+              <div className="eachitem">
+                <li>{user && user.name}</li>
+              </div>
 
               <div className="dropdown show eachitem">
                 <div
@@ -82,16 +86,20 @@ function Nav() {
                   <Link to="/postannouncement" className="dropdown-item each">
                     <li>Announcement</li>
                   </Link>
-                  <Link to="/profile" className="dropdown-item each">
-                    Profile
-                  </Link>
 
-                  <Link to="/profile" className="dropdown-item each">
+                  <Link to="/userprofile" className="dropdown-item each">
                     Dashboard
                   </Link>
 
                   <Link to="/profile" className="dropdown-item each">
                     Setting
+                  </Link>
+
+                  <Link
+                    to={"/userprofile/" + user._id}
+                    className="dropdown-item each item_back"
+                  >
+                    View Profile
                   </Link>
                   <hr />
                   <Link to="/signin" className="dropdown-item each">

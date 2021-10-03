@@ -2,13 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
 import moment from "moment";
-import Announcement from "./Announcement";
+import { MdAccountBox } from "react-icons/md";
+import { MdAssessment } from "react-icons/md";
 
 import { Link, useHistory } from "react-router-dom";
 
 function Home() {
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
+
+  const [user, setUser] = useState([]);
+
+  const getUser = async () => {
+    axios.get("/auth/allusers").then((res) => {
+      setUser(res.data);
+    });
+  };
 
   useEffect(() => {
     axios.get("/auth/getpost").then((res) => {
@@ -20,6 +29,7 @@ function Home() {
       setLatestpost(res.data);
       console.log(res.data);
     });
+    getUser();
   }, []);
 
   return (
@@ -28,6 +38,30 @@ function Home() {
         <h1>Blog App</h1>
         <hr />
       </div>
+
+      <div className="container second_section">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="items_ofhome">
+              <h1>
+                <MdAssessment />
+              </h1>
+              <h4>Published Post</h4>
+              <h1>{dataItem.length}</h1>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="items_ofhome">
+              <h1>
+                <MdAccountBox />
+              </h1>
+              <h4>Active Users</h4>
+              <h1>{user.length}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container">
         <div className="row">
           <div className="col-md-10">

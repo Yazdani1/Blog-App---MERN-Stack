@@ -12,8 +12,7 @@ require("dotenv").config();
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key: process.env.API
-        
+      api_key: process.env.API,
     },
   })
 );
@@ -89,6 +88,18 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+//all usesers
+
+router.get("/allusers", (req, res) => {
+  User.find({})
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 //protected route

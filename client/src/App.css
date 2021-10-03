@@ -285,3 +285,16 @@
   width: 100%;
   margin-left: 50px;
 }
+.item_back{
+  background-color: rgb(87, 0, 128);
+}
+.second_section{
+  height: auto;
+  padding: 20px;
+  background-color: rgb(87, 0, 128);
+  color: aliceblue;
+}
+.items_ofhome{
+  text-align: center;
+  align-items: center;
+}

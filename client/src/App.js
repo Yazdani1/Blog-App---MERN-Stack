@@ -8,7 +8,6 @@ import SignIn from "./components/SignIn";
 import ProtectedRoute from "./components/Protectedroute";
 import Profile from "./components/Profile";
 import Post from "./components/Post";
-import See from "./components/See";
 import Mypost from "./components/Mypost";
 import Postaccouncement from "./components/Postannouncement";
 import Userprofile from "./components/Userprofile";
@@ -20,7 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/see" exact component={See} />
+     
 
         <Route path="/userprofile/:id" exact>
           <ProtectedRoute procomp={Userprofile} />
