@@ -56,7 +56,6 @@ function Nav() {
               <Link to="/details" className="eachitem">
                 <li>{user && user.name}</li>
               </Link>
-
               <div className="dropdown show eachitem">
                 <div
                   className="dropdown-toggle"
