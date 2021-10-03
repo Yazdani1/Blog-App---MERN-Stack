@@ -3,6 +3,8 @@ import axios from "axios";
 import "../App.css";
 import moment from "moment";
 import { Link, useHistory } from "react-router-dom";
+import { MdCardMembership } from "react-icons/md";
+import { MdAssessment } from "react-icons/md";
 
 function Mypost() {
   const [mypost, setData] = useState([]);
@@ -54,12 +56,15 @@ function Mypost() {
       <div className="row">
         <div className="col-md-4">
           <div className="total_post">
+          <h1><MdAssessment/></h1>
             <h3>Total post</h3>
-            <h1>{mypost.length}</h1>
+            <h3>{mypost.length}</h3>
           </div>
         </div>
         <div className="col-md-4">
           <div className="mamber_since">
+         
+          <h1><MdCardMembership/></h1>
             <h3>Member Since</h3>
             <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
           </div>
