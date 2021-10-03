@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 function Nav() {
   //to show user name in the navbar
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
 
   const getUser = async () => {
     const res = await axios.get("/auth", {
@@ -53,9 +53,10 @@ function Nav() {
                 <li>Home</li>
               </Link>
 
-              <Link to="/details" className="eachitem">
+              <Link to={"/userprofile/" + user._id} className="eachitem">
                 <li>{user && user.name}</li>
               </Link>
+
               <div className="dropdown show eachitem">
                 <div
                   className="dropdown-toggle"
@@ -102,7 +103,7 @@ function Nav() {
           ) : (
             <>
               <div className="nav_design">
-              <Link to="/" className="eachitem">
+                <Link to="/" className="eachitem">
                   <li>Home</li>
                 </Link>
                 <Link to="/signup" className="eachitem">
@@ -111,8 +112,6 @@ function Nav() {
                 <Link to="/signin" className="eachitem">
                   <li>Sign In</li>
                 </Link>
-
-              
               </div>
             </>
           )}
