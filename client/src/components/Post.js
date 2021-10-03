@@ -30,6 +30,7 @@ const Post = () => {
   const [des, setDes] = useState("");
   const [imageUrl, setImageurl] = useState("");
   const [url, setUrl] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (url) {
@@ -49,14 +50,12 @@ const Post = () => {
         .then((data) => {
           console.log(data);
           if (data.error) {
-            console.log("Got some error");
+            setError(data.error);
           } else {
             history.push("/myPost");
           }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     }
   }, [url]);
 
@@ -101,6 +100,12 @@ const Post = () => {
       <div className="container designdata card">
         <div className="row">
           <h1 className="toptest">Create Post</h1>
+          <div
+            className="alert alert-danger"
+            style={{ display: error ? "" : "none" }}
+          >
+            {error}
+          </div>
           <form>
             <div className="form-group">
               <label for="exampleInputEmail1" className="form-label">

@@ -47,7 +47,6 @@ function Nav() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          
           {localStorage.getItem("tokenLogin") ? (
             <>
               <Link to="/" className="eachitem">
@@ -55,10 +54,10 @@ function Nav() {
               </Link>
 
               <Link to="/details" className="eachitem">
-                <li>Details</li>
+                <li>{user && user.name}</li>
               </Link>
 
-              <div className="dropdown show">
+              <div className="dropdown show eachitem">
                 <div
                   className="dropdown-toggle"
                   data-toggle="dropdown"
@@ -67,7 +66,7 @@ function Nav() {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  {user && user.name}
+                  More
                 </div>
 
                 <div
@@ -103,16 +102,19 @@ function Nav() {
             </>
           ) : (
             <>
-              <Link to="/signup" className="eachitem">
-                <li>Sign Up</li>
-              </Link>
-              <Link to="/signin" className="eachitem">
-                <li>Sign In</li>
-              </Link>
-
+              <div className="nav_design">
               <Link to="/" className="eachitem">
-                <li>Home</li>
-              </Link>
+                  <li>Home</li>
+                </Link>
+                <Link to="/signup" className="eachitem">
+                  <li>Sign Up</li>
+                </Link>
+                <Link to="/signin" className="eachitem">
+                  <li>Sign In</li>
+                </Link>
+
+              
+              </div>
             </>
           )}
 

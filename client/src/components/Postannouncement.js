@@ -54,7 +54,7 @@ const Postaccouncement = () => {
       setData({ des: "" });
       history.push("/postannouncement");
     } catch (err) {
-      setData({...data, error: err.response.data.error})
+      setData({ ...data, error: err.response.data.error });
     }
   };
   function deletePost(id) {
@@ -66,11 +66,16 @@ const Postaccouncement = () => {
     getAllannouncement();
   }
 
-  
   return (
     <div>
       <div className="container designdata card">
         <div className="row">
+        <div
+            className="alert alert-danger"
+            style={{ display: error ? "" : "none" }}
+          >
+            {error}
+          </div>
           <h1 className="toptest">Create Announcement</h1>
           <form>
             <div class="form-group green-border-focus">
@@ -83,7 +88,7 @@ const Postaccouncement = () => {
                 value={des}
               ></textarea>
             </div>
-            {error ? <p className="text-danger">{error}</p> : null }
+            {error ? <p className="text-danger">{error}</p> : null}
             <button
               type="submit"
               onClick={submitData}
@@ -104,14 +109,27 @@ const Postaccouncement = () => {
                 <h5>Posted by: {item.postedBy.name}</h5>
               </marquee>
             </div>
-            <div className="col-md-2 col-sm-12 card announce_data">
-              <button
-                type="submit"
-                onClick={() => deletePost(item._id)}
-                className="btn btn-danger"
-              >
-                Delete
-              </button>
+            <div className="col-md-3 card announce_data">
+              <div className="row">
+                <div className="col-md-6">
+                  <button
+                    type="submit"
+                    onClick={() => deletePost(item._id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </div>
+                <div className="col-md-6">
+                  <button
+                    type="submit"
+                    onClick={() => deletePost(item._id)}
+                    className="btn btn-danger"
+                  >
+                    Edit
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         ))}
