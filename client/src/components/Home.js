@@ -33,13 +33,25 @@ function Home() {
   }, []);
 
   return (
-    <div class="container">
-      <div class="text-center my-5">
-        <h1>Blog App</h1>
-        <hr />
+    <div class="dd">
+      <div className="container first_section">
+        <img
+          src="https://images.pexels.com/photos/3194523/pexels-photo-3194523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+          height="600px"
+          width="100%"
+        />
+        <div class="top-left">
+          <div className="card first_Section_data">
+            <h5>Welcome to this Blog App</h5>
+            <p>Learn from others and share your pots with others</p>
+          </div>
+          <span className="create_account_button">Create Your Account Today</span>
+        </div>
       </div>
 
-      <div className="container second_section">
+      <div class="text-center my-5">{/* <h1>Blog App</h1> */}</div>
+
+      <div className="second_section">
         <div className="row">
           <div className="col-md-6">
             <div className="items_ofhome">
@@ -67,17 +79,22 @@ function Home() {
           <div className="col-md-10">
             <div className="row">
               {dataItem.map((item) => (
-                <div className="col-lg-4 col-md-6 col-sm-12">
+                <div className="col-lg-4">
                   <div className="desing_home card mb-5 shadow-sm">
-                    <Link to={"/userprofile/" + item.postedBy._id}>
+                    <Link
+                      to={"/userprofile/" + item.postedBy._id}
+                      className="name_design"
+                    >
                       <p>Posted by: {item.postedBy.name}</p>
                     </Link>
                     <img src={item.photo} className="images" />
-                    <h4>{item.title}</h4>
-                    <p>{item.des}</p>
-                    <h5>
-                      Published:{moment(item.date).format("MMMM Do YYYY")}
-                    </h5>
+                    <p className="date_color">
+                      Published on:{moment(item.date).format("MMMM Do YYYY")}
+                    </p>
+                    <h4>{item.title.substring(0, 15)}</h4>
+                    <p>{item.des.substring(0, 20)}</p>
+                    <p>Read More</p>
+                    {/* <span className="read_more_button">Read More</span> */}
                   </div>
                 </div>
               ))}
