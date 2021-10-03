@@ -94,7 +94,6 @@ const Post = () => {
     //   setData({ ...data, error: err.response.data.error });
     // }
   };
-
   return (
     <div>
       <div className="container designdata card">
