@@ -30,6 +30,7 @@ function Home() {
       setLatestpost(res.data);
       console.log(res.data);
     });
+
     getUser();
   }, []);
 
@@ -41,6 +42,7 @@ function Home() {
           height="600px"
           width="100%"
         />
+        
         <div class="top-left">
           <div className="card first_Section_data">
             <h5>Welcome to this Blog App</h5>
