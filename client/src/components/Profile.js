@@ -16,7 +16,6 @@ const Profile = () => {
     });
     setUser(res.data);
   };
-
   useEffect(() => {
     getUser();
   }, []);
