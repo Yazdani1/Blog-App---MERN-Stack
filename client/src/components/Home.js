@@ -4,8 +4,9 @@ import "../App.css";
 import moment from "moment";
 import { MdAccountBox } from "react-icons/md";
 import { MdAssessment } from "react-icons/md";
-
 import { Link, useHistory } from "react-router-dom";
+
+
 
 function Home() {
   const [dataItem, setData] = useState([]);
@@ -45,7 +46,6 @@ function Home() {
             <h5>Welcome to this Blog App</h5>
             <p>Learn from others and share your pots with others</p>
           </div>
-          <span className="create_account_button">Create Your Account Today</span>
         </div>
       </div>
 
@@ -107,37 +107,37 @@ function Home() {
         </div>
       </div>
     </div>
-
-    // <div className="container">
-    //   <div className="row">
-    //     <div className="col-md-8">
-    //       {dataItem.map((item) => (
-    //         <div className="card top">
-    //           <img src={item.photo} className="img-fluid"  height="200px"/>
-    //           {/* <h3>{item.postedBy.name}</h3>
-    //           <h3>{item.postedBy.email}</h3> */}
-    //           <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
-    //           <h5>{item.title}</h5>
-    //           <p>{item.des.substring(0, 50)}</p>
-    //           <Link to={"/userprofile/" + item.postedBy._id}>
-    //             <p>Posted by: {item.postedBy.name}</p>
-    //           </Link>
-    //           <span className="read">Read More ...</span>
-    //         </div>
-    //       ))}
-    //     </div>
-    //     <div className="col-md-4">
-    //       <h5 className="title lstestpostTitle">New Posts</h5>
-    //       {latestPost.map((item) => (
-    //         <div className="card latestPosts">
-    //           <h5>{item.title}</h5>
-    //           <p>{item.des.substring(0, 50)}</p>
-    //           <p>Posted by: {item.postedBy.name}</p>
-    //         </div>
-    //       ))}
-    //     </div>
-    //   </div>
-    // </div>
   );
+
+  // <div className="container">
+  //   <div className="row">
+  //     <div className="col-md-8">
+  //       {dataItem.map((item) => (
+  //         <div className="card top">
+  //           <img src={item.photo} className="img-fluid"  height="200px"/>
+  //           {/* <h3>{item.postedBy.name}</h3>
+  //           <h3>{item.postedBy.email}</h3> */}
+  //           <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
+  //           <h5>{item.title}</h5>
+  //           <p>{item.des.substring(0, 50)}</p>
+  //           <Link to={"/userprofile/" + item.postedBy._id}>
+  //             <p>Posted by: {item.postedBy.name}</p>
+  //           </Link>
+  //           <span className="read">Read More ...</span>
+  //         </div>
+  //       ))}
+  //     </div>
+  //     <div className="col-md-4">
+  //       <h5 className="title lstestpostTitle">New Posts</h5>
+  //       {latestPost.map((item) => (
+  //         <div className="card latestPosts">
+  //           <h5>{item.title}</h5>
+  //           <p>{item.des.substring(0, 50)}</p>
+  //           <p>Posted by: {item.postedBy.name}</p>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   </div>
+  // </div>
 }
 export default Home;
