@@ -42,7 +42,7 @@ function Home() {
           height="600px"
           width="100%"
         />
-        
+
         <div class="top-left">
           <div className="card first_Section_data">
             <h5>Welcome to this Blog App</h5>
@@ -50,9 +50,7 @@ function Home() {
           </div>
         </div>
       </div>
-
       <div class="text-center my-5">{/* <h1>Blog App</h1> */}</div>
-
       <div className="second_section">
         <div className="row">
           <div className="col-md-6">
@@ -75,7 +73,6 @@ function Home() {
           </div>
         </div>
       </div>
-
       <div className="container">
         <div className="row">
           <div className="col-md-10">
@@ -102,7 +99,6 @@ function Home() {
               ))}
             </div>
           </div>
-
           <div className="col-md-2 card userdetails">
             <h1>Hello Youttube</h1>
           </div>
@@ -110,7 +106,6 @@ function Home() {
       </div>
     </div>
   );
-
   // <div className="container">
   //   <div className="row">
   //     <div className="col-md-8">
