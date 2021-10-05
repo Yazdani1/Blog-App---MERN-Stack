@@ -34,6 +34,7 @@ function Home() {
     getUser();
   }, []);
 
+
   return (
     <div class="dd">
       <div className="container first_section">
@@ -42,6 +43,8 @@ function Home() {
           height="600px"
           width="100%"
         />
+
+        
 
         <div class="top-left">
           <div className="card first_Section_data">
