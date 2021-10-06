@@ -388,6 +388,11 @@
 .usersopinion_text {
   padding: 20px;
 }
+
+.user_profile_details{
+  height: 300px;
+  margin-top: 10px;
+}
 /* 
 
 <div className="container">

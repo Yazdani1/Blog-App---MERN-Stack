@@ -101,7 +101,7 @@ const DetailsPage = () => {
             <div className="col-md-8">
               <h1>{dataItem.title}</h1>
               <img src={dataItem.photo} height="300px" width="100%" />
-              <p>Published on:{moment(dataItem.date).format("MMMM Do YYYY")}</p>
+              <p>{moment(dataItem.date).format("MMMM Do YYYY")}</p>
               <p>{dataItem.des}</p>
 
               <button
