@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useHistory, useParams } from "react-router-dom";
 import moment from "moment";
 import Slider from "react-slick";
+import { BsArrowLeft } from "react-icons/bs";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -99,18 +100,22 @@ const DetailsPage = () => {
         <div className="container card">
           <div className="row">
             <div className="col-md-8">
-            <button
+              <button
                 className="btn btn-success tt"
                 onClick={() => history.push("/")}
               >
-                Back
+                <BsArrowLeft />Back
               </button>
               <h1>{dataItem.title}</h1>
-              <img src={dataItem.photo} height="300px" alt="Post image" className="det_post_image" width="100%" />
+              <img
+                src={dataItem.photo}
+                height="300px"
+                alt="Post image"
+                className="det_post_image"
+                width="100%"
+              />
               <p>{moment(dataItem.date).format("MMMM Do YYYY")}</p>
               <p>{dataItem.des}</p>
-
-          
 
               {/* {dataItem ? (
                 <p>Posted by: {dataItem.postedBy.name}</p>
@@ -148,7 +153,6 @@ const DetailsPage = () => {
                   </Link>
                   <img src={item.photo} className="details_page_image" />
                   <p className="date_color">
-                   
                     {moment(item.date).format("MMMM Do YYYY")}
                   </p>
                   <h4>{item.title.substring(0, 15)}</h4>
