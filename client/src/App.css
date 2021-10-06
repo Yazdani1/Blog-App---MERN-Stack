@@ -199,6 +199,13 @@
   height: 430px;
 }
 
+.desing_home:hover {
+  cursor: pointer;
+  box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+  -webkit-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+}
+
 .images {
   background-position: center top;
   background-size: 100% 100%;

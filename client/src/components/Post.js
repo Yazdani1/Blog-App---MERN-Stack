@@ -119,10 +119,11 @@ const Post = () => {
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea2">Description</label>
-              <input
+              <textarea
                 type="text"
                 class="form-control rounded-0"
                 value={des}
+                rows="3"
                 onChange={(e) => setDes(e.target.value)}
               />
             </div>
