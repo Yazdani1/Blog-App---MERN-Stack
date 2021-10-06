@@ -163,7 +163,7 @@ function Home() {
                       </Link>
                       <img src={item.photo} className="images" />
                       <p className="date_color">
-                        Published on:{moment(item.date).format("MMMM Do YYYY")}
+                        {moment(item.date).format("MMMM Do YYYY")}
                       </p>
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
@@ -218,22 +218,24 @@ function Home() {
 
           <>
             {opinion ? (
-            <div class="text-center my-5 userwords">
-              <h5 className="usersopinion_text">Users Words</h5>
-              <div className="container">
-                <div className="row">
-                  <Slider {...userOpinion}>
-                    {opinion.map((opinionitem) => (
-                      <div className="card allopinion">
-                        <h3>{opinionitem.postedBy.name}</h3>
-                        <h4>{opinionitem.des}</h4>
-                      </div>
-                    ))}
-                  </Slider>
+              <div class="text-center my-5 userwords">
+                <h5 className="usersopinion_text">Users Words</h5>
+                <div className="container">
+                  <div className="row">
+                    <Slider {...userOpinion}>
+                      {opinion.map((opinionitem) => (
+                        <div className="card allopinion">
+                          <h3>{opinionitem.postedBy.name}</h3>
+                          <h4>{opinionitem.des}</h4>
+                        </div>
+                      ))}
+                    </Slider>
+                  </div>
                 </div>
               </div>
-            </div>
-            ) : (<h1>Loading..</h1>)}
+            ) : (
+              <h1>Loading..</h1>
+            )}
           </>
         </div>
       </div>

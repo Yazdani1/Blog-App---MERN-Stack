@@ -40,7 +40,7 @@ const Userprofile = () => {
                       </Link>
                       <img src={item.photo} className="images" />
                       <p className="date_color">
-                        Published on:{moment(item.date).format("MMMM Do YYYY")}
+                        {moment(item.date).format("MMMM Do YYYY")}
                       </p>
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
@@ -70,8 +70,6 @@ const Userprofile = () => {
                 </p>
 
                 <h4>Published posts: {mypost.postsData.length}</h4>
-
-             
 
                 {/* <span className="read_more_button">Read More</span> */}
               </div>

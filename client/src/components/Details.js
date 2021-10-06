@@ -99,17 +99,18 @@ const DetailsPage = () => {
         <div className="container card">
           <div className="row">
             <div className="col-md-8">
-              <h1>{dataItem.title}</h1>
-              <img src={dataItem.photo} height="300px" width="100%" />
-              <p>{moment(dataItem.date).format("MMMM Do YYYY")}</p>
-              <p>{dataItem.des}</p>
-
-              <button
+            <button
                 className="btn btn-success tt"
                 onClick={() => history.push("/")}
               >
                 Back
               </button>
+              <h1>{dataItem.title}</h1>
+              <img src={dataItem.photo} height="300px" alt="Post image" className="det_post_image" width="100%" />
+              <p>{moment(dataItem.date).format("MMMM Do YYYY")}</p>
+              <p>{dataItem.des}</p>
+
+          
 
               {/* {dataItem ? (
                 <p>Posted by: {dataItem.postedBy.name}</p>
@@ -126,7 +127,7 @@ const DetailsPage = () => {
                   </Link>
 
                   <p>Posted by: {item.postedBy.name}</p>
-                  <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
+                  <p>{moment(item.date).format("MMMM Do YYYY")}</p>
                 </div>
               ))}
             </div>
@@ -145,9 +146,9 @@ const DetailsPage = () => {
                   >
                     <p>Posted by: {item.postedBy.name}</p>
                   </Link>
-                  <img src={item.photo} className="images" />
+                  <img src={item.photo} className="details_page_image" />
                   <p className="date_color">
-                    Published on:
+                   
                     {moment(item.date).format("MMMM Do YYYY")}
                   </p>
                   <h4>{item.title.substring(0, 15)}</h4>
