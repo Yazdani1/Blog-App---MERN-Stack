@@ -13,10 +13,37 @@ const DetailsPage = () => {
 
   var settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   const getDetailsData = async () => {
@@ -71,6 +98,7 @@ const DetailsPage = () => {
               <h1>{dataItem.title}</h1>
               <img src={dataItem.photo} height="300px" width="100%" />
               <p>{dataItem.des}</p>
+            
               {/* <p>Posted by: {dataItem.postedBy.name}</p> */}
               <p>Published on:{moment(dataItem.date).format("MMMM Do YYYY")}</p>
             </div>
@@ -91,8 +119,8 @@ const DetailsPage = () => {
 
           <Slider {...settings}>
             {postsmore.map((item) => (
-              <div className="row">
-                <div className="col-lg-12 col-sm-2">
+             
+                <div className="col-md-12">
                   <div className="desing_home card mb-5 shadow-sm">
                     <Link
                       to={"/userprofile/" + item.postedBy._id}
@@ -114,7 +142,7 @@ const DetailsPage = () => {
                     {/* <span className="read_more_button">Read More</span> */}
                   </div>
                 </div>
-              </div>
+          
             ))}
           </Slider>
         </div>
