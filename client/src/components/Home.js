@@ -8,6 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 import Slider from "react-slick";
 
 import FirstSection from "./HomePage/FirstSection";
+import Footer from "./footer";
 
 function Home() {
   var settings = {
