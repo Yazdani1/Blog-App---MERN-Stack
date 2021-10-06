@@ -45,8 +45,60 @@ function Home() {
     ],
   };
 
+  var userOpinion = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    autoplay: true,
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
+
+  //get users opinion
+
+  const [opinion, setOpinion] = useState(null);
+
+  const getOpinion = async () => {
+    await axios
+      .get("/auth/opinion")
+      .then((res) => {
+        setOpinion(res.data.mypostdata);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   //for pagination
 
@@ -87,6 +139,7 @@ function Home() {
     });
 
     getUser();
+    getOpinion();
   }, []);
 
   const renderData = (dataItem) => {
@@ -136,8 +189,8 @@ function Home() {
           </div>
         </div>
 
-        <div className="container">
-          <h1>All Users</h1>
+        <div className="container allusers">
+          <h5>All Users</h5>
 
           <Slider {...settings}>
             {user.map((item) => (
@@ -164,7 +217,25 @@ function Home() {
             ))}
           </Slider>
 
-          <div class="text-center my-5"><h1>Users are saying about this site</h1></div>
+          <>
+            {opinion ? (
+            <div class="text-center my-5 userwords">
+              <h5 className="usersopinion_text">Users Words</h5>
+              <div className="container">
+                <div className="row">
+                  <Slider {...userOpinion}>
+                    {opinion.map((opinionitem) => (
+                      <div className="card allopinion">
+                        <h3>{opinionitem.postedBy.name}</h3>
+                        <h4>{opinionitem.des}</h4>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+              </div>
+            </div>
+            ) : (<h1>Loading..</h1>)}
+          </>
         </div>
       </div>
     );

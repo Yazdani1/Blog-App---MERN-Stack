@@ -7,6 +7,8 @@ import Slider from "react-slick";
 const DetailsPage = () => {
   const { id } = useParams();
 
+  let history = useHistory();
+
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
   const [postsmore, setPosts] = useState([]);
@@ -102,7 +104,18 @@ const DetailsPage = () => {
               <p>Published on:{moment(dataItem.date).format("MMMM Do YYYY")}</p>
               <p>{dataItem.des}</p>
 
-              {/* <p>Posted by: {dataItem.postedBy.name}</p> */}
+              <button
+                className="btn btn-success tt"
+                onClick={() => history.push("/")}
+              >
+                Back
+              </button>
+
+              {/* {dataItem ? (
+                <p>Posted by: {dataItem.postedBy.name}</p>
+              ) : (
+                <h1>Loading...</h1>
+              )} */}
             </div>
 
             <div className="col-md-4 card">
@@ -140,7 +153,7 @@ const DetailsPage = () => {
                   <h4>{item.title.substring(0, 15)}</h4>
                   <p>{item.des.substring(0, 20)}</p>
                   <Link to={"/details/" + item._id}>
-                    <p>Read More</p>
+                    <button className="btn btn-primary">Reade More</button>
                   </Link>
 
                   {/* <span className="read_more_button">Read More</span> */}

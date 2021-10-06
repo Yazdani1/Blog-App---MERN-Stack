@@ -368,12 +368,26 @@
   margin-top: 100px;
 }
 
-.loadmore{
+.loadmore {
   align-items: center;
   text-align: center;
   width: 100%;
 }
 
+.allopinion {
+  padding: 50px;
+}
+
+.allusers {
+  margin-top: 30px;
+}
+
+.userwords {
+  margin-top: 40px;
+}
+.usersopinion_text {
+  padding: 20px;
+}
 /* 
 
 <div className="container">
