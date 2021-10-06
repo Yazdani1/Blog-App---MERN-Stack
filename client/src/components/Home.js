@@ -6,8 +6,6 @@ import { MdAccountBox } from "react-icons/md";
 import { MdAssessment } from "react-icons/md";
 import { Link, useHistory } from "react-router-dom";
 
-
-
 function Home() {
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
@@ -34,7 +32,6 @@ function Home() {
     getUser();
   }, []);
 
-
   return (
     <div class="dd">
       <div className="container first_section">
@@ -43,8 +40,6 @@ function Home() {
           height="600px"
           width="100%"
         />
-
-        
 
         <div class="top-left">
           <div className="card first_Section_data">
@@ -76,10 +71,13 @@ function Home() {
           </div>
         </div>
       </div>
+      {/* //mainpost section */}
       <div className="container">
         <div className="row">
           <div className="col-md-10">
             <div className="row">
+
+
               {dataItem.map((item) => (
                 <div className="col-lg-4">
                   <div className="desing_home card mb-5 shadow-sm">
@@ -95,11 +93,16 @@ function Home() {
                     </p>
                     <h4>{item.title.substring(0, 15)}</h4>
                     <p>{item.des.substring(0, 20)}</p>
-                    <p>Read More</p>
+                    <Link to={"/details/" + item._id}>
+                      <p>Read More</p>
+                    </Link>
+
                     {/* <span className="read_more_button">Read More</span> */}
                   </div>
                 </div>
               ))}
+
+              
             </div>
           </div>
           <div className="col-md-2 card userdetails">

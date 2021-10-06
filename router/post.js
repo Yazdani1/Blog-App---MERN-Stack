@@ -2,12 +2,11 @@ const router = require("express").Router();
 const { requireLogin } = require("../middleware/auth");
 const Post = require("../models/Post");
 
-
 //post data api
 router.post("/post", requireLogin, (req, res) => {
   const { title, des, pic } = req.body;
   try {
-    if (!title ) {
+    if (!title) {
       return res.status(400).json({ error: "Please add Post Title.." });
     }
 
@@ -19,12 +18,11 @@ router.post("/post", requireLogin, (req, res) => {
       return res.status(400).json({ error: "Please add Post Picture.." });
     }
 
-
     const postData = Post({
       title,
       des,
       postedBy: req.user,
-      photo:pic
+      photo: pic,
     });
 
     Post.create(postData)
@@ -79,7 +77,6 @@ router.get("/mypost", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-
 
 // //user profile
 
@@ -137,6 +134,20 @@ router.delete("/delete/:id", requireLogin, (req, res) => {
   Post.findByIdAndDelete(deleteData)
     .then((deleteData) => {
       res.json(deleteData);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//details post
+
+router.get("/details/:id", (req, res) => {
+  var detailsQuery = { _id: req.params.id };
+  Post.findOne(detailsQuery)
+    .populate("postedBy", "name email")
+    .then((result) => {
+      res.json(result);
     })
     .catch((err) => {
       console.log(err);

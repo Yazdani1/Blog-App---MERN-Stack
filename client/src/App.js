@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
-import Details from "./Details";
+
 import Nav from "./Nav";
 import SignIn from "./components/SignIn";
 import ProtectedRoute from "./components/Protectedroute";
@@ -12,14 +12,15 @@ import Mypost from "./components/Mypost";
 import Postaccouncement from "./components/Postannouncement";
 import Userprofile from "./components/Userprofile";
 import Edit from "./components/Edit";
-
-
+import Details from "./components/Details";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-     
+        <Route path="/details/:id">
+          <ProtectedRoute procomp={Details} />
+        </Route>
 
         <Route path="/userprofile/:id" exact>
           <ProtectedRoute procomp={Userprofile} />
