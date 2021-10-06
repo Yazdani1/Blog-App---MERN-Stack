@@ -5,8 +5,46 @@ import moment from "moment";
 import { MdAccountBox } from "react-icons/md";
 import { MdAssessment } from "react-icons/md";
 import { Link, useHistory } from "react-router-dom";
+import Slider from "react-slick";
 
 function Home() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    autoplay: true,
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
 
@@ -76,8 +114,6 @@ function Home() {
         <div className="row">
           <div className="col-md-10">
             <div className="row">
-
-
               {dataItem.map((item) => (
                 <div className="col-lg-4">
                   <div className="desing_home card mb-5 shadow-sm">
@@ -94,21 +130,47 @@ function Home() {
                     <h4>{item.title.substring(0, 15)}</h4>
                     <p>{item.des.substring(0, 20)}</p>
                     <Link to={"/details/" + item._id}>
-                      <p>Read More</p>
+                    <button className="btn btn-primary">Reade More</button>
+
                     </Link>
 
                     {/* <span className="read_more_button">Read More</span> */}
                   </div>
                 </div>
               ))}
-
-              
             </div>
           </div>
           <div className="col-md-2 card userdetails">
             <h1>Hello Youttube</h1>
           </div>
         </div>
+      </div>
+
+      <div className="container">
+        <h1>All Users</h1>
+
+        <Slider {...settings}>
+          {user.map((item) => (
+            <div className="useritems">
+              <div className="desing_home card mb-5 shadow-sm">
+                <div className="profile_pic">NA</div>
+
+                <h4>{item.name}</h4>
+
+                <p className="date_color">
+                  Member Since:
+                  {moment(item.date).format("MMMM Do YYYY")}
+                </p>
+
+                <Link to={"/userprofile/" + item._id}>
+                  <button className="btn btn-success profile_button">View Profile</button>
+                </Link>
+
+                {/* <span className="read_more_button">Read More</span> */}
+              </div>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );

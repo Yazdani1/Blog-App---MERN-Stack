@@ -21,6 +21,7 @@ function App() {
         <Route path="/details/:id">
           <ProtectedRoute procomp={Details} />
         </Route>
+      
 
         <Route path="/userprofile/:id" exact>
           <ProtectedRoute procomp={Userprofile} />
