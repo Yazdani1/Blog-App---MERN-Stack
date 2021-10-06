@@ -368,6 +368,12 @@
   margin-top: 100px;
 }
 
+.loadmore{
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
 /* 
 
 <div className="container">

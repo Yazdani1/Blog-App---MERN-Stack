@@ -48,6 +48,25 @@ function Home() {
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
 
+  //for pagination
+
+  const [currentPage, setcurrentPage] = useState(1);
+  const [itemsPerPage, setitemsPerPage] = useState(5);
+
+  const [pageNumberLimit, setpageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(6);
+  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = dataItem.slice(indexOfFirstItem, indexOfLastItem);
+
+  //to set pagination per page
+
+  const handleLoadMore = () => {
+    setitemsPerPage(itemsPerPage + 5);
+  };
+
   const [user, setUser] = useState([]);
 
   const getUser = async () => {
@@ -70,8 +89,88 @@ function Home() {
     getUser();
   }, []);
 
+  const renderData = (dataItem) => {
+    return (
+      <div class="dd">
+        <div class="text-center my-5">{/* <h1>Blog App</h1> */}</div>
+
+        {/* //mainpost section */}
+        <div className="container">
+          <div className="row">
+            <div className="col-md-9">
+              <div className="row">
+                {dataItem.map((item) => (
+                  <div className="col-lg-4">
+                    <div className="desing_home card mb-5 shadow-sm">
+                      <Link
+                        to={"/userprofile/" + item.postedBy._id}
+                        className="name_design"
+                      >
+                        <p>Posted by: {item.postedBy.name}</p>
+                      </Link>
+                      <img src={item.photo} className="images" />
+                      <p className="date_color">
+                        Published on:{moment(item.date).format("MMMM Do YYYY")}
+                      </p>
+                      <h4>{item.title.substring(0, 15)}</h4>
+                      <p>{item.des.substring(0, 20)}</p>
+                      <Link to={"/details/" + item._id}>
+                        <button className="btn btn-primary">Reade More</button>
+                      </Link>
+
+                      {/* <span className="read_more_button">Read More</span> */}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={handleLoadMore}
+                className="btn btn-primary loadmore"
+              >
+                Load More Posts
+              </button>
+            </div>
+            <div className="col-md-3 card userdetails">
+              <h1>Hello Youttube</h1>
+            </div>
+          </div>
+        </div>
+
+        <div className="container">
+          <h1>All Users</h1>
+
+          <Slider {...settings}>
+            {user.map((item) => (
+              <div className="useritems">
+                <div className="desing_home card mb-5 shadow-sm">
+                  <div className="profile_pic">NA</div>
+
+                  <h4>{item.name}</h4>
+
+                  <p className="date_color">
+                    Member Since:
+                    {moment(item.date).format("MMMM Do YYYY")}
+                  </p>
+
+                  <Link to={"/userprofile/" + item._id}>
+                    <button className="btn btn-success profile_button">
+                      View Profile
+                    </button>
+                  </Link>
+
+                  {/* <span className="read_more_button">Read More</span> */}
+                </div>
+              </div>
+            ))}
+          </Slider>
+
+          <div class="text-center my-5"><h1>Users are saying about this site</h1></div>
+        </div>
+      </div>
+    );
+  };
   return (
-    <div class="dd">
+    <>
       <div className="container first_section">
         <img
           src="https://images.pexels.com/photos/3194523/pexels-photo-3194523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -86,7 +185,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div class="text-center my-5">{/* <h1>Blog App</h1> */}</div>
+
       <div className="second_section">
         <div className="row">
           <div className="col-md-6">
@@ -109,71 +208,10 @@ function Home() {
           </div>
         </div>
       </div>
-      {/* //mainpost section */}
-      <div className="container">
-        <div className="row">
-          <div className="col-md-10">
-            <div className="row">
-              {dataItem.map((item) => (
-                <div className="col-lg-4">
-                  <div className="desing_home card mb-5 shadow-sm">
-                    <Link
-                      to={"/userprofile/" + item.postedBy._id}
-                      className="name_design"
-                    >
-                      <p>Posted by: {item.postedBy.name}</p>
-                    </Link>
-                    <img src={item.photo} className="images" />
-                    <p className="date_color">
-                      Published on:{moment(item.date).format("MMMM Do YYYY")}
-                    </p>
-                    <h4>{item.title.substring(0, 15)}</h4>
-                    <p>{item.des.substring(0, 20)}</p>
-                    <Link to={"/details/" + item._id}>
-                    <button className="btn btn-primary">Reade More</button>
-
-                    </Link>
-
-                    {/* <span className="read_more_button">Read More</span> */}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="col-md-2 card userdetails">
-            <h1>Hello Youttube</h1>
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <h1>All Users</h1>
-
-        <Slider {...settings}>
-          {user.map((item) => (
-            <div className="useritems">
-              <div className="desing_home card mb-5 shadow-sm">
-                <div className="profile_pic">NA</div>
-
-                <h4>{item.name}</h4>
-
-                <p className="date_color">
-                  Member Since:
-                  {moment(item.date).format("MMMM Do YYYY")}
-                </p>
-
-                <Link to={"/userprofile/" + item._id}>
-                  <button className="btn btn-success profile_button">View Profile</button>
-                </Link>
-
-                {/* <span className="read_more_button">Read More</span> */}
-              </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </div>
+      {renderData(currentItems)}
+    </>
   );
+
   // <div className="container">
   //   <div className="row">
   //     <div className="col-md-8">

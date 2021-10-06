@@ -19,7 +19,7 @@ const DetailsPage = () => {
     slidesToScroll: 4,
     initialSlide: 0,
     autoplay: true,
- 
+
     responsive: [
       {
         breakpoint: 1024,
@@ -27,25 +27,25 @@ const DetailsPage = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const getDetailsData = async () => {
@@ -89,7 +89,7 @@ const DetailsPage = () => {
     getDetailsData();
     getlatestPost();
     morePost();
-  }, []);
+  }, [dataItem]);
 
   return (
     <>
@@ -99,16 +99,19 @@ const DetailsPage = () => {
             <div className="col-md-8">
               <h1>{dataItem.title}</h1>
               <img src={dataItem.photo} height="300px" width="100%" />
-              <p>{dataItem.des}</p>
-            
-              {/* <p>Posted by: {dataItem.postedBy.name}</p> */}
               <p>Published on:{moment(dataItem.date).format("MMMM Do YYYY")}</p>
+              <p>{dataItem.des}</p>
+
+              {/* <p>Posted by: {dataItem.postedBy.name}</p> */}
             </div>
 
             <div className="col-md-4 card">
               {latestPost.map((item) => (
                 <div>
-                  <h5>{item.title}</h5>
+                  <Link to={"/details/" + item._id}>
+                    <h5>{item.title}</h5>
+                  </Link>
+
                   <p>Posted by: {item.postedBy.name}</p>
                   <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
                 </div>
@@ -117,34 +120,32 @@ const DetailsPage = () => {
           </div>
         </div>
         <div className="container">
-          <h1>More Posts</h1>
+          <h5>More posts</h5>
 
           <Slider {...settings}>
             {postsmore.map((item) => (
-             
-                <div className="col-md-12">
-                  <div className="desing_home card mb-5 shadow-sm">
-                    <Link
-                      to={"/userprofile/" + item.postedBy._id}
-                      className="name_design"
-                    >
-                      <p>Posted by: {item.postedBy.name}</p>
-                    </Link>
-                    <img src={item.photo} className="images" />
-                    <p className="date_color">
-                      Published on:
-                      {moment(item.date).format("MMMM Do YYYY")}
-                    </p>
-                    <h4>{item.title.substring(0, 15)}</h4>
-                    <p>{item.des.substring(0, 20)}</p>
-                    <Link to={"/details/" + item._id}>
-                      <p>Read More</p>
-                    </Link>
+              <div className="col-md-12">
+                <div className="desing_home card mb-5 shadow-sm">
+                  <Link
+                    to={"/userprofile/" + item.postedBy._id}
+                    className="name_design"
+                  >
+                    <p>Posted by: {item.postedBy.name}</p>
+                  </Link>
+                  <img src={item.photo} className="images" />
+                  <p className="date_color">
+                    Published on:
+                    {moment(item.date).format("MMMM Do YYYY")}
+                  </p>
+                  <h4>{item.title.substring(0, 15)}</h4>
+                  <p>{item.des.substring(0, 20)}</p>
+                  <Link to={"/details/" + item._id}>
+                    <p>Read More</p>
+                  </Link>
 
-                    {/* <span className="read_more_button">Read More</span> */}
-                  </div>
+                  {/* <span className="read_more_button">Read More</span> */}
                 </div>
-          
+              </div>
             ))}
           </Slider>
         </div>
