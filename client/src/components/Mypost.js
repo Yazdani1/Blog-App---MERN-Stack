@@ -23,19 +23,8 @@ function Mypost() {
         console.log(result);
       });
   };
-
-  // const getUser = async () => {
-  //   const res = await axios.get("/auth", {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //     },
-  //   });
-  //   setUser(res.data);
-  // };
-
   useEffect(() => {
     getMypost();
-    // getUser();
   }, []);
 
   //delete data item
