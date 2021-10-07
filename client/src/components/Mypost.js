@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "../App.css";
 import moment from "moment";
 import { Link, useHistory } from "react-router-dom";
 import { MdCardMembership } from "react-icons/md";
 import { MdAssessment } from "react-icons/md";
+import { UserContext } from "./UserContext";
 
 function Mypost() {
   const [mypost, setData] = useState([]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useContext(UserContext);
 
   const getMypost = () => {
     fetch("/auth/mypost", {
@@ -23,18 +24,18 @@ function Mypost() {
       });
   };
 
-  const getUser = async () => {
-    const res = await axios.get("/auth", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-    });
-    setUser(res.data);
-  };
+  // const getUser = async () => {
+  //   const res = await axios.get("/auth", {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //   });
+  //   setUser(res.data);
+  // };
 
   useEffect(() => {
     getMypost();
-    getUser();
+    // getUser();
   }, []);
 
   //delete data item
@@ -50,21 +51,21 @@ function Mypost() {
 
   return (
     <div className="card container main_container">
-
-
-
       <div className="row">
         <div className="col-md-4">
           <div className="total_post">
-          <h1><MdAssessment/></h1>
+            <h1>
+              <MdAssessment />
+            </h1>
             <h3>Total post</h3>
             <h3>{mypost.length}</h3>
           </div>
         </div>
         <div className="col-md-4">
           <div className="mamber_since">
-         
-          <h1><MdCardMembership/></h1>
+            <h1>
+              <MdCardMembership />
+            </h1>
             <h3>Member Since</h3>
             <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
           </div>
@@ -76,7 +77,6 @@ function Mypost() {
         </div>
       </div>
 
-            
       {/* table start */}
 
       <table class="table table-bordered table-hover">
@@ -151,8 +151,6 @@ function Mypost() {
           ))}
         </div>
       </div> */}
-
-
     </div>
   );
 }
