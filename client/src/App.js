@@ -13,54 +13,56 @@ import Postaccouncement from "./components/Postannouncement";
 import Userprofile from "./components/Userprofile";
 import Edit from "./components/Edit";
 import Details from "./components/Details";
+import { UserProvider } from "./components/UserContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/details/:id">
-          <ProtectedRoute procomp={Details} />
-        </Route>
-      
+    <UserProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/details/:id">
+            <ProtectedRoute procomp={Details} />
+          </Route>
 
-        <Route path="/userprofile/:id" exact>
-          <ProtectedRoute procomp={Userprofile} />
-        </Route>
-        <Route path="/editpost/:id">
-          <ProtectedRoute procomp={Edit} />
-        </Route>
+          <Route path="/userprofile/:id" exact>
+            <ProtectedRoute procomp={Userprofile} />
+          </Route>
+          <Route path="/editpost/:id">
+            <ProtectedRoute procomp={Edit} />
+          </Route>
 
-        <Route path="/" exact>
-          <ProtectedRoute procomp={Home} />
-        </Route>
+          <Route path="/" exact>
+            <ProtectedRoute procomp={Home} />
+          </Route>
 
-        <Route path="/postannouncement" exact>
-          <ProtectedRoute procomp={Postaccouncement} />
-        </Route>
+          <Route path="/postannouncement" exact>
+            <ProtectedRoute procomp={Postaccouncement} />
+          </Route>
 
-        <Route path="/myPost" exact>
-          <ProtectedRoute procomp={Mypost} />
-        </Route>
+          <Route path="/myPost" exact>
+            <ProtectedRoute procomp={Mypost} />
+          </Route>
 
-        <Route path="/signup">
-          <ProtectedRoute procomp={Signup} />
-        </Route>
+          <Route path="/signup">
+            <ProtectedRoute procomp={Signup} />
+          </Route>
 
-        <Route path="/signin">
-          <ProtectedRoute procomp={SignIn} />
-        </Route>
+          <Route path="/signin">
+            <ProtectedRoute procomp={SignIn} />
+          </Route>
 
-        <Route path="/details">
-          <ProtectedRoute procomp={Details} />
-        </Route>
-        <Route path="/profile">
-          <ProtectedRoute procomp={Profile} />
-        </Route>
-        <Route path="/post">
-          <ProtectedRoute procomp={Post} />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+          <Route path="/details">
+            <ProtectedRoute procomp={Details} />
+          </Route>
+          <Route path="/profile">
+            <ProtectedRoute procomp={Profile} />
+          </Route>
+          <Route path="/post">
+            <ProtectedRoute procomp={Post} />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 

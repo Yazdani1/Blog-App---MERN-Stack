@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import axios from "axios";
+import { UserContext } from "./components/UserContext";
 
 import { Link, useHistory } from "react-router-dom";
 
 function Nav() {
-  //to show user name in the navbar
-
-  const [user, setUser] = useState("");
-
-  const getUser = async () => {
-    const res = await axios.get("/auth", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-    });
-    setUser(res.data);
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
+  const [user, setUser] = useContext(UserContext);
 
   const history = useHistory();
+
+  // const [user, setUser] = useState("");
+  // const getUser = async () => {
+  //   const res = await axios.get("/auth", {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //   });
+  //   setUser(res.data);
+  // };
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
+
+  // const history = useHistory();
 
   const logOut = async () => {
     await localStorage.removeItem("tokenLogin");
@@ -60,6 +61,13 @@ function Nav() {
               <div className="eachitem">
                 <li>{user && user.name}</li>
               </div>
+              <div className="eachitem">
+                <li>{user && user.email}</li>
+              </div>
+
+              <div className="eachitem">
+                <li>{user && user._id}</li>
+              </div>
 
               <div className="dropdown show eachitem">
                 <div
@@ -96,7 +104,7 @@ function Nav() {
                   </Link>
 
                   <Link
-                    to={"/userprofile/" + user._id}
+                    to={"/userprofile/" +(user && user._id)}
                     className="dropdown-item each item_back"
                   >
                     View Profile
