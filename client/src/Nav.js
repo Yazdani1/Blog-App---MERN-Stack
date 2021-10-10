@@ -61,13 +61,7 @@ function Nav() {
               <div className="eachitem">
                 <li>{user && user.name}</li>
               </div>
-              <div className="eachitem">
-                <li>{user && user.email}</li>
-              </div>
 
-              <div className="eachitem">
-                <li>{user && user._id}</li>
-              </div>
 
               <div className="dropdown show eachitem">
                 <div

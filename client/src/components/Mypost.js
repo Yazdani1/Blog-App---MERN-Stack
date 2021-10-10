@@ -9,6 +9,7 @@ import { UserContext } from "./UserContext";
 
 function Mypost() {
   const [mypost, setData] = useState([]);
+  //context api
   const [user, setUser] = useContext(UserContext);
 
   const getMypost = () => {
