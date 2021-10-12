@@ -31,6 +31,7 @@ const Post = () => {
   const [imageUrl, setImageurl] = useState("");
   const [url, setUrl] = useState("");
   const [error, setError] = useState(null);
+  const [picerror, setpicError] = useState(null);
 
   useEffect(() => {
     if (url) {

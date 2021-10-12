@@ -15,7 +15,7 @@ router.post("/post", requireLogin, (req, res) => {
     }
 
     if (!pic) {
-      return res.status(400).json({ error: "Please add Post Picture.." });
+      return res.status(400).json({ picerror: "Please add Post Picture.." });
     }
 
     const postData = Post({
