@@ -8,10 +8,11 @@ import { MdAssessment } from "react-icons/md";
 import { UserContext } from "./UserContext";
 
 function Mypost() {
+
   const [mypost, setData] = useState([]);
   //context api
   const [user, setUser] = useContext(UserContext);
-
+  
   const getMypost = () => {
     fetch("/auth/mypost", {
       headers: {
@@ -38,7 +39,6 @@ function Mypost() {
     });
     getMypost();
   }
-
   return (
     <div className="card container main_container">
       <div className="row">
@@ -105,9 +105,7 @@ function Mypost() {
           ))}
         </tbody>
       </table>
-
       {/* table end */}
-
       {/* <div className="row">
         <div className="col-md-8">
           {mypost.map((item, index) => (
@@ -119,9 +117,7 @@ function Mypost() {
               <p>{item.des.substring(0, 50)}</p>
               <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
               <p>Posted by: {item.postedBy.name}</p>
-
               <span className="read">Read More ...</span>
-
               <div className="row">
                 <div className="col-md-8">
                   <button

@@ -61,7 +61,6 @@ const Post = () => {
 
   const dataSubmit = (e) => {
     e.preventDefault();
-
     const data = new FormData();
     data.append("file", imageUrl);
     data.append("upload_preset", "blog-app");
