@@ -26,9 +26,7 @@ function SignIn() {
     password: "",
     error: null,
   });
-
   const { email, password, error } = data;
-
   const handleChange = (e) => {
     setData({
       ...data,
@@ -38,7 +36,6 @@ function SignIn() {
 
   const submitData = async (e) => {
     e.preventDefault();
-
     try {
       setData({ ...data, error: null });
       const res = await axios.post(
@@ -58,7 +55,6 @@ function SignIn() {
       setData({ ...data, error: err.response.data.error });
     }
   };
-
   return (
     <div>
       {" "}
@@ -91,7 +87,6 @@ function SignIn() {
               />
             </div>
             {error ? <p className="text-danger">{error}</p> : null}
-
             <button
               type="submit"
               onClick={(e) => {
