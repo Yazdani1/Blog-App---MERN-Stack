@@ -12,7 +12,7 @@ function Mypost() {
   const [mypost, setData] = useState([]);
   //context api
   const [user, setUser] = useContext(UserContext);
-  
+
   const getMypost = () => {
     fetch("/auth/mypost", {
       headers: {
@@ -30,7 +30,6 @@ function Mypost() {
   }, []);
 
   //delete data item
-
   function deletePost(id) {
     axios.delete("/auth/delete/" + id, {
       headers: {
@@ -66,9 +65,7 @@ function Mypost() {
           </div>
         </div>
       </div>
-
       {/* table start */}
-
       <table class="table table-bordered table-hover">
         <thead>
           <tr>

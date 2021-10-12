@@ -7,7 +7,6 @@ import { Link, useHistory } from "react-router-dom";
 const Profile = () => {
   
   const [user, setUser] = useState(null);
-
   const getUser = async () => {
     const res = await axios.get("/auth", {
       headers: {
