@@ -8,7 +8,6 @@ import { MdAssessment } from "react-icons/md";
 import { UserContext } from "./UserContext";
 
 function Mypost() {
-
   const [mypost, setData] = useState([]);
   //context api
   const [user, setUser] = useContext(UserContext);
@@ -25,6 +24,8 @@ function Mypost() {
         console.log(result);
       });
   };
+
+
   useEffect(() => {
     getMypost();
   }, []);
@@ -38,6 +39,8 @@ function Mypost() {
     });
     getMypost();
   }
+
+
   return (
     <div className="card container main_container">
       <div className="row">
@@ -65,7 +68,11 @@ function Mypost() {
           </div>
         </div>
       </div>
+
+
       {/* table start */}
+
+      
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
