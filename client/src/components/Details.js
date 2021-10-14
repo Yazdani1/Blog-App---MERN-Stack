@@ -94,6 +94,8 @@ const DetailsPage = () => {
     morePost();
   }, [dataItem]);
 
+
+
   return (
     <>
       <div className="main_details">
@@ -123,7 +125,6 @@ const DetailsPage = () => {
                 <h1>Loading...</h1>
               )} */}
             </div>
-
             <div className="col-md-4 card">
               {latestPost.map((item) => (
                 <div>
@@ -139,8 +140,7 @@ const DetailsPage = () => {
           </div>
         </div>
         <div className="container">
-          <h5>More posts</h5>
-
+          <h5>View More posts</h5>
           <Slider {...settings}>
             {postsmore.map((item) => (
               <div className="col-md-12">
