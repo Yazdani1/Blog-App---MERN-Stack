@@ -98,6 +98,7 @@ const DetailsPage = () => {
 
   return (
     <>
+
       <div className="main_details">
         <div className="container card">
           <div className="row">
@@ -109,6 +110,7 @@ const DetailsPage = () => {
                 <BsArrowLeft />Back
               </button>
               <h1>{dataItem.title}</h1>
+              
               <img
                 src={dataItem.photo}
                 height="300px"
@@ -125,13 +127,13 @@ const DetailsPage = () => {
                 <h1>Loading...</h1>
               )} */}
             </div>
+
             <div className="col-md-4 card">
               {latestPost.map((item) => (
                 <div>
                   <Link to={"/details/" + item._id}>
                     <h5>{item.title}</h5>
                   </Link>
-
                   <p>Posted by: {item.postedBy.name}</p>
                   <p>{moment(item.date).format("MMMM Do YYYY")}</p>
                 </div>
@@ -139,6 +141,7 @@ const DetailsPage = () => {
             </div>
           </div>
         </div>
+
         <div className="container">
           <h5>View More posts</h5>
           <Slider {...settings}>

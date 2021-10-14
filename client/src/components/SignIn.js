@@ -6,20 +6,19 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
 function SignIn() {
+  
   const notify = () => {
     toast.success("Signed In Successfully!", {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 9000,
     });
   };
-
   const notifyError = () => {
     toast.warn("Wrong Details", {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 9000,
     });
   };
-
   const history = useHistory();
   const [data, setData] = useState({
     email: "",
@@ -33,7 +32,6 @@ function SignIn() {
       [e.target.name]: e.target.value,
     });
   };
-
   const submitData = async (e) => {
     e.preventDefault();
     try {
