@@ -105,7 +105,7 @@ const Post = () => {
               onClick={dataSubmit}
               class="btn btn-success custBtn"
             >
-              Update Post
+              Update post
             </button>
           </form>
         </div>
@@ -113,4 +113,6 @@ const Post = () => {
     </div>
   );
 };
+
+
 export default Post;
