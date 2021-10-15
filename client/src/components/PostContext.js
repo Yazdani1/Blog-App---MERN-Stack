@@ -4,8 +4,6 @@ export const PostContext = createContext();
 
 export const PostProvider = (props)=>{
 
-
-    
   const [dataItem, setData] = useState([]);
   const [postsmore, setPosts] = useState([]);
 
@@ -46,7 +44,6 @@ export const PostProvider = (props)=>{
     ],
   };
 
-
     const morePost = async () => {
         await axios
           .get("/auth/getpost")
@@ -57,12 +54,10 @@ export const PostProvider = (props)=>{
             console.log(err);
           });
       };
-    
       useEffect(() => {
       
         morePost();
       }, [dataItem]);
-
     return(
         <PostContext.Provider>
             {props.children}
