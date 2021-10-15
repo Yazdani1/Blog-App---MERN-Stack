@@ -7,7 +7,6 @@ import { Link, useHistory } from "react-router-dom";
 
 function Nav() {
   const [user, setUser] = useContext(UserContext);
-
   const history = useHistory();
 
   // const [user, setUser] = useState("");
