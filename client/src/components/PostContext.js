@@ -55,8 +55,8 @@ export const PostProvider = (props)=>{
       };
       useEffect(() => {
       
-        morePost();
-      }, [dataItem]);
+        allPosts();
+      }, []);
     return(
         <PostContext.Provider>
             {props.children}
