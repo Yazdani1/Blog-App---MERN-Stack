@@ -58,7 +58,7 @@ export const PostProvider = (props)=>{
         allPosts();
       }, []);
     return(
-        <PostContext.Provider>
+        <PostContext.Provider value={[allPosts, setPosts]}>
             {props.children}
         </PostContext.Provider>
     );
