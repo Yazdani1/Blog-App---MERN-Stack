@@ -4,8 +4,7 @@ export const PostContext = createContext();
 
 export const PostProvider = (props)=>{
 
-  const [dataItem, setData] = useState([]);
-  const [postsmore, setPosts] = useState([]);
+  const [allPosts, setPosts] = useState([]);
 
   var settings = {
     dots: true,
@@ -44,7 +43,7 @@ export const PostProvider = (props)=>{
     ],
   };
 
-    const morePost = async () => {
+    const allPosts = async () => {
         await axios
           .get("/auth/getpost")
           .then((res) => {
