@@ -52,7 +52,6 @@ function Nav() {
               <Link to="/" className="eachitem">
                 <li>Home</li>
               </Link>
-
               {/* <Link to={"/userprofile/" + user._id} className="eachitem">
                 <li>{user && user.name}</li>
               </Link> */}
@@ -60,8 +59,6 @@ function Nav() {
               <div className="eachitem">
                 <li>{user && user.name}</li>
               </div>
-
-
               <div className="dropdown show eachitem">
                 <div
                   className="dropdown-toggle"
