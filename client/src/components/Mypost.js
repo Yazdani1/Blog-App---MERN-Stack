@@ -80,7 +80,7 @@ function Mypost() {
             <th scope="col">Photo</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th colspan="2">Action</th>
+            <th colspan="3">Action</th>
           </tr>
         </thead>
         <tbody>
