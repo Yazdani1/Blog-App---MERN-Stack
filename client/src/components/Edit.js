@@ -7,24 +7,19 @@ import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
 const Post = () => {
   const history = useHistory();
-
   const { id } = useParams();
-
   const [data, setData] = useState({
     title: "",
     des: "",
     error: null,
   });
-
   const { title, des, error } = data;
-
   const handleChange = (e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
   };
-
   const dataSubmit = async (e) => {
     e.preventDefault();
     const addItem = { title, des };
@@ -40,7 +35,6 @@ const Post = () => {
       setData({ ...data, error: err.response.data.error });
     }
   };
-
   useEffect(() => {
     axios
       .get("/auth/edit/" + id, {
