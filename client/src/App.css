@@ -365,7 +365,7 @@
 }
 
 /* user profile pic */
-.user_profile_pic{
+.user_profile_pic {
   height: 100px;
   width: 100px;
   background-color: #dc3545;
@@ -376,6 +376,49 @@
   text-align: center;
   left: 25%;
   position: relative; /*makes left effective*/
+}
+.user_profile_pic h2 {
+  height: 100px;
+  width: 100px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%; /* may require vendor prefixes */
+  background: yellow;
+}
+.user_info{
+  display: flex;
+}
+.user_name p{
+  height: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 10px;
+  padding-left:10px;
+  position: relative; /*makes left effective*/
+}
+.user_pic_home_page{
+  height: 40px;
+  width: 40px;
+  background-color: #dc3545;
+  border-radius: 90px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  position: relative; /*makes left effective*/
+}
+.user_pic_home_page p {
+  height: 40px;
+  width: 40px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%; /* may require vendor prefixes */
+  background: yellow;
 }
 
 .profile_pic {
@@ -390,7 +433,7 @@
   left: 25%;
   position: relative; /*makes left effective*/
 }
-.profile_pic h2{
+.profile_pic h2 {
   height: 100px;
   width: 100px;
   display: table-cell;
@@ -436,7 +479,7 @@
   margin-top: 10px;
 }
 
-.latest_title{
+.latest_title {
   text-decoration: none;
   color: #000000;
 }
