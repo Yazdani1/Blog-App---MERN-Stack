@@ -60,7 +60,7 @@ const Userprofile = () => {
           {mypost ? (
             <div className="col-md-3 user_profile_details">
               <div className="desing_home card mb-5 shadow-sm">
-                <div className="profile_pic">NA</div>
+                <div className="profile_pic">{mypost.userInfo.name.charAt(0)}</div>
 
                 <h4>{mypost.userInfo.name}</h4>
 
