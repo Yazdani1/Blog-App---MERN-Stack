@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
 import moment from "moment";
+import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link, useHistory, useParams } from "react-router-dom";
 
 const Userprofile = () => {
@@ -63,7 +64,7 @@ const Userprofile = () => {
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
                       <Link to={"/details/" + item._id}>
-                        <button className="btn btn-primary">Reade More</button>
+                        <button className="btn btn-primary">Reade More <AiOutlineArrowRight/></button>
                       </Link>
 
                       {/* <span className="read_more_button">Read More</span> */}

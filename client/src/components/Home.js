@@ -8,6 +8,8 @@ import { Link, useHistory } from "react-router-dom";
 import Slider from "react-slick";
 import { GoCalendar } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
+import { AiOutlineArrowRight } from "react-icons/ai";
+
 
 
 import FirstSection from "./HomePage/FirstSection";
@@ -199,7 +201,7 @@ function Home() {
                           <p>{item.des.substring(0, 150)}</p>
                           <Link to={"/details/" + item._id}>
                             <button className="btn btn-primary">
-                              Reade More
+                              Reade More <AiOutlineArrowRight/>
                             </button>
                           </Link>
                         </div>

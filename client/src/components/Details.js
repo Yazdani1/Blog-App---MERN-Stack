@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import { BsArrowLeft } from "react-icons/bs";
 import { GoCalendar } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 
 const DetailsPage = () => {
@@ -205,7 +206,7 @@ const DetailsPage = () => {
                   <h4>{item.title.substring(0, 15)}</h4>
                   <p>{item.des.substring(0, 20)}</p>
                   <Link to={"/details/" + item._id}>
-                    <button className="btn btn-primary">Reade More</button>
+                    <button className="btn btn-primary">Reade More <AiOutlineArrowRight/></button>
                   </Link>
 
                   {/* <span className="read_more_button">Read More</span> */}
