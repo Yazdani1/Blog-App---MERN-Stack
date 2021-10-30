@@ -2,13 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import axios from "axios";
 import { UserContext } from "./components/UserContext";
-
 import { Link, useHistory } from "react-router-dom";
-
 function Nav() {
   const [user, setUser] = useContext(UserContext);
   const history = useHistory();
-
   // const [user, setUser] = useState("");
   // const getUser = async () => {
   //   const res = await axios.get("/auth", {
