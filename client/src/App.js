@@ -19,7 +19,7 @@ function App() {
     <UserProvider>
       <BrowserRouter>
         <Switch>
-          <Route path="/details/:id">
+          <Route path="/details/:id" exact>
             <ProtectedRoute procomp={Details} />
           </Route>
 

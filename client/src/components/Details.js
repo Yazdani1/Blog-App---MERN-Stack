@@ -108,19 +108,20 @@ const DetailsPage = () => {
                 <BsArrowLeft />
                 Back
               </button>
-              <h1>{dataItem.title}</h1>
+              <h1>{dataItem && dataItem.title}</h1>
+              {/* <h1>{dataItem && dataItem.postedBy.name}</h1> */}
 
               <img
-                src={dataItem.photo}
+                src={dataItem && dataItem.photo}
                 height="300px"
                 alt="Post image"
                 className="det_post_image"
                 width="100%"
               />
               <p>
-                <GoCalendar /> {moment(dataItem.date).format("MMMM Do YYYY")}
+                <GoCalendar /> {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
               </p>
-              <p>{dataItem.des}</p>
+              <p>{dataItem && dataItem.des}</p>
 
               {/* {dataItem ? (
                 <p>Posted by: {dataItem.postedBy.name}</p>

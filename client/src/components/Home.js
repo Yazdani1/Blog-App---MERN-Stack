@@ -157,7 +157,7 @@ function Home() {
             <div className="col-md-8 card">
               <div className="row">
                 {dataItem.map((item) => (
-                  <div className="col-lg-12">
+                  <div className="col-lg-12" key={item._id}>
                     <div className="row">
                       <div className="col-md-4">
                         <img src={item.photo} className="images" />
@@ -193,8 +193,8 @@ function Home() {
                             {moment(item.date).format("MMMM Do YYYY")}
                           </p>
 
-                          <h4>{item.title.substring(0, 15)}</h4>
-                          <p>{item.des.substring(0, 20)}</p>
+                          <h4>{item.title.substring(0, 35)}</h4>
+                          <p>{item.des.substring(0, 150)}</p>
                           <Link to={"/details/" + item._id}>
                             <button className="btn btn-primary">
                               Reade More
@@ -207,18 +207,21 @@ function Home() {
                   </div>
                 ))}
               </div>
-              <button
-                onClick={handleLoadMore}
-                className="btn btn-primary loadmore"
-              >
-                Load More Posts
-              </button>
+              <div className="text-center">
+                <button
+                  onClick={handleLoadMore}
+                  className="loadmore"
+                >
+                  More Posts
+                </button>
+              </div>
             </div>
             <div className="col-md-4">
               <h2>Latest Posts</h2>
+              <hr />
               {latestPost.map((item) => (
                 <div className="container">
-                  <hr />
+                  
                   <div className="row">
                     <div className="col-md-4">
                       <img
@@ -246,6 +249,7 @@ function Home() {
                       </div>
                     </div>
                   </div>
+                  <hr />
                 </div>
               ))}
             </div>

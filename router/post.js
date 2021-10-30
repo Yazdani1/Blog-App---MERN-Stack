@@ -41,7 +41,7 @@ router.post("/post", requireLogin, (req, res) => {
 router.get("/getpost", (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
-    .populate("postedBy", "name email")
+    .populate("postedBy", "_id name email")
     .then((resultGet) => {
       res.json({ resultGet: resultGet });
     })
@@ -145,9 +145,9 @@ router.delete("/delete/:id", requireLogin, (req, res) => {
 router.get("/details/:id", (req, res) => {
   var detailsQuery = { _id: req.params.id };
   Post.findOne(detailsQuery)
-    .populate("postedBy", "name email")
-    .then((result) => {
-      res.json(result);
+    .populate("postedBy", "_id name")
+    .then((detailspost) => {
+      res.json(detailspost);
     })
     .catch((err) => {
       console.log(err);

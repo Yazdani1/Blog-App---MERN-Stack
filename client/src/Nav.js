@@ -56,9 +56,6 @@ function Nav() {
                 <li>{user && user.name}</li>
               </Link> */}
 
-              <div className="eachitem">
-                <li>{user && user.name}</li>
-              </div>
               <div className="dropdown show eachitem">
                 <div
                   className="dropdown-toggle"
@@ -94,7 +91,7 @@ function Nav() {
                   </Link>
 
                   <Link
-                    to={"/userprofile/" +(user && user._id)}
+                    to={"/userprofile/" + (user && user._id)}
                     className="dropdown-item each item_back"
                   >
                     View Profile
@@ -103,6 +100,20 @@ function Nav() {
                   <Link to="/signin" className="dropdown-item each">
                     <div onClick={logOut}>Sign Out</div>
                   </Link>
+                </div>
+              </div>
+              <div className="eachitem">
+                <div className="user_info">
+                  <div className="user_pic">
+                    <Link to={"/userprofile/"+ (user && user._id)} className="name_design">
+                      <div className="user_pic_home_page">
+                        <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="user_name">
+                    <p>{user && user.name}</p>
+                  </div>
                 </div>
               </div>
             </>

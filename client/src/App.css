@@ -196,34 +196,46 @@
 .desing_home {
   padding: 10px;
   margin: 10px;
-  height: 430px;
-}
-
-.desing_home:hover {
-  cursor: pointer;
-  box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
-  -webkit-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
-  -moz-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
 }
 
 .images {
   background-position: center top;
   background-size: 100% 100%;
-  height: 200px;
+  height: 250px;
   width: 100%;
+  margin-top: 5px;
   background-repeat: no-repeat;
+  border-radius: 20px;
+  transition: transform 0.8s;
+}
+.images:hover {
+  transform: scale(0.8);
+  cursor: pointer;
+  overflow: hidden;
 }
 .details_page_image {
   background-position: center;
   background-size: cover;
   height: 200px;
   width: 100%;
+  transition: transform 0.8s;
   background-repeat: no-repeat;
+}
+.details_page_image:hover {
+  transform: scale(0.8);
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .det_post_image {
   background-position: center;
   background-size: cover;
+  transition: transform 0.8s;
+}
+.det_post_image:hover {
+  transform: scale(0.8);
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .form_Design {
@@ -386,10 +398,10 @@
   border-radius: 50%; /* may require vendor prefixes */
   background: yellow;
 }
-.user_info{
+.user_info {
   display: flex;
 }
-.user_name p{
+.user_name p {
   height: 20px;
   width: 100%;
   align-items: center;
@@ -397,10 +409,10 @@
   vertical-align: middle;
   text-align: center;
   margin-top: 10px;
-  padding-left:10px;
+  padding-left: 10px;
   position: relative; /*makes left effective*/
 }
-.user_pic_home_page{
+.user_pic_home_page {
   height: 40px;
   width: 40px;
   background-color: #dc3545;
@@ -457,7 +469,17 @@
 .loadmore {
   align-items: center;
   text-align: center;
-  width: 100%;
+  width: auto;
+  margin: 10px;
+  padding: 10px;
+  background-color: rgb(183, 0, 255);
+  border-radius: 20px;
+  color: #fff;
+  border: 1px solid black;
+}
+.loadmore:hover{
+  background: #fff;
+  color: #000000;
 }
 
 .allopinion {
