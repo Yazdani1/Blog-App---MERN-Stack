@@ -364,9 +364,10 @@
   margin-left: 50px;
 }
 
-.profile_pic {
-  height: 150px;
-  width: 150px;
+/* user profile pic */
+.user_profile_pic{
+  height: 100px;
+  width: 100px;
   background-color: #dc3545;
   border-radius: 90px;
   align-items: center;
@@ -375,6 +376,28 @@
   text-align: center;
   left: 25%;
   position: relative; /*makes left effective*/
+}
+
+.profile_pic {
+  height: 100px;
+  width: 100px;
+  background-color: #dc3545;
+  border-radius: 90px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  left: 25%;
+  position: relative; /*makes left effective*/
+}
+.profile_pic h2{
+  height: 100px;
+  width: 100px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%; /* may require vendor prefixes */
+  background: yellow;
 }
 
 .profile_button {
@@ -411,6 +434,11 @@
 .user_profile_details {
   height: 300px;
   margin-top: 10px;
+}
+
+.latest_title{
+  text-decoration: none;
+  color: #000000;
 }
 /* 
 

@@ -94,23 +94,21 @@ const DetailsPage = () => {
     morePost();
   }, [dataItem]);
 
-
-
   return (
     <>
-
       <div className="main_details">
         <div className="container card">
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-7">
               <button
                 className="btn btn-success tt"
                 onClick={() => history.push("/")}
               >
-                <BsArrowLeft />Back
+                <BsArrowLeft />
+                Back
               </button>
               <h1>{dataItem.title}</h1>
-              
+
               <img
                 src={dataItem.photo}
                 height="300px"
@@ -128,14 +126,31 @@ const DetailsPage = () => {
               )} */}
             </div>
 
-            <div className="col-md-4 card">
+            <div className="col-md-5">
+              <h2>Latest Posts</h2>
               {latestPost.map((item) => (
-                <div>
-                  <Link to={"/details/" + item._id}>
-                    <h5>{item.title}</h5>
-                  </Link>
-                  <p>Posted by: {item.postedBy.name}</p>
-                  <p>{moment(item.date).format("MMMM Do YYYY")}</p>
+                <div className="container">
+                  <hr />
+                  <div className="row">
+                    <div className="col-md-4">
+                      <img
+                        src={item.photo}
+                        height="100px"
+                        alt="Post image"
+                        className="det_post_image"
+                        width="100%"
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="latest_post">
+                        <Link className="latest_title" to={"/details/" + item._id}>
+                          <h5>{item.title}</h5>
+                        </Link>
+                        <p>Posted by: {item.postedBy.name}</p>
+                        <p>{moment(item.date).format("MMMM Do YYYY")}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

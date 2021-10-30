@@ -153,7 +153,7 @@ function Home() {
         {/* //mainpost section */}
         <div className="container">
           <div className="row">
-            <div className="col-md-9">
+            <div className="col-md-8">
               <div className="row">
                 {dataItem.map((item) => (
                   <div className="col-lg-4">
@@ -186,8 +186,36 @@ function Home() {
                 Load More Posts
               </button>
             </div>
-            <div className="col-md-3 card userdetails">
-              <h1>Hello Youttube</h1>
+            <div className="col-md-4">
+              <h2>Latest Posts</h2>
+              {latestPost.map((item) => (
+                <div className="container">
+                  <hr />
+                  <div className="row">
+                    <div className="col-md-4">
+                      <img
+                        src={item.photo}
+                        height="100px"
+                        alt="Post image"
+                        className="det_post_image"
+                        width="100%"
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="latest_post">
+                        <Link
+                          className="latest_title"
+                          to={"/details/" + item._id}
+                        >
+                          <h5>{item.title}</h5>
+                        </Link>
+                        <p>Posted by: {item.postedBy.name}</p>
+                        <p>{moment(item.date).format("MMMM Do YYYY")}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -198,7 +226,7 @@ function Home() {
             {user.map((item) => (
               <div className="useritems">
                 <div className="desing_home card mb-5 shadow-sm">
-                  <div className="profile_pic">NA</div>
+                  <div className="profile_pic"><h2>{item.name.substring(0,2)}</h2></div>
 
                   <h4>{item.name}</h4>
 
