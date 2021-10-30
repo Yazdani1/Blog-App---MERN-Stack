@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
-<h1>Test is going on</h1>
+{/* <h1>Test is going on</h1> */}
 
 export const UserContext = createContext();
 
