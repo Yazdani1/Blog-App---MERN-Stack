@@ -96,7 +96,6 @@ router.get("/mypost", requireLogin, (req, res) => {
 //delete route
 
 //get edit data
-
 router.get("/edit/:id", requireLogin, (req, res) => {
   var editQuery = { _id: req.params.id };
   Post.findOne(editQuery)
@@ -107,12 +106,9 @@ router.get("/edit/:id", requireLogin, (req, res) => {
       return res.status(400).json({ error: err });
     });
 });
-
 //update data tot the database
-
 router.put("/update/:id", requireLogin, (req, res) => {
   var updateQuery = { _id: req.params.id };
-
   Post.updateOne(updateQuery, {
     $set: {
       title: req.body.title,
@@ -127,10 +123,8 @@ router.put("/update/:id", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-
 router.delete("/delete/:id", requireLogin, (req, res) => {
   var deleteData = { _id: req.params.id };
-
   Post.findByIdAndDelete(deleteData)
     .then((deleteData) => {
       res.json(deleteData);
@@ -139,9 +133,7 @@ router.delete("/delete/:id", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-
 //details post
-
 router.get("/details/:id", (req, res) => {
   var detailsQuery = { _id: req.params.id };
   Post.findOne(detailsQuery)

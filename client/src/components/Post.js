@@ -7,7 +7,6 @@ import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
 const Post = () => {
   const history = useHistory();
-
   // const [data, setData] = useState({
   //   title: "",
   //   des: "",
@@ -25,14 +24,12 @@ const Post = () => {
   // };
 
   //image upload
-
   const [title, setTitle] = useState("");
   const [des, setDes] = useState("");
   const [imageUrl, setImageurl] = useState("");
   const [url, setUrl] = useState("");
   const [error, setError] = useState(null);
   const [picerror, setpicError] = useState(null);
-
   useEffect(() => {
     if (url) {
       fetch("/auth/post", {
@@ -59,7 +56,6 @@ const Post = () => {
         .catch((err) => {});
     }
   }, [url]);
-
   const dataSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();

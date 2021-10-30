@@ -28,7 +28,6 @@ function Nav() {
     await localStorage.removeItem("tokenLogin");
     history.push("/signin");
   };
-
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="#">
@@ -55,7 +54,6 @@ function Nav() {
               {/* <Link to={"/userprofile/" + user._id} className="eachitem">
                 <li>{user && user.name}</li>
               </Link> */}
-
               <div className="dropdown show eachitem">
                 <div
                   className="dropdown-toggle"
@@ -85,11 +83,9 @@ function Nav() {
                   <Link to="/userprofile" className="dropdown-item each">
                     Dashboard
                   </Link>
-
                   <Link to="/profile" className="dropdown-item each">
                     Setting
                   </Link>
-
                   <Link
                     to={"/userprofile/" + (user && user._id)}
                     className="dropdown-item each item_back"
