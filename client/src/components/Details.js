@@ -4,6 +4,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import moment from "moment";
 import Slider from "react-slick";
 import { BsArrowLeft } from "react-icons/bs";
+import { GoCalendar } from "react-icons/go";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -116,7 +117,9 @@ const DetailsPage = () => {
                 className="det_post_image"
                 width="100%"
               />
-              <p>{moment(dataItem.date).format("MMMM Do YYYY")}</p>
+              <p>
+                <GoCalendar /> {moment(dataItem.date).format("MMMM Do YYYY")}
+              </p>
               <p>{dataItem.des}</p>
 
               {/* {dataItem ? (
@@ -143,11 +146,17 @@ const DetailsPage = () => {
                     </div>
                     <div className="col-md-8">
                       <div className="latest_post">
-                        <Link className="latest_title" to={"/details/" + item._id}>
+                        <Link
+                          className="latest_title"
+                          to={"/details/" + item._id}
+                        >
                           <h5>{item.title}</h5>
                         </Link>
                         <p>Posted by: {item.postedBy.name}</p>
-                        <p>{moment(item.date).format("MMMM Do YYYY")}</p>
+                        <p>
+                          <GoCalendar />{" "}
+                          {moment(item.date).format("MMMM Do YYYY")}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -163,15 +172,32 @@ const DetailsPage = () => {
             {postsmore.map((item) => (
               <div className="col-md-12">
                 <div className="desing_home card mb-5 shadow-sm">
-                  <Link
-                    to={"/userprofile/" + item.postedBy._id}
-                    className="name_design"
-                  >
-                    <p>Posted by: {item.postedBy.name}</p>
-                  </Link>
+                  <div className="user_info">
+                    <div className="user_pic">
+                      <Link
+                        to={"/userprofile/" + item.postedBy._id}
+                        className="name_design"
+                      >
+                        <div className="user_pic_home_page">
+                          <p>
+                            {item.postedBy.name.substring(0, 2).toUpperCase()}
+                          </p>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="user_name">
+                      <Link
+                        to={"/userprofile/" + item.postedBy._id}
+                        className="name_design"
+                      >
+                        <p>{item.postedBy.name}</p>
+                      </Link>
+                    </div>
+                  </div>
+
                   <img src={item.photo} className="details_page_image" />
                   <p className="date_color">
-                    {moment(item.date).format("MMMM Do YYYY")}
+                    <GoCalendar /> {moment(item.date).format("MMMM Do YYYY")}
                   </p>
                   <h4>{item.title.substring(0, 15)}</h4>
                   <p>{item.des.substring(0, 20)}</p>

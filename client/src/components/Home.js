@@ -6,6 +6,7 @@ import { MdAccountBox } from "react-icons/md";
 import { MdAssessment } from "react-icons/md";
 import { Link, useHistory } from "react-router-dom";
 import Slider from "react-slick";
+import { GoCalendar } from "react-icons/go";
 
 import FirstSection from "./HomePage/FirstSection";
 import Footer from "./footer";
@@ -153,43 +154,56 @@ function Home() {
         {/* //mainpost section */}
         <div className="container">
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-8 card">
               <div className="row">
                 {dataItem.map((item) => (
-                  <div className="col-lg-4">
-                    <div className="desing_home card mb-5 shadow-sm">
-                      <div className="user_info">
-                        <div className="user_pic">
-                          <Link
-                            to={"/userprofile/" + item.postedBy._id}
-                            className="name_design"
-                          >
-                            <div className="user_pic_home_page">
-                              <p>{item.postedBy.name.substring(0,2)}</p>
+                  <div className="col-lg-12">
+                    <div className="row">
+                      <div className="col-md-4">
+                        <img src={item.photo} className="images" />
+                      </div>
+                      <div className="col-md-8">
+                        <div className="desing_home">
+                          <div className="user_info">
+                            <div className="user_pic">
+                              <Link
+                                to={"/userprofile/" + item.postedBy._id}
+                                className="name_design"
+                              >
+                                <div className="user_pic_home_page">
+                                  <p>
+                                    {item.postedBy.name
+                                      .substring(0, 2)
+                                      .toUpperCase()}
+                                  </p>
+                                </div>
+                              </Link>
                             </div>
-                          </Link>
-                        </div>
-                        <div className="user_name">
-                          <Link
-                            to={"/userprofile/" + item.postedBy._id}
-                            className="name_design"
-                          >
-                            <p>{item.postedBy.name}</p>
+                            <div className="user_name">
+                              <Link
+                                to={"/userprofile/" + item.postedBy._id}
+                                className="name_design"
+                              >
+                                <p>{item.postedBy.name}</p>
+                              </Link>
+                            </div>
+                          </div>
+                          <p className="date_color">
+                            <GoCalendar />{" "}
+                            {moment(item.date).format("MMMM Do YYYY")}
+                          </p>
+
+                          <h4>{item.title.substring(0, 15)}</h4>
+                          <p>{item.des.substring(0, 20)}</p>
+                          <Link to={"/details/" + item._id}>
+                            <button className="btn btn-primary">
+                              Reade More
+                            </button>
                           </Link>
                         </div>
                       </div>
-                      <img src={item.photo} className="images" />
-                      <p className="date_color">
-                        {moment(item.date).format("MMMM Do YYYY")}
-                      </p>
-                      <h4>{item.title.substring(0, 15)}</h4>
-                      <p>{item.des.substring(0, 20)}</p>
-                      <Link to={"/details/" + item._id}>
-                        <button className="btn btn-primary">Reade More</button>
-                      </Link>
-
-                      {/* <span className="read_more_button">Read More</span> */}
                     </div>
+                    <hr />
                   </div>
                 ))}
               </div>
@@ -223,8 +237,12 @@ function Home() {
                         >
                           <h5>{item.title}</h5>
                         </Link>
-                        <p>Posted by: {item.postedBy.name}</p>
-                        <p>{moment(item.date).format("MMMM Do YYYY")}</p>
+
+                        <p>{item.postedBy.name}</p>
+                        <p>
+                          <GoCalendar />{" "}
+                          {moment(item.date).format("MMMM Do YYYY")}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -241,14 +259,14 @@ function Home() {
               <div className="useritems">
                 <div className="desing_home card mb-5 shadow-sm">
                   <div className="profile_pic">
-                    <h2>{item.name.substring(0, 2)}</h2>
+                    <h2>{item.name.substring(0, 2).toUpperCase()}</h2>
                   </div>
 
                   <h4>{item.name}</h4>
 
                   <p className="date_color">
                     Member Since:
-                    {moment(item.date).format("MMMM Do YYYY")}
+                    <GoCalendar /> {moment(item.date).format("MMMM Do YYYY")}
                   </p>
 
                   <Link to={"/userprofile/" + item._id}>
@@ -265,7 +283,7 @@ function Home() {
 
           <>
             {opinion ? (
-              <div class="text-center my-5 userwords">
+              <div className="text-center my-5 userwords">
                 <h5 className="usersopinion_text">Users Words</h5>
                 <div className="container">
                   <div className="row">

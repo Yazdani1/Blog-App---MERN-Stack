@@ -32,12 +32,30 @@ const Userprofile = () => {
                 {mypost.postsData.map((item) => (
                   <div className="col-lg-4">
                     <div className="desing_home card mb-5 shadow-sm">
-                      <Link
-                        to={"/userprofile/" + item.postedBy._id}
-                        className="name_design"
-                      >
-                        <p>Posted by: {item.postedBy.name}</p>
-                      </Link>
+                      <div className="user_info">
+                        <div className="user_pic">
+                          <Link
+                            to={"/userprofile/" + item.postedBy._id}
+                            className="name_design"
+                          >
+                            <div className="user_pic_home_page">
+                              <p>
+                                {item.postedBy.name
+                                  .substring(0, 2)
+                                  .toUpperCase()}
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                        <div className="user_name">
+                          <Link
+                            to={"/userprofile/" + item.postedBy._id}
+                            className="name_design"
+                          >
+                            <p>{item.postedBy.name}</p>
+                          </Link>
+                        </div>
+                      </div>
                       <img src={item.photo} className="images" />
                       <p className="date_color">
                         {moment(item.date).format("MMMM Do YYYY")}

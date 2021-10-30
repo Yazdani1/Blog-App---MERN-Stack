@@ -417,8 +417,9 @@
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+  color: #fff;
   border-radius: 50%; /* may require vendor prefixes */
-  background: yellow;
+  background: rgb(255, 94, 0);
 }
 
 .profile_pic {
