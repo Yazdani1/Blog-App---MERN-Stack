@@ -7,6 +7,8 @@ import { MdAssessment } from "react-icons/md";
 import { Link, useHistory } from "react-router-dom";
 import Slider from "react-slick";
 import { GoCalendar } from "react-icons/go";
+import { FaUserCircle } from "react-icons/fa";
+
 
 import FirstSection from "./HomePage/FirstSection";
 import Footer from "./footer";
@@ -193,7 +195,7 @@ function Home() {
                             {moment(item.date).format("MMMM Do YYYY")}
                           </p>
 
-                          <h4>{item.title.substring(0, 35)}</h4>
+                          <h5>{item.title.substring(0, 35)}</h5>
                           <p>{item.des.substring(0, 150)}</p>
                           <Link to={"/details/" + item._id}>
                             <button className="btn btn-primary">
@@ -238,10 +240,10 @@ function Home() {
                           className="latest_title"
                           to={"/details/" + item._id}
                         >
-                          <h5>{item.title}</h5>
+                          <h5>{item.title.substring(0,25)}</h5>
                         </Link>
 
-                        <p>{item.postedBy.name}</p>
+                        <p><FaUserCircle/> {item.postedBy.name}</p>
                         <p>
                           <GoCalendar />{" "}
                           {moment(item.date).format("MMMM Do YYYY")}
@@ -263,7 +265,7 @@ function Home() {
               <div className="useritems">
                 <div className="desing_home card mb-5 shadow-sm">
                   <div className="profile_pic">
-                    <h2>{item.name.substring(0, 2).toUpperCase()}</h2>
+                    <h2>{item.name.match(/\b\w/g).join('').toUpperCase()}</h2>
                   </div>
 
                   <h4>{item.name}</h4>

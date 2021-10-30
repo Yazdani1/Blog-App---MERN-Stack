@@ -5,6 +5,8 @@ import moment from "moment";
 import Slider from "react-slick";
 import { BsArrowLeft } from "react-icons/bs";
 import { GoCalendar } from "react-icons/go";
+import { FaUserCircle } from "react-icons/fa";
+
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -108,7 +110,7 @@ const DetailsPage = () => {
                 <BsArrowLeft />
                 Back
               </button>
-              <h1>{dataItem && dataItem.title}</h1>
+              <h4>{dataItem && dataItem.title}</h4>
               {/* <h1>{dataItem && dataItem.postedBy.name}</h1> */}
 
               <img
@@ -151,9 +153,9 @@ const DetailsPage = () => {
                           className="latest_title"
                           to={"/details/" + item._id}
                         >
-                          <h5>{item.title}</h5>
+                          <h5>{item.title.substring(0,25)}</h5>
                         </Link>
-                        <p>Posted by: {item.postedBy.name}</p>
+                        <p><FaUserCircle/> {item.postedBy.name}</p>
                         <p>
                           <GoCalendar />{" "}
                           {moment(item.date).format("MMMM Do YYYY")}
