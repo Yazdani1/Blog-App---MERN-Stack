@@ -146,4 +146,10 @@ router.get("/details/:id", (req, res) => {
     });
 });
 
+//like features api design
+
+
+
+
+
 module.exports = router;

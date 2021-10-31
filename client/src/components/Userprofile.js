@@ -64,7 +64,9 @@ const Userprofile = () => {
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
                       <Link to={"/details/" + item._id}>
-                        <button className="btn btn-primary">Reade More <AiOutlineArrowRight/></button>
+                        <button className="btn btn-primary">
+                          Reade More <AiOutlineArrowRight />
+                        </button>
                       </Link>
 
                       {/* <span className="read_more_button">Read More</span> */}
@@ -92,6 +94,10 @@ const Userprofile = () => {
                 </p>
 
                 <h4>Published posts: {mypost.postsData.length}</h4>
+                <h5>
+                  {mypost.postsData.length >= 5 ? <p>Pro User</p> : "New User"}
+                </h5>
+                <p>{mypost.postsData.length === 0 ? "No posts" : null}</p>
 
                 {/* <span className="read_more_button">Read More</span> */}
               </div>
@@ -110,3 +116,5 @@ const Userprofile = () => {
   );
 };
 export default Userprofile;
+
+BLACK_FRIDAY2021_YAZ
