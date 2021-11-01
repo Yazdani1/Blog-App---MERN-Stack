@@ -223,13 +223,13 @@ function Home() {
             <div className="col-md-4">
               <h2>Latest Posts</h2>
               <hr />
-              {latestPost.map((item) => (
+              {latestPost.map((latestitem) => (
                 <div className="container">
                   
                   <div className="row">
                     <div className="col-md-4">
                       <img
-                        src={item.photo}
+                        src={latestitem.photo}
                         height="100px"
                         alt="Post image"
                         className="det_post_image"
@@ -240,15 +240,15 @@ function Home() {
                       <div className="latest_post">
                         <Link
                           className="latest_title"
-                          to={"/details/" + item._id}
+                          to={"/details/" + latestitem._id}
                         >
-                          <h5>{item.title.substring(0,25)}</h5>
+                          <h5>{latestitem.title.substring(0,25)}</h5>
                         </Link>
 
-                        <p><FaUserCircle/> {item.postedBy.name}</p>
+                        <p><FaUserCircle/> {latestitem.postedBy.name}</p>
                         <p>
                           <GoCalendar />{" "}
-                          {moment(item.date).format("MMMM Do YYYY")}
+                          {moment(latestitem.date).format("MMMM Do YYYY")}
                         </p>
                       </div>
                     </div>
@@ -263,21 +263,21 @@ function Home() {
           <h5>All Users</h5>
 
           <Slider {...settings}>
-            {user.map((item) => (
+            {user.map((useritem) => (
               <div className="useritems">
                 <div className="desing_home card mb-5 shadow-sm">
                   <div className="profile_pic">
-                    <h2>{item.name.match(/\b\w/g).join('').toUpperCase()}</h2>
+                    <h2>{useritem.name.match(/\b\w/g).join('').toUpperCase()}</h2>
                   </div>
 
-                  <h4>{item.name}</h4>
+                  <h4>{useritem.name}</h4>
 
                   <p className="date_color">
                     Member Since:
-                    <GoCalendar /> {moment(item.date).format("MMMM Do YYYY")}
+                    <GoCalendar /> {moment(useritem.date).format("MMMM Do YYYY")}
                   </p>
 
-                  <Link to={"/userprofile/" + item._id}>
+                  <Link to={"/userprofile/" + useritem._id}>
                     <button className="btn btn-success profile_button">
                       View Profile
                     </button>

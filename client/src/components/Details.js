@@ -7,7 +7,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { GoCalendar } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
-
+import "../App.css";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -61,7 +61,7 @@ const DetailsPage = () => {
 
       .then((result) => {
         setData(result.data.detailspost);
-        console.log(result.data);
+        console.log("Details post yaz" + result.data);
       })
       .catch((err) => {
         console.log(err);
@@ -101,18 +101,44 @@ const DetailsPage = () => {
   return (
     <>
       <div className="main_details">
-        <div className="container card">
+        <div className="container">
           <div className="row">
-            <div className="col-md-7">
-              <button
+            <div className="col-md-7 card">
+              {/* <button
                 className="btn btn-success tt"
                 onClick={() => history.push("/")}
               >
                 <BsArrowLeft />
-                Back
-              </button>
+                All Posts
+              </button> */}
               <h4>{dataItem && dataItem.title}</h4>
-              <h1>{dataItem.postedBy.name[0]}.{dataItem.postedBy.name}</h1>
+              <div className="user_info">
+                <div className="user_pic">
+                  <Link
+                    to={"/userprofile/"}
+                    className="name_design"
+                  >
+                    <div className="user_pic_home_page">
+                      <p>
+                        {dataItem &&
+                          dataItem.postedBy?.name.substring(0, 2).toUpperCase()}
+                          
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+                <div className="user_name">
+                  <Link
+                    to={"/userprofile/" +dataItem.postedBy?._id }
+                    className="name_design"
+                  >
+                    <p>{dataItem &&
+                          dataItem.postedBy?.name } {dataItem && dataItem.postedBy?._id}</p>
+                  </Link>
+                </div>
+              </div>
+
+              <h1></h1>
 
               <img
                 src={dataItem && dataItem.photo}
@@ -122,7 +148,8 @@ const DetailsPage = () => {
                 width="100%"
               />
               <p>
-                <GoCalendar /> {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
+                <GoCalendar />{" "}
+                {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
               </p>
               <p>{dataItem && dataItem.des}</p>
 
@@ -133,7 +160,7 @@ const DetailsPage = () => {
               )} */}
             </div>
 
-            <div className="col-md-5">
+            <div className="col-md-5 card">
               <h2>Latest Posts</h2>
               {latestPost.map((item) => (
                 <div className="container">
@@ -154,9 +181,11 @@ const DetailsPage = () => {
                           className="latest_title"
                           to={"/details/" + item._id}
                         >
-                          <h5>{item.title.substring(0,25)}</h5>
+                          <h5>{item.title.substring(0, 25)}</h5>
                         </Link>
-                        <p><FaUserCircle/> {item.postedBy.name}</p>
+                        <p>
+                          <FaUserCircle /> {item.postedBy.name}
+                        </p>
                         <p>
                           <GoCalendar />{" "}
                           {moment(item.date).format("MMMM Do YYYY")}
@@ -206,7 +235,9 @@ const DetailsPage = () => {
                   <h4>{item.title.substring(0, 15)}</h4>
                   <p>{item.des.substring(0, 20)}</p>
                   <Link to={"/details/" + item._id}>
-                    <button className="btn btn-primary">Reade More <AiOutlineArrowRight/></button>
+                    <button className="btn btn-primary">
+                      Reade More <AiOutlineArrowRight />
+                    </button>
                   </Link>
 
                   {/* <span className="read_more_button">Read More</span> */}
