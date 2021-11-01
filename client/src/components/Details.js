@@ -60,7 +60,7 @@ const DetailsPage = () => {
       .get("/auth/details/" + id)
 
       .then((result) => {
-        setData(result.data);
+        setData(result.data.detailspost);
         console.log(result.data);
       })
       .catch((err) => {
@@ -112,7 +112,7 @@ const DetailsPage = () => {
                 Back
               </button>
               <h4>{dataItem && dataItem.title}</h4>
-              <h1>{dataItem.postedBy.name?dataItem.postedBy.name:"Cant Get"}</h1>
+              <h1>{dataItem.postedBy.name[0]}.{dataItem.postedBy.name}</h1>
 
               <img
                 src={dataItem && dataItem.photo}

@@ -139,7 +139,7 @@ router.get("/details/:id", (req, res) => {
   Post.findOne(detailsQuery)
     .populate("postedBy", "_id name")
     .then((detailspost) => {
-      res.json(detailspost);
+      res.json({detailspost:detailspost});
     })
     .catch((err) => {
       console.log(err);
