@@ -18,7 +18,6 @@ const transporter = nodemailer.createTransport(
 );
 
 //post route for registraion
-
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -45,7 +44,6 @@ router.post("/register", async (req, res) => {
       email,
       password: hash_password,
     });
-
     await user.save().then((registerData) => {
       transporter.sendMail({
         to: registerData.email,
@@ -62,7 +60,6 @@ router.post("/register", async (req, res) => {
 });
 
 //login
-
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
