@@ -150,6 +150,12 @@ router.get("/details/:id", (req, res) => {
 
 router.get("/like",(req,res)=>{
 
+
+
+});
+
+router.get("/unlike",(req,res)=>{
+
 });
 
 
