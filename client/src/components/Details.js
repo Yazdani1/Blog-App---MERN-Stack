@@ -112,7 +112,7 @@ const DetailsPage = () => {
                 Back
               </button>
               <h4>{dataItem && dataItem.title}</h4>
-              {/* <h1>{dataItem && dataItem.postedBy.name}</h1> */}
+              <h1>{dataItem.postedBy.name?dataItem.postedBy.name:"Cant Get"}</h1>
 
               <img
                 src={dataItem && dataItem.photo}
