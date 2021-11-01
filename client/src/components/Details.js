@@ -114,31 +114,28 @@ const DetailsPage = () => {
               <h4>{dataItem && dataItem.title}</h4>
               <div className="user_info">
                 <div className="user_pic">
-                  <Link
-                    to={"/userprofile/"}
-                    className="name_design"
-                  >
+                  <Link to={"/userprofile/"} className="name_design">
                     <div className="user_pic_home_page">
                       <p>
                         {dataItem &&
                           dataItem.postedBy?.name.substring(0, 2).toUpperCase()}
-                          
                       </p>
                     </div>
                   </Link>
                 </div>
                 <div className="user_name">
                   <Link
-                    to={"/userprofile/" +dataItem.postedBy?._id }
+                    to={"/userprofile/" + dataItem.postedBy?._id}
                     className="name_design"
                   >
-                    <p>{dataItem &&
-                          dataItem.postedBy?.name } {dataItem && dataItem.postedBy?._id}</p>
+                    <p>
+                      {dataItem && dataItem.postedBy?.name}.
+                    </p>
                   </Link>
                 </div>
               </div>
 
-              <h1></h1>
+           
 
               <img
                 src={dataItem && dataItem.photo}
@@ -151,6 +148,7 @@ const DetailsPage = () => {
                 <GoCalendar />{" "}
                 {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
               </p>
+
               <p>{dataItem && dataItem.des}</p>
 
               {/* {dataItem ? (
