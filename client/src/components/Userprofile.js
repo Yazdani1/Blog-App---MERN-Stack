@@ -117,4 +117,3 @@ const Userprofile = () => {
 };
 export default Userprofile;
 
-BLACK_FRIDAY2021_YAZ

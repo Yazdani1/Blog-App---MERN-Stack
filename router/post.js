@@ -148,7 +148,9 @@ router.get("/details/:id", (req, res) => {
 
 //like features api design
 
+router.get("/like",(req,res)=>{
 
+});
 
 
 
