@@ -317,7 +317,50 @@ function Home() {
                 </button>
               </div>
             </div>
+
             <div className="col-md-4">
+              <h5 className="latest-posts-title">Latest posts</h5>
+              <div className="latest-post-part card">
+                {latestPost.map((item) => (
+                  
+                  <div className="container">
+                    <hr />
+                    <div className="row">
+                      <div className="col-md-4">
+                        <img
+                          src={item.photo}
+                          height="100px"
+                          alt="Post image"
+                          className="det_post_image"
+                          width="100%"
+                        />
+                      </div>
+                      <div className="col-md-8">
+                        <div className="latest_post">
+                          <Link
+                            className="latest_title"
+                            to={"/details/" + item._id}
+                          >
+                            <h5>{item.title.substring(0, 25)}</h5>
+                          </Link>
+                          <p>
+                            <FaUserCircle /> {item.postedBy.name}
+                          </p>
+                          <p>
+                            <GoCalendar />{" "}
+                            {moment(item.date).format("MMMM Do YYYY")}
+                          </p>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* <div className="col-md-4">
               <h2>Latest Posts</h2>
               <hr />
               {latestPost.map((latestitem) => (
@@ -354,7 +397,9 @@ function Home() {
                   <hr />
                 </div>
               ))}
-            </div>
+            </div> */}
+
+
           </div>
         </div>
         <div className="container allusers">

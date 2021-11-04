@@ -516,6 +516,29 @@
   margin-left: 10px;
 }
 
+/* comments section design */
+
+
+.comments{
+  margin-top: 10px;
+  padding: 10px;
+}
+
+
+/* details post section */
+
+.details-post{
+  margin-top: 10px;
+}
+.details-post-item-design{
+  padding: 20px;
+}
+.latest-posts-title{
+  margin-top: 10px;
+ 
+
+}
+
 /* 
 
 <div className="container">

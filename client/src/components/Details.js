@@ -103,106 +103,134 @@ const DetailsPage = () => {
       <div className="main_details">
         <div className="container">
           <div className="row">
-            <div className="col-md-7 card">
-              <img
-                src={dataItem && dataItem.photo}
-                height="300px"
-                alt="Post image"
-                className="det_post_image"
-                width="100%"
-              />
-
-              {/* <button
+            <div className="col-md-7">
+              <div className="details-post card">
+                <img
+                  src={dataItem && dataItem.photo}
+                  height="300px"
+                  alt="Post image"
+                  className="det_posssst_image"
+                  width="100%"
+                />
+                <div className="details-post-item-design">
+                  {/* <button
                 className="btn btn-success tt"
                 onClick={() => history.push("/")}
               >
                 <BsArrowLeft />
                 All Posts
               </button> */}
-            
-              <div className="user_info">
-                <div className="user_pic">
-                  <Link to={"/userprofile/"} className="name_design">
-                    <div className="user_pic_home_page">
-                      <p>
-                        {dataItem &&
-                          dataItem.postedBy?.name.substring(0, 2).toUpperCase()}
-                      </p>
+
+                  <div className="user_info">
+                    <div className="user_pic">
+                      <Link to={"/userprofile/"} className="name_design">
+                        <div className="user_pic_home_page">
+                          <p>
+                            {dataItem &&
+                              dataItem.postedBy?.name
+                                .substring(0, 2)
+                                .toUpperCase()}
+                          </p>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
-                </div>
-                <div className="user_name">
-                  <Link
-                    to={"/userprofile/" + dataItem.postedBy?._id}
-                    className="name_design"
-                  >
-                    <p>{dataItem && dataItem.postedBy?.name}.</p>
-                  </Link>
-                </div>
-              </div>
+                    <div className="user_name">
+                      <Link
+                        to={"/userprofile/" + dataItem.postedBy?._id}
+                        className="name_design"
+                      >
+                        <p>{dataItem && dataItem.postedBy?.name}.</p>
+                      </Link>
+                    </div>
+                  </div>
 
-              <p>
-                <GoCalendar />{" "}
-                {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
-              </p>
+                  <p>
+                    <GoCalendar />{" "}
+                    {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
+                  </p>
 
-              <h5>{dataItem && dataItem.likes?.length>0? "Likes":"Like"}.{dataItem && dataItem.likes?.length}</h5>
+                  <h5>
+                    {dataItem && dataItem.likes?.length > 0 ? "Likes" : "Like"}.
+                    {dataItem && dataItem.likes?.length}
+                  </h5>
 
-              <h4>{dataItem && dataItem.title}</h4>
-              <h4>{dataItem && dataItem._id}</h4>
+                  <h4>{dataItem && dataItem.title}</h4>
+                  <h4>{dataItem && dataItem._id}</h4>
 
-              <p>{dataItem && dataItem.des}</p>
+                  <p>{dataItem && dataItem.des}</p>
 
-              {/* {dataItem ? (
+                  {/* {dataItem ? (
                 <p>Posted by: {dataItem.postedBy.name}</p>
               ) : (
                 <h1>Loading...</h1>
               )} */}
-            </div>
+                </div>
+              </div>
 
-            <div className="col-md-5 card">
-              <h2>Latest Posts</h2>
-              {latestPost.map((item) => (
-                <div className="container">
-                  <hr />
-                  <div className="row">
-                    <div className="col-md-4">
-                      <img
-                        src={item.photo}
-                        height="100px"
-                        alt="Post image"
-                        className="det_post_image"
-                        width="100%"
-                      />
+              <div className="comments card">
+                <form>
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="form-groupgfgf">
+                        <textarea
+                          type="text"
+                          class="form-control rounded-0"
+                          placeholder="Type your comments.."
+                          rows="3.5"
+                          
+                        />
+                      </div>
                     </div>
-                    <div className="col-md-8">
-                      <div className="latest_post">
-                        <Link
-                          className="latest_title"
-                          to={"/details/" + item._id}
-                        >
-                          <h5>{item.title.substring(0, 25)}</h5>
-                        </Link>
-                        <p>
-                          <FaUserCircle /> {item.postedBy.name}
-                        </p>
-                        <p>
-                          <GoCalendar />{" "}
-                          {moment(item.date).format("MMMM Do YYYY")}
-                        </p>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <button className="btn btn-success">
+                          Post Comment
+                        </button>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                </form>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div className="container">
-          <div className="row">
-            <div className="col-md-7 card">
-            <h1>Comment Section is here</h1>
+            <div className="col-md-5 ">
+              <h5 className="latest-posts-title">Latest posts</h5>
+              <div className="latest-post-part card">
+                {latestPost.map((item) => (
+                  <div className="container">
+                    <hr />
+                    <div className="row">
+                      <div className="col-md-4">
+                        <img
+                          src={item.photo}
+                          height="100px"
+                          alt="Post image"
+                          className="det_post_image"
+                          width="100%"
+                        />
+                      </div>
+                      <div className="col-md-8">
+                        <div className="latest_post">
+                          <Link
+                            className="latest_title"
+                            to={"/details/" + item._id}
+                          >
+                            <h5>{item.title.substring(0, 25)}</h5>
+                          </Link>
+                          <p>
+                            <FaUserCircle /> {item.postedBy.name}
+                          </p>
+                          <p>
+                            <GoCalendar />{" "}
+                            {moment(item.date).format("MMMM Do YYYY")}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
