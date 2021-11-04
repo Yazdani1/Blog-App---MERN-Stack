@@ -152,7 +152,7 @@ router.put("/like", requireLogin, (req, res) => {
   Post.findByIdAndUpdate(
     req.body.postId,
     {
-      $push: { likes: req.user._id},
+      $push: { likes: req.user._id },
     },
     {
       new: true,
@@ -179,6 +179,33 @@ router.put("/unlike", requireLogin, (req, res) => {
     }
   )
     .populate("postedBy", "_id name")
+    .exec((err, result) => {
+      if (err) {
+        return res.status(422).json({ error: err });
+      } else {
+        res.json(result);
+      }
+    });
+});
+
+//comments route
+
+router.put("/comments", requireLogin, (req, res) => {
+  const comment = {
+    text: req.body.text,
+    postedBy: req.user._id,
+  };
+
+  Post.findByIdAndUpdate(
+    req.body.postId,
+    {
+      $push: { comments: comment },
+    },
+    {
+      new: true,
+    }
+  )
+    .populate("comments.postedBy", "_id name")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });

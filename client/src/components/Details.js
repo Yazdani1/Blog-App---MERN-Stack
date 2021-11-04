@@ -191,6 +191,9 @@ const DetailsPage = () => {
                     </div>
                   </div>
                 </form>
+
+              <h1>tHIS IS A NICE POST</h1>
+
               </div>
             </div>
 
