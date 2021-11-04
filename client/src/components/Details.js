@@ -98,6 +98,35 @@ const DetailsPage = () => {
     morePost();
   }, [dataItem]);
 
+  const postComment = (text, postId) => {
+    fetch("/auth/comments", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        text: text,
+        postId: postId,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        const newItemData = dataItem.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newItemData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className="main_details">
@@ -168,20 +197,23 @@ const DetailsPage = () => {
               </div>
 
               <div className="comments card">
-                <form>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    postComment(e.target[0].value, dataItem && dataItem._id);
+                  }}
+                >
                   <div class="row">
                     <div class="col-md-9">
                       <div class="form-groupgfgf">
-                        <textarea
+                        <input
                           type="text"
                           class="form-control rounded-0"
                           placeholder="Type your comments.."
                           rows="3.5"
-                          
                         />
                       </div>
                     </div>
-
                     <div class="col-md-3">
                       <div class="form-group">
                         <button className="btn btn-success">
@@ -191,9 +223,6 @@ const DetailsPage = () => {
                     </div>
                   </div>
                 </form>
-
-              <h1>tHIS IS A NICE POST</h1>
-
               </div>
             </div>
 
