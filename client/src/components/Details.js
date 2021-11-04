@@ -17,6 +17,7 @@ const DetailsPage = () => {
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
   const [postsmore, setPosts] = useState([]);
+  const [text, setText] = useState("");
 
   var settings = {
     dots: true,
@@ -98,7 +99,8 @@ const DetailsPage = () => {
     morePost();
   }, [dataItem]);
 
-  const postComment = (text, postId) => {
+  const postComment = (e, postId) => {
+    e.preventDefault();
     fetch("/auth/comments", {
       method: "put",
       headers: {
@@ -106,7 +108,7 @@ const DetailsPage = () => {
         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
       },
       body: JSON.stringify({
-        text: text,
+        text,
         postId: postId,
       }),
     })
@@ -125,6 +127,7 @@ const DetailsPage = () => {
       .catch((err) => {
         console.log(err);
       });
+    setText("");
   };
 
   return (
@@ -195,20 +198,16 @@ const DetailsPage = () => {
               )} */}
                 </div>
               </div>
-
               <div className="comments card">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    postComment(e.target[0].value, dataItem && dataItem._id);
-                  }}
-                >
+                <form>
                   <div class="row">
                     <div class="col-md-9">
                       <div class="form-groupgfgf">
-                        <input
+                        <textarea
                           type="text"
                           class="form-control rounded-0"
+                          onChange={(e) => setText(e.target.value)}
+                          value={text}
                           placeholder="Type your comments.."
                           rows="3.5"
                         />
@@ -216,13 +215,55 @@ const DetailsPage = () => {
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <button className="btn btn-success">
+                        <button
+                          className="btn btn-success"
+                          onClick={(e) => postComment(e, dataItem._id)}
+                        >
                           Post Comment
                         </button>
                       </div>
                     </div>
                   </div>
                 </form>
+                <div className="all-comments">
+                  {dataItem &&
+                    dataItem.comments?.map((allcomments) => {
+                      return (
+                        <>
+                          <div className="each-comments">
+                            <div className="user_info">
+                              <div className="user_pic">
+                                <Link
+                                  to={"/userprofile/"}
+                                  className="name_design"
+                                >
+                                  <div className="user_pic_home_page">
+                                    <p className="name">
+                                      {
+                                        allcomments.postedBy?.name
+                                          .substring(0, 2)
+                                          .toUpperCase()}
+                                    </p>
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className="user_name">
+                                <Link
+                                  to={
+                                    "/userprofile/" + allcomments.postedBy?._id
+                                  }
+                                  className="name_design"
+                                >
+                                  <p>{allcomments.postedBy.name}</p>
+                                </Link>
+                              </div>
+                            </div>
+                            <p>{allcomments.text}</p>
+                          </div>
+                        </>
+                      );
+                    })}
+                </div>
               </div>
             </div>
 

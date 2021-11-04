@@ -138,6 +138,7 @@ router.get("/details/:id", (req, res) => {
   var detailsQuery = { _id: req.params.id };
   Post.findOne(detailsQuery)
     .populate("postedBy", "_id name")
+    .populate("comments.postedBy", "_id name")
     .then((detailspost) => {
       res.json({ detailspost: detailspost });
     })
@@ -206,6 +207,7 @@ router.put("/comments", requireLogin, (req, res) => {
     }
   )
     .populate("comments.postedBy", "_id name")
+    .populate("postedBy", "_id name")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });
