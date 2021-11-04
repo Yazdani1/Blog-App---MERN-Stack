@@ -194,7 +194,8 @@ function Home() {
                           </div>
                           <p className="date_color">
                             <GoCalendar />{" "}
-                            {moment(item.date).format("MMMM Do YYYY")}
+                            {/* {moment(item.date).format("MMMM Do YYYY")} */}
+                            {moment(item.date).fromNow()}
                           </p>
 
                           <h5>{item.title.substring(0, 35)}</h5>

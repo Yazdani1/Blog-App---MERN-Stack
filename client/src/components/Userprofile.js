@@ -3,6 +3,7 @@ import axios from "axios";
 import "../App.css";
 import moment from "moment";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { GoCalendar } from "react-icons/go";
 import { Link, useHistory, useParams } from "react-router-dom";
 
 const Userprofile = () => {
@@ -59,7 +60,7 @@ const Userprofile = () => {
                       </div>
                       <img src={item.photo} className="images" />
                       <p className="date_color">
-                        {moment(item.date).format("MMMM Do YYYY")}
+                        <GoCalendar/> {moment(item.date).format("MMMM Do YYYY")}
                       </p>
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
