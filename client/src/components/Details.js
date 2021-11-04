@@ -146,6 +146,8 @@ const DetailsPage = () => {
                 {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
               </p>
 
+              <h5>Likes.{dataItem && dataItem.likes?.length}</h5>
+
               <h4>{dataItem && dataItem.title}</h4>
 
               <p>{dataItem && dataItem.des}</p>

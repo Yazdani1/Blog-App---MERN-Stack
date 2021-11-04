@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "../App.css";
 import moment from "moment";
@@ -9,10 +9,12 @@ import Slider from "react-slick";
 import { GoCalendar } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
-
-
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDislike } from "react-icons/ai";
 
 import FirstSection from "./HomePage/FirstSection";
+import { UserContext } from "./UserContext";
+
 import Footer from "./footer";
 
 function Home() {
@@ -92,11 +94,12 @@ function Home() {
 
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
+  const [userDatails] = useContext(UserContext);
 
   //get users opinion
 
   const [opinion, setOpinion] = useState(null);
-
+  const history = useHistory();
   const getOpinion = async () => {
     await axios
       .get("/auth/opinion")
@@ -138,7 +141,7 @@ function Home() {
   useEffect(() => {
     axios.get("/auth/getpost").then((res) => {
       setData(res.data.resultGet);
-      console.log(res.data);
+      console.log(res.data.resultGet);
     });
 
     axios.get("/auth/latestpost").then((res) => {
@@ -149,6 +152,63 @@ function Home() {
     getUser();
     getOpinion();
   }, []);
+
+  const addlikePost = (id) => {
+    fetch("/auth/like", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+
+        const newItemData = dataItem.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newItemData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const addunlikePost = (id) => {
+    fetch("/auth/unlike", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        const newItemData = dataItem.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newItemData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const renderData = (dataItem) => {
     return (
@@ -195,14 +255,51 @@ function Home() {
                           <p className="date_color">
                             <GoCalendar />{" "}
                             {/* {moment(item.date).format("MMMM Do YYYY")} */}
-                            {moment(item.date).fromNow()} - ({moment(item.date).format("MMMM Do YYYY")})
+                            {moment(item.date).fromNow()} - (
+                            {moment(item.date).format("MMMM Do YYYY")})
                           </p>
 
                           <h5>{item.title.substring(0, 35)}</h5>
                           <p>{item.des.substring(0, 150)}</p>
+
+                          <div className="likes">
+                            <h5>Likes.{item.likes.length}</h5>
+
+                            {item.likes.includes(
+                              userDatails && userDatails._id
+                            ) ? (
+                              <p
+                                onClick={() => {
+
+                                //   if (!localStorage.getItem("tokenLogin")) {
+                                //     history.push("/signin");
+                                //   } else {
+                                //     addunlikePost(item._id);
+                                //   }
+                                // }
+                                addunlikePost(item._id);
+                              }
+                            }>
+                                <AiOutlineDislike size={30} />
+                              </p>
+                            ) : (
+                              <p
+                                onClick={() => {
+                                  if (!localStorage.getItem("tokenLogin")) {
+                                    history.push("/signin");
+                                  } else {
+                                    addlikePost(item._id);
+                                  }
+                                }}
+                              >
+                                <AiOutlineLike size={30} />
+                              </p>
+                            )}
+                          </div>
+
                           <Link to={"/details/" + item._id}>
                             <button className="btn btn-primary">
-                              Reade More <AiOutlineArrowRight/>
+                              Reade More <AiOutlineArrowRight />
                             </button>
                           </Link>
                         </div>
@@ -213,10 +310,7 @@ function Home() {
                 ))}
               </div>
               <div className="text-center">
-                <button
-                  onClick={handleLoadMore}
-                  className="loadmore"
-                >
+                <button onClick={handleLoadMore} className="loadmore">
                   More Posts
                 </button>
               </div>
@@ -226,7 +320,6 @@ function Home() {
               <hr />
               {latestPost.map((latestitem) => (
                 <div className="container">
-                  
                   <div className="row">
                     <div className="col-md-4">
                       <img
@@ -243,10 +336,12 @@ function Home() {
                           className="latest_title"
                           to={"/details/" + latestitem._id}
                         >
-                          <h5>{latestitem.title.substring(0,25)}</h5>
+                          <h5>{latestitem.title.substring(0, 25)}</h5>
                         </Link>
 
-                        <p><FaUserCircle/> {latestitem.postedBy.name}</p>
+                        <p>
+                          <FaUserCircle /> {latestitem.postedBy.name}
+                        </p>
                         <p>
                           <GoCalendar />{" "}
                           {moment(latestitem.date).format("MMMM Do YYYY")}
@@ -268,14 +363,17 @@ function Home() {
               <div className="useritems">
                 <div className="desing_home card mb-5 shadow-sm">
                   <div className="profile_pic">
-                    <h2>{useritem.name.match(/\b\w/g).join('').toUpperCase()}</h2>
+                    <h2>
+                      {useritem.name.match(/\b\w/g).join("").toUpperCase()}
+                    </h2>
                   </div>
 
                   <h4>{useritem.name}</h4>
 
                   <p className="date_color">
                     Member Since:
-                    <GoCalendar /> {moment(useritem.date).format("MMMM Do YYYY")}
+                    <GoCalendar />{" "}
+                    {moment(useritem.date).format("MMMM Do YYYY")}
                   </p>
 
                   <Link to={"/userprofile/" + useritem._id}>

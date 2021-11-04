@@ -95,6 +95,7 @@ const Userprofile = () => {
                 </p>
 
                 <h4>Published posts: {mypost.postsData.length}</h4>
+                <h4>Total Likes: {mypost.postsData.likes?.length}</h4>
                 <h5>
                   {mypost.postsData.length >= 5 ? <p>Pro User</p> : "New User"}
                 </h5>

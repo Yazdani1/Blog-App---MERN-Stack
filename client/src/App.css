@@ -506,6 +506,16 @@
   text-decoration: none;
   color: #000000;
 }
+
+/* likes button */
+.likes{
+  display: flex;
+  
+}
+.likes p{
+  margin-left: 10px;
+}
+
 /* 
 
 <div className="container">
