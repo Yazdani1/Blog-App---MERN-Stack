@@ -104,6 +104,14 @@ const DetailsPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-7 card">
+              <img
+                src={dataItem && dataItem.photo}
+                height="300px"
+                alt="Post image"
+                className="det_post_image"
+                width="100%"
+              />
+
               {/* <button
                 className="btn btn-success tt"
                 onClick={() => history.push("/")}
@@ -111,7 +119,7 @@ const DetailsPage = () => {
                 <BsArrowLeft />
                 All Posts
               </button> */}
-              <h4>{dataItem && dataItem.title}</h4>
+            
               <div className="user_info">
                 <div className="user_pic">
                   <Link to={"/userprofile/"} className="name_design">
@@ -128,26 +136,17 @@ const DetailsPage = () => {
                     to={"/userprofile/" + dataItem.postedBy?._id}
                     className="name_design"
                   >
-                    <p>
-                      {dataItem && dataItem.postedBy?.name}.
-                    </p>
+                    <p>{dataItem && dataItem.postedBy?.name}.</p>
                   </Link>
                 </div>
               </div>
 
-           
-
-              <img
-                src={dataItem && dataItem.photo}
-                height="300px"
-                alt="Post image"
-                className="det_post_image"
-                width="100%"
-              />
               <p>
                 <GoCalendar />{" "}
                 {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
               </p>
+
+              <h4>{dataItem && dataItem.title}</h4>
 
               <p>{dataItem && dataItem.des}</p>
 

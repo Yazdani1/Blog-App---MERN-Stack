@@ -139,7 +139,7 @@ router.get("/details/:id", (req, res) => {
   Post.findOne(detailsQuery)
     .populate("postedBy", "_id name")
     .then((detailspost) => {
-      res.json({detailspost:detailspost});
+      res.json({ detailspost: detailspost });
     })
     .catch((err) => {
       console.log(err);
@@ -148,16 +148,40 @@ router.get("/details/:id", (req, res) => {
 
 //like features api design
 
-router.get("/like",(req,res)=>{
-
-
-
+router.put("/like", requireLogin, (req, res) => {
+  Post.findByIdAndUpdate(
+    req.body.postId,
+    {
+      $push: { likes: req.user._id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
 });
 
-router.get("/unlike",(req,res)=>{
-
+router.put("/unlike", requireLogin, (req, res) => {
+  Post.findByIdAndUpdate(
+    req.body.postId,
+    {
+      $pull: { likes: req.user._id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
 });
-
-
 
 module.exports = router;
