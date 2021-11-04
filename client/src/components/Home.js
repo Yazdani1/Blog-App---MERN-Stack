@@ -265,7 +265,7 @@ function Home() {
                           <p>{item.des.substring(0, 150)}</p>
 
                           <div className="likes">
-                            <h5>Likes.{item.likes.length}</h5>
+                            <h5>{item.likes.length>0?"Likes":"Like"}.{item.likes.length}</h5>
 
                             {item.likes.includes(
                               userDatails && userDatails._id
