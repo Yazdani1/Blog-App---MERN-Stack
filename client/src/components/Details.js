@@ -149,6 +149,7 @@ const DetailsPage = () => {
               <h5>{dataItem && dataItem.likes?.length>0? "Likes":"Like"}.{dataItem && dataItem.likes?.length}</h5>
 
               <h4>{dataItem && dataItem.title}</h4>
+              <h4>{dataItem && dataItem._id}</h4>
 
               <p>{dataItem && dataItem.des}</p>
 
@@ -194,6 +195,14 @@ const DetailsPage = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="container">
+          <div className="row">
+            <div className="col-md-7 card">
+            <h1>Comment Section is here</h1>
             </div>
           </div>
         </div>
