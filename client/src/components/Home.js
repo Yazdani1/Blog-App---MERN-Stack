@@ -162,6 +162,7 @@ function Home() {
       },
       body: JSON.stringify({
         postId: id,
+       
       }),
     })
       .then((res) => res.json())
@@ -191,6 +192,7 @@ function Home() {
       },
       body: JSON.stringify({
         postId: id,
+        
       }),
     })
       .then((res) => res.json())

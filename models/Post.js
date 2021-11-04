@@ -14,19 +14,18 @@ var postSchema = mongoose.Schema({
   },
   photo: {
     type: String,
-    required:true
+    required: true,
   },
-  likes:[
+  likes: [
     {
-      type:ObjectId,
+      type: ObjectId,
       ref: "User",
-    }
+    },
   ],
   postedBy: {
     type: ObjectId,
     ref: "User",
   },
-
 });
 
 module.exports = mongoose.model("Post", postSchema);

@@ -152,7 +152,7 @@ router.put("/like", requireLogin, (req, res) => {
   Post.findByIdAndUpdate(
     req.body.postId,
     {
-      $push: { likes: req.user._id },
+      $push: { likes: req.user._id},
     },
     {
       new: true,
