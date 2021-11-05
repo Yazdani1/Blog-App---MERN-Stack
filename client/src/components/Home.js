@@ -314,7 +314,7 @@ function Home() {
               </div>
               <div className="text-center">
                 <button onClick={handleLoadMore} className="loadmore">
-                  {currentItems.length==0?null:"More Posts"}
+                 More Posts
                 </button>
               </div>
             </div>
