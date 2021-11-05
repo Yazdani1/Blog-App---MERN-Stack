@@ -192,10 +192,15 @@ router.put("/unlike", requireLogin, (req, res) => {
 //comments route
 
 router.put("/comments", requireLogin, (req, res) => {
+  const {text} = req.body;
   const comment = {
-    text: req.body.text,
+    text,
     postedBy: req.user._id,
   };
+
+  if (!text) {
+    return res.status(400).json({error: "This field can't be empty"})
+  }
 
   Post.findByIdAndUpdate(
     req.body.postId,

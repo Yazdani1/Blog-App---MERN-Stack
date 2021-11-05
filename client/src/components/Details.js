@@ -18,6 +18,7 @@ const DetailsPage = () => {
   const [latestPost, setLatestpost] = useState([]);
   const [postsmore, setPosts] = useState([]);
   const [text, setText] = useState("");
+  const [error, setError] = useState(null);
 
   var settings = {
     dots: true,
@@ -115,6 +116,9 @@ const DetailsPage = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        if (result.error) {
+          setError(result.error);
+        }
         const newItemData = dataItem.map((item) => {
           if (item._id == result._id) {
             return result;
@@ -200,24 +204,39 @@ const DetailsPage = () => {
               </div>
               <div className="comments card">
                 <form>
-                  <div class="row">
-                    <div class="col-md-9">
-                      <div class="form-groupgfgf">
+                  <div className="row">
+                    <div className="col-md-9">
+                      <div className="form-groupgfgf">
                         <textarea
                           type="text"
-                          class="form-control rounded-0"
+                          className="form-control rounded-0"
                           onChange={(e) => setText(e.target.value)}
                           value={text}
                           placeholder="Type your comments.."
                           rows="3.5"
                         />
+                        {error ? <p className="text-danger">{error}</p> : null}
                       </div>
                     </div>
+                    {/* <div
+                        className="alert alert-danger"
+                        style={{ display: error ? "" : "none" }}
+                      >
+                        {error}
+                      </div> */}
                     <div class="col-md-3">
                       <div class="form-group">
                         <button
                           className="btn btn-success"
-                          onClick={(e) => postComment(e, dataItem._id)}
+                          onClick={(e) => {
+                            if (!localStorage.getItem("tokenLogin")) {
+                              history.push("/signin");
+                            } else {
+                              postComment(e, dataItem._id);
+                            }
+                          }}
+
+                          // onClick={(e) => postComment(e, dataItem._id)}
                         >
                           Post Comment
                         </button>
@@ -226,6 +245,7 @@ const DetailsPage = () => {
                   </div>
                 </form>
                 <div className="all-comments">
+                  <p>Total Comments: {dataItem.comments?.length}</p>
                   {dataItem &&
                     dataItem.comments?.map((allcomments) => {
                       return (
@@ -238,11 +258,10 @@ const DetailsPage = () => {
                                   className="name_design"
                                 >
                                   <div className="user_pic_home_page">
-                                    <p className="name">
-                                      {
-                                        allcomments.postedBy?.name
-                                          .substring(0, 2)
-                                          .toUpperCase()}
+                                    <p className="comment_Des">
+                                      {allcomments.postedBy?.name
+                                        .substring(0, 2)
+                                        .toUpperCase()}
                                     </p>
                                   </div>
                                 </Link>
@@ -254,9 +273,15 @@ const DetailsPage = () => {
                                   }
                                   className="name_design"
                                 >
-                                  <p>{allcomments.postedBy.name}</p>
+                                  <p>{allcomments.postedBy.name}.</p>
                                 </Link>
                               </div>
+                              <p>
+                                {" "}
+                                {moment(allcomments && allcomments.date).format(
+                                  "MMMM Do YYYY"
+                                )}
+                              </p>
                             </div>
                             <p>{allcomments.text}</p>
                           </div>
