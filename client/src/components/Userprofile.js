@@ -86,13 +86,18 @@ const Userprofile = () => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container user-main-posts-section">
+        <h5>{mypost?.postsData?.length === 0 ? (
+        <div className="card">
+          <h4>This User Did Not Publish Any Posts Yet</h4>
+        </div>
+        ): "All Posts"}</h5>
         <div className="row">
           {mypost ? (
-            <div className="col-md-9">
+            <div className="col-md-12">
               <div className="row">
                 {mypost.postsData.map((item) => (
-                  <div className="col-lg-4">
+                  <div className="col-md-3">
                     <div className="desing_home card mb-5 shadow-sm">
                       <div className="user_info">
                         <div className="user_pic">
@@ -140,11 +145,14 @@ const Userprofile = () => {
           ) : (
             <h1>Loading...</h1>
           )}
-          {/* {mypost ? (
+
+          {
+            /* 
+                      {mypost ? (
             <div className="col-md-3 user_profile_details">
               <div className="desing_home card mb-5 shadow-sm">
                 {/* <div className="profile_pic">{mypost.userInfo.name.charAt(0)}</div> */}
-                <div className="user_profile_pic">
+                {/* <div className="user_profile_pic">
                   <h2>{mypost.userInfo.name.substring(0, 2)}</h2>
                 </div>
 
@@ -162,17 +170,14 @@ const Userprofile = () => {
                 </h5>
                 <p>{mypost.postsData.length === 0 ? "No posts" : null}</p>
 
-                {/* <span className="read_more_button">Read More</span> */}
               </div>
-            </div>
-          ) : (
-            // <div className="col-md-3 user_profile_details card ">
-            //   <h1>{mypost.userInfo.name}</h1>
-            //   <h5>{mypost.userInfo.email}</h5>
-            //   <h4>Published posts: {mypost.postsData.length}</h4>
-            // </div>
+            </div> */}
+          {/* ) : (
+
             <h1>Loading...</h1>
           )} */}
+            
+    
         </div>
       </div>
     </>

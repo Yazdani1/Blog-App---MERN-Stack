@@ -630,6 +630,14 @@
   align-items: center;
   justify-content: center;
 }
+
+.user-main-posts-section{
+
+  margin-top: 50px;
+}
+body{
+  background-color: #e91313;
+}
 /* 
 
 <div className="container">

@@ -10,6 +10,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import "../App.css";
 
 const DetailsPage = () => {
+
   const { id } = useParams();
 
   let history = useHistory();
@@ -64,6 +65,7 @@ const DetailsPage = () => {
       .then((result) => {
         setData(result.data.detailspost);
         console.log("Details post yaz" + result.data);
+        history.go(1);
       })
       .catch((err) => {
         console.log(err);
@@ -94,10 +96,12 @@ const DetailsPage = () => {
       });
   };
 
+ 
   useEffect(() => {
     getDetailsData();
     getlatestPost();
     morePost();
+    
   }, [dataItem]);
 
   const postComment = (e, postId) => {
@@ -135,6 +139,7 @@ const DetailsPage = () => {
   };
 
   return (
+    
     <>
       <div className="main_details">
         <div className="container">

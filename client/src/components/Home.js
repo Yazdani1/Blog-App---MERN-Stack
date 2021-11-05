@@ -14,6 +14,7 @@ import { AiOutlineDislike } from "react-icons/ai";
 
 import FirstSection from "./HomePage/FirstSection";
 import { UserContext } from "./UserContext";
+import "./css/home-mainpost.css";
 
 import Footer from "./footer";
 
@@ -220,16 +221,16 @@ function Home() {
         {/* //mainpost section */}
         <div className="container">
           <div className="row">
-            <div className="col-md-8 card">
+            <div className="col-md-8">
               <div className="row">
                 {dataItem.map((item) => (
-                  <div className="col-lg-12" key={item._id}>
+                  <div className="col-md-12 card postitem" key={item._id}>
                     <div className="row">
                       <div className="col-md-4">
-                        <img src={item.photo} className="images" />
+                        <img src={item.photo} className="home-post-image"/>
                       </div>
                       <div className="col-md-8">
-                        <div className="desing_home">
+                        <div className="desing_home_post">
                           <div className="user_info">
                             <div className="user_pic">
                               <Link
@@ -250,16 +251,16 @@ function Home() {
                                 to={"/userprofile/" + item.postedBy._id}
                                 className="name_design"
                               >
-                                <p>{item.postedBy.name}</p>
+                                <p>{item.postedBy.name}.    {moment(item.date).fromNow()} - (
+                            {moment(item.date).format("MMMM Do YYYY")})</p>
                               </Link>
                             </div>
                           </div>
-                          <p className="date_color">
+                          {/* <p className="date_color">
                             <GoCalendar />{" "}
-                            {/* {moment(item.date).format("MMMM Do YYYY")} */}
                             {moment(item.date).fromNow()} - (
                             {moment(item.date).format("MMMM Do YYYY")})
-                          </p>
+                          </p> */}
 
                           <h5>{item.title.substring(0, 35)}</h5>
                           <p>{item.des.substring(0, 150)}</p>
@@ -307,13 +308,13 @@ function Home() {
                         </div>
                       </div>
                     </div>
-                    <hr />
+                    {/* <hr /> */}
                   </div>
                 ))}
               </div>
               <div className="text-center">
                 <button onClick={handleLoadMore} className="loadmore">
-                  More Posts
+                  {currentItems.length==0?null:"More Posts"}
                 </button>
               </div>
             </div>

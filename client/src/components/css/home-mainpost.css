@@ -1,0 +1,20 @@
+.postitem{
+    height: auto;
+    width: 100%;
+    margin: 10px;
+}
+.postitem:hover{
+    -webkit-box-shadow: -14px 16px 17px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: -14px 16px 17px -3px rgba(0,0,0,0.75);
+box-shadow: -14px 16px 17px -3px rgba(0,0,0,0.75);
+}
+.home-post-image{
+    height: 250px;
+    width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+   
+}
+.desing_home_post{
+    margin: 10px;
+}
