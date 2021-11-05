@@ -5,6 +5,10 @@ import moment from "moment";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { GoCalendar } from "react-icons/go";
 import { Link, useHistory, useParams } from "react-router-dom";
+import { MdCardMembership } from "react-icons/md";
+import { SiMicrodotblog } from "react-icons/si";
+import { AiFillMessage } from "react-icons/ai";
+import { FaUserGraduate } from "react-icons/fa";
 
 const Userprofile = () => {
   const [mypost, setData] = useState();
@@ -26,6 +30,62 @@ const Userprofile = () => {
   }, []);
   return (
     <>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="profile-header">
+              <div className="profile-pic-user-profile">
+                <h2 className="user-profile-name-incircle">
+                  {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
+                </h2>
+              </div>
+
+              <div className="profile-pic-user-profile-name">
+                <h2>{mypost?.userInfo?.name}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container profile_items_container">
+        <div className="row">
+          <div className="col-md-3 card profile-items">
+            <div className="profile-items_design">
+              <MdCardMembership size={35} />
+              <p>Member Since</p>
+            </div>
+            <p className="member-accountcreated-date">
+              <GoCalendar />{" "}
+              {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
+            </p>
+          </div>
+          <div className="col-md-3 card profile-items">
+            <div className="profile-items_design">
+              <SiMicrodotblog size={35} />
+              <p>Published Posts</p>
+              <h4>{mypost?.postsData?.length}</h4>
+            </div>
+          </div>
+          <div className="col-md-3 card profile-items">
+            <div className="profile-items_design">
+              <FaUserGraduate size={35} />
+              <p>Member Type</p>
+              <p>
+                {" "}
+                {mypost?.postsData?.length >= 5 ? <p>Pro User</p> : "New User"}
+              </p>
+            </div>
+          </div>
+          <div className="col-md-2 card profile-items">
+            <div className="profile-items_design">
+              <p>
+                <AiFillMessage size={35} />
+              </p>
+              <button className="btn btn-success">Send Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="container">
         <div className="row">
           {mypost ? (
@@ -60,7 +120,8 @@ const Userprofile = () => {
                       </div>
                       <img src={item.photo} className="images" />
                       <p className="date_color">
-                        <GoCalendar/> {moment(item.date).format("MMMM Do YYYY")}
+                        <GoCalendar />{" "}
+                        {moment(item.date).format("MMMM Do YYYY")}
                       </p>
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
@@ -79,7 +140,7 @@ const Userprofile = () => {
           ) : (
             <h1>Loading...</h1>
           )}
-          {mypost ? (
+          {/* {mypost ? (
             <div className="col-md-3 user_profile_details">
               <div className="desing_home card mb-5 shadow-sm">
                 {/* <div className="profile_pic">{mypost.userInfo.name.charAt(0)}</div> */}
@@ -111,11 +172,10 @@ const Userprofile = () => {
             //   <h4>Published posts: {mypost.postsData.length}</h4>
             // </div>
             <h1>Loading...</h1>
-          )}
+          )} */}
         </div>
       </div>
     </>
   );
 };
 export default Userprofile;
-
