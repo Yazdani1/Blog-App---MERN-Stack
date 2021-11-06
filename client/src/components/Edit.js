@@ -86,10 +86,11 @@ const Post = () => {
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea2">Description</label>
-              <input
+              <textarea
                 class="form-control rounded-0"
                 name="des"
                 value={des}
+                rows="3"
                 onChange={handleChange}
               />
             </div>
