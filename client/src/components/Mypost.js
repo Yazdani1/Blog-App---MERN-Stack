@@ -7,6 +7,7 @@ import { MdCardMembership } from "react-icons/md";
 import { MdAssessment } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
 import { UserContext } from "./UserContext";
+import Dashboard from "./dashboard/Dashboard";
 
 function Mypost() {
   const [mypost, setData] = useState([]);
@@ -44,6 +45,9 @@ function Mypost() {
 
   return (
     <div className="card container main_container">
+       <h1><Link to="/Dashboard">
+         <p>Dashboard Page</p>
+         </Link></h1>
       <div className="row">
         <div className="col-md-4">
           <div className="total_post">

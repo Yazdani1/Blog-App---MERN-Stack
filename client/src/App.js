@@ -12,6 +12,7 @@ import Userprofile from "./components/Userprofile";
 import Edit from "./components/Edit";
 import Details from "./components/Details";
 import { UserProvider } from "./components/UserContext";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route path="/details/:id" exact>
             <ProtectedRoute procomp={Details} />
+          </Route>
+          <Route path="/Dashboard" exact>
+            <ProtectedRoute procomp={Dashboard} />
           </Route>
 
           <Route path="/userprofile/:id" exact>
