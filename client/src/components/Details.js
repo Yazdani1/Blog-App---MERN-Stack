@@ -250,7 +250,7 @@ const DetailsPage = () => {
                   </div>
                 </form>
                 <div className="all-comments">
-                  <p>Total Comments: {dataItem.comments?.length}</p>
+                  <p>{dataItem.comments?.length>0?"Total Comments":"Total Comment"}:{dataItem.comments?.length} </p>
                   {dataItem &&
                     dataItem.comments?.map((allcomments) => {
                       return (
