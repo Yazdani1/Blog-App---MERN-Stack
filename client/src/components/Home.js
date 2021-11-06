@@ -400,7 +400,6 @@ function Home() {
               ))}
             </div> */}
 
-
           </div>
         </div>
         <div className="container allusers">

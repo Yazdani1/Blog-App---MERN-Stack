@@ -9,6 +9,8 @@ import { MdCardMembership } from "react-icons/md";
 import { SiMicrodotblog } from "react-icons/si";
 import { AiFillMessage } from "react-icons/ai";
 import { FaUserGraduate } from "react-icons/fa";
+import { RiSendPlaneFill } from "react-icons/ri";
+
 
 const Userprofile = () => {
   const [mypost, setData] = useState();
@@ -81,7 +83,7 @@ const Userprofile = () => {
               <p>
                 <AiFillMessage size={35} />
               </p>
-              <button className="btn btn-success">Send Message</button>
+              <button className="btn btn-success">Send Message <RiSendPlaneFill size={25}/></button>
             </div>
           </div>
         </div>
