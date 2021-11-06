@@ -1,33 +1,32 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import Mypost from "../Mypost";
+import "./DashboardNav.css";
+import { AiFillDashboard } from "react-icons/ai";
+import { RiEditFill } from "react-icons/ri";
+
+
 
 const DashboardNav = () => {
   return (
-    <div className="container">
-      <Link to="/Dashboard">
-        <p>Dashboard</p>
-      </Link>
-      <Link to="/createpost">
-        <p>Createpost</p>
-      </Link>
-      <p>Profile</p>
-      <p>Setting</p>
-      {/* <div className="row">
-        <div className="col-md-4">
-          <Link to="/Dashboard">
-            <p>Dashboard</p>
-          </Link>
-          <Link to="/createpost">
-            <p>Createpost</p>
-          </Link>
-          <p>Profile</p>
-          <p>Setting</p>
+    <div className="container card">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="adminnavbar">
+            <Link to="/Dashboard" style={{ textDecoration: "none" }}>
+              <li><AiFillDashboard size={25}/> Dashboard</li>
+            </Link>
+            <Link to="/createpost" style={{ textDecoration: "none" }}>
+              <li><RiEditFill size={25}/>Createpost</li>
+            </Link>
+            <Link to="/Dashboardprofile" style={{ textDecoration: "none" }}>
+              <li>Profile</li>
+            </Link>
+
+            <li>Setting</li>
+          </div>
         </div>
-        <div className="col-md-8">
-          <Mypost />
-        </div>
-      </div> */}
+      </div>
     </div>
   );
 };

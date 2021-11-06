@@ -1,0 +1,13 @@
+.adminnavbar li{
+    list-style-type: none;
+
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 15px;
+    
+}
+
+.dashboard-nav-protected{
+    margin-top: 35px;
+}

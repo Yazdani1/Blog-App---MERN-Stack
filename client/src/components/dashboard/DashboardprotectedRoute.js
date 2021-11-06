@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import DashboardNav from "./DashboardNav";
 import Nav from "../../Nav";
-
+import "./DashboardNav.css";
 const DashboardprotectedRoute = (props) => {
   const history = useHistory();
 
@@ -18,9 +18,10 @@ const DashboardprotectedRoute = (props) => {
   return (
     <div>
       <Nav />
-      <div className="container">
+      <div className="container dashboard-nav-protected">
+      
         <div className="row">
-          <div className="col-md-2">
+          <div className="col-md-4 ">
             <DashboardNav />
           </div>
           <div className="col-md-8">

@@ -15,7 +15,7 @@ import { UserProvider } from "./components/UserContext";
 import Dashboard from "./components/dashboard/Dashboard";
 import DashboardprotectedRoute from "./components/dashboard/DashboardprotectedRoute";
 import DashboardNav from "./components/dashboard/DashboardNav";
-
+import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
 function App() {
   return (
     <UserProvider>
@@ -28,9 +28,9 @@ function App() {
           <Route path="/userprofile/:id" exact>
             <ProtectedRoute procomp={Userprofile} />
           </Route>
-          <Route path="/editpost/:id">
+          {/* <Route path="/editpost/:id">
             <ProtectedRoute procomp={Edit} />
-          </Route>
+          </Route> */}
 
           <Route path="/" exact>
             <ProtectedRoute procomp={Home} />
@@ -64,12 +64,18 @@ function App() {
             <DashboardprotectedRoute Dashboardprocomp={DashboardNav} />
           </Route> */}
 
-           <Route path="/Dashboard" exact>
+          <Route path="/Dashboard" exact>
             <DashboardprotectedRoute Dashboardprocomp={Mypost} />
           </Route>
 
           <Route path="/createpost">
             <DashboardprotectedRoute Dashboardprocomp={Post} />
+          </Route>
+          <Route path="/editpost/:id">
+            <DashboardprotectedRoute Dashboardprocomp={Edit} />
+          </Route>
+          <Route path="/Dashboardprofile">
+            <DashboardprotectedRoute Dashboardprocomp={DashboardProfile} />
           </Route>
 
           {/* <Route path="/Dashboard" exact>
