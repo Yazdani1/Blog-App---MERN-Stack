@@ -20,8 +20,6 @@ function ProtectedRoute(props) {
     <div>
       <Nav />
       <Cmprops />
-      <Dashboard/>
-
     </div>
   );
 }
