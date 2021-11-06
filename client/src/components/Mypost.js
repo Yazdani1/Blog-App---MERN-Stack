@@ -45,7 +45,7 @@ function Mypost() {
 
   return (
     <div className="card container main_container">
-  
+
       <div className="row">
         <div className="col-md-4">
           <div className="total_post">

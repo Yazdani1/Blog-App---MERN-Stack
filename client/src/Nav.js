@@ -77,7 +77,7 @@ function Nav() {
                     <li>Announcement</li>
                   </Link>
 
-                  <Link to="/userprofile" className="dropdown-item each">
+                  <Link to="/Dashboard" className="dropdown-item each">
                     Dashboard
                   </Link>
                   <Link to="/profile" className="dropdown-item each">
