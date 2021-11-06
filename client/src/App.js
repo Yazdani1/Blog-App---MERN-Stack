@@ -48,10 +48,6 @@ function App() {
           <Route path="/signin">
             <ProtectedRoute procomp={SignIn} />
           </Route>
-
-          {/* <Route path="/details">
-            <ProtectedRoute procomp={Details} />
-          </Route> */}
           <Route path="/profile">
             <ProtectedRoute procomp={Profile} />
           </Route>

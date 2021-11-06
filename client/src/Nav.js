@@ -84,6 +84,7 @@ function Nav() {
                     Setting
                   </Link>
                   <Link
+                    target={"_blank"}
                     to={"/userprofile/" + (user && user._id)}
                     className="dropdown-item each item_back"
                   >
@@ -98,7 +99,10 @@ function Nav() {
               <div className="eachitem">
                 <div className="user_info">
                   <div className="user_pic">
-                    <Link to={"/userprofile/"+ (user && user._id)} className="name_design">
+                    <Link
+                      to={"/userprofile/" + (user && user._id)}
+                      className="name_design"
+                    >
                       <div className="user_pic_home_page">
                         <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
                       </div>
