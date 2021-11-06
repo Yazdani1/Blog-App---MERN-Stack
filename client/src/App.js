@@ -13,6 +13,8 @@ import Edit from "./components/Edit";
 import Details from "./components/Details";
 import { UserProvider } from "./components/UserContext";
 import Dashboard from "./components/dashboard/Dashboard";
+import DashboardprotectedRoute from "./components/dashboard/DashboardprotectedRoute";
+import DashboardNav from "./components/dashboard/DashboardNav";
 
 function App() {
   return (
@@ -21,9 +23,6 @@ function App() {
         <Switch>
           <Route path="/details/:id" exact>
             <ProtectedRoute procomp={Details} />
-          </Route>
-          <Route path="/Dashboard" exact>
-            <ProtectedRoute procomp={Dashboard} />
           </Route>
 
           <Route path="/userprofile/:id" exact>
@@ -41,9 +40,9 @@ function App() {
             <ProtectedRoute procomp={Postaccouncement} />
           </Route>
 
-          <Route path="/myPost" exact>
+          {/* <Route path="/myPost" exact>
             <ProtectedRoute procomp={Mypost} />
-          </Route>
+          </Route> */}
 
           <Route path="/signup">
             <ProtectedRoute procomp={Signup} />
@@ -57,6 +56,20 @@ function App() {
           </Route>
           <Route path="/post">
             <ProtectedRoute procomp={Post} />
+          </Route>
+
+          {/* //admin protected route */}
+
+          <Route path="/Dashboard" exact>
+            <DashboardprotectedRoute Dashboardprocomp={DashboardNav} />
+          </Route>
+
+           <Route path="/myPost" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Mypost} />
+          </Route>
+
+          <Route path="/Dashboard" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Dashboard} />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import "../App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
+import Dashboard from "./dashboard/Dashboard";
 
 function SignIn() {
   
@@ -48,7 +49,7 @@ function SignIn() {
 
       localStorage.setItem("tokenLogin", res.data.token);
 
-      history.push("/myPost");
+      history.push("/DashboardNav");
     } catch (err) {
       setData({ ...data, error: err.response.data.error });
     }

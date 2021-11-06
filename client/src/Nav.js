@@ -70,7 +70,7 @@ function Nav() {
                   <Link to="/post" className="dropdown-item each">
                     Create Post
                   </Link>
-                  <Link to="/myPost" className="dropdown-item each">
+                  <Link to="/Dashboard" className="dropdown-item each">
                     <li>My Post</li>
                   </Link>
                   <Link to="/postannouncement" className="dropdown-item each">
