@@ -78,22 +78,7 @@ router.get("/mypost", requireLogin, (req, res) => {
     });
 });
 
-// //user profile
 
-// router.get("/userprofile",requireLogin, (req, res) => {
-//   Post.find({ postedBy: req.user._id })
-//     .populate("postedBy", "_id name email")
-//     .then((mypostdata) => {
-//       res.json(mypostdata);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-//total post
-
-//delete route
 
 //get edit data
 router.get("/edit/:id", requireLogin, (req, res) => {
@@ -211,7 +196,6 @@ router.put("/comments", requireLogin, (req, res) => {
       new: true,
     }
   )
-
     .populate("comments.postedBy", "_id name")
     .populate("postedBy", "_id name")
 
