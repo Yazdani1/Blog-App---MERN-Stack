@@ -49,7 +49,7 @@ function SignIn() {
 
       localStorage.setItem("tokenLogin", res.data.token);
 
-      history.push("/DashboardNav");
+      history.push("/Dashboard");
     } catch (err) {
       setData({ ...data, error: err.response.data.error });
     }

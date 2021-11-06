@@ -5,8 +5,8 @@ import { Link, useHistory } from "react-router-dom";
 const DashboardNav = () => {
   return (
     <div>
-      <Link to="/myPost"><p>Dashboard</p></Link>
-      <p>Creat Post</p>
+      <Link to="/Dashboard"><p>Dashboard</p></Link>
+      <Link to="/createpost"><p>Createpost</p></Link>
       <p>Profile</p>
       <p>Setting</p>
     </div>

@@ -60,17 +60,21 @@ function App() {
 
           {/* //admin protected route */}
 
-          <Route path="/Dashboard" exact>
+          {/* <Route path="/DashboardNav" exact>
             <DashboardprotectedRoute Dashboardprocomp={DashboardNav} />
-          </Route>
+          </Route> */}
 
-           <Route path="/myPost" exact>
+           <Route path="/Dashboard" exact>
             <DashboardprotectedRoute Dashboardprocomp={Mypost} />
           </Route>
 
-          <Route path="/Dashboard" exact>
-            <DashboardprotectedRoute Dashboardprocomp={Dashboard} />
+          <Route path="/createpost">
+            <DashboardprotectedRoute Dashboardprocomp={Post} />
           </Route>
+
+          {/* <Route path="/Dashboard" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Dashboard} />
+          </Route> */}
         </Switch>
       </BrowserRouter>
     </UserProvider>
