@@ -110,38 +110,6 @@ function Mypost() {
           ))}
         </tbody>
       </table>
-      {/* table end */}
-      {/* <div className="row">
-        <div className="col-md-8">
-          {mypost.map((item, index) => (
-            <div className="card top">
-              <h3>{item.postedBy.name}</h3>
-            <h3>{item.postedBy.email}</h3>
-              <h1>{index}</h1>
-              <h5>{item.title}</h5>
-              <p>{item.des.substring(0, 50)}</p>
-              <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
-              <p>Posted by: {item.postedBy.name}</p>
-              <span className="read">Read More ...</span>
-              <div className="row">
-                <div className="col-md-8">
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => deletePost(item._id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-                <div className="col-md-4">
-                  <Link to={"/editpost/" + item._id}>
-                    <button className="btn btn-danger">Edit</button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
     </div>
   );
 }
