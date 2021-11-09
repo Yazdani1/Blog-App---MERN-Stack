@@ -264,6 +264,7 @@ function Home() {
 
                           <h5>{item.title.substring(0, 35)}</h5>
                           <p>{item.des.substring(0, 150)}</p>
+                          <hr/>
 
                           <div className="likes">
                             <h5>{item.likes.length>0?"Likes":"Like"}.{item.likes.length}</h5>
@@ -283,7 +284,7 @@ function Home() {
                                 addunlikePost(item._id);
                               }
                             }>
-                                <AiOutlineDislike size={30} />
+                                <AiOutlineDislike size={25} />
                               </p>
                             ) : (
                               <p
@@ -295,7 +296,7 @@ function Home() {
                                   }
                                 }}
                               >
-                                <AiOutlineLike size={30} />
+                                <AiOutlineLike size={25} />
                               </p>
                             )}
                           </div>
