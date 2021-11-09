@@ -140,6 +140,7 @@ const Userprofile = () => {
                       </p>
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
+                      <hr/>
 
                       <div className="likes">
                         <p>

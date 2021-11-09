@@ -512,7 +512,8 @@
   display: flex;
 }
 .likes p {
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  padding-left: 10px;
 }
 
 .like-and-comment{

@@ -272,13 +272,15 @@ function Home() {
 
                           <div className="likes">
                             <p>
-                              {item.likes.length > 0 ? "Likes" : "Like"}.
-                              {item.likes.length}
+                            {item.likes.length}.
+                              {item.likes.length > 0 ? "Likes" : "Like"}
+                              
                             </p>
 
                             {item.likes.includes(
                               userDatails && userDatails._id
                             ) ? (
+                              
                               <p
                                 onClick={() => {
                                   //   if (!localStorage.getItem("tokenLogin")) {
@@ -290,7 +292,8 @@ function Home() {
                                   addunlikePost(item._id);
                                 }}
                               >
-                                <AiOutlineDislike size={20} />.
+                                <AiOutlineDislike size={20} />
+                                
                               </p>
                             ) : (
                               <p
