@@ -13,8 +13,6 @@ import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 
-
-
 import FirstSection from "./HomePage/FirstSection";
 import { UserContext } from "./UserContext";
 import "./css/home-mainpost.css";
@@ -272,15 +270,13 @@ function Home() {
 
                           <div className="likes">
                             <p>
-                            {item.likes.length}.
+                              {item.likes.length}.
                               {item.likes.length > 0 ? "Likes" : "Like"}
-                              
                             </p>
 
                             {item.likes.includes(
                               userDatails && userDatails._id
                             ) ? (
-                              
                               <p
                                 onClick={() => {
                                   //   if (!localStorage.getItem("tokenLogin")) {
@@ -293,7 +289,6 @@ function Home() {
                                 }}
                               >
                                 <AiOutlineDislike size={20} />
-                                
                               </p>
                             ) : (
                               <p
@@ -308,9 +303,26 @@ function Home() {
                                 <AiOutlineLike size={20} />.
                               </p>
                             )}
-                            
-                            <p><FaRegCommentDots/> {item.comments.length}</p>
-                            <p>{item.comments.length>0?"Comments":"Comment"}</p>
+
+                            <Link
+                              to={"/details/" + item._id}
+                              style={{ textDecoration: "none" }}
+                            >
+                              <p>
+                                <FaRegCommentDots /> {item.comments.length}
+                              </p>
+                            </Link>
+
+                            <Link
+                              to={"/details/" + item._id}
+                              style={{ textDecoration: "none" }}
+                            >
+                              <p>
+                                {item.comments.length > 0
+                                  ? "Comments"
+                                  : "Comment"}
+                              </p>
+                            </Link>
                           </div>
 
                           <Link to={"/details/" + item._id}>

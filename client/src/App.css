@@ -539,6 +539,11 @@
   background-color: brown;
 }
 
+.comment-todetailspage{
+  list-style-type: none;
+  text-decoration: none;
+}
+
 /* details post section */
 
 .details-post {
