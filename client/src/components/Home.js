@@ -11,6 +11,9 @@ import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
+import { FaRegCommentDots } from "react-icons/fa";
+
+
 
 import FirstSection from "./HomePage/FirstSection";
 import { UserContext } from "./UserContext";
@@ -163,7 +166,6 @@ function Home() {
       },
       body: JSON.stringify({
         postId: id,
-       
       }),
     })
       .then((res) => res.json())
@@ -193,7 +195,6 @@ function Home() {
       },
       body: JSON.stringify({
         postId: id,
-        
       }),
     })
       .then((res) => res.json())
@@ -227,7 +228,7 @@ function Home() {
                   <div className="col-md-12 card postitem" key={item._id}>
                     <div className="row">
                       <div className="col-md-4">
-                        <img src={item.photo} className="home-post-image"/>
+                        <img src={item.photo} className="home-post-image" />
                       </div>
                       <div className="col-md-8">
                         <div className="desing_home_post">
@@ -251,8 +252,11 @@ function Home() {
                                 to={"/userprofile/" + item.postedBy._id}
                                 className="name_design"
                               >
-                                <p>{item.postedBy.name}.    {moment(item.date).fromNow()} - (
-                            {moment(item.date).format("MMMM Do YYYY")})</p>
+                                <p>
+                                  {item.postedBy.name}.{" "}
+                                  {moment(item.date).fromNow()} - (
+                                  {moment(item.date).format("MMMM Do YYYY")})
+                                </p>
                               </Link>
                             </div>
                           </div>
@@ -264,27 +268,29 @@ function Home() {
 
                           <h5>{item.title.substring(0, 35)}</h5>
                           <p>{item.des.substring(0, 150)}</p>
-                          <hr/>
+                          <hr />
 
                           <div className="likes">
-                            <h5>{item.likes.length>0?"Likes":"Like"}.{item.likes.length}</h5>
+                            <p>
+                              {item.likes.length > 0 ? "Likes" : "Like"}.
+                              {item.likes.length}
+                            </p>
 
                             {item.likes.includes(
                               userDatails && userDatails._id
                             ) ? (
                               <p
                                 onClick={() => {
-
-                                //   if (!localStorage.getItem("tokenLogin")) {
-                                //     history.push("/signin");
-                                //   } else {
-                                //     addunlikePost(item._id);
-                                //   }
-                                // }
-                                addunlikePost(item._id);
-                              }
-                            }>
-                                <AiOutlineDislike size={25} />
+                                  //   if (!localStorage.getItem("tokenLogin")) {
+                                  //     history.push("/signin");
+                                  //   } else {
+                                  //     addunlikePost(item._id);
+                                  //   }
+                                  // }
+                                  addunlikePost(item._id);
+                                }}
+                              >
+                                <AiOutlineDislike size={20} />.
                               </p>
                             ) : (
                               <p
@@ -296,9 +302,12 @@ function Home() {
                                   }
                                 }}
                               >
-                                <AiOutlineLike size={25} />
+                                <AiOutlineLike size={20} />.
                               </p>
                             )}
+                            
+                            <p><FaRegCommentDots/> {item.comments.length}</p>
+                            <p>{item.comments.length>0?"Comments":"Comment"}</p>
                           </div>
 
                           <Link to={"/details/" + item._id}>
@@ -315,7 +324,7 @@ function Home() {
               </div>
               <div className="text-center">
                 <button onClick={handleLoadMore} className="loadmore">
-                 More Posts
+                  More Posts
                 </button>
               </div>
             </div>
@@ -324,7 +333,6 @@ function Home() {
               <h5 className="latest-posts-title">Latest posts</h5>
               <div className="latest-post-part card">
                 {latestPost.map((item) => (
-                  
                   <div className="container">
                     <hr />
                     <div className="row">
@@ -354,9 +362,7 @@ function Home() {
                           </p>
                         </div>
                       </div>
-                      
                     </div>
-                    
                   </div>
                 ))}
               </div>
@@ -400,7 +406,6 @@ function Home() {
                 </div>
               ))}
             </div> */}
-
           </div>
         </div>
         <div className="container allusers">

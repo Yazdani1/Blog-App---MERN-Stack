@@ -515,6 +515,10 @@
   margin-left: 10px;
 }
 
+.like-and-comment{
+  display: flex;
+}
+
 /* comments section design */
 
 .comments {
