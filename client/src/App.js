@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route,browserHistory } from "react-router-dom";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import SignIn from "./components/SignIn";
@@ -16,6 +16,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import DashboardprotectedRoute from "./components/dashboard/DashboardprotectedRoute";
 import DashboardNav from "./components/dashboard/DashboardNav";
 import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
+import PagenotFound from "./components/PagenotFound";
 function App() {
   return (
     <UserProvider>
@@ -57,6 +58,10 @@ function App() {
           <Route path="/post">
             <ProtectedRoute procomp={Post} />
           </Route>
+
+          <Route path="*" exact component={PagenotFound}/>
+            
+         
 
           {/* //admin protected route */}
 

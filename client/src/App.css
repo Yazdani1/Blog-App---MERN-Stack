@@ -550,6 +550,26 @@
   margin-top: 10px;
 }
 
+
+/* //page not found */
+
+.page-not-found{
+  height: auto;
+  width: 50%;
+  margin: 30px;
+  
+}
+
+.page-not-found h5{
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  position: relative; 
+  margin: 30px;
+}
 /* user profile header */
 
 .profile-header {

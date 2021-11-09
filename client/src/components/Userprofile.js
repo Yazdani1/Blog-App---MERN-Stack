@@ -10,6 +10,8 @@ import { SiMicrodotblog } from "react-icons/si";
 import { AiFillMessage } from "react-icons/ai";
 import { FaUserGraduate } from "react-icons/fa";
 import { RiSendPlaneFill } from "react-icons/ri";
+import { FaRegCommentDots } from "react-icons/fa";
+import { AiOutlineLike } from "react-icons/ai";
 
 
 const Userprofile = () => {
@@ -83,17 +85,23 @@ const Userprofile = () => {
               <p>
                 <AiFillMessage size={35} />
               </p>
-              <button className="btn btn-success">Send Message <RiSendPlaneFill size={25}/></button>
+              <button className="btn btn-success">
+                Send Message <RiSendPlaneFill size={25} />
+              </button>
             </div>
           </div>
         </div>
       </div>
       <div className="container user-main-posts-section">
-        <h5>{mypost?.postsData?.length === 0 ? (
-        <div className="card">
-          <h4>This User Did Not Publish Any Posts Yet</h4>
-        </div>
-        ): "All Posts"}</h5>
+        <h5>
+          {mypost?.postsData?.length === 0 ? (
+            <div className="card">
+              <h4>This User Did Not Publish Any Posts Yet</h4>
+            </div>
+          ) : (
+            "All Posts"
+          )}
+        </h5>
         <div className="row">
           {mypost ? (
             <div className="col-md-12">
@@ -132,6 +140,22 @@ const Userprofile = () => {
                       </p>
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
+
+                      <div className="likes">
+                        <p>
+                          
+                        <AiOutlineLike/> {item.likes.length}. 
+                         {item.likes.length > 0 ? "Likes" : "Like"}
+                        </p>
+
+              
+                        <p>
+                          <FaRegCommentDots /> {item.comments.length}
+                        </p>
+                        <p>
+                          {item.comments.length > 0 ? "Comments" : "Comment"}
+                        </p>
+                      </div>
                       <Link to={"/details/" + item._id}>
                         <button className="btn btn-primary">
                           Reade More <AiOutlineArrowRight />
@@ -148,13 +172,12 @@ const Userprofile = () => {
             <h1>Loading...</h1>
           )}
 
-          {
-            /* 
+          {/* 
                       {mypost ? (
             <div className="col-md-3 user_profile_details">
               <div className="desing_home card mb-5 shadow-sm">
                 {/* <div className="profile_pic">{mypost.userInfo.name.charAt(0)}</div> */}
-                {/* <div className="user_profile_pic">
+          {/* <div className="user_profile_pic">
                   <h2>{mypost.userInfo.name.substring(0, 2)}</h2>
                 </div>
 
@@ -178,8 +201,6 @@ const Userprofile = () => {
 
             <h1>Loading...</h1>
           )} */}
-            
-    
         </div>
       </div>
     </>

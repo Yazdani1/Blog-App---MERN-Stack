@@ -9,6 +9,7 @@ router.get("/userprofileda/:id", (req, res) => {
     .then((userInfo) => {
       Post.find({ postedBy: req.params.id })
         .populate("postedBy", "_id name email")
+        .populate("comments.postedBy", "_id name")
         .exec((err, postsData) => {
           if (err) {
             return res.status(400).json({ error: err });

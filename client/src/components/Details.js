@@ -196,7 +196,7 @@ const DetailsPage = () => {
                   </h5>
 
                   <h4>{dataItem && dataItem.title}</h4>
-                  <h4>{dataItem && dataItem._id}</h4>
+                  {/* <h4>{dataItem && dataItem._id}</h4> */}
 
                   <p>{dataItem && dataItem.des}</p>
 
