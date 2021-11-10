@@ -19,14 +19,16 @@ function SignUp() {
     name: "",
     email: "",
     password: "",
-    error: null,
+    error: "",
+    success:false
   });
 
-  const { name, email, password, error } = data;
+  const { name, email, password, error,success } = data;
 
   const handleChange = (e) => {
     setData({
       ...data,
+      error: false,
       [e.target.name]: e.target.value,
     });
   };
@@ -40,10 +42,18 @@ function SignUp() {
           "Content-Type": "application/json",
         },
       });
+      setData({
+       
+        name: "",
+        email: "",
+        password: "",
+        error: "",
+        success:true
+      })
 
-      history.push("/signin");
+     // history.push("/signin");
     } catch (err) {
-      setData({ ...data, error: err.response.data.errort });
+      setData({ ...data, error: err.response.data.errort,success:false });
     }
   };
 
@@ -129,6 +139,12 @@ function SignUp() {
             style={{ display: error ? "" : "none" }}
           >
             {error}
+          </div>
+          <div
+            className="alert alert-success"
+            style={{ display: success ? "" : "none" }}
+          >
+           New account has created. Please Sign in to your account.<Link to="/signin">Sign In</Link>
           </div>
           <form className="card form_Design">
             <div className="form-group">
