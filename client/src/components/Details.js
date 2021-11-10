@@ -10,7 +10,6 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import "../App.css";
 
 const DetailsPage = () => {
-
   const { id } = useParams();
 
   let history = useHistory();
@@ -19,7 +18,8 @@ const DetailsPage = () => {
   const [latestPost, setLatestpost] = useState([]);
   const [postsmore, setPosts] = useState([]);
   const [text, setText] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   var settings = {
     dots: true,
@@ -96,16 +96,21 @@ const DetailsPage = () => {
       });
   };
 
- 
   useEffect(() => {
     getDetailsData();
     getlatestPost();
     morePost();
-    
   }, [dataItem]);
+
+  const handleChange = (e) => {
+    setError("");
+    setText(e.target.value);
+  };
 
   const postComment = (e, postId) => {
     e.preventDefault();
+    setError("");
+    setSuccess(false);
     fetch("/auth/comments", {
       method: "put",
       headers: {
@@ -122,8 +127,11 @@ const DetailsPage = () => {
         console.log(result);
         if (result.error) {
           setError(result.error);
+        } else {
+          setError("");
+          setSuccess(true);
         }
-    
+
         const newItemData = dataItem.map((item) => {
           if (item._id == result._id) {
             return result;
@@ -132,17 +140,14 @@ const DetailsPage = () => {
           }
         });
         setData(newItemData);
-        
       })
       .catch((err) => {
         console.log(err);
       });
     setText("");
-    
   };
 
   return (
-    
     <>
       <div className="main_details">
         <div className="container">
@@ -214,17 +219,33 @@ const DetailsPage = () => {
                 <form>
                   <div className="row">
                     <div className="col-md-9">
+                      <div
+                        className="alert alert-success"
+                        style={{ display: success ? "" : "none" }}
+                      >
+                        Your Comment has been posted Successfully!
+                        
+                      </div>
+                      <div
+                        className="alert alert-danger"
+                        style={{ display: error ? "" : "none" }}
+                      >
+                       {error}
+                        
+                      </div>
                       <div className="form-groupgfgf">
                         <textarea
                           type="text"
                           className="form-control rounded-0"
-                          onChange={(e) => setText(e.target.value)}
+                          onChange={handleChange}
+                          //onChange={(e) => setText(e.target.value)}
                           value={text}
                           placeholder="Type your comments.."
                           rows="3.5"
                         />
-                        {error ? <p className="text-danger">{error}</p> : null}
+                        {/* {error ? <p className="text-danger">{error}</p> : null} */}
                       </div>
+
                     </div>
                     {/* <div
                         className="alert alert-danger"
@@ -253,7 +274,12 @@ const DetailsPage = () => {
                   </div>
                 </form>
                 <div className="all-comments">
-                  <p>{dataItem.comments?.length>0?"Total Comments":"Total Comment"}:{dataItem.comments?.length} </p>
+                  <p>
+                    {dataItem.comments?.length > 0
+                      ? "Total Comments"
+                      : "Total Comment"}
+                    :{dataItem.comments?.length}{" "}
+                  </p>
                   {dataItem &&
                     dataItem.comments?.map((allcomments) => {
                       return (
