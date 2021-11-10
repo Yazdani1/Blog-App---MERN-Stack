@@ -24,12 +24,13 @@ function SignIn() {
   const [data, setData] = useState({
     email: "",
     password: "",
-    error: null,
+    error: "",
   });
   const { email, password, error } = data;
   const handleChange = (e) => {
     setData({
       ...data,
+      error:false,
       [e.target.name]: e.target.value,
     });
   };

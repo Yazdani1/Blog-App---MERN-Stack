@@ -19,7 +19,7 @@ const DetailsPage = () => {
   const [latestPost, setLatestpost] = useState([]);
   const [postsmore, setPosts] = useState([]);
   const [text, setText] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   var settings = {
     dots: true,
@@ -123,6 +123,7 @@ const DetailsPage = () => {
         if (result.error) {
           setError(result.error);
         }
+    
         const newItemData = dataItem.map((item) => {
           if (item._id == result._id) {
             return result;
@@ -131,11 +132,13 @@ const DetailsPage = () => {
           }
         });
         setData(newItemData);
+        
       })
       .catch((err) => {
         console.log(err);
       });
     setText("");
+    
   };
 
   return (
