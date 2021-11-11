@@ -383,45 +383,6 @@ function Home() {
                 ))}
               </div>
             </div>
-
-            {/* <div className="col-md-4">
-              <h2>Latest Posts</h2>
-              <hr />
-              {latestPost.map((latestitem) => (
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-4">
-                      <img
-                        src={latestitem.photo}
-                        height="100px"
-                        alt="Post image"
-                        className="det_post_image"
-                        width="100%"
-                      />
-                    </div>
-                    <div className="col-md-8">
-                      <div className="latest_post">
-                        <Link
-                          className="latest_title"
-                          to={"/details/" + latestitem._id}
-                        >
-                          <h5>{latestitem.title.substring(0, 25)}</h5>
-                        </Link>
-
-                        <p>
-                          <FaUserCircle /> {latestitem.postedBy.name}
-                        </p>
-                        <p>
-                          <GoCalendar />{" "}
-                          {moment(latestitem.date).format("MMMM Do YYYY")}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-                </div>
-              ))}
-            </div> */}
           </div>
         </div>
         <div className="container allusers">
@@ -450,8 +411,6 @@ function Home() {
                       View Profile
                     </button>
                   </Link>
-
-                  {/* <span className="read_more_button">Read More</span> */}
                 </div>
               </div>
             ))}
