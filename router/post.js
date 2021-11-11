@@ -207,6 +207,36 @@ router.put("/comments", requireLogin, (req, res) => {
 });
 
 
+//delete comment
+
+// router.put("/deletecomments", requireLogin, (req, res) => {
+//   const { text } = req.body;
+//   const comment = {
+//     text
+//   };
+
+//   Post.findByIdAndUpdate(
+//     req.body.postId,
+//     {
+//       $pull: { comments: {_id: comment._id} },
+//     },
+//     {
+//       new: true,
+//     }
+//   )
+//     .populate("comments.postedBy", "_id name")
+//     .populate("postedBy", "_id name")
+
+//     .exec((err, result) => {
+//       if (err) {
+//         return res.status(422).json({ error: err });
+//       } else {
+//         res.json(result);
+//       }
+//     });
+// });
+
+
 //delete comments
 
 // router.delete("/deletecomments", requireLogin, (req, res) => {

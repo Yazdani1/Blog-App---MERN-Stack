@@ -147,6 +147,38 @@ const DetailsPage = () => {
     setText("");
   };
 
+  //delete comment
+
+  // const deleteComment = (postId, textId) => {
+  
+
+  //   fetch("/auth/deletecomments", {
+  //     method: "put",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //     body: JSON.stringify({
+  //       text: textId,
+  //       postId: postId,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       // console.log(result);
+  //       // if (result.error) {
+  //       //   setError(result.error);
+  //       // } else {
+  //       //   setError("");
+  //       //   setSuccess(true);
+  //       // }
+
+
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <>
@@ -314,10 +346,16 @@ const DetailsPage = () => {
                                   "MMMM Do YYYY"
                                 )}
                               </p>
+
+                              {/* <button
+                                className="btn btn-danger"
+                                onClick={() => deleteComment(allcomments.postedBy._id,allcomments.text)}
+                              >
+                                Delete
+                              </button> */}
                             </div>
                             <p>{allcomments.text}</p>
                             <p>{allcomments && allcomments._id}</p>
-                     
                           </div>
                         </>
                       );
