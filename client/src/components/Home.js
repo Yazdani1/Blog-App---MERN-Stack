@@ -229,6 +229,7 @@ function Home() {
                         <img src={item.photo} className="home-post-image" />
                       </div>
                       <div className="col-md-8">
+
                         <div className="desing_home_post">
                           <div className="user_info">
                             <div className="user_pic">
