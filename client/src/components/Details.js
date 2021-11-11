@@ -147,6 +147,7 @@ const DetailsPage = () => {
     setText("");
   };
 
+
   return (
     <>
       <div className="main_details">
@@ -224,14 +225,12 @@ const DetailsPage = () => {
                         style={{ display: success ? "" : "none" }}
                       >
                         Your Comment has been posted Successfully!
-                        
                       </div>
                       <div
                         className="alert alert-danger"
                         style={{ display: error ? "" : "none" }}
                       >
-                       {error}
-                        
+                        {error}
                       </div>
                       <div className="form-groupgfgf">
                         <textarea
@@ -245,7 +244,6 @@ const DetailsPage = () => {
                         />
                         {/* {error ? <p className="text-danger">{error}</p> : null} */}
                       </div>
-
                     </div>
                     {/* <div
                         className="alert alert-danger"
@@ -318,6 +316,8 @@ const DetailsPage = () => {
                               </p>
                             </div>
                             <p>{allcomments.text}</p>
+                            <p>{allcomments && allcomments._id}</p>
+                     
                           </div>
                         </>
                       );

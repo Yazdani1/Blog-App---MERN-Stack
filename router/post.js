@@ -78,8 +78,6 @@ router.get("/mypost", requireLogin, (req, res) => {
     });
 });
 
-
-
 //get edit data
 router.get("/edit/:id", requireLogin, (req, res) => {
   var editQuery = { _id: req.params.id };
@@ -207,5 +205,18 @@ router.put("/comments", requireLogin, (req, res) => {
       }
     });
 });
+
+
+//delete comments
+
+// router.delete("/deletecomments", requireLogin, (req, res) => {
+//   Post.comments.findByIdAndDelete(req.body.commentid)
+//     .then((result) => {
+//       res.json(result);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
 
 module.exports = router;
