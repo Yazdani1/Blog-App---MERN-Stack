@@ -229,7 +229,6 @@ function Home() {
                         <img src={item.photo} className="home-post-image" />
                       </div>
                       <div className="col-md-8">
-
                         <div className="desing_home_post">
                           <div className="user_info">
                             <div className="user_pic">
@@ -271,10 +270,10 @@ function Home() {
 
                           <div className="likes">
                             <p>
-                              {item.likes.length}.
+                              {item.likes?.length}.
                               {item.likes.length > 0 ? "Likes" : "Like"}
                             </p>
-
+                    
                             {item.likes.includes(
                               userDatails && userDatails._id
                             ) ? (
@@ -340,7 +339,7 @@ function Home() {
               </div>
               <div className="text-center">
                 <button onClick={handleLoadMore} className="loadmore">
-                  More Posts
+                  More Posts 
                 </button>
               </div>
             </div>

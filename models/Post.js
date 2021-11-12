@@ -20,6 +20,8 @@ var postSchema = mongoose.Schema({
     {
       type: ObjectId,
       ref: "User",
+      // postedBy: { type: ObjectId, ref: "User" },
+
     },
   ],
   comments: [

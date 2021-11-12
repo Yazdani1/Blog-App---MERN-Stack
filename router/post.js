@@ -136,13 +136,14 @@ router.put("/like", requireLogin, (req, res) => {
   Post.findByIdAndUpdate(
     req.body.postId,
     {
-      $push: { likes: req.user._id },
+      $push: { likes: req.user._id},
     },
     {
       new: true,
     }
   )
     .populate("postedBy", "_id name")
+    .populate("likes.postedBy", "_id name")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });
@@ -156,13 +157,14 @@ router.put("/unlike", requireLogin, (req, res) => {
   Post.findByIdAndUpdate(
     req.body.postId,
     {
-      $pull: { likes: req.user._id },
+      $pull: { likes: req.user._id},
     },
     {
       new: true,
     }
   )
     .populate("postedBy", "_id name")
+    .populate("likes.postedBy", "_id name")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });
