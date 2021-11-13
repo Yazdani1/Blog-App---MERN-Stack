@@ -212,6 +212,26 @@ function Home() {
       });
   };
 
+  // const addtoWishList = (id) => {
+  //   fetch("/auth/wishlist", {
+  //     method: "put",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //     body: JSON.stringify({
+  //       postId: id,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       console.log("wishlist result" + result);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
   const renderData = (dataItem) => {
     return (
       <div class="dd">
@@ -273,7 +293,7 @@ function Home() {
                               {item.likes?.length}.
                               {item.likes.length > 0 ? "Likes" : "Like"}
                             </p>
-                    
+
                             {item.likes.includes(
                               userDatails && userDatails._id
                             ) ? (
@@ -325,6 +345,8 @@ function Home() {
                             </Link>
                           </div>
 
+                          {/* <button onClick={() => addtoWishList(item._id)}>SAVE</button> */}
+
                           <Link to={"/details/" + item._id}>
                             <button className="btn btn-primary">
                               Reade More <AiOutlineArrowRight />
@@ -339,7 +361,7 @@ function Home() {
               </div>
               <div className="text-center">
                 <button onClick={handleLoadMore} className="loadmore">
-                  More Posts 
+                  More Posts
                 </button>
               </div>
             </div>

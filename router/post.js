@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { requireLogin } = require("../middleware/auth");
 const Post = require("../models/Post");
+const Wishlist = require("../models/Wishlist");
 
 //post data api
 router.post("/post", requireLogin, (req, res) => {
@@ -136,7 +137,7 @@ router.put("/like", requireLogin, (req, res) => {
   Post.findByIdAndUpdate(
     req.body.postId,
     {
-      $push: { likes: req.user._id},
+      $push: { likes: req.user._id },
     },
     {
       new: true,
@@ -157,7 +158,7 @@ router.put("/unlike", requireLogin, (req, res) => {
   Post.findByIdAndUpdate(
     req.body.postId,
     {
-      $pull: { likes: req.user._id},
+      $pull: { likes: req.user._id },
     },
     {
       new: true,
@@ -209,6 +210,61 @@ router.put("/comments", requireLogin, (req, res) => {
 });
 
 
+
+
+//wishlist
+
+
+// router.put("/wishlist", requireLogin, (req, res) => {
+  
+//   const wishlistData = {
+//     postdetails: req.body.postId,
+//     postedBy: req.user._id,
+//   };
+
+//   Wishlist.create(
+    
+//     {
+//       $push: { wishlist: wishlistData },
+//     },
+//     {
+//       new: true,
+//     }
+//   )
+//     .populate("wishlist.postedBy", "_id name")
+//     .populate("postedBy", "_id name")
+
+//     .exec((err, result) => {
+//       if (err) {
+//         return res.status(422).json({ error: err });
+//       } else {
+//         res.json(result);
+//       }
+//     });
+// });
+
+// router.post("/wishlist", requireLogin, (req, res) => {
+
+
+//   const postData = Wishlist({
+//     wishlist: req.body.postId,
+//     postedBy: req.user._id,
+//   });
+//   try {
+//     Wishlist.create(postData)
+//     .populate("wishlist", "_id title des")
+//     .populate("postedBy", "_id name")
+//       .then((ourPostData) => {
+//         res.json({ ourPostData });
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+
 //delete comment
 
 // router.put("/deletecomments", requireLogin, (req, res) => {
@@ -237,7 +293,6 @@ router.put("/comments", requireLogin, (req, res) => {
 //       }
 //     });
 // });
-
 
 //delete comments
 

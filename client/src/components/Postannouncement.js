@@ -10,6 +10,11 @@ const Postaccouncement = () => {
 
   const [getAnnounce, setAnnounce] = useState([]);
 
+  const [data, setData] = useState({
+    des: "",
+    error: "",
+  });
+
   const getAllannouncement = async () => {
     const result = await axios.get("/auth/getannouncement", {
       headers: {
@@ -27,15 +32,13 @@ const Postaccouncement = () => {
 
   //post data to the server
 
-  const [data, setData] = useState({
-    des: "",
-    error: null,
-  });
+
 
   const { des, error } = data;
   const handleChange = (e) => {
     setData({
       ...data,
+      error:false,
       [e.target.name]: e.target.value,
     });
   };
