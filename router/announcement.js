@@ -27,7 +27,6 @@ router.delete("/deleteannounce/:id", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-
 // get all the post
 router.get("/getannouncement", requireLogin, (req, res) => {
   Announcement.find({ postedBy: req.user._id })
