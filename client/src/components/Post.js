@@ -56,7 +56,9 @@ const Post = () => {
             history.push("/myPost");
           }
         })
-        .catch((err) => {});
+        .catch((err) => {
+          console.log("Error is:"+err)
+        });
     }
   }, [url]);
   const dataSubmit = (e) => {

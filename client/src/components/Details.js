@@ -187,13 +187,13 @@ const DetailsPage = () => {
           <div className="row">
             <div className="col-md-7">
               <div className="details-post card">
-                <img
+                {/* <img
                   src={dataItem && dataItem.photo}
                   height="300px"
                   alt="Post image"
                   className="det_posssst_image"
                   width="100%"
-                />
+                /> */}
                 <div className="details-post-item-design">
                   {/* <button
                 className="btn btn-success tt"
@@ -207,26 +207,26 @@ const DetailsPage = () => {
                     <div className="user_pic">
                       <Link to={"/userprofile/"} className="name_design">
                         <div className="user_pic_home_page">
-                          <p>
+                          {/* <p>
                             {dataItem &&
                               dataItem.postedBy?.name
                                 .substring(0, 2)
                                 .toUpperCase()}
-                          </p>
+                          </p> */}
                         </div>
                       </Link>
                     </div>
-                    <div className="user_name">
+                    {/* <div className="user_name">
                       <Link
                         to={"/userprofile/" + dataItem.postedBy?._id}
                         className="name_design"
                       >
                         <p>{dataItem && dataItem.postedBy?.name}.</p>
                       </Link>
-                    </div>
+                    </div> */}
                   </div>
 
-                  <p>
+                  {/* <p>
                     <GoCalendar />{" "}
                     {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
                   </p>
@@ -239,7 +239,7 @@ const DetailsPage = () => {
                   <h4>{dataItem && dataItem.title}</h4>
                   {/* <h4>{dataItem && dataItem._id}</h4> */}
 
-                  <p>{dataItem && dataItem.des}</p>
+                  {/* <p>{dataItem && dataItem.des}</p>  */}
 
                   {/* {dataItem ? (
                 <p>Posted by: {dataItem.postedBy.name}</p>
