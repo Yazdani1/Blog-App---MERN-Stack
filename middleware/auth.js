@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-
-
 //for token
 
 exports.requireLogin = (req,res,next)=>{
