@@ -41,10 +41,7 @@ function App() {
             <ProtectedRoute procomp={Postaccouncement} />
           </Route>
 
-          {/* <Route path="/myPost" exact>
-            <ProtectedRoute procomp={Mypost} />
-          </Route> */}
-
+  
           <Route path="/signup">
             <ProtectedRoute procomp={Signup} />
           </Route>
@@ -61,9 +58,6 @@ function App() {
 
           {/* //admin protected route */}
 
-          {/* <Route path="/DashboardNav" exact>
-            <DashboardprotectedRoute Dashboardprocomp={DashboardNav} />
-          </Route> */}
 
           <Route path="/Dashboard" exact>
             <DashboardprotectedRoute Dashboardprocomp={Mypost} />
@@ -80,10 +74,6 @@ function App() {
           <Route path="/Dashboardprofile" exact>
             <DashboardprotectedRoute Dashboardprocomp={DashboardProfile} />
           </Route>
-
-          {/* <Route path="/Dashboard" exact>
-            <DashboardprotectedRoute Dashboardprocomp={Dashboard} />
-          </Route> */}
 
           <Route path="*" exact component={PagenotFound} />
         </Switch>
