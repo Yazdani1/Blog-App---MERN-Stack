@@ -5,9 +5,6 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 
-
-
-
 const Post = () => {
   const history = useHistory();
   // const [data, setData] = useState({
@@ -57,7 +54,7 @@ const Post = () => {
           }
         })
         .catch((err) => {
-          console.log("Error is:"+err)
+          console.log("Error is:" + err);
         });
     }
   }, [url]);
@@ -95,6 +92,16 @@ const Post = () => {
     //   setData({ ...data, error: err.response.data.error });
     // }
   };
+
+  const showError = () => {
+    <div
+      className="alert alert-danger"
+      style={{ display: error ? "" : "none" }}
+    >
+      {error}
+    </div>
+  };
+
   return (
     <div>
       <div className="container designdata card">

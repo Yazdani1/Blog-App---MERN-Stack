@@ -9,6 +9,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "../App.css";
 
+
 const DetailsPage = () => {
   const { id } = useParams();
 
@@ -180,6 +181,16 @@ const DetailsPage = () => {
   //     });
   // };
 
+
+  const showError = () => {
+    <div
+      className="alert alert-danger"
+      style={{ display: error ? "" : "none" }}
+    >
+      {error}
+    </div>
+  };
+
   return (
     <>
       <div className="main_details">
@@ -187,13 +198,13 @@ const DetailsPage = () => {
           <div className="row">
             <div className="col-md-7">
               <div className="details-post card">
-                {/* <img
+                <img
                   src={dataItem && dataItem.photo}
                   height="300px"
                   alt="Post image"
                   className="det_posssst_image"
                   width="100%"
-                /> */}
+                />
                 <div className="details-post-item-design">
                   {/* <button
                 className="btn btn-success tt"
@@ -207,26 +218,26 @@ const DetailsPage = () => {
                     <div className="user_pic">
                       <Link to={"/userprofile/"} className="name_design">
                         <div className="user_pic_home_page">
-                          {/* <p>
+                          <p>
                             {dataItem &&
                               dataItem.postedBy?.name
                                 .substring(0, 2)
                                 .toUpperCase()}
-                          </p> */}
+                          </p>
                         </div>
                       </Link>
                     </div>
-                    {/* <div className="user_name">
+                    <div className="user_name">
                       <Link
                         to={"/userprofile/" + dataItem.postedBy?._id}
                         className="name_design"
                       >
                         <p>{dataItem && dataItem.postedBy?.name}.</p>
                       </Link>
-                    </div> */}
+                    </div>
                   </div>
 
-                  {/* <p>
+                  <p>
                     <GoCalendar />{" "}
                     {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
                   </p>
@@ -239,31 +250,32 @@ const DetailsPage = () => {
                   <h4>{dataItem && dataItem.title}</h4>
                   {/* <h4>{dataItem && dataItem._id}</h4> */}
 
-                  {/* <p>{dataItem && dataItem.des}</p>  */}
+                  <p>{dataItem && dataItem.des}</p> 
 
-                  {/* {dataItem ? (
-                <p>Posted by: {dataItem.postedBy.name}</p>
+                  {dataItem ? (
+                <p>Posted by: {dataItem?.postedBy?.name}</p>
               ) : (
                 <h1>Loading...</h1>
-              )} */}
+              )}
                 </div>
               </div>
               <div className="comments card">
                 <form>
                   <div className="row">
                     <div className="col-md-9">
+                    {showError()}
                       <div
                         className="alert alert-success"
                         style={{ display: success ? "" : "none" }}
                       >
                         Your Comment has been posted Successfully!
                       </div>
-                      <div
+                      {/* <div
                         className="alert alert-danger"
                         style={{ display: error ? "" : "none" }}
                       >
                         {error}
-                      </div>
+                      </div> */}
                       <div className="form-groupgfgf">
                         <textarea
                           type="text"
