@@ -182,14 +182,14 @@ const DetailsPage = () => {
   // };
 
 
-  const showError = () => {
-    <div
-      className="alert alert-danger"
-      style={{ display: error ? "" : "none" }}
-    >
-      {error}
-    </div>
-  };
+  // const showError = () => {
+  //   <div
+  //     className="alert alert-danger"
+  //     style={{ display: error ? "" : "none" }}
+  //   >
+  //     {error}
+  //   </div>
+  // };
 
   return (
     <>
@@ -263,19 +263,19 @@ const DetailsPage = () => {
                 <form>
                   <div className="row">
                     <div className="col-md-9">
-                    {showError()}
+                    
                       <div
                         className="alert alert-success"
                         style={{ display: success ? "" : "none" }}
                       >
                         Your Comment has been posted Successfully!
                       </div>
-                      {/* <div
+                      <div
                         className="alert alert-danger"
                         style={{ display: error ? "" : "none" }}
                       >
                         {error}
-                      </div> */}
+                      </div>
                       <div className="form-groupgfgf">
                         <textarea
                           type="text"
