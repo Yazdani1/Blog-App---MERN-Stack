@@ -30,6 +30,8 @@ const Post = () => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState(null);
   const [picerror, setpicError] = useState(null);
+  const [success, setSuccess] = useState(false);
+
   useEffect(() => {
     if (url) {
       fetch("/auth/post", {
@@ -50,16 +52,22 @@ const Post = () => {
           if (data.error) {
             setError(data.error);
           } else {
-            history.push("/myPost");
+            setSuccess(true);
+            //history.push("/Dashboard");
           }
         })
         .catch((err) => {
           console.log("Error is:" + err);
         });
     }
+    setTitle("");
+    setDes("");
+    setImageurl("");
+    setUrl("");
   }, [url]);
   const dataSubmit = (e) => {
     e.preventDefault();
+    setSuccess(false);
     const data = new FormData();
     data.append("file", imageUrl);
     data.append("upload_preset", "blog-app");
@@ -71,8 +79,9 @@ const Post = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setUrl(data.url);
-        console.log(data);
+       
+          setUrl(data.url);
+       
       })
       .catch((err) => {
         console.log(err);
@@ -99,7 +108,7 @@ const Post = () => {
       style={{ display: error ? "" : "none" }}
     >
       {error}
-    </div>
+    </div>;
   };
 
   return (
@@ -107,6 +116,12 @@ const Post = () => {
       <div className="container designdata card">
         <div className="row">
           <h1 className="toptest">Create Post</h1>
+          <div
+            className="alert alert-success"
+            style={{ display: success ? "" : "none" }}
+          >
+            Your post has been posted Successfully!
+          </div>
           <div
             className="alert alert-danger"
             style={{ display: error ? "" : "none" }}
