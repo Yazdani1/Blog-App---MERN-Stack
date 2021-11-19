@@ -9,7 +9,6 @@ import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "../App.css";
 
-
 const DetailsPage = () => {
   const { id } = useParams();
 
@@ -151,7 +150,6 @@ const DetailsPage = () => {
   //delete comment
 
   // const deleteComment = (postId, textId) => {
-  
 
   //   fetch("/auth/deletecomments", {
   //     method: "put",
@@ -174,22 +172,29 @@ const DetailsPage = () => {
   //       //   setSuccess(true);
   //       // }
 
-
   //     })
   //     .catch((err) => {
   //       console.log(err);
   //     });
   // };
 
+  const showError = () => (
+    <div
+      className="alert alert-danger"
+      style={{ display: error ? "" : "none" }}
+    >
+      {error}
+    </div>
+  );
 
-  // const showError = () => {
-  //   <div
-  //     className="alert alert-danger"
-  //     style={{ display: error ? "" : "none" }}
-  //   >
-  //     {error}
-  //   </div>
-  // };
+  const showSuccess = () => (
+    <div
+      className="alert alert-success"
+      style={{ display: success ? "" : "none" }}
+    >
+      Your Comment has been posted Successfully!
+    </div>
+  );
 
   return (
     <>
@@ -250,32 +255,33 @@ const DetailsPage = () => {
                   <h4>{dataItem && dataItem.title}</h4>
                   {/* <h4>{dataItem && dataItem._id}</h4> */}
 
-                  <p>{dataItem && dataItem.des}</p> 
+                  <p>{dataItem && dataItem.des}</p>
 
                   {dataItem ? (
-                <p>Posted by: {dataItem?.postedBy?.name}</p>
-              ) : (
-                <h1>Loading...</h1>
-              )}
+                    <p>Posted by: {dataItem?.postedBy?.name}</p>
+                  ) : (
+                    <h1>Loading...</h1>
+                  )}
                 </div>
               </div>
               <div className="comments card">
                 <form>
                   <div className="row">
                     <div className="col-md-9">
-                    
-                      <div
+                      {/* <div
                         className="alert alert-success"
                         style={{ display: success ? "" : "none" }}
                       >
                         Your Comment has been posted Successfully!
-                      </div>
-                      <div
+                      </div> */}
+                      {showSuccess()}
+                      {showError()}
+                      {/* <div
                         className="alert alert-danger"
                         style={{ display: error ? "" : "none" }}
                       >
                         {error}
-                      </div>
+                      </div> */}
                       <div className="form-groupgfgf">
                         <textarea
                           type="text"
