@@ -8,13 +8,13 @@ const DashboardprotectedRoute = (props) => {
 
   let DashboardProtected = props.Dashboardprocomp;
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem("tokenLogin")) {
-  //     history.push("/signin");
-  //   } else {
-  //     history.push("/Dashboard");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!localStorage.getItem("tokenLogin")) {
+      history.push("/signin");
+    } else {
+      // history.push("/Dashboard");
+    }
+  }, []);
   return (
     <div>
       <Nav />

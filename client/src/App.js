@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route, browserHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import SignIn from "./components/SignIn";
@@ -17,6 +17,7 @@ import DashboardprotectedRoute from "./components/dashboard/DashboardprotectedRo
 import DashboardNav from "./components/dashboard/DashboardNav";
 import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
 import PagenotFound from "./components/PagenotFound";
+
 function App() {
   return (
     <UserProvider>
@@ -41,7 +42,6 @@ function App() {
             <ProtectedRoute procomp={Postaccouncement} />
           </Route>
 
-  
           <Route path="/signup">
             <ProtectedRoute procomp={Signup} />
           </Route>
@@ -49,21 +49,16 @@ function App() {
           <Route path="/signin">
             <ProtectedRoute procomp={SignIn} />
           </Route>
-          <Route path="/profile">
-            <ProtectedRoute procomp={Profile} />
-          </Route>
-          <Route path="/post">
+         
+          {/* <Route path="/post">
             <ProtectedRoute procomp={Post} />
-          </Route>
+          </Route> */}
 
           {/* //admin protected route */}
-
 
           <Route path="/Dashboard" exact>
             <DashboardprotectedRoute Dashboardprocomp={Mypost} />
           </Route>
-
-
 
           <Route path="/createpost" exact>
             <DashboardprotectedRoute Dashboardprocomp={Post} />
@@ -73,6 +68,10 @@ function App() {
           </Route>
           <Route path="/Dashboardprofile" exact>
             <DashboardprotectedRoute Dashboardprocomp={DashboardProfile} />
+          </Route>
+
+          <Route path="/profile" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Profile} />
           </Route>
 
           <Route path="*" exact component={PagenotFound} />

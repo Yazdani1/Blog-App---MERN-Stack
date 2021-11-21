@@ -12,7 +12,7 @@ import "../App.css";
 const DetailsPage = () => {
   const { id } = useParams();
 
-  let history = useHistory();
+  const history = useHistory();
 
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
@@ -203,6 +203,7 @@ const DetailsPage = () => {
           <div className="row">
             <div className="col-md-7">
               <div className="details-post card">
+              {/* <button onClick={() => history.goBack()}>Go Back</button> */}
                 <img
                   src={dataItem && dataItem.photo}
                   height="300px"
