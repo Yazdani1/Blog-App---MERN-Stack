@@ -9,13 +9,13 @@ function ProtectedRoute(props) {
 
   let Cmprops = props.procomp;
 
-  useEffect(() => {
-    if (!localStorage.getItem("tokenLogin")) {
-      history.push("/signin");
-    } else {
-      history.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!localStorage.getItem("tokenLogin")) {
+  //     history.push("/signin");
+  //   } else {
+  //     history.push("/");
+  //   }
+  // }, []);
   return (
     <div>
       <Nav />
