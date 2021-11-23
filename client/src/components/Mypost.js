@@ -8,8 +8,22 @@ import { MdAssessment } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
 import { UserContext } from "./UserContext";
 import Dashboard from "./dashboard/Dashboard";
+import { ToastContainer, toast } from "react-toastify";
+import "../../node_modules/react-toastify/dist/ReactToastify.css";
+
+
+
 
 function Mypost() {
+
+
+  const notify = () => {
+    toast.info("Post Deleted Successfully!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+
   const [mypost, setData] = useState([]);
   //context api
   const [user, setUser] = useContext(UserContext);
@@ -98,7 +112,7 @@ function Mypost() {
               <td>
                 <button
                   className="btn btn-danger"
-                  onClick={() => deletePost(item._id)}
+                  onClick={() =>{ deletePost(item._id);notify();}}
                 >
                   Delete
                 </button>
@@ -111,7 +125,9 @@ function Mypost() {
             </tr>
           ))}
         </tbody>
+       
       </table>
+      <ToastContainer autoClose={8000} />
     </div>
   );
 }
