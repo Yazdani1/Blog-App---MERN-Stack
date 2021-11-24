@@ -47,8 +47,9 @@ function SignIn() {
           },
         }
       );
+      console.log("rrrrrrrr"+res);
 
-      localStorage.setItem("tokenLogin", res.data.token);
+      localStorage.setItem("tokenLogin", res.data.token, res.data.user);
 
       history.push("/Dashboard");
     } catch (err) {

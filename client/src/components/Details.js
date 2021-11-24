@@ -8,6 +8,8 @@ import { GoCalendar } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "../App.css";
+import renderHTML from 'react-render-html';
+
 
 const DetailsPage = () => {
   const { id } = useParams();

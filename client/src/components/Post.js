@@ -4,6 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const Post = () => {
   const history = useHistory();
@@ -79,9 +81,7 @@ const Post = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-       
-          setUrl(data.url);
-       
+        setUrl(data.url);
       })
       .catch((err) => {
         console.log(err);
@@ -142,12 +142,10 @@ const Post = () => {
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea2">Description</label>
-              <textarea
-                type="text"
+              <ReactQuill
                 class="form-control rounded-0"
                 value={des}
-                rows="3"
-                onChange={(e) => setDes(e.target.value)}
+                onChange={(e) => setDes(e)}
               />
             </div>
             <div className="form-group">

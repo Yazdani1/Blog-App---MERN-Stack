@@ -2,18 +2,24 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import renderHTML from 'react-render-html';
+
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const Postaccouncement = () => {
   const history = useHistory();
+
+  const [value, setValue] = useState("");
 
   //get data from server
 
   const [getAnnounce, setAnnounce] = useState([]);
 
-  const [data, setData] = useState({
-    des: "",
-    error: "",
-  });
+  // const [data, setData] = useState({
+  //   des: "",
+  //   error: "",
+  // });
 
   const getAllannouncement = async () => {
     const result = await axios.get("/auth/getannouncement", {
@@ -32,33 +38,41 @@ const Postaccouncement = () => {
 
   //post data to the server
 
+  // const { des, error } = data;
+  // const handleChange = (e) => {
+  //   setData({
+  //     ...data,
+  //     error: false,
+  //     //[e.target.name]: e.target.value,
+  //     [name]: value,
+  //   });
+  // };
 
+  const [des, setData] = useState("");
+ 
+  // const handleChange = (e) => {
+  //   setError("");
+  //   setText(e.target.value);
+  // };
 
-  const { des, error } = data;
-  const handleChange = (e) => {
-    setData({
-      ...data,
-      error:false,
-      [e.target.name]: e.target.value,
-    });
-  };
   const submitData = async (e) => {
     e.preventDefault();
     try {
       await axios.post(
         "/auth/announcement",
-        { des, error },
+        { des },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
           },
         }
       );
-      setData({ des: "" });
+ 
       history.push("/postannouncement");
     } catch (err) {
-      setData({ ...data, error: err.response.data.error });
+      //setError({error: err.response.data.error });
     }
+  setData("");
   };
   function deletePost(id) {
     axios.delete("/auth/deleteannounce/" + id, {
@@ -73,25 +87,29 @@ const Postaccouncement = () => {
     <div>
       <div className="container designdata card">
         <div className="row">
-        <div
+          {/* <div
             className="alert alert-danger"
             style={{ display: error ? "" : "none" }}
           >
             {error}
-          </div>
+          </div> */}
           <h1 className="toptest">Create Announcement</h1>
           <form>
             <div class="form-group green-border-focus">
-              <textarea
+              <ReactQuill
+                theme="snow"
+                type="text"
                 class="form-control"
                 id="exampleFormControlTextarea5"
                 rows="3"
-                onChange={handleChange}
-                name="des"
+                onChange={(e)=>setData(e)}
+               // name="des"
+                //onChange={handleChange}
+                // value={value,des}
                 value={des}
-              ></textarea>
+              />
             </div>
-            {error ? <p className="text-danger">{error}</p> : null}
+            {/* {error ? <p className="text-danger">{error}</p> : null} */}
             <button
               type="submit"
               onClick={submitData}
@@ -107,7 +125,7 @@ const Postaccouncement = () => {
         {getAnnounce.map((item) => (
           <div className="row">
             <div className="col-md-8 card announce_data">
-              <p>{item.des}</p>
+              <p>{renderHTML(item.des)}</p>
               <marquee width="100%" direction="left">
                 <h5>Posted by: {item.postedBy.name}</h5>
               </marquee>

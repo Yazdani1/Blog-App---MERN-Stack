@@ -16,6 +16,7 @@ import { FaRegCommentDots } from "react-icons/fa";
 import FirstSection from "./HomePage/FirstSection";
 import { UserContext } from "./UserContext";
 import "./css/home-mainpost.css";
+import renderHTML from 'react-render-html';
 
 import Footer from "./footer";
 
@@ -153,7 +154,7 @@ function Home() {
 
     getUser();
     getOpinion();
-  }, []);
+  }, [userDatails && userDatails.name]);
 
   const addlikePost = (id) => {
     fetch("/auth/like", {
@@ -285,7 +286,7 @@ function Home() {
                           </p> */}
 
                           <h5>{item.title.substring(0, 35)}</h5>
-                          <p>{item.des.substring(0, 150)}</p>
+                          <p>{renderHTML(item.des.substring(0, 150))}</p>
                           <hr />
 
                           <div className="likes">

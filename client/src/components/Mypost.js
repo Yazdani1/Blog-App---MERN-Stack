@@ -10,6 +10,7 @@ import { UserContext } from "./UserContext";
 import Dashboard from "./dashboard/Dashboard";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
+import renderHTML from 'react-render-html';
 
 
 
@@ -108,7 +109,8 @@ function Mypost() {
                 <img src={item.photo} height="80px" width="80px"></img>
               </td>
               <td>{item.title.substring(0, 30)}</td>
-              <td>{item.des.substring(0, 30)}</td>
+              {/* <td>{item.des.substring(renderHTML(0,50))}</td> */}
+              <p>{renderHTML(item.des.substring(0, 50))}</p>
               <td>
                 <button
                   className="btn btn-danger"
