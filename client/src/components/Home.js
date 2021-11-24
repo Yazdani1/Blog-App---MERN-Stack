@@ -16,9 +16,12 @@ import { FaRegCommentDots } from "react-icons/fa";
 import FirstSection from "./HomePage/FirstSection";
 import { UserContext } from "./UserContext";
 import "./css/home-mainpost.css";
-import renderHTML from 'react-render-html';
+import renderHTML from "react-render-html";
+import ReactHtmlParser from "react-html-parser";
 
 import Footer from "./footer";
+
+import { Pagination } from "antd";
 
 function Home() {
   var settings = {
@@ -98,6 +101,7 @@ function Home() {
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
   const [userDatails] = useContext(UserContext);
+  const [loading,setLoading] = useState(true);
 
   //get users opinion
 
@@ -114,20 +118,21 @@ function Home() {
       });
   };
 
-  //for pagination
-
-  const [currentPage, setcurrentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(5);
+  
 
   const [pageNumberLimit, setpageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(6);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
+  //for pagination load more features
+
+  const [currentPage, setcurrentPage] = useState(1);
+  const [itemsPerPage, setitemsPerPage] = useState(5);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = dataItem.slice(indexOfFirstItem, indexOfLastItem);
 
-  //to set pagination per page
+ //for pagination load more features
 
   const handleLoadMore = () => {
     setitemsPerPage(itemsPerPage + 5);
@@ -144,6 +149,7 @@ function Home() {
   useEffect(() => {
     axios.get("/auth/getpost").then((res) => {
       setData(res.data.resultGet);
+      setLoading(false);
       console.log(res.data.resultGet);
     });
 
@@ -232,8 +238,17 @@ function Home() {
   //       console.log(err);
   //     });
   // };
+  //dataItem
 
-  const renderData = (dataItem) => {
+  if(loading){
+    return (
+      <div class="text-center my-5">
+        <h1>Loading.... nnnnnnnnnnnnnnnn</h1>
+      </div>
+    )
+  }
+
+  const renderData = () => {
     return (
       <div class="dd">
         <div class="text-center my-5">{/* <h1>Blog App</h1> */}</div>
@@ -286,7 +301,7 @@ function Home() {
                           </p> */}
 
                           <h5>{item.title.substring(0, 35)}</h5>
-                          <p>{renderHTML(item.des.substring(0, 150))}</p>
+                          <p>{ReactHtmlParser(item.des.substring(0, 160))}</p>
                           <hr />
 
                           <div className="likes">
@@ -361,9 +376,15 @@ function Home() {
                 ))}
               </div>
               <div className="text-center">
-                <button onClick={handleLoadMore} className="loadmore">
+                <Pagination
+                  showSizeChanger
+                  //onShowSizeChange={onShowSizeChange}
+                  defaultCurrent={3}
+                  total={500}
+                />
+                {/* <button onClick={handleLoadMore} className="loadmore">
                   More Posts
-                </button>
+                </button> */}
               </div>
             </div>
 
@@ -460,8 +481,6 @@ function Home() {
             )}
           </>
         </div>
-
-        
       </div>
     );
   };
@@ -490,9 +509,11 @@ function Home() {
           </div>
         </div>
       </div>
-      {renderData(currentItems)}
+      {renderData()}
     </>
   );
+
+  //currentItems
 
   // <div className="container">
   //   <div className="row">

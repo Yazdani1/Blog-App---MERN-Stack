@@ -9,6 +9,8 @@ import 'bootstrap/dist/js/bootstrap.js';
 import $ from 'jquery';
 import Popper from 'popper.js';
 import Footer from "../src/components/footer";
+import 'antd/dist/antd.css';
+
 
 ReactDOM.render(
   <React.StrictMode>

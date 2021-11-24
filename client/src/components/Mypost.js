@@ -12,7 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 import renderHTML from 'react-render-html';
 
-
+import ReactHtmlParser from 'react-html-parser';
 
 
 function Mypost() {
@@ -110,7 +110,9 @@ function Mypost() {
               </td>
               <td>{item.title.substring(0, 30)}</td>
               {/* <td>{item.des.substring(renderHTML(0,50))}</td> */}
-              <p>{renderHTML(item.des.substring(0, 50))}</p>
+              <p>{ReactHtmlParser(item.des.substring(0, 50))}</p>
+              {/* <p>{renderHTML(item.des)}</p> */}
+
               <td>
                 <button
                   className="btn btn-danger"

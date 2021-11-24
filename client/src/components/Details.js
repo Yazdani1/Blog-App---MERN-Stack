@@ -8,8 +8,8 @@ import { GoCalendar } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "../App.css";
-import renderHTML from 'react-render-html';
-
+import renderHTML from "react-render-html";
+import ReactHtmlParser from 'react-html-parser';
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -205,7 +205,7 @@ const DetailsPage = () => {
           <div className="row">
             <div className="col-md-7">
               <div className="details-post card">
-              {/* <button onClick={() => history.goBack()}>Go Back</button> */}
+                {/* <button onClick={() => history.goBack()}>Go Back</button> */}
                 <img
                   src={dataItem && dataItem.photo}
                   height="300px"
@@ -258,7 +258,11 @@ const DetailsPage = () => {
                   <h4>{dataItem && dataItem.title}</h4>
                   {/* <h4>{dataItem && dataItem._id}</h4> */}
 
-                  <p>{dataItem && dataItem.des}</p>
+                  {/* {dataItem ? (
+                    <p>{renderHTML(dataItem && dataItem.des)}</p>
+                  ) : null} */}
+
+                  <p>{ReactHtmlParser(dataItem.des)}</p>
 
                   {dataItem ? (
                     <p>Posted by: {dataItem?.postedBy?.name}</p>
