@@ -209,21 +209,30 @@ router.put("/comments", requireLogin, (req, res) => {
     });
 });
 
+//pagination route
 
-
+router.get("/total-posts", (req, res) => {
+  Post.find()
+    .estimatedDocumentCount()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 //wishlist
 
-
 // router.put("/wishlist", requireLogin, (req, res) => {
-  
+
 //   const wishlistData = {
 //     postdetails: req.body.postId,
 //     postedBy: req.user._id,
 //   };
 
 //   Wishlist.create(
-    
+
 //     {
 //       $push: { wishlist: wishlistData },
 //     },
@@ -244,7 +253,6 @@ router.put("/comments", requireLogin, (req, res) => {
 // });
 
 // router.post("/wishlist", requireLogin, (req, res) => {
-
 
 //   const postData = Wishlist({
 //     wishlist: req.body.postId,
