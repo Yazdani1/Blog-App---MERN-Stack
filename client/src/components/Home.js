@@ -12,6 +12,8 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { LoadingOutlined } from "@ant-design/icons";
 
 import FirstSection from "./HomePage/FirstSection";
 import { UserContext } from "./UserContext";
@@ -101,7 +103,7 @@ function Home() {
   const [dataItem, setData] = useState([]);
   const [latestPost, setLatestpost] = useState([]);
   const [userDatails] = useContext(UserContext);
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   //get users opinion
 
@@ -118,8 +120,6 @@ function Home() {
       });
   };
 
-  
-
   const [pageNumberLimit, setpageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(6);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
@@ -132,7 +132,7 @@ function Home() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = dataItem.slice(indexOfFirstItem, indexOfLastItem);
 
- //for pagination load more features
+  //for pagination load more features
 
   const handleLoadMore = () => {
     setitemsPerPage(itemsPerPage + 5);
@@ -240,12 +240,14 @@ function Home() {
   // };
   //dataItem
 
-  if(loading){
+  if (loading) {
     return (
       <div class="text-center my-5">
-        <h1>Loading.... nnnnnnnnnnnnnnnn</h1>
+        <h1>
+          <LoadingOutlined />
+        </h1>
       </div>
-    )
+    );
   }
 
   const renderData = () => {
@@ -301,7 +303,7 @@ function Home() {
                           </p> */}
 
                           <h5>{item.title.substring(0, 35)}</h5>
-                          <p>{ReactHtmlParser(item.des.substring(0, 160))}</p>
+                          <p>{ReactHtmlParser(item.des.substring(0, 150))}</p>
                           <hr />
 
                           <div className="likes">
