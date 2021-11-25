@@ -7,7 +7,6 @@ import "../../node_modules/react-toastify/dist/ReactToastify.css";
 import Dashboard from "./dashboard/Dashboard";
 
 function SignIn() {
-  
   const notify = () => {
     toast.success("Signed In Successfully!", {
       position: toast.POSITION.TOP_RIGHT,
@@ -30,7 +29,7 @@ function SignIn() {
   const handleChange = (e) => {
     setData({
       ...data,
-      error:false,
+      error: false,
       [e.target.name]: e.target.value,
     });
   };
@@ -47,9 +46,9 @@ function SignIn() {
           },
         }
       );
-      console.log("rrrrrrrr"+res);
+      //console.log("rrrrrrrr"+res.data.user);
 
-      localStorage.setItem("tokenLogin", res.data.token, res.data.user);
+      localStorage.setItem("tokenLogin", res.data.token);
 
       history.push("/Dashboard");
     } catch (err) {

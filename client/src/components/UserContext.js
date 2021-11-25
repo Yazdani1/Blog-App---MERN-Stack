@@ -1,12 +1,19 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
-{/* <h1>Test is going on</h1> */}
+{
+  /* <h1>Test is going on</h1> */
+}
 
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [user, setUser] = useState(null);
+
+  // const [user, setUser] = useState({
+  //   token:""
+  // });
+
   const getUser = async () => {
     const res = await axios.get("/auth", {
       headers: {
@@ -16,6 +23,8 @@ export const UserProvider = (props) => {
     setUser(res.data);
   };
   useEffect(() => {
+    // setUser(JSON.parse(window.localStorage.getItem("tokenLogin")));
+
     getUser();
   }, []);
 

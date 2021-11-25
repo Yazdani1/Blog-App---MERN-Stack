@@ -4,7 +4,7 @@ import axios from "axios";
 import { UserContext } from "./components/UserContext";
 import { Link, useHistory } from "react-router-dom";
 function Nav() {
-  const [user, setUser] = useContext(UserContext);
+  const [user, setUserState] = useContext(UserContext);
   const history = useHistory();
   // const [user, setUser] = useState("");
   // const getUser = async () => {
@@ -21,8 +21,9 @@ function Nav() {
 
   // const history = useHistory();
 
-  const logOut = async () => {
-    await localStorage.removeItem("tokenLogin");
+  const logOut =  () => {
+     window.localStorage.removeItem("tokenLogin");
+     setUserState(null);
     history.push("/signin");
   };
   return (
@@ -43,7 +44,7 @@ function Nav() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          {localStorage.getItem("tokenLogin") ? (
+          {window.localStorage.getItem("tokenLogin") ? (
             <>
               <Link to="/" className="eachitem">
                 <li>Home</li>

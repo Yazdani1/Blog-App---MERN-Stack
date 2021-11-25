@@ -81,7 +81,10 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "24h",
     });
-    return res.json({ token, user });
+
+    //const {_id, name } = user;
+
+    return res.json({ token});
   } catch (err) {
     console.log(err);
   }
@@ -101,24 +104,24 @@ router.get("/allusers", (req, res) => {
 
 //protected route
 
-router.get("/", requireLogin, (req, res) => {
-  User.findOne({ _id: req.user._id })
-    .then((userData) => {
-      res.json(userData);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-// router.get("/", requireLogin, async (req, res) => {
-//   console.log(req.user);
-//   try {
-//     const user = await User.findById(req.user._id).select("-password");
-//     res.json(user);
-//   } catch (err) {
-//     console.log(err);
-//   }
+// router.get("/", requireLogin, (req, res) => {
+//   User.findOne({ _id: req.user._id })
+//     .then((userData) => {
+//       res.json(userData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
 // });
+
+router.get("/", requireLogin, async (req, res) => {
+  console.log(req.user);
+  try {
+    const user = await User.findById(req.user._id).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 module.exports = router;
