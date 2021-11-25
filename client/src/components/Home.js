@@ -105,6 +105,11 @@ function Home() {
   const [userDatails] = useContext(UserContext);
   const [loading, setLoading] = useState(true);
 
+  //for pagination
+
+  // const [totalPosts, setTotalPosts] = useState(0);
+  // const [page, setPage] = useState(1);
+
   //get users opinion
 
   const [opinion, setOpinion] = useState(null);
@@ -141,26 +146,50 @@ function Home() {
   const [user, setUser] = useState([]);
 
   const getUser = async () => {
-    axios.get("/auth/allusers").then((res) => {
+    await axios.get("/auth/allusers").then((res) => {
       setUser(res.data);
     });
   };
 
-  useEffect(() => {
+  const getLatestPost = () => {
+    axios.get("/auth/latestpost").then((res) => {
+      setLatestpost(res.data);
+      console.log(res.data);
+    });
+  };
+
+  //to show pagination
+  // const newsFeed = () => {
+  //   axios.get(`/auth/getpost/${page}`).then((res) => {
+  //     setData(res.data.resultGet);
+  //     setLoading(false);
+  //     console.log(res.data.resultGet);
+  //   });
+  // };
+  const newsFeed = () => {
     axios.get("/auth/getpost").then((res) => {
       setData(res.data.resultGet);
       setLoading(false);
       console.log(res.data.resultGet);
     });
+  };
 
-    axios.get("/auth/latestpost").then((res) => {
-      setLatestpost(res.data);
-      console.log(res.data);
-    });
-
+  useEffect(() => {
+    newsFeed();
+    getLatestPost();
     getUser();
     getOpinion();
-  }, [userDatails && userDatails.name]);
+  }, []);
+
+  //to count all post from database used this effect
+
+  // useEffect(() => {
+  //   try {
+  //     axios.get("/auth/total-posts").then(({ data }) => setTotalPosts(data));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, []);
 
   const addlikePost = (id) => {
     fetch("/auth/like", {
@@ -250,7 +279,7 @@ function Home() {
     );
   }
 
-  const renderData = () => {
+  const renderData = (dataItem) => {
     return (
       <div class="dd">
         <div class="text-center my-5">{/* <h1>Blog App</h1> */}</div>
@@ -378,15 +407,19 @@ function Home() {
                 ))}
               </div>
               <div className="text-center">
-                <Pagination
+                {/* <Pagination
                   showSizeChanger
                   //onShowSizeChange={onShowSizeChange}
-                  defaultCurrent={3}
-                  total={500}
+                  //defaultCurrent={3}
+                  current={page}
+                  total={(totalPosts / 3) * 10}
+                  onChange={(page) => setPage(page)}
                 />
-                {/* <button onClick={handleLoadMore} className="loadmore">
+                <h1>{totalPosts}</h1> */}
+
+                <button onClick={handleLoadMore} className="loadmore">
                   More Posts
-                </button> */}
+                </button>
               </div>
             </div>
 
@@ -511,7 +544,7 @@ function Home() {
           </div>
         </div>
       </div>
-      {renderData()}
+      {renderData(currentItems)}
     </>
   );
 

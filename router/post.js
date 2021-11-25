@@ -38,11 +38,29 @@ router.post("/post", requireLogin, (req, res) => {
   }
 });
 
-//get all post api
+//get all post and pagination
+// router.get("/getpost/:page", (req, res) => {
+//   const currentPage = req.params.page || 1;
+//   const perPage = 3;
+
+//   Post.find({})
+//     .skip((currentPage - 1) * perPage)
+//     .sort({ date: "DESC" })
+//     .populate("postedBy", "_id name email")
+//     .limit(perPage)
+//     .then((resultGet) => {
+//       res.json({ resultGet: resultGet });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+
 router.get("/getpost", (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
     .populate("postedBy", "_id name email")
+
     .then((resultGet) => {
       res.json({ resultGet: resultGet });
     })
