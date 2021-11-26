@@ -3,6 +3,7 @@ import "./dashboard-profile.css";
 import { UserContext } from "../../UserContext";
 import { Link, useHistory } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
+import ReactHtmlParser from "react-html-parser";
 
 const DashboardProfile = () => {
   const [user, setUser] = useContext(UserContext);
@@ -53,10 +54,10 @@ const DashboardProfile = () => {
             </div> */}
 
             <div className="user-about-page">
-            <h5>About Me</h5>
-                <hr />
+              <h5>About Me</h5>
+              <hr />
               {user && user.about ? (
-                <p>{user && user.about}</p>
+                <p>{ReactHtmlParser(user && user.about)}</p>
               ) : (
                 "You did not add anything about yourself!"
               )}

@@ -12,6 +12,7 @@ import { FaUserGraduate } from "react-icons/fa";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
+import ReactHtmlParser from "react-html-parser";
 
 const Userprofile = () => {
   const [mypost, setData] = useState();
@@ -100,7 +101,7 @@ const Userprofile = () => {
               <h5>About Me</h5>
               <hr />
               <div className="user-about-page">
-                <p>{mypost?.userInfo?.about}</p>
+                <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
               </div>
             </div>
             {/* <div className="col-md-2 edit-button">
