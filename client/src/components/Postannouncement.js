@@ -10,7 +10,7 @@ import "react-quill/dist/quill.snow.css";
 const Postaccouncement = () => {
   const history = useHistory();
 
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
 
   //get data from server
 

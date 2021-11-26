@@ -5,6 +5,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineLike } from "react-icons/ai";
 
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const UpdateProfile = () => {
   const history = useHistory();
@@ -12,10 +14,12 @@ const UpdateProfile = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
-    about: ""
-  
+    //about: ""
   });
-  const { name, email, about } = data;
+
+  const [about, setAbout] = useState("");
+
+  const { name, email } = data;
   const handleChange = (e) => {
     setData({
       ...data,
@@ -24,9 +28,9 @@ const UpdateProfile = () => {
   };
   const dataSubmit = async (e) => {
     e.preventDefault();
-    const addItem = { name, email, about };
+    const addItem = { name, email,about };
     try {
-    //   setData({ ...data, error: null });
+      //   setData({ ...data, error: null });
       await axios.put("/auth/update-profile-info/" + id, addItem, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
@@ -34,7 +38,7 @@ const UpdateProfile = () => {
       });
       history.push("/Dashboardprofile");
     } catch (err) {
-    //   setData({ ...data, error: err.response.data.error });
+      //   setData({ ...data, error: err.response.data.error });
     }
   };
   useEffect(() => {
@@ -46,6 +50,7 @@ const UpdateProfile = () => {
       })
       .then((result) => {
         setData(result.data);
+        setAbout(result.data.about);
       });
   }, []);
 
@@ -79,12 +84,20 @@ const UpdateProfile = () => {
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea2">About</label>
-              <textarea
+              <ReactQuill
                 class="form-control rounded-0"
                 name="about"
-                value={about}
+                // value={about}
                 rows="3"
-                onChange={handleChange}
+                // onChange={handleChange}
+                theme="snow"
+                type="text"
+
+                onChange={(e) => setAbout(e)}
+                // name="des"
+                //onChange={handleChange}
+                // value={value,des}
+                value={about}
               />
             </div>
             <button
