@@ -82,14 +82,14 @@ function Nav() {
                     Dashboard
                   </Link>
                   <Link to="/profile" className="dropdown-item each">
-                    Setting
+                    Profile
                   </Link>
                   <Link
                     target={"_blank"}
                     to={"/userprofile/" + (user && user._id)}
                     className="dropdown-item each item_back"
                   >
-                    View Profile
+                    Public Profile
                   </Link>
                   <hr />
                   <Link to="/signin" className="dropdown-item each">

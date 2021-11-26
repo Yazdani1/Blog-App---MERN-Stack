@@ -1,0 +1,28 @@
+.profile-name {
+  display: flex;
+}
+.profile-avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 90px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.profile-avatar p {
+  height: 30px;
+  width: 30px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: aliceblue;
+  border-radius: 50%; /* may require vendor prefixes */
+  background: rgb(48, 22, 107);
+}
+.profile-user-name p{
+    margin-left: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
