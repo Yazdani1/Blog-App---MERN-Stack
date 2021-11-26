@@ -12,7 +12,7 @@ import "react-quill/dist/quill.snow.css";
 const AddExperience = () => {
   const [experience, setExperience] = useState("");
   const [user, setUser] = useContext(UserContext);
-  const [success,setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const addExperience = (e, userID) => {
     e.preventDefault();
@@ -29,10 +29,10 @@ const AddExperience = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-          if (data) {
-            setExperience(data);
-            setSuccess(true); 
-          }
+        if (data) {
+          setExperience(data.data);
+          setSuccess(true);
+        }
         console.log(data);
       })
       .catch((err) => {
@@ -40,15 +40,18 @@ const AddExperience = () => {
       });
   };
 
+  useEffect(() => {
+    setExperience(user && user.experience);
+  }, [user && user.experience]);
+
   const showSuccess = () => (
     <div
       className="alert alert-success"
       style={{ display: success ? "" : "none" }}
     >
-      Your Comment has been posted Successfully!
+      Your have Successfully saved your changes!
     </div>
   );
-
 
   return (
     <div>
