@@ -61,7 +61,7 @@ const AddExperience = () => {
 
           {showSuccess()}
 
-          {JSON.stringify(experience)}
+          {/* {JSON.stringify(experience)} */}
 
           <form>
             <div class="form-group">
@@ -74,7 +74,7 @@ const AddExperience = () => {
                 value={experience}
                 onChange={(e) => setExperience(e.target.value)}
                 // onChange={handleChange}
-                //   theme="snow"
+                theme="snow"
                 //   type="text"
                 //onChange={(e) => setAbout(e.target.value)}
                 // name="des"
