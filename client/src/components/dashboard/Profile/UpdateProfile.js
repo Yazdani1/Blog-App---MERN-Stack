@@ -37,7 +37,7 @@ const UpdateProfile = () => {
         },
       });
 
-      //history.push("/Dashboardprofile");
+      history.push("/Dashboardprofile");
     } catch (err) {
       //   setData({ ...data, error: err.response.data.error });
     }
