@@ -124,4 +124,20 @@ router.get("/", requireLogin, async (req, res) => {
   }
 });
 
+
+//user profile update
+
+router.get("/update-user-profile/:id", requireLogin, (req, res) => {
+  var editQuery = { _id: req.params.id };
+  User.findOne(editQuery)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      return res.status(400).json({ error: err });
+    });
+});
+
+
+
 module.exports = router;

@@ -17,6 +17,7 @@ import DashboardprotectedRoute from "./components/dashboard/DashboardprotectedRo
 import DashboardNav from "./components/dashboard/DashboardNav";
 import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
 import PagenotFound from "./components/PagenotFound";
+import UpdateProfile from "./components/dashboard/Profile/UpdateProfile";
 
 function App() {
   return (
@@ -72,6 +73,10 @@ function App() {
 
           <Route path="/profile" exact>
             <DashboardprotectedRoute Dashboardprocomp={Profile} />
+          </Route>
+
+          <Route path="/update-profile/:id" exact>
+            <DashboardprotectedRoute Dashboardprocomp={UpdateProfile} />
           </Route>
 
           <Route path="*" exact component={PagenotFound} />
