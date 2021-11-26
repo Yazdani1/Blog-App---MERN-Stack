@@ -84,7 +84,7 @@ router.post("/login", async (req, res) => {
 
     //const {_id, name } = user;
 
-    return res.json({ token});
+    return res.json({ token });
   } catch (err) {
     console.log(err);
   }
@@ -124,7 +124,6 @@ router.get("/", requireLogin, async (req, res) => {
   }
 });
 
-
 //user profile update
 
 router.get("/update-user-profile/:id", requireLogin, (req, res) => {
@@ -138,6 +137,20 @@ router.get("/update-user-profile/:id", requireLogin, (req, res) => {
     });
 });
 
-
+router.put("/update-profile-info/:id", requireLogin, (req, res) => {
+  var updateQuery = { _id: req.params.id };
+  User.updateOne(updateQuery, {
+    $set: {
+      name: req.body.name,
+      email: req.body.email,
+    },
+  })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 module.exports = router;

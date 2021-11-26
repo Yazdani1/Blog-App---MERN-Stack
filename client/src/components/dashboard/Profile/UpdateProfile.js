@@ -3,6 +3,8 @@ import "../../../App.css";
 import { Link, useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { AiOutlineLike } from "react-icons/ai";
+
 
 const UpdateProfile = () => {
   const history = useHistory();
@@ -10,6 +12,7 @@ const UpdateProfile = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
+  
   });
   const { name, email } = data;
   const handleChange = (e) => {
@@ -22,15 +25,15 @@ const UpdateProfile = () => {
     e.preventDefault();
     const addItem = { name, email };
     try {
-      setData({ ...data, error: null });
-      await axios.put("/auth/update/" + id, addItem, {
+    //   setData({ ...data, error: null });
+      await axios.put("/auth/update-profile-info/" + id, addItem, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
         },
       });
-      history.push("/myPost");
+      history.push("/Dashboardprofile");
     } catch (err) {
-      setData({ ...data, error: err.response.data.error });
+    //   setData({ ...data, error: err.response.data.error });
     }
   };
   useEffect(() => {
@@ -57,7 +60,7 @@ const UpdateProfile = () => {
               </label>
               <input
                 type="text"
-                name="title"
+                name="name"
                 value={name}
                 onChange={handleChange}
                 className="form-control"
@@ -67,7 +70,7 @@ const UpdateProfile = () => {
               <label for="exampleFormControlTextarea2">Email</label>
               <input
                 type="text"
-                name="title"
+                name="email"
                 value={email}
                 onChange={handleChange}
                 className="form-control"

@@ -2,13 +2,13 @@ import React, { useState, useContext } from "react";
 import "./dashboard-profile.css";
 import { UserContext } from "../../UserContext";
 import { Link, useHistory } from "react-router-dom";
+import { AiFillEdit } from "react-icons/ai";
 
 const DashboardProfile = () => {
   const [user, setUser] = useContext(UserContext);
 
   return (
-    <div className="container card">
-      <h5>Profile Info</h5>
+    <div className="container card profile-main-container">
       <div className="row">
         <div className="col-md-10">
           <div className="profile-name">
@@ -21,10 +21,17 @@ const DashboardProfile = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-2 edit-button">
           <Link to={"/update-profile/" + (user && user._id)}>
-            <button className="btn btn-danger">Edit</button>
+            <h5>
+              <AiFillEdit size={20} />
+              Edit
+            </h5>
           </Link>
+
+          {/* <Link to={"/update-profile/" + (user && user._id)}>
+            <button className="btn btn-danger">Edit</button>
+          </Link> */}
         </div>
       </div>
     </div>
