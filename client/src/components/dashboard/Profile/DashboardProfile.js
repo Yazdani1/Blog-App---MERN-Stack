@@ -59,7 +59,7 @@ const DashboardProfile = () => {
               {user && user.about ? (
                 <p>{ReactHtmlParser(user && user.about)}</p>
               ) : (
-                "You did not add anything about yourself!"
+                "You did not add anything about yourself! Update your profile."
               )}
             </div>
           </div>

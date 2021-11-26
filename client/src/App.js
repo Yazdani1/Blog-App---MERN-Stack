@@ -18,71 +18,74 @@ import DashboardNav from "./components/dashboard/DashboardNav";
 import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
 import PagenotFound from "./components/PagenotFound";
 import UpdateProfile from "./components/dashboard/Profile/UpdateProfile";
+import { UserGlobalProvider } from "./components/UserGlobalContext";
 
 function App() {
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/details/:id" exact>
-            <ProtectedRoute procomp={Details} />
-          </Route>
+    <UserGlobalProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/details/:id" exact>
+              <ProtectedRoute procomp={Details} />
+            </Route>
 
-          <Route path="/userprofile/:id" exact>
-            <ProtectedRoute procomp={Userprofile} />
-          </Route>
-          {/* <Route path="/editpost/:id">
+            <Route path="/userprofile/:id" exact>
+              <ProtectedRoute procomp={Userprofile} />
+            </Route>
+            {/* <Route path="/editpost/:id">
             <ProtectedRoute procomp={Edit} />
           </Route> */}
 
-          <Route path="/" exact>
-            <ProtectedRoute procomp={Home} />
-          </Route>
+            <Route path="/" exact>
+              <ProtectedRoute procomp={Home} />
+            </Route>
 
-          <Route path="/postannouncement" exact>
-            <ProtectedRoute procomp={Postaccouncement} />
-          </Route>
+            <Route path="/postannouncement" exact>
+              <ProtectedRoute procomp={Postaccouncement} />
+            </Route>
 
-          <Route path="/signup">
-            <ProtectedRoute procomp={Signup} />
-          </Route>
+            <Route path="/signup">
+              <ProtectedRoute procomp={Signup} />
+            </Route>
 
-          <Route path="/signin">
-            <ProtectedRoute procomp={SignIn} />
-          </Route>
-         
-          {/* <Route path="/post">
+            <Route path="/signin">
+              <ProtectedRoute procomp={SignIn} />
+            </Route>
+
+            {/* <Route path="/post">
             <ProtectedRoute procomp={Post} />
           </Route> */}
 
-          {/* //admin protected route */}
+            {/* //admin protected route */}
 
-          <Route path="/Dashboard" exact>
-            <DashboardprotectedRoute Dashboardprocomp={Mypost} />
-          </Route>
+            <Route path="/Dashboard" exact>
+              <DashboardprotectedRoute Dashboardprocomp={Mypost} />
+            </Route>
 
-          <Route path="/createpost" exact>
-            <DashboardprotectedRoute Dashboardprocomp={Post} />
-          </Route>
-          <Route path="/editpost/:id" exact>
-            <DashboardprotectedRoute Dashboardprocomp={Edit} />
-          </Route>
-          <Route path="/Dashboardprofile" exact>
-            <DashboardprotectedRoute Dashboardprocomp={DashboardProfile} />
-          </Route>
+            <Route path="/createpost" exact>
+              <DashboardprotectedRoute Dashboardprocomp={Post} />
+            </Route>
+            <Route path="/editpost/:id" exact>
+              <DashboardprotectedRoute Dashboardprocomp={Edit} />
+            </Route>
+            <Route path="/Dashboardprofile" exact>
+              <DashboardprotectedRoute Dashboardprocomp={DashboardProfile} />
+            </Route>
 
-          <Route path="/profile" exact>
-            <DashboardprotectedRoute Dashboardprocomp={Profile} />
-          </Route>
+            <Route path="/profile" exact>
+              <DashboardprotectedRoute Dashboardprocomp={Profile} />
+            </Route>
 
-          <Route path="/update-profile/:id" exact>
-            <DashboardprotectedRoute Dashboardprocomp={UpdateProfile} />
-          </Route>
+            <Route path="/update-profile/:id" exact>
+              <DashboardprotectedRoute Dashboardprocomp={UpdateProfile} />
+            </Route>
 
-          <Route path="*" exact component={PagenotFound} />
-        </Switch>
-      </BrowserRouter>
-    </UserProvider>
+            <Route path="*" exact component={PagenotFound} />
+          </Switch>
+        </BrowserRouter>
+      </UserProvider>
+    </UserGlobalProvider>
   );
 }
 

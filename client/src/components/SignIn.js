@@ -1,12 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 import Dashboard from "./dashboard/Dashboard";
+import { UserGlobalContext } from "./UserGlobalContext";
 
 function SignIn() {
+
+  const[state,setState] = useContext(UserGlobalContext);
+
+
   const notify = () => {
     toast.success("Signed In Successfully!", {
       position: toast.POSITION.TOP_RIGHT,
@@ -47,8 +52,9 @@ function SignIn() {
         }
       );
       //console.log("rrrrrrrr"+res.data.user);
+      setState({token: res.data.token});
 
-      localStorage.setItem("tokenLogin", res.data.token);
+      localStorage.setItem("tokenLogin", JSON.stringify(res.data.token));
 
       history.push("/Dashboard");
     } catch (err) {

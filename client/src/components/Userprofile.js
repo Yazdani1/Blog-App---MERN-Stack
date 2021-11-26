@@ -13,9 +13,13 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 import ReactHtmlParser from "react-html-parser";
+import { SyncOutlined } from "@ant-design/icons";
+
 
 const Userprofile = () => {
   const [mypost, setData] = useState();
+  const [loading, setLoading] = useState(true);
+
   const { id } = useParams();
 
   const getMypost = () => {
@@ -24,14 +28,30 @@ const Userprofile = () => {
 
       .then((result) => {
         setData(result.data);
+        setLoading(false);
+
 
         console.log(result.data);
       });
   };
 
+
+
   useEffect(() => {
     getMypost();
   }, []);
+
+
+  if (loading) {
+    return (
+      <div class="text-center my-5">
+        <h1>
+          <SyncOutlined spin  />
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="container">
@@ -167,7 +187,7 @@ const Userprofile = () => {
                         {moment(item.date).format("MMMM Do YYYY")}
                       </p>
                       <h4>{item.title.substring(0, 15)}</h4>
-                      <p>{item.des.substring(0, 20)}</p>
+                      <p>{ReactHtmlParser(item.des.substring(0, 20))}</p>
                       <hr />
 
                       <div className="likes">

@@ -2,10 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import axios from "axios";
 import { UserContext } from "./components/UserContext";
+import { UserGlobalContext } from "./components/UserGlobalContext";
 import { Link, useHistory } from "react-router-dom";
 function Nav() {
   const [user, setUserState] = useContext(UserContext);
   const history = useHistory();
+
+  const [state,setState] = useContext(UserGlobalContext);
+
   // const [user, setUser] = useState("");
   // const getUser = async () => {
   //   const res = await axios.get("/auth", {
@@ -111,6 +115,7 @@ function Nav() {
                   </div>
                   <div className="user_name">
                     <p>{user && user.name}</p>
+                    {/* <p>{JSON.stringify(state)}</p> */}
                   </div>
                 </div>
               </div>

@@ -5,8 +5,6 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineLike } from "react-icons/ai";
 
-
-
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -16,12 +14,12 @@ const UpdateProfile = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
-    //about: ""
+    about: "",
   });
 
-  const [about, setAbout] = useState("");
+  // const [about, setAbout] = useState("");
 
-  const { name, email } = data;
+  const { name, email, about } = data;
   const handleChange = (e) => {
     setData({
       ...data,
@@ -30,7 +28,7 @@ const UpdateProfile = () => {
   };
   const dataSubmit = async (e) => {
     e.preventDefault();
-    const addItem = { name, email,about };
+    const addItem = { name, email, about };
     try {
       //   setData({ ...data, error: null });
       await axios.put("/auth/update-profile-info/" + id, addItem, {
@@ -38,7 +36,8 @@ const UpdateProfile = () => {
           Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
         },
       });
-      history.push("/Dashboardprofile");
+
+      //history.push("/Dashboardprofile");
     } catch (err) {
       //   setData({ ...data, error: err.response.data.error });
     }
@@ -52,7 +51,7 @@ const UpdateProfile = () => {
       })
       .then((result) => {
         setData(result.data);
-        setAbout(result.data.about);
+        //setAbout(result.data.about);
       });
   }, []);
 
@@ -61,6 +60,7 @@ const UpdateProfile = () => {
       <div className="container designdata card">
         <div className="row">
           <h5 className="toptest">Update Profile</h5>
+
           <form>
             <div className="form-group">
               <label for="exampleInputEmail1" className="form-label">
@@ -86,7 +86,7 @@ const UpdateProfile = () => {
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea2">About</label>
-              <ReactQuill
+              <textarea
                 class="form-control rounded-0"
                 name="about"
                 // value={about}
@@ -94,11 +94,9 @@ const UpdateProfile = () => {
                 // onChange={handleChange}
                 theme="snow"
                 type="text"
-
-                onChange={(e) => setAbout(e)}
+                //onChange={(e) => setAbout(e.target.value)}
                 // name="des"
-                //onChange={handleChange}
-                // value={value,des}
+                onChange={handleChange}
                 value={about}
               />
             </div>
