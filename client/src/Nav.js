@@ -112,7 +112,7 @@ function Nav() {
                     </Link>
                   </div>
                   <div className="user_name">
-                    <p>{user && user.user && user.name}</p>
+                    <p>{user?user.name:"Loading"}</p>
 
                     {/* <p>{JSON.stringify(state)}</p> */}
                   </div>

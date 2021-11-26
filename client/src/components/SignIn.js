@@ -60,6 +60,9 @@ function SignIn() {
       setData({ ...data, error: err.response.data.error });
     }
   };
+
+ 
+
   return (
     <div>
       {" "}
@@ -96,6 +99,7 @@ function SignIn() {
               type="submit"
               onClick={(e) => {
                 submitData(e);
+                
               }}
               class="btn btn-primary custBtn"
             >

@@ -10,20 +10,16 @@ import { UserContext } from "./UserContext";
 import Dashboard from "./dashboard/Dashboard";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
-import renderHTML from 'react-render-html';
+import renderHTML from "react-render-html";
 
-import ReactHtmlParser from 'react-html-parser';
-
+import ReactHtmlParser from "react-html-parser";
 
 function Mypost() {
-
-
   const notify = () => {
     toast.info("Post Deleted Successfully!", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
-
 
   const [mypost, setData] = useState([]);
   //context api
@@ -42,9 +38,13 @@ function Mypost() {
       });
   };
 
+  function refreshPage() {
+    window.location.reload();
+  }
 
   useEffect(() => {
     getMypost();
+    
   }, []);
 
   //delete data item
@@ -57,10 +57,8 @@ function Mypost() {
     getMypost();
   }
 
-
   return (
     <div className="card container main_container">
-
       <div className="row">
         <div className="col-md-4">
           <div className="total_post">
@@ -87,10 +85,8 @@ function Mypost() {
         </div>
       </div>
 
-
       {/* table start */}
 
-      
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -116,7 +112,10 @@ function Mypost() {
               <td>
                 <button
                   className="btn btn-danger"
-                  onClick={() =>{ deletePost(item._id);notify();}}
+                  onClick={() => {
+                    deletePost(item._id);
+                    notify();
+                  }}
                 >
                   Delete
                 </button>
@@ -129,7 +128,6 @@ function Mypost() {
             </tr>
           ))}
         </tbody>
-       
       </table>
       <ToastContainer autoClose={8000} />
     </div>

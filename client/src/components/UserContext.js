@@ -25,7 +25,9 @@ export const UserProvider = (props) => {
   useEffect(() => {
     // setUser(JSON.parse(window.localStorage.getItem("tokenLogin")));
 
-    getUser();
+
+      getUser();
+
   }, []);
 
   return (

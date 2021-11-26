@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import SignIn from "./components/SignIn";
@@ -78,6 +78,8 @@ function App() {
             <Route path="/update-profile/:id" exact>
               <DashboardprotectedRoute Dashboardprocomp={UpdateProfile} />
             </Route>
+
+            {/* <Redirect exact from="/Dashboard/reload" to="/Dashboard" /> */}
 
             <Route path="*" exact component={PagenotFound} />
           </Switch>
