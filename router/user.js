@@ -143,6 +143,7 @@ router.put("/update-profile-info/:id", requireLogin, (req, res) => {
     $set: {
       name: req.body.name,
       email: req.body.email,
+      about: req.body.about
     },
   })
     .then((result) => {

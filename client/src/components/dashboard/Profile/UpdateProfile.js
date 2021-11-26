@@ -12,9 +12,10 @@ const UpdateProfile = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
+    about: ""
   
   });
-  const { name, email } = data;
+  const { name, email, about } = data;
   const handleChange = (e) => {
     setData({
       ...data,
@@ -23,7 +24,7 @@ const UpdateProfile = () => {
   };
   const dataSubmit = async (e) => {
     e.preventDefault();
-    const addItem = { name, email };
+    const addItem = { name, email, about };
     try {
     //   setData({ ...data, error: null });
       await axios.put("/auth/update-profile-info/" + id, addItem, {
@@ -74,6 +75,16 @@ const UpdateProfile = () => {
                 value={email}
                 onChange={handleChange}
                 className="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea2">About</label>
+              <textarea
+                class="form-control rounded-0"
+                name="about"
+                value={about}
+                rows="3"
+                onChange={handleChange}
               />
             </div>
             <button

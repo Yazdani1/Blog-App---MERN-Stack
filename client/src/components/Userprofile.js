@@ -13,7 +13,6 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 
-
 const Userprofile = () => {
   const [mypost, setData] = useState();
   const { id } = useParams();
@@ -92,6 +91,34 @@ const Userprofile = () => {
           </div>
         </div>
       </div>
+      {/* user about section */}
+
+      {mypost?.userInfo?.about ? (
+        <div className="container card profile-about-container">
+          <div className="row">
+            <div className="col-md-12">
+              <h5>About Me</h5>
+              <hr />
+              <div className="user-about-page">
+                <p>{mypost?.userInfo?.about}</p>
+              </div>
+            </div>
+            {/* <div className="col-md-2 edit-button">
+            <Link to={"/update-profile/" + (user && user._id)}>
+              <h5>
+                <AiFillEdit size={20} />
+                Edit
+              </h5>
+            </Link> */}
+
+            {/* <Link to={"/update-profile/" + (user && user._id)}>
+            <button className="btn btn-danger">Edit</button>
+          </Link> */}
+            {/* </div> */}
+          </div>
+        </div>
+      ) : null}
+
       <div className="container user-main-posts-section">
         <h5>
           {mypost?.postsData?.length === 0 ? (
@@ -140,16 +167,14 @@ const Userprofile = () => {
                       </p>
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{item.des.substring(0, 20)}</p>
-                      <hr/>
+                      <hr />
 
                       <div className="likes">
                         <p>
-                          
-                        <AiOutlineLike/> {item.likes.length}. 
-                         {item.likes.length > 0 ? "Likes" : "Like"}
+                          <AiOutlineLike /> {item.likes.length}.
+                          {item.likes.length > 0 ? "Likes" : "Like"}
                         </p>
 
-              
                         <p>
                           <FaRegCommentDots /> {item.comments.length}
                         </p>
