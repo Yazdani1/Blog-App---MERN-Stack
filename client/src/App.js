@@ -18,11 +18,9 @@ import DashboardNav from "./components/dashboard/DashboardNav";
 import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
 import PagenotFound from "./components/PagenotFound";
 import UpdateProfile from "./components/dashboard/Profile/UpdateProfile";
-import { UserGlobalProvider } from "./components/UserGlobalContext";
 
 function App() {
   return (
-    <UserGlobalProvider>
       <UserProvider>
         <BrowserRouter>
           <Switch>
@@ -85,7 +83,6 @@ function App() {
           </Switch>
         </BrowserRouter>
       </UserProvider>
-    </UserGlobalProvider>
   );
 }
 

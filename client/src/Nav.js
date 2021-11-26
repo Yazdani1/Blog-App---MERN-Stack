@@ -8,8 +8,6 @@ function Nav() {
   const [user, setUserState] = useContext(UserContext);
   const history = useHistory();
 
-  const [state,setState] = useContext(UserGlobalContext);
-
   // const [user, setUser] = useState("");
   // const getUser = async () => {
   //   const res = await axios.get("/auth", {
@@ -25,9 +23,9 @@ function Nav() {
 
   // const history = useHistory();
 
-  const logOut =  () => {
-     window.localStorage.removeItem("tokenLogin");
-     setUserState(null);
+  const logOut = () => {
+    window.localStorage.removeItem("tokenLogin");
+    setUserState(null);
     history.push("/signin");
   };
   return (
@@ -114,7 +112,8 @@ function Nav() {
                     </Link>
                   </div>
                   <div className="user_name">
-                    <p>{user && user.name}</p>
+                    <p>{user && user.user && user.name}</p>
+
                     {/* <p>{JSON.stringify(state)}</p> */}
                   </div>
                 </div>
