@@ -6,6 +6,9 @@ import { AiFillDashboard } from "react-icons/ai";
 import { RiEditFill } from "react-icons/ri";
 import { FaUserNurse } from "react-icons/fa";
 import { RiSettings2Fill } from "react-icons/ri";
+import { GiSkills } from "react-icons/gi";
+
+
 
 const DashboardNav = () => {
   return (
@@ -28,6 +31,12 @@ const DashboardNav = () => {
               <li>
                 <FaUserNurse size={25} />
                 Profile
+              </li>
+            </Link>
+            <Link to="/AddExperience" style={{ textDecoration: "none" }}>
+              <li>
+                <GiSkills size={25} />
+                Experience
               </li>
             </Link>
 

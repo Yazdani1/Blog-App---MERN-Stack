@@ -84,7 +84,7 @@ router.post("/login", async (req, res) => {
 
     //const {_id, name } = user;
 
-    return res.json({ token});
+    return res.json({ token });
   } catch (err) {
     console.log(err);
   }
@@ -143,7 +143,23 @@ router.put("/update-profile-info/:id", requireLogin, (req, res) => {
     $set: {
       name: req.body.name,
       email: req.body.email,
-      about: req.body.about
+      about: req.body.about,
+    },
+  })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//user experience
+
+router.put("/add-experience", requireLogin, (req, res) => {
+  User.findByIdAndUpdate(req.body.userID, {
+    $set: {
+      experience: req.body.experience,
     },
   })
     .then((result) => {

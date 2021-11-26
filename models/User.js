@@ -14,6 +14,9 @@ const userSchema = mongoose.Schema(
     about: {
       type: String,
     },
+    experience: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

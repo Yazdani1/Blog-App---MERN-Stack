@@ -15,7 +15,6 @@ import { AiOutlineLike } from "react-icons/ai";
 import ReactHtmlParser from "react-html-parser";
 import { SyncOutlined } from "@ant-design/icons";
 
-
 const Userprofile = () => {
   const [mypost, setData] = useState();
   const [loading, setLoading] = useState(true);
@@ -30,23 +29,19 @@ const Userprofile = () => {
         setData(result.data);
         setLoading(false);
 
-
         console.log(result.data);
       });
   };
-
-
 
   useEffect(() => {
     getMypost();
   }, []);
 
-
   if (loading) {
     return (
       <div class="text-center my-5">
         <h1>
-          <SyncOutlined spin  />
+          <SyncOutlined spin />
         </h1>
       </div>
     );
@@ -122,6 +117,34 @@ const Userprofile = () => {
               <hr />
               <div className="user-about-page">
                 <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
+              </div>
+            </div>
+            {/* <div className="col-md-2 edit-button">
+            <Link to={"/update-profile/" + (user && user._id)}>
+              <h5>
+                <AiFillEdit size={20} />
+                Edit
+              </h5>
+            </Link> */}
+
+            {/* <Link to={"/update-profile/" + (user && user._id)}>
+            <button className="btn btn-danger">Edit</button>
+          </Link> */}
+            {/* </div> */}
+          </div>
+        </div>
+      ) : null}
+
+      {/* user experience section */}
+
+      {mypost?.userInfo?.experience ? (
+        <div className="container card profile-about-container">
+          <div className="row">
+            <div className="col-md-12">
+              <h5>Experience</h5>
+              <hr />
+              <div className="user-about-page">
+                <p>{ReactHtmlParser(mypost?.userInfo?.experience)}</p>
               </div>
             </div>
             {/* <div className="col-md-2 edit-button">

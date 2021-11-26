@@ -18,6 +18,7 @@ import DashboardNav from "./components/dashboard/DashboardNav";
 import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
 import PagenotFound from "./components/PagenotFound";
 import UpdateProfile from "./components/dashboard/Profile/UpdateProfile";
+import AddExperience from "./components/dashboard/Experience/AddExperience";
 
 function App() {
   return (
@@ -78,6 +79,12 @@ function App() {
             <Route path="/update-profile/:id" exact>
               <DashboardprotectedRoute Dashboardprocomp={UpdateProfile} />
             </Route>
+
+            <Route path="/AddExperience" exact>
+              <DashboardprotectedRoute Dashboardprocomp={AddExperience} />
+            </Route>
+
+            
 
             {/* <Redirect exact from="/Dashboard/reload" to="/Dashboard" /> */}
 
