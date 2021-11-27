@@ -8,27 +8,32 @@ import axios from "axios";
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
 
   // const [user, setUser] = useState({
   //   token:""
   // });
 
   const getUser = async () => {
-    const res = await axios.get("/auth", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-    });
-    setUser(res.data);
+    await axios
+      .get("/auth", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+        },
+      })
+      .then((data) => {
+        if(data){
+          setUser(data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   useEffect(() => {
-    // setUser(JSON.parse(window.localStorage.getItem("tokenLogin")));
-
-
-      getUser();
-
-  }, []);
+    getUser();
+  }, [user,setUser]);
 
   return (
     <UserContext.Provider value={[user, setUser]}>

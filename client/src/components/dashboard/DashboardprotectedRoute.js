@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import DashboardNav from "./DashboardNav";
 import Nav from "../../Nav";
 import "./DashboardNav.css";
+import { UserContext } from "../UserContext";
+
+
 const DashboardprotectedRoute = (props) => {
+
+  const[user,setUser] = useContext(UserContext);
+
   const history = useHistory();
 
   let DashboardProtected = props.Dashboardprocomp;
@@ -14,7 +20,7 @@ const DashboardprotectedRoute = (props) => {
     } else {
       // history.push("/Dashboard");
     }
-  }, []);
+  }, [user,setUser]);
   return (
     <div>
       <Nav />
