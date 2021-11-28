@@ -417,9 +417,13 @@ function Home() {
                 />
                 <h1>{totalPosts}</h1> */}
 
-                <button onClick={handleLoadMore} className="loadmore">
-                  More Posts
-                </button>
+                {currentItems.length >= 5 ? (
+                  <button onClick={handleLoadMore} className="loadmore">
+                    More Posts
+                  </button>
+                ) : (
+                  "Posts are less than 30"
+                )}
               </div>
             </div>
 
