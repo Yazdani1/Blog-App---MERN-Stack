@@ -233,7 +233,20 @@ router.get("/total-posts", (req, res) => {
   Post.find()
     .estimatedDocumentCount()
     .then((data) => {
-      res.json(data);
+      res.json({ data });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//to count posts based on the liked
+
+router.get("/featured-posts", (req, res) => {
+  Post.find({})
+    .sort({comments:-1})
+    .then((result) => {
+      res.json({ result });
     })
     .catch((err) => {
       console.log(err);
