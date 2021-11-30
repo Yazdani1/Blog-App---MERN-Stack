@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-
+import "./auth.css";
 import { ToastContainer, toast } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
-import Dashboard from "./../dashboard/Dashboard";
+import Dashboard from "../dashboard/All Posts/Dashboard";
 
 function SignIn() {
   const notify = () => {
@@ -123,8 +123,8 @@ function SignIn() {
               <input
                 type="submit"
                 name="btnSubmit"
-                class="btnContact"
-                value="Sign Up"
+                className="btnContact"
+                value="Sign In"
                 onClick={(e) => {
                   submitData(e);
                 }}

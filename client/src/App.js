@@ -12,7 +12,7 @@ import Userprofile from "./components/Userprofile";
 import Edit from "./components/Edit";
 import Details from "./components/Details";
 import { UserProvider } from "./components/UserContext";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./components/dashboard/All Posts/Dashboard";
 import DashboardprotectedRoute from "./components/dashboard/DashboardprotectedRoute";
 import DashboardNav from "./components/dashboard/DashboardNav";
 import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
@@ -59,7 +59,7 @@ function App() {
             {/* //admin protected route */}
 
             <Route path="/Dashboard" exact>
-              <DashboardprotectedRoute Dashboardprocomp={Mypost} />
+              <DashboardprotectedRoute Dashboardprocomp={Dashboard} />
             </Route>
 
             <Route path="/createpost" exact>
