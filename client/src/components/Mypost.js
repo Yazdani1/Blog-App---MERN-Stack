@@ -11,6 +11,13 @@ import Dashboard from "./dashboard/Dashboard";
 import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 import renderHTML from "react-render-html";
+import { MdDelete } from "react-icons/md";
+import { AiTwotoneEdit } from "react-icons/ai";
+
+
+
+
+
 
 import ReactHtmlParser from "react-html-parser";
 
@@ -44,7 +51,6 @@ function Mypost() {
 
   useEffect(() => {
     getMypost();
-    
   }, []);
 
   //delete data item
@@ -58,79 +64,82 @@ function Mypost() {
   }
 
   return (
-    <div className="card container main_container">
-      <div className="row">
-        <div className="col-md-4">
-          <div className="total_post">
-            <h1>
-              <MdAssessment />
-            </h1>
-            <h3>Total post</h3>
-            <h3>{mypost.length}</h3>
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">
+            <div className="total_posts card">
+              <h1>
+                <MdAssessment />
+              </h1>
+              <h3>Total post</h3>
+              <h3>{mypost.length}</h3>
+            </div>
           </div>
-        </div>
-        <div className="col-md-4">
-          <div className="mamber_since">
-            <h1>
-              <MdCardMembership />
-            </h1>
-            <h3>Member Since</h3>
-            <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
+          <div className="col-md-4">
+            <div className="mamber_sinces card">
+              <h1>
+                <MdCardMembership />
+              </h1>
+              <h3>Member Since</h3>
+              <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
+            </div>
           </div>
-        </div>
-        <div className="col-md-4">
-          <div className="profile_visitor">
-            <h3>Total post</h3>
+          <div className="col-md-4">
+            <div className="profile_visitors card">
+              <h3>Total post</h3>
+            </div>
           </div>
         </div>
       </div>
+      <div className="card container main_container">
+        {/* table start */}
 
-      {/* table start */}
-
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Photo</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th colspan="3">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {mypost.map((item, index) => (
+        <table class="table table-bordered table-hover">
+          <thead>
             <tr>
-              <th scope="row">{index + 1}</th>
-              <td>
-                <img src={item.photo} height="80px" width="80px"></img>
-              </td>
-              <td>{item.title.substring(0, 30)}</td>
-              {/* <td>{item.des.substring(renderHTML(0,50))}</td> */}
-              <p>{ReactHtmlParser(item.des.substring(0, 50))}</p>
-              {/* <p>{renderHTML(item.des)}</p> */}
-
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => {
-                    deletePost(item._id);
-                    notify();
-                  }}
-                >
-                  Delete
-                </button>
-              </td>
-              <td>
-                <Link to={"/editpost/" + item._id}>
-                  <button className="btn btn-danger">Edit</button>
-                </Link>
-              </td>
+              <th scope="col">#</th>
+              <th scope="col">Photo</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th colspan="3">Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <ToastContainer autoClose={8000} />
-    </div>
+          </thead>
+          <tbody>
+            {mypost.map((item, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>
+                  <img src={item.photo} height="80px" width="80px"></img>
+                </td>
+                <td>{item.title.substring(0, 30)}</td>
+                {/* <td>{item.des.substring(renderHTML(0,50))}</td> */}
+                <p>{ReactHtmlParser(item.des.substring(0, 50))}</p>
+                {/* <p>{renderHTML(item.des)}</p> */}
+
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      deletePost(item._id);
+                      notify();
+                    }}
+                  >
+                   <MdDelete size={20}/> Delete
+                  </button>
+                </td>
+                <td>
+                  <Link to={"/editpost/" + item._id}>
+                    <button className="btn btn-success"><AiTwotoneEdit size={20}/>Edit</button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <ToastContainer autoClose={8000} />
+      </div>
+    </>
   );
 }
 

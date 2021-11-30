@@ -81,6 +81,7 @@ const Post = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+     
         setUrl(data.url);
       })
       .catch((err) => {
@@ -138,8 +139,10 @@ const Post = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="form-control"
+                maxLength="100"
               />
             </div>
+            <p>{title? title.length:0}/100</p>
             <div class="form-group">
               <label for="exampleFormControlTextarea2">Description</label>
               <ReactQuill

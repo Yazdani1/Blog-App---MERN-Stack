@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/Home";
-import Signup from "./components/Signup";
-import SignIn from "./components/SignIn";
+import Signup from "./components/auth/Signup";
+import SignIn from "./components/auth/Signin";
 import ProtectedRoute from "./components/Protectedroute";
 import Profile from "./components/Profile";
 import Post from "./components/Post";

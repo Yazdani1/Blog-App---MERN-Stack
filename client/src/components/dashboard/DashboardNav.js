@@ -1,5 +1,4 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useContext } from "react";
 import Mypost from "../Mypost";
 import "./DashboardNav.css";
 import { AiFillDashboard } from "react-icons/ai";
@@ -7,14 +6,39 @@ import { RiEditFill } from "react-icons/ri";
 import { FaUserNurse } from "react-icons/fa";
 import { RiSettings2Fill } from "react-icons/ri";
 import { GiSkills } from "react-icons/gi";
+import { UserContext } from "../UserContext";
+import { Link, useHistory } from "react-router-dom";
 
 
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 const DashboardNav = () => {
+  const [userdetails,setUserdetails] = useContext(UserContext);
+
+  const history = useHistory();
+
+  const logOut = () => {
+    window.localStorage.removeItem("tokenLogin");
+    setUserdetails(null);
+    history.push("/signin");
+  };
+
+
   return (
-    <div className="container card">
+    <div className="admin-nav-back">
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-10">
+          <div className="profile">
+            <div className="profile-picture">
+              <h4>
+                {userdetails && userdetails.name.substring(0, 2).toUpperCase()}
+              </h4>
+            </div>
+            <h4 className="profile-name-navbar">
+              {userdetails && userdetails.name}
+            </h4>
+          </div>
+
           <div className="adminnavbar">
             <Link to="/Dashboard" style={{ textDecoration: "none" }}>
               <li>
@@ -43,6 +67,13 @@ const DashboardNav = () => {
             <li>
               <RiSettings2Fill size={25} />
               Setting
+            </li>
+            <li className="logout" onClick={logOut}>
+              <p>
+                {" "}
+                <RiLogoutCircleRLine size={20} />
+                Log Out
+              </p>
             </li>
           </div>
         </div>

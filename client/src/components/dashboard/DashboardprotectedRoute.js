@@ -24,13 +24,13 @@ const DashboardprotectedRoute = (props) => {
   return (
     <div>
       <Nav />
-      <div className="container dashboard-nav-protected">
+      <div className="dashboard-nav-protected">
       
         <div className="row">
-          <div className="col-md-4 ">
+          <div className="col-md-2">
             <DashboardNav />
           </div>
-          <div className="col-md-8">
+          <div className="col-md-9">
             <DashboardProtected />
           </div>
         </div>

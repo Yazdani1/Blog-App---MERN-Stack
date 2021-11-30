@@ -1,13 +1,80 @@
-.adminnavbar li{
-    list-style-type: none;
+.adminnavbar li {
+  list-style-type: none;
 
-    width: 100%;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 15px;
-    
+  width: 100%;
+  /* border: 1px solid black; */
+  padding: 10px;
+  margin: 15px;
+  color: black;
 }
 
-.dashboard-nav-protected{
-    margin-top: 35px;
+.admin-nav-back {
+  background-color: white;
+  color: white;
+  height: 100vh;
+}
+
+/* .profile{
+    height: 100px;
+  width: 100px;
+  background-color: #dc3545;
+  border-radius: 90px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  left: 25%;
+  position: relative;
+} */
+
+.profile-picture {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  border-radius: 90px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  left: 40%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.profile-picture h4 {
+  height: 100px;
+  width: 100px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: aliceblue;
+  border-radius: 50%; /* may require vendor prefixes */
+}
+
+.profile-name-navbar{
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    left: 40%;
+    position: relative;
+    margin-bottom: 0px;
+}
+
+
+.logout p{
+  background-color: rgb(233, 12, 12);
+  color: aliceblue;
+  padding: 8px;
+  border-radius: 20px;
+}
+
+.logout p:hover{
+  background-color: black;
+  color: whitesmoke;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid black;
+  cursor: pointer;
 }
