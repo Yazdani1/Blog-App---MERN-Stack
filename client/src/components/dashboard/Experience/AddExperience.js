@@ -74,13 +74,14 @@ const AddExperience = () => {
                 value={experience}
                 onChange={(e) => setExperience(e.target.value)}
                 // onChange={handleChange}
-                theme="snow"
+                maxLength="150"
                 //   type="text"
                 //onChange={(e) => setAbout(e.target.value)}
                 // name="des"
                 //   onChange={handleChange}
                 //   value={about}
               />
+              <p> {experience ? experience.length : 0}/150</p>
             </div>
             <button
               type="submit"
