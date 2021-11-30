@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import "../../App.css";
+
 import { ToastContainer, toast } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 import Dashboard from "./../dashboard/Dashboard";
@@ -24,6 +24,8 @@ function SignIn() {
     email: "",
     password: "",
     error: "",
+ 
+
   });
   const { email, password, error } = data;
   const handleChange = (e) => {
@@ -60,54 +62,77 @@ function SignIn() {
     }
   };
 
- 
+
+
+  const errorMessage = () => {
+    return (
+      <div
+        className="alert alert-danger"
+        style={{ display: error ? "" : "none" }}
+      >
+        {error}
+      </div>
+    );
+  };
 
   return (
-    <div>
-      {" "}
-      <div className="containe design card">
-        <div className="row">
-          <h1 className="toptest">Sign In to your account</h1>
-          <form>
-            <div className="form-group">
-              <label for="exampleInputPassword1" className="form-label">
-                E-mail
-              </label>
-              <input
-                type="text"
-                onChange={handleChange}
-                name="email"
-                value={email}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label for="exampleInputPassword1" className="form-label">
-                Password
-              </label>
-              <input
-                type="text"
-                onChange={handleChange}
-                name="password"
-                value={password}
-                className="form-control"
-              />
-            </div>
-            {error ? <p className="text-danger">{error}</p> : null}
-            <button
-              type="submit"
-              onClick={(e) => {
-                submitData(e);
-                
-              }}
-              class="btn btn-primary custBtn"
-            >
-              Sign In
-            </button>
-          </form>
+    <div className="container">
+      <div class="contact-form">
+        <div class="contact-image">
+          <img
+            src="https://image.ibb.co/kUagtU/rocket_contact.png"
+            alt="rocket_contact"
+          />
         </div>
+        <form>
+          <h3>Create Your Account</h3>
+
+          {errorMessage()}
+
+          <div className="row">
+            <div className="col-md-12">
+       
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="email"
+                  value={email}
+                  onChange={handleChange}
+                  className="form-control"
+                  placeholder="Your E-mail *"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  value={password}
+                  className="form-control"
+                  onChange={handleChange}
+                  placeholder="Password*"
+                />
+              </div>
+            </div>
+
+            {/* <div class="col-md-6">
+              <div>
+                <img height="250px" width="500px" src="https://images.pexels.com/photos/4458/cup-mug-desk-office.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+              </div>
+            </div> */}
+            <div class="form-group">
+              <input
+                type="submit"
+                name="btnSubmit"
+                class="btnContact"
+                value="Sign Up"
+                onClick={(e) => {
+                  submitData(e);
+                }}
+              />
+            </div>
+          </div>
+        </form>
       </div>
-      <ToastContainer />
     </div>
   );
 }

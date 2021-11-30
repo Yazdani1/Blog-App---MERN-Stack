@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../../App.css";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
+import "./auth.css";
 
 function SignUp() {
   const history = useHistory();
@@ -57,38 +57,45 @@ function SignUp() {
   };
 
   const successMessage = () => {
-    <div
-      className="alert alert-success"
-      style={{ display: success ? "" : "none" }}
-    >
-      New account has created. Please Sign in to your account.
-      <Link to="/signin">Sign In</Link>
-    </div>;
+    return (
+      <div
+        className="alert alert-success"
+        style={{ display: success ? "" : "none" }}
+      >
+        New account has created. Please Sign in to your account.
+        <Link to="/signin">Sign In</Link>
+      </div>
+    );
   };
 
   const errorMessage = () => {
-    <div
-      className="alert alert-danger"
-      style={{ display: error ? "" : "none" }}
-    >
-      {error}
-    </div>;
+    return (
+      <div
+        className="alert alert-danger"
+        style={{ display: error ? "" : "none" }}
+      >
+        {error}
+      </div>
+    );
   };
 
   return (
-    <div>
-      <div class="container contact-form">
+    <div className="container">
+      <div class="contact-form">
         <div class="contact-image">
           <img
             src="https://image.ibb.co/kUagtU/rocket_contact.png"
             alt="rocket_contact"
           />
         </div>
-        <form method="post">
+        <form>
           <h3>Create Your Account</h3>
 
+          {successMessage()}
+          {errorMessage()}
+
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-12">
               <div className="form-group">
                 <input
                   type="text"
@@ -122,23 +129,8 @@ function SignUp() {
             </div>
 
             {/* <div class="col-md-6">
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="txtPhone"
-                  class="form-control"
-                  placeholder="Your Phone Number *"
-                  value=""
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="txtPhone"
-                  class="form-control"
-                  placeholder="Your Phone Number *"
-                  value=""
-                />
+              <div>
+                <img height="250px" width="500px" src="https://images.pexels.com/photos/4458/cup-mug-desk-office.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
               </div>
             </div> */}
             <div class="form-group">
@@ -155,77 +147,6 @@ function SignUp() {
           </div>
         </form>
       </div>
-
-      {/* <div className="container main_form">
-        <div className="row">
-          <h1 className="toptest">Create Account</h1>
-          <div
-            className="alert alert-danger"
-            style={{ display: error ? "" : "none" }}
-          >
-            {error}
-          </div>
-          <div
-            className="alert alert-success"
-            style={{ display: success ? "" : "none" }}
-          >
-           New account has created. Please Sign in to your account.<Link to="/signin">Sign In</Link>
-          </div>
-          <form className="card form_Design">
-            <div className="form-group">
-              <label for="exampleInputEmail1" className="form-label">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={handleChange}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label for="exampleInputPassword1" className="form-label">
-                E-mail
-              </label>
-              <input
-                type="text"
-                name="email"
-                value={email}
-                onChange={handleChange}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label for="exampleInputPassword1" className="form-label">
-                Password
-              </label>
-              <input
-                type="text"
-                name="password"
-                value={password}
-                className="form-control"
-                onChange={handleChange}
-                className="inputfielddesign"
-              />
-            </div>
-
-
-
-            <button
-              type="submit"
-              onClick={(e) => {
-                notify();
-                dataSubmit(e);
-              }}
-              class="btn btn-success"
-            >
-              Sign Up
-            </button>
-          </form>
-        </div>
-        <ToastContainer autoClose={8000} />
-      </div> */}
     </div>
   );
 }
