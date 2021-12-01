@@ -14,6 +14,7 @@ const Allpost = ({ posts }) => {
               des={item.des}
               index={index}
               ID={item._id}
+             
             />
           </>
         ))

@@ -77,7 +77,7 @@ function SignIn() {
 
   return (
     <div className="container">
-      <div class="contact-form">
+      <div class="contact-form container">
         <div class="contact-image">
           <img
             src="https://image.ibb.co/kUagtU/rocket_contact.png"

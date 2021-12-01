@@ -98,7 +98,9 @@ const UpdateProfile = () => {
                 // name="des"
                 onChange={handleChange}
                 value={about}
+                maxLength="250"
               />
+              <p>{about?about.length:0}/250</p>
             </div>
             <button
               type="submit"

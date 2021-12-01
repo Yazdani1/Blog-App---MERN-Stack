@@ -14,6 +14,11 @@ import { AiTwotoneEdit } from "react-icons/ai";
 import ReactHtmlParser from "react-html-parser";
 import Allpost from "./Allpost";
 import AllPostList from "./AllPostList";
+import { SyncOutlined } from "@ant-design/icons";
+
+import { EyeOutlined  } from "@ant-design/icons";
+
+
 
 function Dashboard() {
   const notify = () => {
@@ -22,7 +27,11 @@ function Dashboard() {
     });
   };
 
+  let iconStyles = { color: "white" };
+
   const [mypost, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   //context api
   const [user, setUser] = useContext(UserContext);
 
@@ -35,6 +44,7 @@ function Dashboard() {
       .then((res) => res.json())
       .then((result) => {
         setData(result.mypostdata);
+        setLoading(false);
         console.log(result);
       });
   };
@@ -46,6 +56,16 @@ function Dashboard() {
   useEffect(() => {
     getMypost();
   }, []);
+
+  if (loading) {
+    return (
+      <div class="text-center my-5">
+        <h1>
+          <SyncOutlined spin />
+        </h1>
+      </div>
+    );
+  }
 
   //delete data item
   function deletePost(id) {
@@ -87,63 +107,75 @@ function Dashboard() {
         </div>
       </div>
       <div className="card container main_container">
-
-      <Allpost posts={mypost} />
-
-   
+        {/* <Allpost posts={mypost} /> */}
 
         {/* table start */}
 
-        {/* <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Photo</th>
-              <th scope="col">Title</th>
-              <th scope="col">Description</th>
-              <th colspan="3">Action</th>
-            </tr>
-          </thead>
-          <tbody>
+        {mypost.length > 0 ? (
+          <table class="table table-bordered table-hover">
+            <thead>
               <tr>
+                <th scope="col">#</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th colspan="3">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+              </tr>
+
+              {mypost.map((item, index) => (
+                <tr>
+                  <th scope="row">{index + 1}</th>
                   <td>
-                 
-
+                    <img src={item.photo} height="80px" width="80px"></img>
                   </td>
-              </tr>
+                  <td>{item.title.substring(0, 30)}</td>
+                  <td>{ReactHtmlParser(item.des.substring(0, 80))}</td>
 
-          {mypost.map((item, index) => (
-              <tr>
-                <th scope="row">{index + 1}</th>
-                <td>
-                  <img src={item.photo} height="80px" width="80px"></img>
-                </td>
-                <td>{item.title.substring(0, 30)}</td>
-                <td>{ReactHtmlParser(item.des.substring(0, 80))}</td>
+                  <td>
+                  <Link to={"/details/" + item._id}>
 
-                <td>
-                  <Link to={"/editpost/" + item._id}>
-                    <button className="btn btn-success">
-                      <AiTwotoneEdit size={20} />
-                      Edit
+                    <button
+                      className="btn btn-primary"
+                 
+                    >
+                      <EyeOutlined style={{fontSize:"20px" }} /> View
                     </button>
-                  </Link>
-                </td>
-                <td>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      deletePost(item._id);
-                      notify();
-                    }}
-                  >
-                    <MdDelete size={20} /> Delete
-                  </button>
-                </td>
-              </tr>
-            ))} 
-          </tbody>
-        </table> */}
+                    </Link>
+                  </td>
+
+                  <td>
+                    <Link to={"/editpost/" + item._id}>
+                      <button className="btn btn-success">
+                        <AiTwotoneEdit size={20} />
+                        Edit
+                      </button>
+                    </Link>
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        deletePost(item._id);
+                        notify();
+                      }}
+                    >
+                      <MdDelete size={20} /> Delete
+                    </button>
+                  </td>
+
+        
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          "You Did no add any posts yet"
+        )}
 
         <ToastContainer autoClose={8000} />
       </div>
