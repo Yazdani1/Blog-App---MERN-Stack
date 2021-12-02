@@ -346,12 +346,7 @@ function Home() {
                             ) ? (
                               <p
                                 onClick={() => {
-                                  //   if (!localStorage.getItem("tokenLogin")) {
-                                  //     history.push("/signin");
-                                  //   } else {
-                                  //     addunlikePost(item._id);
-                                  //   }
-                                  // }
+                        
                                   addunlikePost(item._id);
                                 }}
                               >
@@ -407,15 +402,7 @@ function Home() {
                 ))}
               </div>
               <div className="text-center">
-                {/* <Pagination
-                  showSizeChanger
-                  //onShowSizeChange={onShowSizeChange}
-                  //defaultCurrent={3}
-                  current={page}
-                  total={(totalPosts / 3) * 10}
-                  onChange={(page) => setPage(page)}
-                />
-                <h1>{totalPosts}</h1> */}
+
 
                 {currentItems.length >= 5 ? (
                   <button onClick={handleLoadMore} className="loadmore">
