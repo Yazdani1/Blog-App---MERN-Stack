@@ -248,26 +248,7 @@ function Home() {
       });
   };
 
-  // const addtoWishList = (id) => {
-  //   fetch("/auth/wishlist", {
-  //     method: "put",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //     },
-  //     body: JSON.stringify({
-  //       postId: id,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       console.log("wishlist result" + result);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  //dataItem
+
 
   if (loading) {
     return (

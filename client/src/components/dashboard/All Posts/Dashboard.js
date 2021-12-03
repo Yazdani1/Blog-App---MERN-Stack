@@ -16,9 +16,9 @@ import Allpost from "./Allpost";
 import AllPostList from "./AllPostList";
 import { SyncOutlined } from "@ant-design/icons";
 
-import { EyeOutlined  } from "@ant-design/icons";
+import { EyeOutlined } from "@ant-design/icons";
 
-
+import { getMypost } from "./apiAllpost";
 
 function Dashboard() {
   const notify = () => {
@@ -31,30 +31,45 @@ function Dashboard() {
 
   const [mypost, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   //context api
   const [user, setUser] = useContext(UserContext);
 
-  const getMypost = () => {
-    fetch("/auth/mypost", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        setData(result.mypostdata);
+  const loadMypost = () => {
+    getMypost().then((data) => {
+      if (data.error) {
+        setError(data.error);
+        console.log(data.error);
+      } else {
+        setData(data.mypostdata);
         setLoading(false);
-        console.log(result);
-      });
+      }
+    });
   };
+
+  // const getMypost = () => {
+  //   fetch("/auth/mypost", {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       setData(result.mypostdata);
+  //       setLoading(false);
+  //       console.log(result);
+  //     });
+  // };
 
   function refreshPage() {
     window.location.reload();
   }
 
   useEffect(() => {
-    getMypost();
+    // getMypost();
+    loadMypost();
   }, []);
 
   if (loading) {
@@ -74,7 +89,7 @@ function Dashboard() {
         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
       },
     });
-    getMypost();
+    //getMypost();
   }
 
   return (
@@ -137,14 +152,10 @@ function Dashboard() {
                   <td>{ReactHtmlParser(item.des.substring(0, 80))}</td>
 
                   <td>
-                  <Link to={"/details/" + item._id}>
-
-                    <button
-                      className="btn btn-primary"
-                 
-                    >
-                      <EyeOutlined style={{fontSize:"20px" }} /> View
-                    </button>
+                    <Link to={"/details/" + item._id}>
+                      <button className="btn btn-primary">
+                        <EyeOutlined style={{ fontSize: "20px" }} /> View
+                      </button>
                     </Link>
                   </td>
 
@@ -167,8 +178,6 @@ function Dashboard() {
                       <MdDelete size={20} /> Delete
                     </button>
                   </td>
-
-        
                 </tr>
               ))}
             </tbody>
