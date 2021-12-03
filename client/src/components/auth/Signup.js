@@ -4,6 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 import "./auth.css";
+import { signUp } from "./apiAuth";
 
 function SignUp() {
   const history = useHistory();
@@ -23,7 +24,7 @@ function SignUp() {
     success: false,
   });
 
-  const { name, email, password, error, success } = data;
+  const { name, email, password, success, error } = data;
 
   const handleChange = (e) => {
     setData({
@@ -32,29 +33,49 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
   };
-  const dataSubmit = async (e) => {
-    e.preventDefault();
-    const addItem = { name, email, password };
-    try {
-      setData({ ...data, error: null }); //to get error
-      await axios.post("/auth/register", addItem, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      setData({
-        name: "",
-        email: "",
-        password: "",
-        error: "",
-        success: true,
-      });
 
-      // history.push("/signin");
-    } catch (err) {
-      setData({ ...data, error: err.response.data.errort, success: false });
-    }
+  const dataSubmit = (e) => {
+    e.preventDefault();
+    setData({ ...data, error: false });
+
+    signUp({ name, email, password }).then((result) => {
+      if (result.errort) {
+        setData({ ...data, error: result.errort, success: false });
+      } else {
+        setData({
+          name: "",
+          email: "",
+          password: "",
+          error: "",
+          success: true,
+        });
+      }
+    });
   };
+
+  // const dataSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const addItem = { name, email, password };
+  //   try {
+  //     setData({ ...data, error: null }); //to get error
+  //     await axios.post("/auth/register", addItem, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     setData({
+  //       name: "",
+  //       email: "",
+  //       password: "",
+  //       error: "",
+  //       success: true,
+  //     });
+
+  //     // history.push("/signin");
+  //   } catch (err) {
+  //     setData({ ...data, error: err.response.data.errort, success: false });
+  //   }
+  // };
 
   const successMessage = () => {
     return (
