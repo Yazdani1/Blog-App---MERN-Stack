@@ -1,10 +1,11 @@
+
 export const signUp = (user) => {
   return fetch("/auth/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(user),
   })
     .then((res) => {
       return res.json();
@@ -15,7 +16,7 @@ export const signUp = (user) => {
 };
 
 
-export const signIn = (user) => {
+  export const signIn = (user) => {
     return fetch("/auth/login", {
       method: "POST",
       headers: {

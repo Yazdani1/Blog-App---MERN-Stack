@@ -8,18 +8,7 @@ import Dashboard from "../dashboard/All Posts/Dashboard";
 import { signIn } from "./apiAuth";
 
 function SignIn() {
-  const notify = () => {
-    toast.success("Signed In Successfully!", {
-      position: toast.POSITION.TOP_RIGHT,
-      autoClose: 9000,
-    });
-  };
-  const notifyError = () => {
-    toast.warn("Wrong Details", {
-      position: toast.POSITION.TOP_RIGHT,
-      autoClose: 9000,
-    });
-  };
+
   const history = useHistory();
   const [data, setData] = useState({
     email: "",

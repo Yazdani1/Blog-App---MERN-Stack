@@ -57,6 +57,9 @@ const Post = () => {
             setImageurl("");
             setUrl("");
             setSuccess(true);
+            toast.success("Post Created Successfully!", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
             //history.push("/Dashboard");
           }
         })
@@ -83,7 +86,6 @@ const Post = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-     
         setUrl(data.url);
       })
       .catch((err) => {
@@ -144,7 +146,7 @@ const Post = () => {
                 maxLength="100"
               />
             </div>
-            <p>{title? title.length:0}/100</p>
+            <p>{title ? title.length : 0}/100</p>
             <div class="form-group">
               <label for="exampleFormControlTextarea2">Description</label>
               <ReactQuill
@@ -174,6 +176,7 @@ const Post = () => {
           </form>
         </div>
       </div>
+      <ToastContainer autoClose={8000} />
     </div>
   );
 };

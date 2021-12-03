@@ -168,6 +168,7 @@ function SignUp() {
           </div>
         </form>
       </div>
+      <ToastContainer autoClose={8000} />
     </div>
   );
 }
