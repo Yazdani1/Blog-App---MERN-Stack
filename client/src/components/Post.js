@@ -54,6 +54,8 @@ const Post = () => {
           if (data.error) {
             setError(data.error);
           } else {
+            setImageurl("");
+            setUrl("");
             setSuccess(true);
             //history.push("/Dashboard");
           }

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./Dashboard.css";
 import moment from "moment";
-import { Link, useHistory } from "react-router-dom";
 import { MdCardMembership } from "react-icons/md";
 import { MdAssessment } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
@@ -15,10 +14,12 @@ import ReactHtmlParser from "react-html-parser";
 import Allpost from "./Allpost";
 import AllPostList from "./AllPostList";
 import { SyncOutlined } from "@ant-design/icons";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 import { EyeOutlined } from "@ant-design/icons";
 
 import { getMypost } from "./apiAllpost";
+import { deletePost } from "./apiAllpost";
 
 function Dashboard() {
   const notify = () => {
@@ -26,6 +27,9 @@ function Dashboard() {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+
+  const { id } = useParams();
+
 
   let iconStyles = { color: "white" };
 
@@ -46,6 +50,21 @@ function Dashboard() {
         setLoading(false);
       }
     });
+  };
+
+  const deletemyPost = (id) => {
+    deletePost(id)
+      .then((data) => {
+        if (data) {
+          toast.info("Post Deleted Successfully!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+          loadMypost();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // const getMypost = () => {
@@ -74,7 +93,7 @@ function Dashboard() {
 
   if (loading) {
     return (
-      <div class="text-center my-5">
+      <div class="text-center my-25">
         <h1>
           <SyncOutlined spin />
         </h1>
@@ -83,14 +102,36 @@ function Dashboard() {
   }
 
   //delete data item
-  function deletePost(id) {
-    axios.delete("/auth/delete/" + id, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-    });
-    //getMypost();
-  }
+  // function deletePost(id) {
+  //   axios.delete("/auth/delete/" + id, {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //   });
+  //   loadMypost();
+
+  //   //getMypost();
+  // }
+
+  // function deletePost(id) {
+  //   return fetch("/auth/delete/" + id, {
+  //     method: "DELETE",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //   })
+  //     .then((res) => res.json)
+  //     .then((result) => {
+  //       if (result) {
+  //         loadMypost();
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
+  //   //getMypost();
+  // }
 
   return (
     <>
@@ -171,8 +212,8 @@ function Dashboard() {
                     <button
                       className="btn btn-danger"
                       onClick={() => {
-                        deletePost(item._id);
-                        notify();
+                        deletemyPost(item._id);
+                     
                       }}
                     >
                       <MdDelete size={20} /> Delete
