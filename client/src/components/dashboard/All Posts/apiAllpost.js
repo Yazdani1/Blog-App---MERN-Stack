@@ -1,3 +1,4 @@
+
 export const getMypost = () => {
   return fetch("/auth/mypost", {
     method: "GET",
@@ -12,6 +13,7 @@ export const getMypost = () => {
       console.log(err);
     });
 };
+
 
 export const deletePost=(id)=> {
   return fetch("/auth/delete/" + id, {

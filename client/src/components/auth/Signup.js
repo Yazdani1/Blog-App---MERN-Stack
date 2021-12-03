@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 import "./auth.css";
 import { signUp } from "./apiAuth";
+import { SyncOutlined } from "@ant-design/icons";
 
 function SignUp() {
   const history = useHistory();
@@ -24,6 +25,8 @@ function SignUp() {
     success: false,
   });
 
+  const [loading, setLoading] = useState(false);
+
   const { name, email, password, success, error } = data;
 
   const handleChange = (e) => {
@@ -38,10 +41,22 @@ function SignUp() {
     e.preventDefault();
     setData({ ...data, error: false });
 
+    setLoading(true);
+
     signUp({ name, email, password }).then((result) => {
+      setLoading(false);
+
       if (result.errort) {
+        toast.error(result.errort, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
         setData({ ...data, error: result.errort, success: false });
+        setLoading(false);
       } else {
+        toast.success("Your account has Created Successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setLoading(false);
         setData({
           name: "",
           email: "",
@@ -155,7 +170,7 @@ function SignUp() {
               </div>
             </div> */}
             <div class="form-group">
-              <input
+              <button
                 type="submit"
                 name="btnSubmit"
                 class="btnContact"
@@ -163,7 +178,9 @@ function SignUp() {
                 onClick={(e) => {
                   dataSubmit(e);
                 }}
-              />
+              >
+                {loading ? <SyncOutlined spin /> : "Sign Up"}
+              </button>
             </div>
           </div>
         </form>
