@@ -5,6 +5,7 @@ import "./auth.css";
 import { ToastContainer, toast } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 import Dashboard from "../dashboard/All Posts/Dashboard";
+import { signIn } from "./apiAuth";
 
 function SignIn() {
   const notify = () => {
@@ -24,8 +25,6 @@ function SignIn() {
     email: "",
     password: "",
     error: "",
- 
-
   });
   const { email, password, error } = data;
   const handleChange = (e) => {
@@ -35,34 +34,52 @@ function SignIn() {
       [e.target.name]: e.target.value,
     });
   };
+
   const submitData = async (e) => {
     e.preventDefault();
-    try {
-      setData({ ...data, error: null });
-      const res = await axios.post(
-        "/auth/login",
-        { email, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+    setData({ ...data, error: false });
+
+    signIn({ email, password })
+      .then((result) => {
+        if (result.error) {
+          setData({ ...data, error: result.error, success: false });
+        } else {
+          localStorage.setItem("tokenLogin", result.token);
+
+          history.push("/Dashboard");
         }
-      );
-      //console.log("rrrrrrrr"+res.data.user);
-      // setState({ token: res.data.token, user: res.data.user });
-
-      localStorage.setItem("tokenLogin", res.data.token);
-      // localStorage.setItem("username", JSON.stringify(res.data.user));
-
-      // window.localStorage.setItem("tokenLogin", JSON.stringify(res.data.token));
-
-      history.push("/Dashboard");
-    } catch (err) {
-      setData({ ...data, error: err.response.data.error });
-    }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
+  // const submitData = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     setData({ ...data, error: null });
+  //     const res = await axios.post(
+  //       "/auth/login",
+  //       { email, password },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     //console.log("rrrrrrrr"+res.data.user);
+  //     // setState({ token: res.data.token, user: res.data.user });
 
+  //     localStorage.setItem("tokenLogin", res.data.token);
+  //     // localStorage.setItem("username", JSON.stringify(res.data.user));
+
+  //     // window.localStorage.setItem("tokenLogin", JSON.stringify(res.data.token));
+
+  //     history.push("/Dashboard");
+  //   } catch (err) {
+  //     setData({ ...data, error: err.response.data.error });
+  //   }
+  // };
 
   const errorMessage = () => {
     return (
@@ -91,7 +108,6 @@ function SignIn() {
 
           <div className="row">
             <div className="col-md-12">
-       
               <div className="form-group">
                 <input
                   type="text"
