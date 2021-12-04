@@ -208,13 +208,39 @@ const DetailsPage = () => {
     </div>
   );
 
-  const addtoFavourite = (e, userID) => {
-    e.preventDefault();
+  // const addtoFavourite = (e, userID) => {
+  //   e.preventDefault();
 
-    postFavourite(dataItem && dataItem._id).then((res) => {
-      console.log("Added to wish list", res);
-      history.push("/Dashboard");
-    });
+  //   postFavourite(dataItem && dataItem._id, userID).then((res) => {
+  //     console.log("Added to wish list", res);
+  //     history.push("/Dashboard");
+  //   });
+  // };
+
+  const removeComment = (postId, text) => {
+  
+    fetch("/auth/remove-comments", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: postId,
+        text,
+      }),
+    })
+      .then((result) => {
+        if (result) {
+          console.log("Comment removed");
+          getDetailsData();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    console.log(postId, text);
   };
 
   return (
@@ -234,7 +260,7 @@ const DetailsPage = () => {
                 />
                 <div className="details-postDesign">
                   <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-9">
                       <div className="details-post">
                         <div className="detailspage-user-profile">
                           <Link to={"/userprofile/"} className="name_design">
@@ -264,7 +290,7 @@ const DetailsPage = () => {
                       </div>
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                       <div className="details-post-likes">
                         <div className="like-buttondesign">
                           <div className="like-icon">
@@ -285,7 +311,7 @@ const DetailsPage = () => {
                             <p> {dataItem.comments?.length}</p>
                           </div>
                         </div>
-                        <div className="comment-buttondesign">
+                        {/* <div className="comment-buttondesign">
                           <div className="comment-icon">
                             <BsHeartFill size={20} />
                           </div>
@@ -293,13 +319,15 @@ const DetailsPage = () => {
                           <div className="comment-count">
                             <button
                               className="btn btn-success"
-                              onClick={addtoFavourite}
+                              onClick={(e) =>
+                                addtoFavourite(e, user && user._id)
+                              }
                             >
                               {" "}
                               Save{" "}
                             </button>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -413,6 +441,22 @@ const DetailsPage = () => {
                                 {" "}
                                 {moment(allcomments && allcomments.date).format(
                                   "MMMM Do YYYY"
+                                )}
+                              </p>
+
+                              <p>
+                                {user && user._id === allcomments.postedBy._id && (
+                                  <div
+                                    className="btn btn-danger"
+                                    onClick={(e) =>
+                                      removeComment(
+                                        dataItem._id,
+                                        allcomments
+                                      )
+                                    }
+                                  >
+                                    Delete
+                                  </div>
                                 )}
                               </p>
 

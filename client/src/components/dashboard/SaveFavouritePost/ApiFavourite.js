@@ -30,14 +30,14 @@ export const removeFavouritePost = (postID) => {
     });
 };
 
-export const postFavourite = (postID) => {
+export const postFavourite = (postID,userID) => {
   return fetch("/auth/save-favouritepost", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
     },
-    body: JSON.stringify(postID),
+    body: JSON.stringify(postID,userID),
   })
     .then((res) => {
       return res.json();

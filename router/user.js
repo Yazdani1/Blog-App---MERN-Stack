@@ -170,12 +170,14 @@ router.put("/add-experience", requireLogin, (req, res) => {
     });
 });
 
+//wishlist
+
 //Wishlist Route to save a post to user dashboard
 
 router.post("/save-favouritepost", requireLogin, (req, res) => {
   const { postID } = req.body;
 
-  User.findByIdAndUpdate(req.body.userID, {
+  User.findByIdAndUpdate(req.user._id, {
     $addToSet: { favourite: postID },
   }).exec((err, result) => {
     if (err) {

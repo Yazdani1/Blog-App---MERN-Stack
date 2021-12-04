@@ -227,6 +227,26 @@ router.put("/comments", requireLogin, (req, res) => {
     });
 });
 
+router.put("/remove-comments", requireLogin, (req, res) => {
+  const { text } = req.body;
+  const comment = {
+    text,
+    postedBy: req.user._id,
+  };
+
+  Post.findByIdAndUpdate(
+    req.body.postId,
+    {
+      $pull: { comments: { _id: text._id } },
+    },
+    {
+      new: true,
+    }
+  ).then((data) => {
+    res.json(data);
+  });
+});
+
 //pagination route
 
 router.get("/total-posts", (req, res) => {
@@ -241,9 +261,6 @@ router.get("/total-posts", (req, res) => {
 });
 
 //to count posts based on the liked
-
-
-
 
 // router.get("/featured-posts", (req, res) => {
 //   Post.find({})
