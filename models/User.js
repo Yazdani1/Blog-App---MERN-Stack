@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 
 const userSchema = mongoose.Schema(
   {
@@ -17,6 +18,12 @@ const userSchema = mongoose.Schema(
     experience: {
       type: String,
     },
+    favourite: [
+      {
+        type: ObjectId,
+        ref: "Post",
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useHistory, useParams } from "react-router-dom";
 import moment from "moment";
@@ -15,6 +15,9 @@ import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BsHeartFill } from "react-icons/bs";
+import { UserContext } from "./UserContext";
+
+import { postFavourite } from "./dashboard/SaveFavouritePost/ApiFavourite";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -27,6 +30,8 @@ const DetailsPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const [user, setUser] = useContext(UserContext);
 
   var settings = {
     dots: true,
@@ -203,6 +208,15 @@ const DetailsPage = () => {
     </div>
   );
 
+  const addtoFavourite = (e, userID) => {
+    e.preventDefault();
+
+    postFavourite(dataItem && dataItem._id).then((res) => {
+      console.log("Added to wish list", res);
+      history.push("/Dashboard");
+    });
+  };
+
   return (
     <>
       <div className="main_details">
@@ -277,7 +291,13 @@ const DetailsPage = () => {
                           </div>
 
                           <div className="comment-count">
-                            <p> Save </p>
+                            <button
+                              className="btn btn-success"
+                              onClick={addtoFavourite}
+                            >
+                              {" "}
+                              Save{" "}
+                            </button>
                           </div>
                         </div>
                       </div>

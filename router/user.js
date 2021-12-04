@@ -170,4 +170,81 @@ router.put("/add-experience", requireLogin, (req, res) => {
     });
 });
 
+//Wishlist Route to save a post to user dashboard
+
+router.post("/save-favouritepost", requireLogin, (req, res) => {
+  const { postID } = req.body;
+
+  User.findByIdAndUpdate(req.body.userID, {
+    $addToSet: { favourite: postID },
+  }).exec((err, result) => {
+    if (err) {
+      return res.status(400).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+router.get("/get-favouritepost", requireLogin, (req, res) => {
+  // var getUser = { _id: req.params.id };
+
+  User.findOne(req.user._id)
+    .select("favourite")
+    .populate("favourite")
+    .exec((err, result) => {
+      if (err) {
+        return res.status(400).json({ error: err });
+      } else {
+        res.json(result);
+      }
+    });
+});
+
+router.put("/update-favouritepost/:postID", (req, res) => {
+  User.findByIdAndUpdate(req.user._id, {
+    $pull: { favourite: req.params.postID },
+  }).exec((err, result) => {
+    if (err) {
+      return res.status(400).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+// router.put("/comments", requireLogin, (req, res) => {
+//   const { text } = req.body;
+//   const comment = {
+//     text,
+//     postedBy: req.user._id,
+//   };
+
+//   if (!text) {
+//     return res.status(400).json({ error: "This field can't be empty" });
+//   }
+
+//   Post.findByIdAndUpdate(
+//     req.body.postId,
+//     {
+//       $push: { comments: comment },
+//     },
+//     {
+//       new: true,
+//     }
+//   )
+//     .populate("comments.postedBy", "_id name")
+//     .populate("postedBy", "_id name")
+
+//     .exec((err, result) => {
+//       if (err) {
+//         return res.status(422).json({ error: err });
+//       } else {
+//         res.json(result);
+//       }
+//     });
+// });
+
+//end Wishlist Route to save a post to user dashboard
+
 module.exports = router;
