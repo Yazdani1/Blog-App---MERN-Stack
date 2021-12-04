@@ -516,7 +516,7 @@
   padding-left: 10px;
 }
 
-.like-and-comment{
+.like-and-comment {
   display: flex;
 }
 
@@ -539,7 +539,7 @@
   background-color: brown;
 }
 
-.comment-todetailspage{
+.comment-todetailspage {
   list-style-type: none;
   text-decoration: none;
 }
@@ -556,24 +556,22 @@
   margin-top: 10px;
 }
 
-
 /* //page not found */
 
-.page-not-found{
+.page-not-found {
   height: auto;
   width: 50%;
   margin: 30px;
-  
 }
 
-.page-not-found h5{
+.page-not-found h5 {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
   text-align: center;
   left: 50%;
   top: 50%;
-  position: relative; 
+  position: relative;
   margin: 30px;
 }
 /* user profile header */
@@ -607,7 +605,7 @@
   position: absolute;
 }
 
-.user-profile-name-incircle{
+.user-profile-name-incircle {
   position: relative;
   display: table-cell;
   text-align: center;
@@ -620,7 +618,6 @@
   color: white;
 }
 
-
 .profile-pic-user-profile-name {
   border-radius: 90px;
   border: 1px solid black;
@@ -630,14 +627,14 @@
   padding: 0 10px;
 }
 
-.profile_items_container{
+.profile_items_container {
   margin-top: 10px;
 }
-.profile-items{
+.profile-items {
   height: 150px;
   margin: 5px;
 }
-.profile-items_design{
+.profile-items_design {
   position: relative;
   display: table-cell;
   text-align: center;
@@ -645,13 +642,12 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
- 
 }
-.profile-items_design p{
+.profile-items_design p {
   font-size: 20px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
-.member-accountcreated-date{
+.member-accountcreated-date {
   font-size: 15px;
   position: relative;
   display: table-cell;
@@ -661,13 +657,57 @@
   justify-content: center;
 }
 
-.user-main-posts-section{
-
+.user-main-posts-section {
   margin-top: 50px;
 }
-body{
+body {
   background-color: #e91313;
 }
+
+/* details post desigh */
+
+.details-postDesign {
+  padding: 10px;
+}
+
+.details-post {
+  display: flex;
+}
+.detailspage-user-name p {
+  padding-left: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  /* line-height: 15px; */
+}
+
+.details-post-likes {
+  display: flex;
+}
+
+.details-post-likes p {
+  padding-left: 20px;
+}
+
+.like-buttondesign {
+  display: flex;
+  
+}
+
+.comment-buttondesign {
+  display: flex;
+  margin-left: 10px;
+  
+}
+
+.like-count{
+  margin-left: 5px;
+}
+.comment-count{
+  margin-left: 5px;
+}
+
+/*end details post desigh */
+
 /* 
 
 <div className="container">

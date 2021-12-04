@@ -9,7 +9,11 @@ import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "../App.css";
 import renderHTML from "react-render-html";
-import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from "react-html-parser";
+
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDislike } from "react-icons/ai";
+import { FaRegCommentDots } from "react-icons/fa";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -213,47 +217,62 @@ const DetailsPage = () => {
                   className="det_posssst_image"
                   width="100%"
                 />
-                <div className="details-post-item-design">
-                  {/* <button
-                className="btn btn-success tt"
-                onClick={() => history.push("/")}
-              >
-                <BsArrowLeft />
-                All Posts
-              </button> */}
-
-                  <div className="user_info">
-                    <div className="user_pic">
-                      <Link to={"/userprofile/"} className="name_design">
-                        <div className="user_pic_home_page">
+                <div className="details-postDesign">
+                  <div className="row">
+                    <div className="col-md-9">
+                      <div className="details-post">
+                        <div className="detailspage-user-profile">
+                          <Link to={"/userprofile/"} className="name_design">
+                            <div className="user_pic_home_page">
+                              <p>
+                                {dataItem &&
+                                  dataItem.postedBy?.name
+                                    .substring(0, 2)
+                                    .toUpperCase()}
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                        <div className="detailspage-user-name">
+                          <Link
+                            to={"/userprofile/" + dataItem.postedBy?._id}
+                            className="name_design"
+                          >
+                            <p>{dataItem && dataItem.postedBy?.name}</p>
+                          </Link>
                           <p>
-                            {dataItem &&
-                              dataItem.postedBy?.name
-                                .substring(0, 2)
-                                .toUpperCase()}
+                            {moment(dataItem && dataItem.date).format(
+                              "MMMM Do YYYY"
+                            )}
                           </p>
                         </div>
-                      </Link>
+                      </div>
                     </div>
-                    <div className="user_name">
-                      <Link
-                        to={"/userprofile/" + dataItem.postedBy?._id}
-                        className="name_design"
-                      >
-                        <p>{dataItem && dataItem.postedBy?.name}.</p>
-                      </Link>
+
+                    <div className="col-md-3">
+                      <div className="details-post-likes">
+                        <div className="like-buttondesign">
+                          <div className="like-icon">
+                            <AiOutlineLike size={20} />
+                          </div>
+
+                          <div className="like-count">
+                            <h4>{dataItem && dataItem.likes?.length}</h4>
+                          </div>
+                        </div>
+
+                        <div className="comment-buttondesign">
+                          <div className="comment-icon">
+                            <FaRegCommentDots size={20} />
+                          </div>
+
+                          <div className="comment-count">
+                            <h4> {dataItem.comments?.length}</h4>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  <p>
-                    <GoCalendar />{" "}
-                    {moment(dataItem && dataItem.date).format("MMMM Do YYYY")}
-                  </p>
-
-                  <h5>
-                    {dataItem && dataItem.likes?.length > 0 ? "Likes" : "Like"}.
-                    {dataItem && dataItem.likes?.length}
-                  </h5>
 
                   <h4>{dataItem && dataItem.title}</h4>
                   {/* <h4>{dataItem && dataItem._id}</h4> */}
