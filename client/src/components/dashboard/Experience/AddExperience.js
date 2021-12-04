@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineLike } from "react-icons/ai";
 import { UserContext } from "../../UserContext";
+import { addexperience } from "./apiExperience";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -14,20 +15,9 @@ const AddExperience = () => {
   const [user, setUser] = useContext(UserContext);
   const [success, setSuccess] = useState(false);
 
-  const addExperience = (e, userID) => {
+  const createExperience = (e, userID) => {
     e.preventDefault();
-    fetch("/auth/add-experience", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-      body: JSON.stringify({
-        experience,
-        userID: userID,
-      }),
-    })
-      .then((res) => res.json())
+    addexperience({ experience, userID: userID })
       .then((data) => {
         if (data) {
           setExperience(data.data);
@@ -36,12 +26,40 @@ const AddExperience = () => {
             position: toast.POSITION.TOP_RIGHT,
           });
         }
-        console.log(data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  // const addExperience = (e, userID) => {
+  //   e.preventDefault();
+  //   fetch("/auth/add-experience", {
+  //     method: "put",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //     body: JSON.stringify({
+  //       experience,
+  //       userID: userID,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data) {
+  //         setExperience(data.data);
+  //         setSuccess(true);
+  //         toast.success("Your have Successfully saved your changes!", {
+  //           position: toast.POSITION.TOP_RIGHT,
+  //         });
+  //       }
+  //       console.log(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   useEffect(() => {
     setExperience(user && user.experience);
@@ -88,7 +106,7 @@ const AddExperience = () => {
             </div>
             <button
               type="submit"
-              onClick={(e) => addExperience(e, user && user._id)}
+              onClick={(e) => createExperience(e, user && user._id)}
               class="btn btn-success custBtn"
             >
               Add Experience
@@ -97,7 +115,6 @@ const AddExperience = () => {
         </div>
       </div>
       <ToastContainer autoClose={8000} />
-
     </div>
   );
 };

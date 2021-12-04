@@ -30,7 +30,7 @@ const Post = () => {
           Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
         },
       });
-      history.push("/myPost");
+      history.push("/Dashboard");
     } catch (err) {
       setData({ ...data, error: err.response.data.error });
     }
