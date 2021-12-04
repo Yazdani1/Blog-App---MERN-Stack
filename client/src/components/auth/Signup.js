@@ -44,7 +44,7 @@ function SignUp() {
     setLoading(true);
 
     signUp({ name, email, password }).then((result) => {
-      setLoading(false);
+     
 
       if (result.errort) {
         toast.error(result.errort, {

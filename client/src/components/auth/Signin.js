@@ -7,14 +7,18 @@ import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 import Dashboard from "../dashboard/All Posts/Dashboard";
 import { signIn } from "./apiAuth";
 
-function SignIn() {
+import { SyncOutlined } from "@ant-design/icons";
 
+function SignIn() {
   const history = useHistory();
   const [data, setData] = useState({
     email: "",
     password: "",
     error: "",
   });
+
+  const [loading, setLoading] = useState(false);
+
   const { email, password, error } = data;
   const handleChange = (e) => {
     setData({
@@ -28,14 +32,18 @@ function SignIn() {
     e.preventDefault();
     setData({ ...data, error: false });
 
+    setLoading(true);
+
     signIn({ email, password })
       .then((result) => {
         if (result.error) {
           setData({ ...data, error: result.error, success: false });
+          setLoading(false);
         } else {
           localStorage.setItem("tokenLogin", result.token);
 
           history.push("/Dashboard");
+          setLoading(false);
         }
       })
       .catch((err) => {
@@ -125,7 +133,7 @@ function SignIn() {
               </div>
             </div> */}
             <div class="form-group">
-              <input
+              <button
                 type="submit"
                 name="btnSubmit"
                 className="btnContact"
@@ -133,7 +141,9 @@ function SignIn() {
                 onClick={(e) => {
                   submitData(e);
                 }}
-              />
+              >
+                {loading ? <SyncOutlined spin /> : "Sign In"}
+              </button>
             </div>
           </div>
         </form>

@@ -32,6 +32,9 @@ const AddExperience = () => {
         if (data) {
           setExperience(data.data);
           setSuccess(true);
+          toast.success("Your have Successfully saved your changes!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         }
         console.log(data);
       })
@@ -93,6 +96,8 @@ const AddExperience = () => {
           </form>
         </div>
       </div>
+      <ToastContainer autoClose={8000} />
+
     </div>
   );
 };
