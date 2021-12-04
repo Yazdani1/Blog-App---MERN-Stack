@@ -177,8 +177,8 @@ router.put("/add-experience", requireLogin, (req, res) => {
 router.post("/save-favouritepost", requireLogin, (req, res) => {
   const { postID } = req.body;
 
-  User.findByIdAndUpdate(req.user._id, {
-    $addToSet: { favourite: postID },
+  User.findByIdAndUpdate(req.body.userID, {
+    $push: { favourite: postID },
   }).exec((err, result) => {
     if (err) {
       return res.status(400).json({ error: err });

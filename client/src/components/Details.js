@@ -218,7 +218,6 @@ const DetailsPage = () => {
   // };
 
   const removeComment = (postId, text) => {
-  
     fetch("/auth/remove-comments", {
       method: "put",
       headers: {
@@ -226,7 +225,7 @@ const DetailsPage = () => {
         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
       },
       body: JSON.stringify({
-        postId: postId,
+        postId,
         text,
       }),
     })
@@ -242,6 +241,30 @@ const DetailsPage = () => {
 
     console.log(postId, text);
   };
+
+  // const addtoWishlist = (userID, postID) => {
+  //   fetch("/auth/save-favouritepost", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //     body: JSON.stringify({
+  //       userID:userID,
+  //       postID:postID,
+  //     }),
+  //   })
+  //     .then((result) => {
+  //       if (result) {
+  //         console.log("Post Saved");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
+  //   console.log(userID, postID);
+  // };
 
   return (
     <>
@@ -320,7 +343,7 @@ const DetailsPage = () => {
                             <button
                               className="btn btn-success"
                               onClick={(e) =>
-                                addtoFavourite(e, user && user._id)
+                                addtoWishlist(e, user && user._id,dataItem._id)
                               }
                             >
                               {" "}
@@ -449,10 +472,7 @@ const DetailsPage = () => {
                                   <div
                                     className="btn btn-danger"
                                     onClick={(e) =>
-                                      removeComment(
-                                        dataItem._id,
-                                        allcomments
-                                      )
+                                      removeComment(dataItem._id, allcomments)
                                     }
                                   >
                                     Delete

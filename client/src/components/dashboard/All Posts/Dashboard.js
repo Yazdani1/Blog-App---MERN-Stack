@@ -30,7 +30,6 @@ function Dashboard() {
 
   const { id } = useParams();
 
-
   let iconStyles = { color: "white" };
 
   const [mypost, setData] = useState([]);
@@ -168,61 +167,62 @@ function Dashboard() {
         {/* table start */}
 
         {mypost.length > 0 ? (
-          <table class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Photo</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th colspan="3">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-              </tr>
-
-              {mypost.map((item, index) => (
+          <div className="table-horizontal">
+            <table class="table table-bordered table-hover">
+              <thead>
                 <tr>
-                  <th scope="row">{index + 1}</th>
-                  <td>
-                    <img src={item.photo} height="80px" width="80px"></img>
-                  </td>
-                  <td>{item.title.substring(0, 30)}</td>
-                  <td>{ReactHtmlParser(item.des.substring(0, 80))}</td>
-
-                  <td>
-                    <Link to={"/details/" + item._id}>
-                      <button className="btn btn-primary">
-                        <EyeOutlined style={{ fontSize: "20px" }} /> View
-                      </button>
-                    </Link>
-                  </td>
-
-                  <td>
-                    <Link to={"/editpost/" + item._id}>
-                      <button className="btn btn-success">
-                        <AiTwotoneEdit size={20} />
-                        Edit
-                      </button>
-                    </Link>
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => {
-                        deletemyPost(item._id);
-                     
-                      }}
-                    >
-                      <MdDelete size={20} /> Delete
-                    </button>
-                  </td>
+                  <th scope="col">#</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th colspan="3">Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                </tr>
+
+                {mypost.map((item, index) => (
+                  <tr>
+                    <th scope="row">{index + 1}</th>
+                    <td>
+                      <img src={item.photo} height="80px" width="80px"></img>
+                    </td>
+                    <td>{item.title.substring(0, 30)}</td>
+                    <td>{ReactHtmlParser(item.des.substring(0, 80))}</td>
+
+                    <td>
+                      <Link to={"/details/" + item._id}>
+                        <button className="btn btn-primary">
+                          <EyeOutlined style={{ fontSize: "20px" }} /> View
+                        </button>
+                      </Link>
+                    </td>
+
+                    <td>
+                      <Link to={"/editpost/" + item._id}>
+                        <button className="btn btn-success">
+                          <AiTwotoneEdit size={20} />
+                          Edit
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {
+                          deletemyPost(item._id);
+                        }}
+                      >
+                        <MdDelete size={20} /> Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         ) : (
           "You Did no add any posts yet"
         )}
