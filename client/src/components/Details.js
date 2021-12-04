@@ -14,6 +14,7 @@ import ReactHtmlParser from "react-html-parser";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
+import { BsHeartFill } from "react-icons/bs";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -219,7 +220,7 @@ const DetailsPage = () => {
                 />
                 <div className="details-postDesign">
                   <div className="row">
-                    <div className="col-md-9">
+                    <div className="col-md-8">
                       <div className="details-post">
                         <div className="detailspage-user-profile">
                           <Link to={"/userprofile/"} className="name_design">
@@ -249,7 +250,7 @@ const DetailsPage = () => {
                       </div>
                     </div>
 
-                    <div className="col-md-3">
+                    <div className="col-md-4">
                       <div className="details-post-likes">
                         <div className="like-buttondesign">
                           <div className="like-icon">
@@ -257,7 +258,7 @@ const DetailsPage = () => {
                           </div>
 
                           <div className="like-count">
-                            <h4>{dataItem && dataItem.likes?.length}</h4>
+                            <p>{dataItem && dataItem.likes?.length}</p>
                           </div>
                         </div>
 
@@ -267,14 +268,24 @@ const DetailsPage = () => {
                           </div>
 
                           <div className="comment-count">
-                            <h4> {dataItem.comments?.length}</h4>
+                            <p> {dataItem.comments?.length}</p>
+                          </div>
+                        </div>
+                        <div className="comment-buttondesign">
+                          <div className="comment-icon">
+                            <BsHeartFill size={20} />
+                          </div>
+
+                          <div className="comment-count">
+                            <p> Save </p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
-                  <h4>{dataItem && dataItem.title}</h4>
+                </div>
+                <div className="title-des">
+                  <h5>{dataItem && dataItem.title}</h5>
                   {/* <h4>{dataItem && dataItem._id}</h4> */}
 
                   {/* {dataItem ? (
@@ -282,12 +293,6 @@ const DetailsPage = () => {
                   ) : null} */}
 
                   <p>{ReactHtmlParser(dataItem.des)}</p>
-
-                  {dataItem ? (
-                    <p>Posted by: {dataItem?.postedBy?.name}</p>
-                  ) : (
-                    <h1>Loading...</h1>
-                  )}
                 </div>
               </div>
               <div className="comments card">

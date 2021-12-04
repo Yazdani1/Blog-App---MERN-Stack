@@ -8,8 +8,7 @@ import { RiSettings2Fill } from "react-icons/ri";
 import { GiSkills } from "react-icons/gi";
 import { UserContext } from "../UserContext";
 import { Link, useHistory } from "react-router-dom";
-
-
+import { BsHeartFill } from "react-icons/bs";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 
 const DashboardNav = () => {
@@ -61,6 +60,12 @@ const DashboardNav = () => {
               <li>
                 <GiSkills size={25} />
                 Experience
+              </li>
+            </Link>
+            <Link to="/favourite" style={{ textDecoration: "none" }}>
+              <li>
+                <BsHeartFill size={25} />
+                Favourite
               </li>
             </Link>
 

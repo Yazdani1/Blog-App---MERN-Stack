@@ -19,6 +19,7 @@ import DashboardProfile from "./components/dashboard/Profile/DashboardProfile";
 import PagenotFound from "./components/PagenotFound";
 import UpdateProfile from "./components/dashboard/Profile/UpdateProfile";
 import AddExperience from "./components/dashboard/Experience/AddExperience";
+import FavouritePost from "./components/dashboard/SaveFavouritePost/FavouritePost";
 
 function App() {
   return (
@@ -82,6 +83,10 @@ function App() {
 
             <Route path="/AddExperience" exact>
               <DashboardprotectedRoute Dashboardprocomp={AddExperience} />
+            </Route>
+
+            <Route path="/favourite" exact>
+              <DashboardprotectedRoute Dashboardprocomp={FavouritePost} />
             </Route>
 
             

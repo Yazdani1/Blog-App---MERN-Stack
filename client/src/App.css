@@ -685,7 +685,7 @@ body {
 }
 
 .details-post-likes p {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .like-buttondesign {
@@ -699,11 +699,26 @@ body {
   
 }
 
-.like-count{
+.like-count p{
   margin-left: 5px;
+  font-size: 15px;
 }
-.comment-count{
-  margin-left: 5px;
+.comment-count p{
+
+  font-size: 15px;
+}
+
+.details-post-likes{
+  border-bottom: 1px solid rgb(154, 154, 155);
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  line-height: 20px;
+  position: absolute;
+}
+
+.title-des{
+  padding: 10px;
+  margin-top: 10px;
 }
 
 /*end details post desigh */
