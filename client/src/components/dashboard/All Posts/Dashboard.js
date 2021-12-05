@@ -141,19 +141,8 @@ function Dashboard() {
 
   return (
     <>
-
-<div className="container profile_items_container">
+      <div className="container profile_items_container">
         <div className="row">
-          <div className="col-md-3 card profile-items">
-            <div className="profile-items_design">
-              <MdCardMembership size={35} />
-              <p>Member Since</p>
-            </div>
-            <p className="member-accountcreated-date">
-              <GoCalendar />{" "}
-              {moment(user && user.createdAt).format("MMMM Do YYYY")}
-            </p>
-          </div>
           <div className="col-md-3 card profile-items">
             <div className="profile-items_design">
               <SiMicrodotblog size={35} />
@@ -161,14 +150,20 @@ function Dashboard() {
               <h4>{mypost.length}</h4>
             </div>
           </div>
+
+          <div className="col-md-3 card profile-items">
+            <div className="profile-items_design">
+              <MdCardMembership size={35} />
+              <p>Member Since</p>
+              <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
+            </div>
+          </div>
+
           <div className="col-md-3 card profile-items">
             <div className="profile-items_design">
               <FaUserGraduate size={35} />
               <p>Member Type</p>
-              <p>
-                {" "}
-                {mypost.length>=5? "Pro Account": "Starter Account"}
-              </p>
+              <p> {mypost.length >= 5 ? "Pro Account" : "Starter Account"}</p>
             </div>
           </div>
           <div className="col-md-2 card profile-items">
@@ -176,9 +171,7 @@ function Dashboard() {
               <p>
                 <AiFillMessage size={35} />
               </p>
-              <button className="btn btn-success">
-                Send Message <RiSendPlaneFill size={25} />
-              </button>
+              <button className="btn btn-primary">Messagees</button>
             </div>
           </div>
         </div>

@@ -636,6 +636,7 @@
   .profile-items{
     height: 150px;
     margin: 5px;
+   
   }
   .profile-items_design{
     position: relative;
@@ -644,12 +645,12 @@
     vertical-align: middle;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
-   
+
   }
   .profile-items_design p{
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+   
   }
   .member-accountcreated-date{
     font-size: 15px;
@@ -659,6 +660,9 @@
     vertical-align: middle;
     align-items: center;
     justify-content: center;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    line-height: 1px;
   }
   
   .user-main-posts-section{

@@ -16,10 +16,12 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { LoadingOutlined } from "@ant-design/icons";
 
 import FirstSection from "./HomePage/FirstSection";
+import AllUserList from "./HomePage/UserList";
 import { UserContext } from "./UserContext";
 import "./css/home-mainpost.css";
 import renderHTML from "react-render-html";
 import ReactHtmlParser from "react-html-parser";
+import Totalpostcount from "./HomePage/TotalPostCount";
 
 import Footer from "./footer";
 
@@ -28,7 +30,7 @@ import { Pagination } from "antd";
 function Home() {
   var settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -438,6 +440,8 @@ function Home() {
         <div className="container allusers">
           <h5>All Users</h5>
 
+          <AllUserList/>
+
           <Slider {...settings}>
             {user.map((useritem) => (
               <div className="useritems">
@@ -494,28 +498,8 @@ function Home() {
   return (
     <>
       <FirstSection />
-      <div className="second_section">
-        <div className="row">
-          <div className="col-md-6">
-            <div className="items_ofhome">
-              <h1>
-                <MdAssessment />
-              </h1>
-              <h4>Published Post</h4>
-              <h1>{dataItem.length}</h1>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="items_ofhome">
-              <h1>
-                <MdAccountBox />
-              </h1>
-              <h4>Active Users</h4>
-              <h1>{user.length}</h1>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Totalpostcount totalpost={dataItem.length} totaluser={user.length}/>
+
       {renderData(currentItems)}
     </>
   );

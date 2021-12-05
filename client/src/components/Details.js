@@ -488,7 +488,7 @@ const DetailsPage = () => {
                               </button> */}
                             </div>
                             <p>{allcomments.text}</p>
-                            <p>{allcomments && allcomments._id}</p>
+                            {/* <p>{allcomments && allcomments._id}</p> */}
                           </div>
                         </>
                       );
