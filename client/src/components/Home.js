@@ -14,6 +14,7 @@ import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { LoadingOutlined } from "@ant-design/icons";
+import { SyncOutlined } from "@ant-design/icons";
 
 import FirstSection from "./HomePage/FirstSection";
 import AllUserList from "./HomePage/UserList";
@@ -256,7 +257,7 @@ function Home() {
     return (
       <div class="text-center my-5">
         <h1>
-          <LoadingOutlined />
+          <SyncOutlined spin />
         </h1>
       </div>
     );
