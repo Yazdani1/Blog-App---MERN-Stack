@@ -24,7 +24,7 @@ import { UserProfileProvider } from "./components/UserprofileContext";
 
 function App() {
   return (
-    <UserProfileProvider>
+
       <UserProvider>
         <BrowserRouter>
           <Switch>
@@ -97,7 +97,7 @@ function App() {
           </Switch>
         </BrowserRouter>
       </UserProvider>
-    </UserProfileProvider>
+ 
   );
 }
 

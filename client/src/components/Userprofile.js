@@ -14,28 +14,33 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 import ReactHtmlParser from "react-html-parser";
 import { SyncOutlined } from "@ant-design/icons";
+import { UserProfileContext } from "./UserprofileContext";
 
 const Userprofile = () => {
-  // const [mypost, setData] = useState();
+  const [mypost, setData] = useState();
   const [loading, setLoading] = useState(true);
 
-  // const { id } = useParams();
+  // const [mypost, setData] = useContext(UserProfileContext);
 
-  // const getMypost = () => {
-  //   axios
-  //     .get(`/auth/userprofileda/${id}`)
 
-  //     .then((result) => {
-  //       setData(result.data);
-  //       setLoading(false);
 
-  //       console.log(result.data);
-  //     });
-  // };
+  const { id } = useParams();
 
-  // useEffect(() => {
-  //   getMypost();
-  // }, []);
+  const getMypost = () => {
+    axios
+      .get(`/auth/userprofileda/${id}`)
+
+      .then((result) => {
+        setData(result.data);
+        setLoading(false);
+
+        console.log(result.data);
+      });
+  };
+
+  useEffect(() => {
+    getMypost();
+  }, []);
 
   if (loading) {
     return (

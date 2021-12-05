@@ -16,6 +16,13 @@ import AllPostList from "./AllPostList";
 import { SyncOutlined } from "@ant-design/icons";
 import { Link, useHistory, useParams } from "react-router-dom";
 
+import { SiMicrodotblog } from "react-icons/si";
+import { AiFillMessage } from "react-icons/ai";
+import { FaUserGraduate } from "react-icons/fa";
+import { RiSendPlaneFill } from "react-icons/ri";
+import { FaRegCommentDots } from "react-icons/fa";
+import { AiOutlineLike } from "react-icons/ai";
+
 import { EyeOutlined } from "@ant-design/icons";
 
 import { getMypost } from "./apiAllpost";
@@ -134,7 +141,49 @@ function Dashboard() {
 
   return (
     <>
-      <div className="container">
+
+<div className="container profile_items_container">
+        <div className="row">
+          <div className="col-md-3 card profile-items">
+            <div className="profile-items_design">
+              <MdCardMembership size={35} />
+              <p>Member Since</p>
+            </div>
+            <p className="member-accountcreated-date">
+              <GoCalendar />{" "}
+              {moment(user && user.createdAt).format("MMMM Do YYYY")}
+            </p>
+          </div>
+          <div className="col-md-3 card profile-items">
+            <div className="profile-items_design">
+              <SiMicrodotblog size={35} />
+              <p>Published Posts</p>
+              <h4>{mypost.length}</h4>
+            </div>
+          </div>
+          <div className="col-md-3 card profile-items">
+            <div className="profile-items_design">
+              <FaUserGraduate size={35} />
+              <p>Member Type</p>
+              <p>
+                {" "}
+                {mypost.length>=5? "Pro Account": "Starter Account"}
+              </p>
+            </div>
+          </div>
+          <div className="col-md-2 card profile-items">
+            <div className="profile-items_design">
+              <p>
+                <AiFillMessage size={35} />
+              </p>
+              <button className="btn btn-success">
+                Send Message <RiSendPlaneFill size={25} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div className="container">
         <div className="row">
           <div className="col-md-4">
             <div className="total_posts card">
@@ -154,13 +203,19 @@ function Dashboard() {
               <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
             </div>
           </div>
+
           <div className="col-md-4">
-            <div className="profile_visitors card">
-              <h3>Total post</h3>
+            <div className="mamber_sinces card">
+              <h1>
+                <MdCardMembership />
+              </h1>
+              <h3>Member Type</h3>
+              <p>{mypost.length>=5? "Pro Account": "Starter Account"}</p>
             </div>
           </div>
+      
         </div>
-      </div>
+      </div> */}
       <div className="card container main_container">
         {/* <Allpost posts={mypost} /> */}
 

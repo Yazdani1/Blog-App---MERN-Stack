@@ -5,12 +5,12 @@ import axios from "axios";
 export const UserProfileContext = createContext();
 
 export const UserProfileProvider = (props) => {
-    //const { id } = useParams();
+    const { id } = useParams();
 
   const [userpublicProfile, setuserPublicprofile] = useState();
 
 
-  const getMypost = (id) => {
+  const getMypost = () => {
     
     axios
       .get(`/auth/userprofileda/${id}`)
@@ -25,7 +25,7 @@ export const UserProfileProvider = (props) => {
 
   useEffect(() => {
     getMypost();
-  }, []);
+  }, [userpublicProfile, setuserPublicprofile]);
 
 
   return (
