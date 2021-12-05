@@ -10,6 +10,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import "../App.css";
 import renderHTML from "react-render-html";
 import ReactHtmlParser from "react-html-parser";
+import { SyncOutlined } from "@ant-design/icons";
 
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
@@ -30,6 +31,7 @@ const DetailsPage = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [user, setUser] = useContext(UserContext);
 
@@ -423,7 +425,9 @@ const DetailsPage = () => {
                     </div>
                   </div>
                 </form>
-                <div className="all-comments">
+
+                {/* style={{maxHeight:"1200px", overflow:"scroll"}} */}
+                <div className="all-comments" style={{maxHeight:"1200px", overflow:"scroll"}} >
                   <p>
                     {dataItem.comments?.length > 0
                       ? "Total Comments"
@@ -499,6 +503,7 @@ const DetailsPage = () => {
 
             <div className="col-md-5 ">
               <h5 className="latest-posts-title">Latest posts</h5>
+
               <div className="latest-post-part card">
                 {latestPost.map((item) => (
                   <div className="container">
