@@ -232,7 +232,7 @@ const DetailsPage = () => {
       .then((result) => {
         if (result) {
           console.log("Comment removed");
-          //getDetailsData();
+          // getDetailsData();
         }
       })
       .catch((err) => {

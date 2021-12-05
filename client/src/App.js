@@ -20,9 +20,11 @@ import PagenotFound from "./components/PagenotFound";
 import UpdateProfile from "./components/dashboard/Profile/UpdateProfile";
 import AddExperience from "./components/dashboard/Experience/AddExperience";
 import FavouritePost from "./components/dashboard/SaveFavouritePost/FavouritePost";
+import { UserProfileProvider } from "./components/UserprofileContext";
 
 function App() {
   return (
+    <UserProfileProvider>
       <UserProvider>
         <BrowserRouter>
           <Switch>
@@ -89,14 +91,13 @@ function App() {
               <DashboardprotectedRoute Dashboardprocomp={FavouritePost} />
             </Route>
 
-            
-
             {/* <Redirect exact from="/Dashboard/reload" to="/Dashboard" /> */}
 
             <Route path="*" exact component={PagenotFound} />
           </Switch>
         </BrowserRouter>
       </UserProvider>
+    </UserProfileProvider>
   );
 }
 

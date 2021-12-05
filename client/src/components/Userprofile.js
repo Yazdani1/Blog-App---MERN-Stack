@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from "axios";
 import "../App.css";
 import moment from "moment";
@@ -16,26 +16,26 @@ import ReactHtmlParser from "react-html-parser";
 import { SyncOutlined } from "@ant-design/icons";
 
 const Userprofile = () => {
-  const [mypost, setData] = useState();
+  // const [mypost, setData] = useState();
   const [loading, setLoading] = useState(true);
 
-  const { id } = useParams();
+  // const { id } = useParams();
 
-  const getMypost = () => {
-    axios
-      .get(`/auth/userprofileda/${id}`)
+  // const getMypost = () => {
+  //   axios
+  //     .get(`/auth/userprofileda/${id}`)
 
-      .then((result) => {
-        setData(result.data);
-        setLoading(false);
+  //     .then((result) => {
+  //       setData(result.data);
+  //       setLoading(false);
 
-        console.log(result.data);
-      });
-  };
+  //       console.log(result.data);
+  //     });
+  // };
 
-  useEffect(() => {
-    getMypost();
-  }, []);
+  // useEffect(() => {
+  //   getMypost();
+  // }, []);
 
   if (loading) {
     return (
@@ -61,6 +61,7 @@ const Userprofile = () => {
 
               <div className="profile-pic-user-profile-name">
                 <h2>{mypost?.userInfo?.name}</h2>
+                <h2>{mypost?.userInfo?._id}</h2>
               </div>
             </div>
           </div>
