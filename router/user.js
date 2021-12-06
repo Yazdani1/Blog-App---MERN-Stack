@@ -94,6 +94,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/allusers", (req, res) => {
   User.find({})
+  .select("-password")
     .then((result) => {
       res.json(result);
     })
