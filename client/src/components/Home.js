@@ -15,7 +15,6 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { LoadingOutlined } from "@ant-design/icons";
 import { SyncOutlined } from "@ant-design/icons";
-
 import FirstSection from "./HomePage/FirstSection";
 import AllUserList from "./HomePage/UserList";
 import { UserContext } from "./UserContext";
@@ -26,6 +25,8 @@ import ReactHtmlParser from "react-html-parser";
 import Totalpostcount from "./HomePage/TotalPostCount";
 import Pagination from "./HomePage/Pagination";
 import Footer from "./footer";
+import { AiFillLike } from "react-icons/ai";
+
 
 // import { Pagination } from "antd";
 
@@ -327,7 +328,10 @@ function Home() {
                             {moment(item.date).format("MMMM Do YYYY")})
                           </p> */}
 
-                          <h5>{item.title.substring(0, 35)}</h5>
+                          <Link to={"/details/" + item._id}>
+                            <h5>{item.title.substring(0, 35)}</h5>
+                          </Link>
+
                           <p>{ReactHtmlParser(item.des.substring(0, 150))}</p>
                           <hr />
 
@@ -345,7 +349,7 @@ function Home() {
                                   addunlikePost(item._id);
                                 }}
                               >
-                                <AiOutlineDislike size={20} />
+                                <AiFillLike size={20} />
                               </p>
                             ) : (
                               <p
