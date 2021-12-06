@@ -185,7 +185,7 @@ function Dashboard() {
               <p>
                 <AiFillMessage size={35} />
               </p>
-              <button className="btn btn-primary">Messagees</button>
+              <button className="btn btn-primary">View Messagees</button>
             </div>
           </div>
         </div>

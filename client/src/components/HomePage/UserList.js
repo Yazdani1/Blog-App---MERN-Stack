@@ -12,7 +12,7 @@ const UserList = () => {
   //for pagination state..
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(8);
+  const [postsPerPage] = useState(16);
 
   //Get current posts
   const indexOfLastPost = currentPage * postsPerPage;

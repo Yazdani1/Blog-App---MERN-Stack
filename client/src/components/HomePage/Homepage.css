@@ -15,7 +15,7 @@
 .user-info {
   padding: 10px;
   margin: 3px;
-  height: 150px;
+  height: 130px;
   background-color: white;
 
 }
@@ -48,10 +48,9 @@
 .view-profile{
   background-color: black;
   color: white;
-  padding: 7px;
+  padding: 5px;
   cursor: pointer;
-
-  transition: 0.3s;
+  margin-top: 70px;  transition: 0.3s;
 }
 
 .view-profile:hover{
