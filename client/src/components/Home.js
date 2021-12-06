@@ -20,13 +20,14 @@ import FirstSection from "./HomePage/FirstSection";
 import AllUserList from "./HomePage/UserList";
 import { UserContext } from "./UserContext";
 import "./css/home-mainpost.css";
+import "./HomePage/Homepage.css";
 import renderHTML from "react-render-html";
 import ReactHtmlParser from "react-html-parser";
 import Totalpostcount from "./HomePage/TotalPostCount";
-
+import Pagination from "./HomePage/Pagination";
 import Footer from "./footer";
 
-import { Pagination } from "antd";
+// import { Pagination } from "antd";
 
 function Home() {
   var settings = {
@@ -108,6 +109,21 @@ function Home() {
   const [userDatails] = useContext(UserContext);
   const [loading, setLoading] = useState(true);
 
+ //for pagination state..number pagination
+
+ const [currentPage, setCurrentPage] = useState(1);
+ const [postsPerPage] = useState(4);
+
+ //Get current posts
+ const indexOfLastPost = currentPage * postsPerPage;
+ const indexOfFirstPost = indexOfLastPost - postsPerPage;
+ const currentPosts = dataItem.slice(indexOfFirstPost, indexOfLastPost);
+ const howManyPages = Math.ceil(dataItem.length / postsPerPage);
+
+
+
+
+
   //for pagination
 
   // const [totalPosts, setTotalPosts] = useState(0);
@@ -128,23 +144,23 @@ function Home() {
       });
   };
 
-  const [pageNumberLimit, setpageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(6);
-  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+  // const [pageNumberLimit, setpageNumberLimit] = useState(5);
+  // const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(6);
+  // const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
   //for pagination load more features
 
-  const [currentPage, setcurrentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(5);
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = dataItem.slice(indexOfFirstItem, indexOfLastItem);
+  // const [currentPage, setcurrentPage] = useState(1);
+  // const [itemsPerPage, setitemsPerPage] = useState(5);
+  // const indexOfLastItem = currentPage * itemsPerPage;
+  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // const currentItems = dataItem.slice(indexOfFirstItem, indexOfLastItem);
 
   //for pagination load more features
 
-  const handleLoadMore = () => {
-    setitemsPerPage(itemsPerPage + 5);
-  };
+  // const handleLoadMore = () => {
+  //   setitemsPerPage(itemsPerPage + 5);
+  // };
 
   const [user, setUser] = useState([]);
 
@@ -261,7 +277,11 @@ function Home() {
     );
   }
 
-  const renderData = (dataItem) => {
+ 
+
+  // const renderData = (dataItem) to use more pagination
+
+  const renderData = () => {
     return (
       <div class="dd">
         <div class="text-center my-5">{/* <h1>Blog App</h1> */}</div>
@@ -271,7 +291,7 @@ function Home() {
           <div className="row">
             <div className="col-md-8">
               <div className="row">
-                {dataItem.map((item) => (
+                {currentPosts.map((item) => (
                   <div className="col-md-12 card postitem" key={item._id}>
                     <div className="row">
                       <div className="col-md-4">
@@ -383,13 +403,22 @@ function Home() {
                 ))}
               </div>
               <div className="text-center">
-                {currentItems.length >= 5 ? (
+                {dataItem.length > 6 ? (
+                  <Pagination
+                    pages={howManyPages}
+                    setCurrentPage={setCurrentPage}
+                  />
+                ) : (
+                  "No Posts so far"
+                )}
+
+                {/* {currentItems.length >= 5 ? (
                   <button onClick={handleLoadMore} className="loadmore">
                     More Posts
                   </button>
                 ) : (
                   "Posts are less than 30"
-                )}
+                )} */}
               </div>
             </div>
 
@@ -434,10 +463,9 @@ function Home() {
           </div>
         </div>
         <div className="container">
-        <h5>Visit User Profile</h5>
-<AllUserList />
-         
-        
+          <h5>Visit User Profile</h5>
+          <AllUserList />
+
           {/* <Slider {...settings}>
             {user.map((useritem) => (
               <div className="useritems">
@@ -488,20 +516,17 @@ function Home() {
             )}
           </> */}
         </div>
-      
-
       </div>
     );
   };
   return (
     <>
-
       <FirstSection />
       <Totalpostcount totalpost={dataItem.length} totaluser={user.length} />
 
-      {renderData(currentItems)}
+      {/* {renderData(currentItems)} */}
 
-
+      {renderData()}
     </>
   );
 

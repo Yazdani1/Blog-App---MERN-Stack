@@ -3,11 +3,25 @@ import { getUserList } from "./Apihomepage";
 import moment from "moment";
 import { CgProfile } from "react-icons/cg";
 import { Link, useHistory, useParams } from "react-router-dom";
-
+import Pagination from "./Pagination";
 import { BsCalendar2DateFill } from "react-icons/bs";
 
 const UserList = () => {
   const [alluser, setAlluser] = useState([]);
+
+  //for pagination state..
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(8);
+
+
+    //Get current posts
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = alluser.slice(indexOfFirstPost, indexOfLastPost);
+    const howManyPages = Math.ceil(alluser.length / postsPerPage);
+
+
 
   const loadallUser = () => {
     getUserList()
@@ -27,8 +41,8 @@ const UserList = () => {
   return (
     <div className="container">
       <div className="row">
-        {alluser.map((user, index) => (
-          <div className="col-md-3">
+        {currentPosts.map((user, index) => (
+          <div className="card col-md-3" key={index}>
             <div className="user-info">
               <div className="row">
                 <div className="col-md-2">
@@ -51,6 +65,11 @@ const UserList = () => {
           </div>
         ))}
       </div>
+      {alluser.length>6  ? (
+        <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
+      ) : (
+        "No Posts so far"
+      )}
     </div>
   );
 };
