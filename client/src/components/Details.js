@@ -17,6 +17,7 @@ import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BsHeartFill } from "react-icons/bs";
 import { UserContext } from "./UserContext";
+import { AiFillLike } from "react-icons/ai";
 
 import { postFavourite } from "./dashboard/SaveFavouritePost/ApiFavourite";
 
@@ -104,6 +105,76 @@ const DetailsPage = () => {
       .get("/auth/getpost")
       .then((res) => {
         setPosts(res.data.resultGet);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const addlikePost = (id) => {
+    fetch("/auth/like", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+
+        // if (dataItem._id == result._id) {
+        //   setData(result);
+        // } else {
+        //   return dataItem;
+        // }
+
+        const newItemData = dataItem.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newItemData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const addunlikePost = (id) => {
+    fetch("/auth/unlike", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+
+        // if (dataItem._id == result._id) {
+        //   setData(result);
+        // } else {
+        //   return dataItem;
+        // }
+
+        const newItemData = dataItem.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newItemData);
       })
       .catch((err) => {
         console.log(err);
@@ -318,9 +389,37 @@ const DetailsPage = () => {
                     <div className="col-md-3">
                       <div className="details-post-likes">
                         <div className="like-buttondesign">
-                          <div className="like-icon">
-                            <AiOutlineLike size={20} />
-                          </div>
+                          {dataItem &&
+                          dataItem?.likes?.includes(user && user._id) ? (
+                            <div
+                              className="like-icon"
+                              onClick={() => {
+                                addunlikePost(dataItem._id);
+                              }}
+                            >
+                              <AiFillLike size={20} />
+                            </div>
+                          ) : (
+                            // <p
+                            //   onClick={() => {
+                            //     addunlikePost(dataItem._id);
+                            //   }}
+                            // >
+                            //   <AiOutlineDislike size={20} />
+                            // </p>
+                            <div
+                              className="like-icon"
+                              onClick={() => {
+                                if (!localStorage.getItem("tokenLogin")) {
+                                  history.push("/signin");
+                                } else {
+                                  addlikePost(dataItem._id);
+                                }
+                              }}
+                            >
+                              <AiOutlineLike size={20} />
+                            </div>
+                          )}
 
                           <div className="like-count">
                             <p>{dataItem && dataItem.likes?.length}</p>
@@ -427,7 +526,10 @@ const DetailsPage = () => {
                 </form>
 
                 {/* style={{maxHeight:"1200px", overflow:"scroll"}} */}
-                <div className="all-comments" style={{maxHeight:"1200px", overflow:"scroll"}} >
+                <div
+                  className="all-comments"
+                  style={{ maxHeight: "1200px", overflow: "scroll" }}
+                >
                   <p>
                     {dataItem.comments?.length > 0
                       ? "Total Comments"
@@ -447,7 +549,7 @@ const DetailsPage = () => {
                                 >
                                   <div className="user_pic_home_page">
                                     <p className="comment_Des">
-                                      {allcomments.postedBy?.name
+                                      {allcomments.postedBy.name
                                         .substring(0, 2)
                                         .toUpperCase()}
                                     </p>

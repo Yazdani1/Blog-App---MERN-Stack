@@ -66,7 +66,6 @@ const Userprofile = () => {
 
               <div className="profile-pic-user-profile-name">
                 <h2>{mypost?.userInfo?.name}</h2>
-                <h2>{mypost?.userInfo?._id}</h2>
               </div>
             </div>
           </div>

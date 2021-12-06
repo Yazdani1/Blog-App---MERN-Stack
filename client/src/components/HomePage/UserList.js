@@ -14,14 +14,11 @@ const UserList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(8);
 
-
-    //Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = alluser.slice(indexOfFirstPost, indexOfLastPost);
-    const howManyPages = Math.ceil(alluser.length / postsPerPage);
-
-
+  //Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = alluser.slice(indexOfFirstPost, indexOfLastPost);
+  const howManyPages = Math.ceil(alluser.length / postsPerPage);
 
   const loadallUser = () => {
     getUserList()
@@ -64,12 +61,14 @@ const UserList = () => {
             </div>
           </div>
         ))}
+        <div className="card container">
+          {alluser.length > 6 ? (
+            <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
+          ) : (
+            "No Posts so far"
+          )}
+        </div>
       </div>
-      {alluser.length>6  ? (
-        <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
-      ) : (
-        "No Posts so far"
-      )}
     </div>
   );
 };

@@ -28,6 +28,9 @@ import { EyeOutlined } from "@ant-design/icons";
 import { getMypost } from "./apiAllpost";
 import { deletePost } from "./apiAllpost";
 
+import Pagination from "../All Posts/../../HomePage/Pagination";
+import "../All Posts/../../HomePage/Homepage.css";
+
 function Dashboard() {
   const notify = () => {
     toast.info("Post Deleted Successfully!", {
@@ -45,6 +48,17 @@ function Dashboard() {
 
   //context api
   const [user, setUser] = useContext(UserContext);
+
+  //for pagination state.. pagination for number
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+
+  //Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = mypost.slice(indexOfFirstPost, indexOfLastPost);
+  const howManyPages = Math.ceil(mypost.length / postsPerPage);
 
   const loadMypost = () => {
     getMypost().then((data) => {
@@ -214,7 +228,7 @@ function Dashboard() {
 
         {/* table start */}
 
-        {mypost.length > 0 ? (
+        {currentPosts.length > 0 ? (
           <div className="table-horizontal">
             <table class="table table-bordered table-hover">
               <thead>
@@ -231,7 +245,7 @@ function Dashboard() {
                   <td></td>
                 </tr>
 
-                {mypost.map((item, index) => (
+                {currentPosts.map((item, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
                     <td>
@@ -276,6 +290,12 @@ function Dashboard() {
         )}
 
         <ToastContainer autoClose={8000} />
+
+        {mypost.length>1  ? (
+        <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
+      ) : (
+        "No Posts so far"
+      )}
       </div>
     </>
   );

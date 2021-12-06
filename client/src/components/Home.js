@@ -109,20 +109,16 @@ function Home() {
   const [userDatails] = useContext(UserContext);
   const [loading, setLoading] = useState(true);
 
- //for pagination state..number pagination
+  //for pagination state..number pagination
 
- const [currentPage, setCurrentPage] = useState(1);
- const [postsPerPage] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(4);
 
- //Get current posts
- const indexOfLastPost = currentPage * postsPerPage;
- const indexOfFirstPost = indexOfLastPost - postsPerPage;
- const currentPosts = dataItem.slice(indexOfFirstPost, indexOfLastPost);
- const howManyPages = Math.ceil(dataItem.length / postsPerPage);
-
-
-
-
+  //Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = dataItem.slice(indexOfFirstPost, indexOfLastPost);
+  const howManyPages = Math.ceil(dataItem.length / postsPerPage);
 
   //for pagination
 
@@ -277,8 +273,6 @@ function Home() {
     );
   }
 
- 
-
   // const renderData = (dataItem) to use more pagination
 
   const renderData = () => {
@@ -401,24 +395,15 @@ function Home() {
                     {/* <hr /> */}
                   </div>
                 ))}
-              </div>
-              <div className="text-center">
-                {dataItem.length > 6 ? (
-                  <Pagination
-                    pages={howManyPages}
-                    setCurrentPage={setCurrentPage}
-                  />
-                ) : (
-                  "No Posts so far"
-                )}
 
-                {/* {currentItems.length >= 5 ? (
-                  <button onClick={handleLoadMore} className="loadmore">
-                    More Posts
-                  </button>
-                ) : (
-                  "Posts are less than 30"
-                )} */}
+                {dataItem.length > 1 ? (
+                  <div className="card container">
+                    <Pagination
+                      pages={howManyPages}
+                      setCurrentPage={setCurrentPage}
+                    />
+                  </div>
+                ) : null}
               </div>
             </div>
 
@@ -460,6 +445,14 @@ function Home() {
                 ))}
               </div>
             </div>
+
+            {/* {currentItems.length >= 5 ? (
+                  <button onClick={handleLoadMore} className="loadmore">
+                    More Posts
+                  </button>
+                ) : (
+                  "Posts are less than 30"
+                )} */}
           </div>
         </div>
         <div className="container">
@@ -527,6 +520,7 @@ function Home() {
       {/* {renderData(currentItems)} */}
 
       {renderData()}
+      <Footer />
     </>
   );
 
