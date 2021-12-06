@@ -251,8 +251,6 @@ function Home() {
       });
   };
 
-
-
   if (loading) {
     return (
       <div class="text-center my-5">
@@ -330,7 +328,6 @@ function Home() {
                             ) ? (
                               <p
                                 onClick={() => {
-                        
                                   addunlikePost(item._id);
                                 }}
                               >
@@ -386,8 +383,6 @@ function Home() {
                 ))}
               </div>
               <div className="text-center">
-
-
                 {currentItems.length >= 5 ? (
                   <button onClick={handleLoadMore} className="loadmore">
                     More Posts
@@ -438,12 +433,12 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="container allusers">
-          <h5>All Users</h5>
-
-          <AllUserList/>
-
-          <Slider {...settings}>
+        <div className="container">
+        <h5>Visit User Profile</h5>
+<AllUserList />
+         
+        
+          {/* <Slider {...settings}>
             {user.map((useritem) => (
               <div className="useritems">
                 <div className="desing_home card mb-5 shadow-sm">
@@ -469,9 +464,9 @@ function Home() {
                 </div>
               </div>
             ))}
-          </Slider>
+          </Slider> */}
 
-          <>
+          {/* <>
             {opinion ? (
               <div className="text-center my-5 userwords">
                 <h5 className="usersopinion_text">Users Words</h5>
@@ -491,17 +486,22 @@ function Home() {
             ) : (
               <h1>Loading..</h1>
             )}
-          </>
+          </> */}
         </div>
+      
+
       </div>
     );
   };
   return (
     <>
+
       <FirstSection />
-      <Totalpostcount totalpost={dataItem.length} totaluser={user.length}/>
+      <Totalpostcount totalpost={dataItem.length} totaluser={user.length} />
 
       {renderData(currentItems)}
+
+
     </>
   );
 

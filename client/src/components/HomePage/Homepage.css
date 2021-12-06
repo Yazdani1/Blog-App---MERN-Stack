@@ -8,8 +8,55 @@
 
 /* total post count */
 
-.home-post-count{
-    height: 250px;
-    
-   
-  }
+.home-post-count {
+  height: 250px;
+}
+
+.user-info {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 3px;
+
+  background-color: white;
+
+}
+
+.userinfo-name-circle {
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  border-radius: 90px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  position: relative; /*makes left effective*/
+}
+
+.userinfo-name-circle p {
+
+  color: white;
+  border-radius: 90px;
+  height: 40px;
+  width: 40px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 90px; /* may require vendor prefixes */
+}
+
+
+.view-profile{
+  background-color: black;
+  color: white;
+  padding: 7px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.view-profile:hover{
+  opacity: 1;
+  background-color: #f4511e;
+  color: aliceblue;
+}
