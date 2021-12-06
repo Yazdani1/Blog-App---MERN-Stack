@@ -50,8 +50,6 @@ const Userprofile = () => {
     );
   }
 
-
-
   return (
     <>
       <div className="container">
@@ -121,26 +119,53 @@ const Userprofile = () => {
                 aria-labelledby="exampleModalCenterTitle"
                 aria-hidden="true"
               >
-                <div className="modal-dialog modal-dialog-centered" role="document">
+                <div
+                  className="modal-dialog modal-dialog-centered"
+                  role="document"
+                >
                   <div className="modal-content">
                     <div className="modal-header">
                       <h5 className="modal-title" id="exampleModalLongTitle">
                         Send Your Message to This User
                       </h5>
                       <button
-                        type="button"
-                        className="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                            type="button"
+                            className="btn btn-danger"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
                     </div>
-                    <div className="modal-body">...</div>
-                    <div className="modal-footer">
+                    <div className="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea2"></label>
+                          <textarea
+                            class="form-control rounded-0"
+                            placeholder="Type your message.."
+                            // value={about}
+                            rows="8"
+                            //value={experience}
+                            //onChange={(e) => setExperience(e.target.value)}
+                            // onChange={handleChange}
+                            maxLength="150"
+                            //   type="text"
+                            //onChange={(e) => setAbout(e.target.value)}
+                            // name="des"
+                            //   onChange={handleChange}
+                            //   value={about}
+                          />
+                          <p> /150</p>
+                        </div>
+                        <button type="submit" class="btn btn-success custBtn">
+                          SEND
+                        </button>
+                      </form>
+                    </div>
+                    {/* <div className="modal-footer">
                       <button
                         type="button"
-                        className="btn btn-secondary"
+                        className="btn btn-danger"
                         data-dismiss="modal"
                       >
                         Close
@@ -148,7 +173,7 @@ const Userprofile = () => {
                       <button type="button" className="btn btn-primary">
                         Save changes
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

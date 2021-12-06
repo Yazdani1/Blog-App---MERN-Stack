@@ -603,13 +603,14 @@ const DetailsPage = () => {
               </div>
             </div>
 
-            <div className="col-md-5 ">
-              <h5 className="latest-posts-title">Latest posts</h5>
+            <div className="col-md-5">
+              <h5 className="latest-posts-title card">Latest posts</h5>
 
-              <div className="latest-post-part card">
+              <div className="latest-post-positionsss card">
                 {latestPost.map((item) => (
                   <div className="container">
                     <hr />
+
                     <div className="row">
                       <div className="col-md-4">
                         <img

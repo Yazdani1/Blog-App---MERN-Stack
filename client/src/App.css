@@ -723,6 +723,32 @@ body {
 
 /*end details post desigh */
 
+/* post item image */
+
+.home-post-imagess{
+  height: 50%;
+  margin: 10px;
+  border-radius: 20px;
+
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  width: 100%;
+  transition: transform 0.8s;
+  background-repeat: no-repeat;
+
+}
+
+/* latest post part */
+
+.latest-post-position{
+  position: fixed;
+}
+
+.latest-posts-title{
+  padding: 10px;
+}
+
 /* 
 
 <div className="container">

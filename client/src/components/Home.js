@@ -289,7 +289,7 @@ function Home() {
                   <div className="col-md-12 card postitem" key={item._id}>
                     <div className="row">
                       <div className="col-md-4">
-                        <img src={item.photo} className="home-post-image" />
+                        <img src={item.photo} className="home-post-imagess" />
                       </div>
                       <div className="col-md-8">
                         <div className="desing_home_post">
@@ -384,11 +384,11 @@ function Home() {
 
                           {/* <button onClick={() => addtoWishList(item._id)}>SAVE</button> */}
 
-                          <Link to={"/details/" + item._id}>
+                          {/* <Link to={"/details/" + item._id}>
                             <button className="btn btn-primary">
                               Reade More <AiOutlineArrowRight />
                             </button>
-                          </Link>
+                          </Link> */}
                         </div>
                       </div>
                     </div>
@@ -408,7 +408,7 @@ function Home() {
             </div>
 
             <div className="col-md-4">
-              <h5 className="latest-posts-title">Latest posts</h5>
+              <h5 className="latest-posts-title card">Latest posts</h5>
               <div className="latest-post-part card">
                 {latestPost.map((item) => (
                   <div className="container">
