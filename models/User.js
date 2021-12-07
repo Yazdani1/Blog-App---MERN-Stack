@@ -24,6 +24,17 @@ const userSchema = mongoose.Schema(
         ref: "Post",
       },
     ],
+
+    message: [
+      {
+        text: String,
+        postedBy: { type: ObjectId, ref: "User" },
+        date: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -94,7 +94,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/allusers", (req, res) => {
   User.find({})
-  .select("-password")
+    .select("-password")
     .then((result) => {
       res.json(result);
     })
@@ -214,6 +214,41 @@ router.put("/update-favouritepost/:postID", (req, res) => {
       res.json(result);
     }
   });
+});
+
+//end wish list route
+
+//message route for sending message to the user.
+
+router.put("/message", requireLogin, (req, res) => {
+  const { text } = req.body;
+
+  const message = {
+    text,
+    postedBy: req.user._id,
+  };
+
+  if (!text) {
+    return res.status(400).json({ error: "This Field can't be empty!" });
+  }
+
+  User.findByIdAndUpdate(
+    req.body.userID,
+    {
+      $push: { message: message },
+    },
+    {
+      new: true,
+    }
+  )
+    .populate("message.postedBy", "_id name email")
+    .exec((err, result) => {
+      if (err) {
+        return res.status(422).json({ error: err });
+      } else {
+        return res.json(result);
+      }
+    });
 });
 
 // router.put("/comments", requireLogin, (req, res) => {

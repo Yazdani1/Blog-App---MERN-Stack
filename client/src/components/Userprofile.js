@@ -14,6 +14,8 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 import ReactHtmlParser from "react-html-parser";
 import { SyncOutlined } from "@ant-design/icons";
+import { ToastContainer, toast } from "react-toastify";
+
 import { UserProfileContext } from "./UserprofileContext";
 
 const Userprofile = () => {
@@ -23,6 +25,49 @@ const Userprofile = () => {
   // const [mypost, setData] = useContext(UserProfileContext);
 
   const { id } = useParams();
+
+  //to send message
+
+  const [text, setText] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const sendmessage = (e, userID) => {
+    e.preventDefault();
+    setError("");
+    setSuccess(false);
+    fetch("/auth/message", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        text,
+        userID: userID,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.error) {
+          setError(result.error);
+          toast.error(result.error, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        } else {
+          setError("");
+          setSuccess(true);
+          toast.success("Your have Successfully saved your changes!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setText("");
+  };
 
   const getMypost = () => {
     axios
@@ -86,6 +131,8 @@ const Userprofile = () => {
               <SiMicrodotblog size={35} />
               <p>Published Posts</p>
               <h4>{mypost?.postsData?.length}</h4>
+              <h4>{mypost?.userInfo?._id}</h4>
+
             </div>
           </div>
           <div className="col-md-3 card profile-items">
@@ -129,12 +176,12 @@ const Userprofile = () => {
                         Send Your Message to This User
                       </h5>
                       <button
-                            type="button"
-                            className="btn btn-danger"
-                            data-dismiss="modal"
-                          >
-                            Close
-                          </button>
+                        type="button"
+                        className="btn btn-danger"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
                     </div>
                     <div className="modal-body">
                       <form>
@@ -145,6 +192,8 @@ const Userprofile = () => {
                             placeholder="Type your message.."
                             // value={about}
                             rows="8"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
                             //value={experience}
                             //onChange={(e) => setExperience(e.target.value)}
                             // onChange={handleChange}
@@ -155,9 +204,13 @@ const Userprofile = () => {
                             //   onChange={handleChange}
                             //   value={about}
                           />
-                          <p> /150</p>
+                          <p>{text ? text.length : 0} </p>
                         </div>
-                        <button type="submit" class="btn btn-success custBtn">
+                        <button
+                          type="submit"
+                          class="btn btn-success custBtn"
+                          onClick={(e) => sendmessage(e, mypost?.userInfo?._id)}
+                        >
                           SEND
                         </button>
                       </form>
@@ -347,6 +400,7 @@ const Userprofile = () => {
           )} */}
         </div>
       </div>
+      <ToastContainer autoClose={8000} />
     </>
   );
 };
