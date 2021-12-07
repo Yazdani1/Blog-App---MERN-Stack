@@ -536,11 +536,11 @@ const DetailsPage = () => {
                       : "Total Comment"}
                     :{dataItem.comments?.length}{" "}
                   </p>
-                  {dataItem &&
-                    dataItem.comments?.map((allcomments) => {
+                  {dataItem.comments &&
+                    [...dataItem.comments].reverse().map((allcomments,index) => {
                       return (
                         <>
-                          <div className="each-comments">
+                          <div className="each-comments" key={index}>
                             <div className="user_info">
                               <div className="user_pic">
                                 <Link

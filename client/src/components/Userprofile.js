@@ -122,7 +122,6 @@ const Userprofile = () => {
               <p>Member Since</p>
             </div>
             <p className="member-accountcreated-date">
-          
               {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
             </p>
           </div>
@@ -131,8 +130,6 @@ const Userprofile = () => {
               <SiMicrodotblog size={35} />
               <p>Published Posts</p>
               <h4>{mypost?.postsData?.length}</h4>
-              <h4>{mypost?.userInfo?._id}</h4>
-
             </div>
           </div>
           <div className="col-md-3 card profile-items">
@@ -305,8 +302,6 @@ const Userprofile = () => {
             <div className="col-md-12">
               <div className="row">
                 {mypost.postsData.map((item) => (
-
-
                   <div className="col-md-3">
                     <div className="desing_home card mb-5 shadow-sm">
                       <div className="user_info">
@@ -331,19 +326,14 @@ const Userprofile = () => {
                           >
                             <p>{item.postedBy.name}</p>
                           </Link>
-                  
                         </div>
                         <p className="date_color">
-                       
-                       {moment(item.date).format("MMMM Do YYYY")}
-                     </p>
+                          {moment(item.date).format("MMMM Do YYYY")}
+                        </p>
                       </div>
 
-
-
-                      
                       <img src={item.photo} className="images" />
-                    
+
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{ReactHtmlParser(item.des.substring(0, 20))}</p>
                       <hr />
@@ -370,10 +360,6 @@ const Userprofile = () => {
                       {/* <span className="read_more_button">Read More</span> */}
                     </div>
                   </div>
-
-
-
-
                 ))}
               </div>
             </div>
