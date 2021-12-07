@@ -18,12 +18,12 @@ const Message = () => {
           <div className="col-md-12">
             <div className="message-name">
               {usermessage &&
-                usermessage.message.map((message) => (
+                usermessage.message.reverse().map((message) => (
                   <>
-                    <div className="user-info">
+                    <div className="message-body">
                       <div className="row">
                         <div className="col-md-1">
-                          <div className="userinfo-name-circle">
+                          <div className="message-name-circle">
                             <p>
                               {message &&
                                 message?.postedBy?.name
@@ -37,8 +37,11 @@ const Message = () => {
                             <h5>{message?.postedBy?.name}</h5>
 
                             <p>
-                              {moment(message.createdAt).format("MMMM Do YYYY")}
+                              {moment(message.date).format('lll')}
                             </p>
+
+                            <p>{message.text}</p>
+
                             {/* <Link to={"/userprofile/" + user._id}>
                               <span className="view-profile">View Profile</span>
                             </Link> */}

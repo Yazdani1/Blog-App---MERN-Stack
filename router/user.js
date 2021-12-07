@@ -118,7 +118,10 @@ router.get("/allusers", (req, res) => {
 router.get("/", requireLogin, async (req, res) => {
   console.log(req.user);
   try {
-    const user = await User.findById(req.user._id).select("-password").populate("message.postedBy", "_id name email");
+    const user = await User.findById(req.user._id)
+
+      .select("-password")
+      .populate("message.postedBy", "_id name email");
     res.json(user);
   } catch (err) {
     console.log(err);

@@ -13,3 +13,43 @@
 .message-body{
     border: 1px solid black;
 }
+
+/* message design section */
+
+
+.message-body{
+    padding: 10px;
+    margin: 3px;
+
+    background-color: white;
+  
+  }
+  
+  .message-name-circle {
+    height: 40px;
+    width: 40px;
+    background-color: black;
+    border-radius: 90px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    position: relative; /*makes left effective*/
+  }
+  
+  .message-name-circle p {
+  
+    color: white;
+    border-radius: 90px;
+    height: 40px;
+    width: 40px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 90px; /* may require vendor prefixes */
+  }
+
+
+
+
+
