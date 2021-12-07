@@ -1,9 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import "./message.css";
 import { UserContext } from "../../UserContext";
+import { Link, useHistory, useParams } from "react-router-dom";
+import moment from "moment";
 
 const Message = () => {
   const [usermessage, setuserMessage] = useContext(UserContext);
+
+  useEffect(() => {}, [usermessage]);
 
   return (
     <div className="card message-main-section">
@@ -11,20 +15,40 @@ const Message = () => {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-12">
             <div className="message-name">
               {usermessage &&
                 usermessage.message.map((message) => (
                   <>
-                    <li>{message.text}</li>
-                    <li>{message.postedBy.name}</li>
+                    <div className="user-info">
+                      <div className="row">
+                        <div className="col-md-1">
+                          <div className="userinfo-name-circle">
+                            <p>
+                              {message &&
+                                message?.postedBy?.name
+                                  .substring(0, 2)
+                                  .toUpperCase()}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="col-md-11">
+                          <div className="user-fullname">
+                            <h5>{message?.postedBy?.name}</h5>
+
+                            <p>
+                              {moment(message.createdAt).format("MMMM Do YYYY")}
+                            </p>
+                            {/* <Link to={"/userprofile/" + user._id}>
+                              <span className="view-profile">View Profile</span>
+                            </Link> */}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </>
                 ))}
             </div>
-          </div>
-
-          <div className="col-md-8">
-            <div className="message-body">fdsdsfdsf</div>
           </div>
         </div>
       </div>

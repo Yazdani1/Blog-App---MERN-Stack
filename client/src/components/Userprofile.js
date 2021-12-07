@@ -122,7 +122,7 @@ const Userprofile = () => {
               <p>Member Since</p>
             </div>
             <p className="member-accountcreated-date">
-              <GoCalendar />{" "}
+          
               {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
             </p>
           </div>
@@ -305,6 +305,8 @@ const Userprofile = () => {
             <div className="col-md-12">
               <div className="row">
                 {mypost.postsData.map((item) => (
+
+
                   <div className="col-md-3">
                     <div className="desing_home card mb-5 shadow-sm">
                       <div className="user_info">
@@ -329,13 +331,19 @@ const Userprofile = () => {
                           >
                             <p>{item.postedBy.name}</p>
                           </Link>
+                  
                         </div>
+                        <p className="date_color">
+                       
+                       {moment(item.date).format("MMMM Do YYYY")}
+                     </p>
                       </div>
+
+
+
+                      
                       <img src={item.photo} className="images" />
-                      <p className="date_color">
-                        <GoCalendar />{" "}
-                        {moment(item.date).format("MMMM Do YYYY")}
-                      </p>
+                    
                       <h4>{item.title.substring(0, 15)}</h4>
                       <p>{ReactHtmlParser(item.des.substring(0, 20))}</p>
                       <hr />
@@ -362,6 +370,10 @@ const Userprofile = () => {
                       {/* <span className="read_more_button">Read More</span> */}
                     </div>
                   </div>
+
+
+
+
                 ))}
               </div>
             </div>
