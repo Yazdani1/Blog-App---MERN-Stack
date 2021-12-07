@@ -11,16 +11,19 @@ const Message = () => {
 
   return (
     <div className="card message-main-section">
-      <h5>All Messages</h5>
+    
 
       <div className="container">
         <div className="row">
           <div className="col-md-12">
+      
             <div className="message-name">
+            <h5>All Messages: {usermessage.message?.length}</h5>
               {usermessage &&
                 [...usermessage.message].reverse().map((message, index) => (
                   <>
                     <div className="message-body" key={index}>
+                    
                       <div className="row">
                         <div className="col-md-1">
                           <div className="message-name-circle">
@@ -34,7 +37,15 @@ const Message = () => {
                         </div>
                         <div className="col-md-11">
                           <div className="user-fullname">
-                            <h5>{message?.postedBy?.name}</h5>
+                            <Link
+                              to={
+                                "/userprofile/" +
+                                (message && message.postedBy?._id)
+                              }
+                              style={{ textDecoration: "none" }}
+                            >
+                              <h5>{message?.postedBy?.name}</h5>
+                            </Link>
 
                             <p>{moment(message.date).format("lll")}</p>
 
