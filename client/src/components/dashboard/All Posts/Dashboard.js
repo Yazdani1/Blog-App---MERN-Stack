@@ -182,10 +182,14 @@ function Dashboard() {
           </div>
           <div className="col-md-2 card profile-items">
             <div className="profile-items_design">
-              <p>
-                <AiFillMessage size={35} />
-              </p>
-              <button className="btn btn-primary">View Messagees</button>
+              <AiFillMessage size={35} />
+
+              <div className="profile-message">
+                <h5>{user && user.message?.length}</h5>
+                <Link to="/message">
+                  <button className="btn btn-primary">View Messagees</button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -291,11 +295,11 @@ function Dashboard() {
 
         <ToastContainer autoClose={8000} />
 
-        {mypost.length>1  ? (
-        <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
-      ) : (
-        "No Posts so far"
-      )}
+        {mypost.length > 1 ? (
+          <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
+        ) : (
+          "No Posts so far"
+        )}
       </div>
     </>
   );

@@ -10,6 +10,8 @@ import { UserContext } from "../UserContext";
 import { Link, useHistory } from "react-router-dom";
 import { BsHeartFill } from "react-icons/bs";
 import { RiLogoutCircleRLine } from "react-icons/ri";
+import { AiFillMessage } from "react-icons/ai";
+
 
 const DashboardNav = () => {
   const [userdetails,setUserdetails] = useContext(UserContext);
@@ -68,6 +70,15 @@ const DashboardNav = () => {
                 Favourite
               </li>
             </Link>
+
+            <Link to="/message" style={{ textDecoration: "none" }}>
+              <li>
+                <AiFillMessage size={25} />
+                Messages
+              </li>
+            </Link>
+
+            
 
             <li>
               <RiSettings2Fill size={25} />

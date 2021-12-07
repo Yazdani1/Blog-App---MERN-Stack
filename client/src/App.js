@@ -21,6 +21,7 @@ import UpdateProfile from "./components/dashboard/Profile/UpdateProfile";
 import AddExperience from "./components/dashboard/Experience/AddExperience";
 import FavouritePost from "./components/dashboard/SaveFavouritePost/FavouritePost";
 import { UserProfileProvider } from "./components/UserprofileContext";
+import Message from "./components/dashboard/message/Message";
 
 function App() {
   return (
@@ -86,6 +87,13 @@ function App() {
             <Route path="/AddExperience" exact>
               <DashboardprotectedRoute Dashboardprocomp={AddExperience} />
             </Route>
+
+            <Route path="/message" exact>
+              <DashboardprotectedRoute Dashboardprocomp={Message} />
+            </Route>
+
+
+            
 
             <Route path="/favourite" exact>
               <DashboardprotectedRoute Dashboardprocomp={FavouritePost} />
