@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
+import ReactHtmlParser from "react-html-parser";
+import "./favouritePost.css";
 
 import { getFavouritePost, removeFavouritePost } from "./ApiFavourite";
 import { UserContext } from "../../UserContext";
@@ -19,13 +21,16 @@ const FavouritePost = () => {
   }, []);
 
   return (
-    <div className="container card">
+    <div className="container card fav-post">
       {user &&
         user?.favourite?.map((item) => (
           <>
             <p>{item._id}</p>
-            <p>{item.des}</p>
+            <p>{ReactHtmlParser(item.des)}</p>
             <p>{item.title}</p>
+            <p>Likes-{item.likes?.length}</p>
+            <p>Comments-{item.comments?.length}</p>
+            
           </>
         ))}
     </div>

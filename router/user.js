@@ -122,7 +122,7 @@ router.get("/", requireLogin, async (req, res) => {
 
       .select("-password")
       .populate("message.postedBy", "_id name email")
-      .populate("favourite", "_id des");
+      .populate("favourite", "_id des title likes comments photo date")
 
     res.json(user);
   } catch (err) {
