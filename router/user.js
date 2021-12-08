@@ -184,7 +184,7 @@ router.post("/save-favouritepost", requireLogin, (req, res) => {
   const { postID } = req.body;
 
   User.findByIdAndUpdate(req.body.userID, {
-    $push: { favourite: postID },
+    $addToSet: { favourite: postID },
   })
     .select("favourite")
     .populate("favourite")
