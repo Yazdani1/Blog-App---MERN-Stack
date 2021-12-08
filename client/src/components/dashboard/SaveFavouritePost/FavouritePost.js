@@ -20,16 +20,12 @@ const FavouritePost = () => {
 
   return (
     <div className="container card">
-      <h1>{user && user.name}</h1>
-      <h1>{user && user.email}</h1>
-      <h1>{user && user.about}</h1>
-      <h1>{user && user.experience}</h1>
-      <h1>{user && user.favourite?._id}</h1>
       {user &&
         user?.favourite?.map((item) => (
           <>
             <p>{item._id}</p>
             <p>{item.des}</p>
+            <p>{item.title}</p>
           </>
         ))}
     </div>
