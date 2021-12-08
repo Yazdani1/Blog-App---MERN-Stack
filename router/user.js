@@ -121,7 +121,9 @@ router.get("/", requireLogin, async (req, res) => {
     const user = await User.findById(req.user._id)
 
       .select("-password")
-      .populate("message.postedBy", "_id name email");
+      .populate("message.postedBy", "_id name email")
+      .populate("favourite", "_id des");
+
     res.json(user);
   } catch (err) {
     console.log(err);
@@ -183,21 +185,24 @@ router.post("/save-favouritepost", requireLogin, (req, res) => {
 
   User.findByIdAndUpdate(req.body.userID, {
     $push: { favourite: postID },
-  }).exec((err, result) => {
-    if (err) {
-      return res.status(400).json({ error: err });
-    } else {
-      res.json(result);
-    }
-  });
+  })
+    .select("favourite")
+    .populate("favourite")
+    .exec((err, result) => {
+      if (err) {
+        return res.status(400).json({ error: err });
+      } else {
+        res.json(result);
+      }
+    });
 });
 
 router.get("/get-favouritepost", requireLogin, (req, res) => {
   // var getUser = { _id: req.params.id };
 
   User.findOne(req.user._id)
-    .select("favourite")
-    .populate("favourite")
+    // .select("favourite")
+    .populate("favourite","_id des")
     .exec((err, result) => {
       if (err) {
         return res.status(400).json({ error: err });

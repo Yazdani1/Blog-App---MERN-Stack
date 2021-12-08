@@ -318,29 +318,30 @@ const DetailsPage = () => {
     console.log(postId, text);
   };
 
-  // const addtoWishlist = (userID, postID) => {
-  //   fetch("/auth/save-favouritepost", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //     },
-  //     body: JSON.stringify({
-  //       userID:userID,
-  //       postID:postID,
-  //     }),
-  //   })
-  //     .then((result) => {
-  //       if (result) {
-  //         console.log("Post Saved");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+  const addtoWishlist = (e,userID, postID) => {
+    e.preventDefault();
+    fetch("/auth/save-favouritepost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        userID:userID,
+        postID:postID,
+      }),
+    })
+      .then((result) => {
+        if (result) {
+          console.log("Post Saved");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-  //   console.log(userID, postID);
-  // };
+    console.log(userID, postID);
+  };
 
   return (
     <>
@@ -438,7 +439,7 @@ const DetailsPage = () => {
                             <p> {dataItem.comments?.length}</p>
                           </div>
                         </div>
-                        {/* <div className="comment-buttondesign">
+                        <div className="comment-buttondesign">
                           <div className="comment-icon">
                             <BsHeartFill size={20} />
                           </div>
@@ -454,7 +455,7 @@ const DetailsPage = () => {
                               Save{" "}
                             </button>
                           </div>
-                        </div> */}
+                        </div>
                       </div>
                     </div>
                   </div>
