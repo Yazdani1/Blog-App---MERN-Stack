@@ -11,7 +11,7 @@ import "../App.css";
 import renderHTML from "react-render-html";
 import ReactHtmlParser from "react-html-parser";
 import { SyncOutlined } from "@ant-design/icons";
-
+import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
@@ -214,7 +214,10 @@ const DetailsPage = () => {
           setError(result.error);
         } else {
           setError("");
-          setSuccess(true);
+         // setSuccess(true);
+          toast.success("Your Comment has been posted!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         }
 
         const newItemData = dataItem.map((item) => {
@@ -694,6 +697,8 @@ const DetailsPage = () => {
           </Slider>
         </div>
       </div>
+      <ToastContainer autoClose={8000} />
+
     </>
   );
 };
