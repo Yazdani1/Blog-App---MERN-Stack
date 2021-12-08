@@ -24,14 +24,14 @@ const FavouritePost = () => {
     <div className="container card fav-post">
       {user &&
         user?.favourite?.map((item) => (
-          <>
-            <p>{item._id}</p>
+          <div className="fav-post-item">
+            <h5>{item.title}</h5>
             <p>{ReactHtmlParser(item.des)}</p>
-            <p>{item.title}</p>
+            
             <p>Likes-{item.likes?.length}</p>
             <p>Comments-{item.comments?.length}</p>
             
-          </>
+          </div>
         ))}
     </div>
   );
