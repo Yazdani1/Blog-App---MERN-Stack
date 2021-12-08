@@ -214,7 +214,7 @@ const DetailsPage = () => {
           setError(result.error);
         } else {
           setError("");
-         // setSuccess(true);
+          // setSuccess(true);
           toast.success("Your Comment has been posted!", {
             position: toast.POSITION.TOP_RIGHT,
           });
@@ -318,7 +318,7 @@ const DetailsPage = () => {
     console.log(postId, text);
   };
 
-  const addtoWishlist = (e,userID, postID) => {
+  const addtoWishlist = (e, userID, postID) => {
     e.preventDefault();
     fetch("/auth/save-favouritepost", {
       method: "POST",
@@ -327,8 +327,8 @@ const DetailsPage = () => {
         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
       },
       body: JSON.stringify({
-        userID:userID,
-        postID:postID,
+        userID: userID,
+        postID: postID,
       }),
     })
       .then((result) => {
@@ -440,20 +440,25 @@ const DetailsPage = () => {
                           </div>
                         </div>
                         <div className="comment-buttondesign">
-                          <div className="comment-icon">
+                          <div
+                            className="comment-icon"
+                            onClick={(e) =>
+                              addtoWishlist(e, user && user._id, dataItem._id)
+                            }
+                          >
                             <BsHeartFill size={20} />
                           </div>
 
                           <div className="comment-count">
-                            <button
-                              className="btn btn-success"
+                            <p
+                             
                               onClick={(e) =>
-                                addtoWishlist(e, user && user._id,dataItem._id)
+                                addtoWishlist(e, user && user._id, dataItem._id)
                               }
                             >
-                              {" "}
-                              Save{" "}
-                            </button>
+                             
+                              Save
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -541,68 +546,75 @@ const DetailsPage = () => {
                     :{dataItem.comments?.length}{" "}
                   </p>
                   {dataItem.comments &&
-                    [...dataItem.comments].reverse().map((allcomments,index) => {
-                      return (
-                        <>
-                          <div className="each-comments" key={index}>
-                            <div className="user_info">
-                              <div className="user_pic">
-                                <Link
-                                  to={"/userprofile/"}
-                                  className="name_design"
-                                >
-                                  <div className="user_pic_home_page">
-                                    <p className="comment_Des">
-                                      {allcomments.postedBy.name
-                                        .substring(0, 2)
-                                        .toUpperCase()}
-                                    </p>
-                                  </div>
-                                </Link>
-                              </div>
-                              <div className="user_name">
-                                <Link
-                                  to={
-                                    "/userprofile/" + allcomments.postedBy?._id
-                                  }
-                                  className="name_design"
-                                >
-                                  <p>{allcomments.postedBy.name}.</p>
-                                </Link>
-                              </div>
-                              <p>
-                                {" "}
-                                {moment(allcomments && allcomments.date).format(
-                                  "MMMM Do YYYY"
-                                )}
-                              </p>
-
-                              <p>
-                                {user && user._id === allcomments.postedBy._id && (
-                                  <div
-                                    className="btn btn-danger"
-                                    onClick={(e) =>
-                                      removeComment(dataItem._id, allcomments)
-                                    }
+                    [...dataItem.comments]
+                      .reverse()
+                      .map((allcomments, index) => {
+                        return (
+                          <>
+                            <div className="each-comments" key={index}>
+                              <div className="user_info">
+                                <div className="user_pic">
+                                  <Link
+                                    to={"/userprofile/"}
+                                    className="name_design"
                                   >
-                                    Delete
-                                  </div>
-                                )}
-                              </p>
+                                    <div className="user_pic_home_page">
+                                      <p className="comment_Des">
+                                        {allcomments.postedBy.name
+                                          .substring(0, 2)
+                                          .toUpperCase()}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                </div>
+                                <div className="user_name">
+                                  <Link
+                                    to={
+                                      "/userprofile/" +
+                                      allcomments.postedBy?._id
+                                    }
+                                    className="name_design"
+                                  >
+                                    <p>{allcomments.postedBy.name}.</p>
+                                  </Link>
+                                </div>
+                                <p>
+                                  {" "}
+                                  {moment(
+                                    allcomments && allcomments.date
+                                  ).format("MMMM Do YYYY")}
+                                </p>
 
-                              {/* <button
+                                <p>
+                                  {user &&
+                                    user._id === allcomments.postedBy._id && (
+                                      <div
+                                        className="btn btn-danger"
+                                        onClick={(e) =>
+                                          removeComment(
+                                            dataItem._id,
+                                            allcomments
+                                          )
+                                        }
+                                      >
+                                        Delete
+                                      </div>
+                                    )}
+                                </p>
+
+                                {/* <button
                                 className="btn btn-danger"
                                 onClick={() => deleteComment(allcomments.postedBy._id,allcomments.text)}
                               >
                                 Delete
                               </button> */}
+                              </div>
+                              <p>{allcomments.text}</p>
+                              {/* <p>{allcomments && allcomments._id}</p> */}
                             </div>
-                            <p>{allcomments.text}</p>
-                            {/* <p>{allcomments && allcomments._id}</p> */}
-                          </div>
-                        </>
-                      );
-                    })}
+                          </>
+                        );
+                      })}
                 </div>
               </div>
             </div>
@@ -699,7 +711,6 @@ const DetailsPage = () => {
         </div>
       </div>
       <ToastContainer autoClose={8000} />
-
     </>
   );
 };
