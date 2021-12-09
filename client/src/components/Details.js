@@ -318,7 +318,35 @@ const DetailsPage = () => {
     console.log(postId, text);
   };
 
-  const addtoWishlist = (e, userID, postID) => {
+  // const addtoWishlist = (e, userID, postID) => {
+  //   e.preventDefault();
+  //   fetch("/auth/save-favouritepost", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //     body: JSON.stringify({
+  //       userID: userID,
+  //       postID: postID,
+  //     }),
+  //   })
+  //     .then((result) => {
+  //       if (result) {
+  //         console.log("Post Saved");
+  //       }
+  //       toast.success("This post has been Saved!", {
+  //         position: toast.POSITION.TOP_RIGHT,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
+  //   console.log(userID, postID);
+  // };
+
+  const addtoWishlist = (e, postID) => {
     e.preventDefault();
     fetch("/auth/save-favouritepost", {
       method: "POST",
@@ -327,7 +355,6 @@ const DetailsPage = () => {
         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
       },
       body: JSON.stringify({
-        userID: userID,
         postID: postID,
       }),
     })
@@ -335,12 +362,15 @@ const DetailsPage = () => {
         if (result) {
           console.log("Post Saved");
         }
+        toast.success("This post has been Saved!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
       })
       .catch((err) => {
         console.log(err);
       });
 
-    console.log(userID, postID);
+    //console.log(userID, postID);
   };
 
   return (
@@ -360,7 +390,7 @@ const DetailsPage = () => {
                 />
                 <div className="details-postDesign">
                   <div className="row">
-                    <div className="col-md-9">
+                    <div className="col-md-8">
                       <div className="details-post">
                         <div className="detailspage-user-profile">
                           <Link to={"/userprofile/"} className="name_design">
@@ -380,6 +410,7 @@ const DetailsPage = () => {
                             className="name_design"
                           >
                             <p>{dataItem && dataItem.postedBy?.name}</p>
+                            <p>{dataItem._id}</p>
                           </Link>
                           <p>
                             {moment(dataItem && dataItem.date).format(
@@ -390,7 +421,7 @@ const DetailsPage = () => {
                       </div>
                     </div>
 
-                    <div className="col-md-3">
+                    <div className="col-md-4">
                       <div className="details-post-likes">
                         <div className="like-buttondesign">
                           {dataItem &&
@@ -442,21 +473,21 @@ const DetailsPage = () => {
                         <div className="comment-buttondesign">
                           <div
                             className="comment-icon"
-                            onClick={(e) =>
-                              addtoWishlist(e, user && user._id, dataItem._id)
-                            }
+                            onClick={(e) => addtoWishlist(e, dataItem._id)}
                           >
                             <BsHeartFill size={20} />
                           </div>
 
                           <div className="comment-count">
                             <p
-                             
                               onClick={(e) =>
-                                addtoWishlist(e, user && user._id, dataItem._id)
+                                addtoWishlist(
+                                  e,
+
+                                  dataItem._id
+                                )
                               }
                             >
-                             
                               Save
                             </p>
                           </div>

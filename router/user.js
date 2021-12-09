@@ -122,7 +122,7 @@ router.get("/", requireLogin, async (req, res) => {
 
       .select("-password")
       .populate("message.postedBy", "_id name email")
-      .populate("favourite", "_id des title likes comments photo date")
+      .populate("favourite", "_id des title likes comments photo date");
 
     res.json(user);
   } catch (err) {
@@ -180,11 +180,48 @@ router.put("/add-experience", requireLogin, (req, res) => {
 
 //Wishlist Route to save a post to user dashboard
 
+// router.post("/save-favouritepost", requireLogin, (req, res) => {
+//   const { postID } = req.body;
+
+//   User.findByIdAndUpdate(req.body.userID, {
+//     $addToSet: { favourite: postID },
+//   })
+//     .select("favourite")
+//     .populate("favourite")
+//     .exec((err, result) => {
+//       if (err) {
+//         return res.status(400).json({ error: err });
+//       } else {
+//         res.json(result);
+//       }
+//     });
+// });
+
 router.post("/save-favouritepost", requireLogin, (req, res) => {
   const { postID } = req.body;
 
-  User.findByIdAndUpdate(req.body.userID, {
+  User.findByIdAndUpdate(req.user._id, {
     $addToSet: { favourite: postID },
+  })
+    .select("favourite")
+    .populate("favourite")
+    .exec((err, result) => {
+      if (err) {
+        return res.status(400).json({ error: err });
+      } else {
+        res.json(result);
+      }
+    });
+});
+
+
+//to remove saved post
+
+router.put("/remove-favouritepost", requireLogin, (req, res) => {
+  const { postID } = req.body;
+
+  User.findByIdAndUpdate(req.body.userID, {
+    $pull: { favourite: postID },
   })
     .select("favourite")
     .populate("favourite")
@@ -202,7 +239,7 @@ router.get("/get-favouritepost", requireLogin, (req, res) => {
 
   User.findOne(req.user._id)
     // .select("favourite")
-    .populate("favourite","_id des")
+    .populate("favourite", "_id des")
     .exec((err, result) => {
       if (err) {
         return res.status(400).json({ error: err });
