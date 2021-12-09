@@ -410,7 +410,6 @@ const DetailsPage = () => {
                             className="name_design"
                           >
                             <p>{dataItem && dataItem.postedBy?.name}</p>
-                            <p>{dataItem._id}</p>
                           </Link>
                           <p>
                             {moment(dataItem && dataItem.date).format(
