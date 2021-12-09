@@ -615,23 +615,6 @@ const DetailsPage = () => {
                                   ).format("MMMM Do YYYY")}
                                 </p>
 
-                                <p>
-                                  {user &&
-                                    user._id === allcomments.postedBy._id && (
-                                      <div
-                                        className="btn btn-danger"
-                                        onClick={(e) =>
-                                          removeComment(
-                                            dataItem._id,
-                                            allcomments
-                                          )
-                                        }
-                                      >
-                                        Delete
-                                      </div>
-                                    )}
-                                </p>
-
                                 {/* <button
                                 className="btn btn-danger"
                                 onClick={() => deleteComment(allcomments.postedBy._id,allcomments.text)}
@@ -640,6 +623,18 @@ const DetailsPage = () => {
                               </button> */}
                               </div>
                               <p>{allcomments.text}</p>
+                              <p>
+                                {user && user._id === allcomments.postedBy._id && (
+                                  <div
+                                    className="btn btn-danger"
+                                    onClick={(e) =>
+                                      removeComment(dataItem._id, allcomments)
+                                    }
+                                  >
+                                    Delete
+                                  </div>
+                                )}
+                              </p>
                               {/* <p>{allcomments && allcomments._id}</p> */}
                             </div>
                           </>

@@ -27,7 +27,7 @@ import Pagination from "./HomePage/Pagination";
 import Footer from "./footer";
 import { AiFillLike } from "react-icons/ai";
 
-
+import { Spin } from 'antd';
 // import { Pagination } from "antd";
 
 function Home() {
@@ -268,7 +268,8 @@ function Home() {
     return (
       <div class="text-center my-5">
         <h1>
-          <SyncOutlined spin />
+          {/* <SyncOutlined spin /> */}
+          <Spin  size="large"/>
         </h1>
       </div>
     );
