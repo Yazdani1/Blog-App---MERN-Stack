@@ -62,7 +62,7 @@ const FavouritePost = () => {
       <div className="row">
         {user.favourite &&
           [...user?.favourite].reverse().map((item, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6" key={index}>
+            <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
               <div className="card main-card">
                 <img src={item.photo} className="favpurite-post-image" />
                 <div className="fav-post-text-item">
@@ -82,8 +82,8 @@ const FavouritePost = () => {
                     <div className="comment-button-design">
                       <p>
                         {" "}
-                        <FaRegCommentDots size={15} /> comments-
-                        {item.comments?.length}
+                        <FaRegCommentDots size={15} />   
+                        {item.comments?.length} - comments
                       </p>
                     </div>
                   </div>
