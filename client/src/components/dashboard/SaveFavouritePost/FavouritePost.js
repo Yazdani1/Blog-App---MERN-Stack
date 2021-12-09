@@ -66,7 +66,12 @@ const FavouritePost = () => {
               <div className="card main-card">
                 <img src={item.photo} className="favpurite-post-image" />
                 <div className="fav-post-text-item">
-                  <p>{item.title}</p>
+                  <Link
+                    to={"/details/" + item._id}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <p>{item.title}</p>
+                  </Link>
                   <p>{moment(item.date).format("MMMM Do YYYY")}</p>
 
                   <div className="like-comments">
