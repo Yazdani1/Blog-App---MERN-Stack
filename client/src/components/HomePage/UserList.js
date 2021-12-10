@@ -39,8 +39,8 @@ const UserList = () => {
     <div className="container">
       <div className="row">
         {currentPosts.map((user, index) => (
-          <div className="card col-md-3" key={index}>
-            <div className="user-info">
+          <div className="col-md-3" key={index}>
+            <div className="user-info card">
               <div className="row">
                 <div className="col-md-2">
                   <div className="userinfo-name-circle">

@@ -115,105 +115,121 @@ const UserPublicProfile = () => {
           </div>
         </div>
       </div>
-      <div className="container profile_items_container">
+      <div className="container">
         <div className="row">
-          <div className="col-md-3 card profile-items">
-            <div className="profile-items_design">
-              <MdCardMembership size={35} />
-              <p>Member Since</p>
-            </div>
-            <p className="member-accountcreated-date">
-              {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
-            </p>
-          </div>
-          <div className="col-md-3 card profile-items">
-            <div className="profile-items_design">
-              <SiMicrodotblog size={35} />
-              <p>Published Posts</p>
-              <h4>{mypost?.postsData?.length}</h4>
-            </div>
-          </div>
-          <div className="col-md-3 card profile-items">
-            <div className="profile-items_design">
-              <FaUserGraduate size={35} />
-              <p>Member Type</p>
-              <p>
-                {" "}
-                {mypost?.postsData?.length >= 5 ? <p>Pro User</p> : "New User"}
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <MdCardMembership size={35} />
+                <p>Member Since</p>
+              </div>
+              <p className="member-accountcreated-date">
+                {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
               </p>
             </div>
           </div>
-          <div className="col-md-2 card profile-items">
-            <div className="profile-items_design">
-              <p>
-                <AiFillMessage size={35} />
-              </p>
-              <button
-                className="btn btn-success"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
-              >
-                Send Message <RiSendPlaneFill size={25} />
-              </button>
 
-              <div
-                className="modal fade"
-                id="exampleModalCenter"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true"
-              >
-                <div
-                  className="modal-dialog modal-dialog-centered"
-                  role="document"
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <SiMicrodotblog size={35} />
+                <p>Published Posts</p>
+                <h4>{mypost?.postsData?.length}</h4>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <FaUserGraduate size={35} />
+                <p>Member Type</p>
+                <p>
+                  {" "}
+                  {mypost?.postsData?.length >= 5 ? (
+                    <p>Pro User</p>
+                  ) : (
+                    "New User"
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <p>
+                  <AiFillMessage size={35} />
+                </p>
+                <button
+                  className="btn btn-success"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
                 >
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLongTitle">
-                        Write your message
-                      </h5>
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        data-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                    </div>
-                    <div className="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea2"></label>
-                          <textarea
-                            class="form-control rounded-0"
-                            placeholder="Type your message.."
-                            // value={about}
-                            rows="8"
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            //value={experience}
-                            //onChange={(e) => setExperience(e.target.value)}
-                            // onChange={handleChange}
-                            maxLength="150"
-                            //   type="text"
-                            //onChange={(e) => setAbout(e.target.value)}
-                            // name="des"
-                            //   onChange={handleChange}
-                            //   value={about}
-                          />
-                          <p>{text ? text.length : 0} </p>
-                        </div>
+                  Send Message <RiSendPlaneFill size={25} />
+                </button>
+
+                <div
+                  className="modal fade"
+                  id="exampleModalCenter"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalCenterTitle"
+                  aria-hidden="true"
+                >
+                  <div
+                    className="modal-dialog modal-dialog-centered"
+                    role="document"
+                  >
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">
+                          Write your message
+                        </h5>
                         <button
-                          type="submit"
-                          class="btn btn-success custBtn"
-                          onClick={(e) => sendmessage(e, mypost?.userInfo?._id)}
+                          type="button"
+                          className="btn btn-danger"
+                          data-dismiss="modal"
                         >
-                          SEND
+                          Close
                         </button>
-                      </form>
-                    </div>
-                    {/* <div className="modal-footer">
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea2"></label>
+                            <textarea
+                              class="form-control rounded-0"
+                              placeholder="Type your message.."
+                              // value={about}
+                              rows="8"
+                              value={text}
+                              onChange={(e) => setText(e.target.value)}
+                              //value={experience}
+                              //onChange={(e) => setExperience(e.target.value)}
+                              // onChange={handleChange}
+                              maxLength="150"
+                              //   type="text"
+                              //onChange={(e) => setAbout(e.target.value)}
+                              // name="des"
+                              //   onChange={handleChange}
+                              //   value={about}
+                            />
+                            <p>{text ? text.length : 0} </p>
+                          </div>
+                          <button
+                            type="submit"
+                            class="btn btn-success custBtn"
+                            onClick={(e) =>
+                              sendmessage(e, mypost?.userInfo?._id)
+                            }
+                          >
+                            SEND
+                          </button>
+                        </form>
+                      </div>
+                      {/* <div className="modal-footer">
                       <button
                         type="button"
                         className="btn btn-danger"
@@ -225,6 +241,7 @@ const UserPublicProfile = () => {
                         Save changes
                       </button>
                     </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -239,7 +256,7 @@ const UserPublicProfile = () => {
           <div className="row">
             <div className="col-md-12">
               <h5>About Me</h5>
-              <hr />
+              
               <div className="user-about-page">
                 <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
               </div>
@@ -267,7 +284,7 @@ const UserPublicProfile = () => {
           <div className="row">
             <div className="col-md-12">
               <h5>Experience</h5>
-              <hr />
+           
               <div className="user-about-page">
                 <p>{ReactHtmlParser(mypost?.userInfo?.experience)}</p>
               </div>
@@ -314,7 +331,9 @@ const UserPublicProfile = () => {
                             </p>
                           </div>
                           <div className="profile-name-post-date">
-                            <p>{item.postedBy.name}</p>
+                            <p className="profile-name-size">
+                              {item.postedBy.name}
+                            </p>
                             <p>{moment(item.date).format("MMMM Do YYYY")}</p>
                           </div>
                         </div>

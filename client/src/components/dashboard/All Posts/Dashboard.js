@@ -155,40 +155,49 @@ function Dashboard() {
 
   return (
     <>
-      <div className="container profile_items_container">
+      <div className="container">
         <div className="row">
-          <div className="col-md-3 card profile-items">
-            <div className="profile-items_design">
-              <SiMicrodotblog size={35} />
-              <p>Published Posts</p>
-              <h4>{mypost.length}</h4>
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <SiMicrodotblog size={35} />
+                <p>Published Posts</p>
+                <h4>{mypost.length}</h4>
+              </div>
             </div>
           </div>
 
-          <div className="col-md-3 card profile-items">
-            <div className="profile-items_design">
-              <MdCardMembership size={35} />
-              <p>Member Since</p>
-              <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <MdCardMembership size={35} />
+                <p>Member Since</p>
+                <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
+              </div>
             </div>
           </div>
 
-          <div className="col-md-3 card profile-items">
-            <div className="profile-items_design">
-              <FaUserGraduate size={35} />
-              <p>Member Type</p>
-              <p> {mypost.length >= 5 ? "Pro Account" : "Starter Account"}</p>
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <FaUserGraduate size={35} />
+                <p>Member Type</p>
+                <p> {mypost.length >= 5 ? "Pro Account" : "Starter Account"}</p>
+              </div>
             </div>
           </div>
-          <div className="col-md-2 card profile-items">
-            <div className="profile-items_design">
-              <AiFillMessage size={35} />
 
-              <div className="profile-message">
-                <h5>{user && user.message?.length}</h5>
-                <Link to="/message">
-                  <button className="btn btn-primary">View Messagees</button>
-                </Link>
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <AiFillMessage size={35} />
+
+                <div className="profile-message">
+                  <h5>{user && user.message?.length}</h5>
+                  <Link to="/message">
+                    <button className="btn btn-primary">View Messagees</button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
