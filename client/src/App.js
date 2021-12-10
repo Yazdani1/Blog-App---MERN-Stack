@@ -8,7 +8,7 @@ import Profile from "./components/Profile";
 import Post from "./components/Post";
 import Mypost from "./components/Mypost";
 import Postaccouncement from "./components/Postannouncement";
-import Userprofile from "./components/Userprofile";
+// import Userprofile from "./components/Userprofile";
 import Edit from "./components/Edit";
 import Details from "./components/Details";
 import { UserProvider } from "./components/UserContext";
@@ -22,6 +22,7 @@ import AddExperience from "./components/dashboard/Experience/AddExperience";
 import FavouritePost from "./components/dashboard/SaveFavouritePost/FavouritePost";
 import { UserProfileProvider } from "./components/UserprofileContext";
 import Message from "./components/dashboard/message/Message";
+import UserPublicProfile from "./components/Userpublicprofile/userpublicprofile";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
             </Route>
 
             <Route path="/userprofile/:id" exact>
-              <ProtectedRoute procomp={Userprofile} />
+              <ProtectedRoute procomp={UserPublicProfile} />
             </Route>
             {/* <Route path="/editpost/:id">
             <ProtectedRoute procomp={Edit} />

@@ -50,6 +50,82 @@ const FavouritePost = () => {
     console.log(userID, postID);
   };
 
+  //like and unlike
+
+  // const addlikePost = (id) => {
+  //   fetch("/auth/like", {
+  //     method: "put",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //     body: JSON.stringify({
+  //       postId: id,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       console.log(result);
+
+  //       // if (dataItem._id == result._id) {
+  //       //   setData(result);
+  //       // } else {
+  //       //   return dataItem;
+  //       // }
+
+  //       const newItemData =
+  //         user.favourite &&
+  //         user.favourite.map((item) => {
+  //           if (item._id == result._id) {
+  //             return result;
+  //           } else {
+  //             return item;
+  //           }
+  //         });
+  //       setData(newItemData);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // const addunlikePost = (id) => {
+  //   fetch("/auth/unlike", {
+  //     method: "put",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //     },
+  //     body: JSON.stringify({
+  //       postId: id,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       console.log(result);
+
+  //       // if (dataItem._id == result._id) {
+  //       //   setData(result);
+  //       // } else {
+  //       //   return dataItem;
+  //       // }
+
+  //       const newItemData =
+  //         user.favourite &&
+  //         user.favourite.map((item) => {
+  //           if (item._id == result._id) {
+  //             return result;
+  //           } else {
+  //             return item;
+  //           }
+  //         });
+  //       setData(newItemData);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
   // useEffect(() => {
   //   loadWishlist();
   // }, []);
@@ -76,14 +152,19 @@ const FavouritePost = () => {
 
                   <div className="like-comments">
                     <div className="like-button-design">
-                      <p>Likes-{item.likes?.length}</p>
+                      <div className="like-icons">
+                        <AiOutlineLike size={17} />
+                      </div>
+                      <p className="like-count"> {item.likes?.length} likes</p>
                     </div>
 
                     <div className="comment-button-design">
-                      <p>
+                      <div className="comment-icons">
+                        <FaRegCommentDots size={17} />
+                      </div>
+                      <p className="comments-count">
                         {" "}
-                        <FaRegCommentDots size={15} />   
-                        {item.comments?.length} - comments
+                        {item.comments?.length} comments
                       </p>
                     </div>
                   </div>

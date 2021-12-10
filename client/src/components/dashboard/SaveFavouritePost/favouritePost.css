@@ -37,4 +37,25 @@
 }
 .comment-button-design {
   padding-left: 10px;
+  display: flex;
+}
+.comments-count{
+  margin-left: 8px;
+  color: #e8424a;
+}
+.comment-icons{
+  color: #e8424aed;
+}
+
+.like-button-design{
+  display: flex;
+}
+.like-count{
+  margin-left: 3px;
+  color: #e8424aed;
+
+}
+.like-icons{
+  color: #e8424aed;
+
 }
