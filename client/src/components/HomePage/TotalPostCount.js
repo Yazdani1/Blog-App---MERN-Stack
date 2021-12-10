@@ -41,6 +41,7 @@ const Totalpostcount = ({totalpost,totaluser}) => {
             </Link>
           </div>
         </div>
+        
       </div>
     </div>
   );
