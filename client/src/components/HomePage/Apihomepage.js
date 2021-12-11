@@ -9,3 +9,15 @@ export const getUserList = () => {
       console.log(err);
     });
 };
+
+export const getallPosts = () => {
+  return fetch("/auth/getpost", {
+    method: "GET",
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
