@@ -10,6 +10,8 @@ export const getUserList = () => {
     });
 };
 
+//get allposts for homepage..
+
 export const getallPosts = () => {
   return fetch("/auth/getpost", {
     method: "GET",

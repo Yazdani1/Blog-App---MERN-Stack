@@ -26,6 +26,9 @@ import Totalpostcount from "./HomePage/TotalPostCount";
 import Pagination from "./HomePage/Pagination";
 import Footer from "./footer";
 import { AiFillLike } from "react-icons/ai";
+import AllpostSection from "./HomePage/AllpostSection";
+
+
 
 import { Spin } from 'antd';
 // import { Pagination } from "antd";
@@ -524,7 +527,10 @@ function Home() {
 
       {/* {renderData(currentItems)} */}
 
-      {renderData()}
+      {/* {renderData()} */}
+      <AllpostSection/>
+
+      <AllUserList />
       <Footer />
     </>
   );
