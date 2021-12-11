@@ -8,12 +8,24 @@ import moment from "moment";
 import { UserContext } from "../UserContext";
 import { AiFillLike } from "react-icons/ai";
 import { addlikePost, addunlikePost } from "./Apihomepage";
+import Pagination from "./Pagination";
 
 const AllpostSection = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [user, setUser] = useContext(UserContext);
+
+  //for pagination state..number pagination
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(12);
+
+  //Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const howManyPages = Math.ceil(posts.length / postsPerPage);
 
   const loadallPosts = () => {
     getallPosts()
@@ -74,7 +86,7 @@ const AllpostSection = () => {
   return (
     <div className="container">
       <div className="row">
-        {posts.map((item, index) => (
+        {currentPosts.map((item, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <div className="card main-card">
               <img src={item.photo} className="favpurite-post-image" />
@@ -131,6 +143,11 @@ const AllpostSection = () => {
           </div>
         ))}
       </div>
+      {posts.length > 1 ? (
+        <div className="card container">
+          <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
+        </div>
+      ) : null}
     </div>
   );
 };
