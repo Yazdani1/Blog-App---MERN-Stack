@@ -7,6 +7,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import moment from "moment";
 import { UserContext } from "../UserContext";
 import { AiFillLike } from "react-icons/ai";
+import { addlikePost, addunlikePost } from "./Apihomepage";
 
 const AllpostSection = () => {
   const [posts, setPosts] = useState([]);
@@ -29,63 +30,30 @@ const AllpostSection = () => {
 
   //like feature
 
-//   const addlikePost = (id) => {
-//     fetch("/auth/like", {
-//       method: "put",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-//       },
-//       body: JSON.stringify({
-//         postId: id,
-//       }),
-//     })
-//       .then((res) => res.json())
-//       .then((result) => {
-//         console.log(result);
-
-//         const newItemData = posts.map((item) => {
-//           if (item._id == result._id) {
-//             return result;
-//           } else {
-//             return item;
-//           }
-//         });
-//         setPosts(newItemData);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-
-  //unlike feature
-
-  const addunlikePost = (id) => {
-    fetch("/auth/unlike", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-      body: JSON.stringify({
-        postId: id,
-      }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        const newItemData = posts.map((item) => {
-          if (item._id == result._id) {
-            return result;
-          } else {
-            return item;
-          }
-        });
-        setPosts(newItemData);
-      })
-      .catch((err) => {
-        console.log(err);
+  const loadLikepost = (postId) => {
+    addlikePost(postId).then((result) => {
+      const newItemData = posts.map((item) => {
+        if (item._id == result._id) {
+          return result;
+        } else {
+          return item;
+        }
       });
+      setPosts(newItemData);
+    });
+  };
+
+  const loadunLikepost = (postId) => {
+    addunlikePost(postId).then((result) => {
+      const newItemData = posts.map((item) => {
+        if (item._id == result._id) {
+          return result;
+        } else {
+          return item;
+        }
+      });
+      setPosts(newItemData);
+    });
   };
 
   useEffect(() => {
@@ -136,11 +104,11 @@ const AllpostSection = () => {
                   <div className="like-button-design">
                     <div className="like-icons">
                       {item.likes.includes(user && user._id) ? (
-                        <p onClick={() =>addunlikePost(item._id) }>
+                        <p onClick={() => loadunLikepost(item._id)}>
                           <AiFillLike size={20} />
                         </p>
                       ) : (
-                        <p onClick={() =>addlikePost(item._id) }>
+                        <p onClick={() => loadLikepost(item._id)}>
                           <AiOutlineLike size={20} />
                         </p>
                       )}
