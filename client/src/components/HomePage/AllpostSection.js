@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getallPosts } from "./Apihomepage";
 import { Spin } from "antd";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 import moment from "moment";
-
+import { UserContext } from "../UserContext";
+import { AiFillLike } from "react-icons/ai";
 
 const AllpostSection = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [user, setUser] = useContext(UserContext);
 
   const loadallPosts = () => {
     getallPosts()
@@ -26,64 +29,64 @@ const AllpostSection = () => {
 
   //like feature
 
-  //   const addlikePost = (id) => {
-  //     fetch("/auth/like", {
-  //       method: "put",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //       },
-  //       body: JSON.stringify({
-  //         postId: id,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((result) => {
-  //         console.log(result);
+  const addlikePost = (id) => {
+    fetch("/auth/like", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
 
-  //         const newItemData = dataItem.map((item) => {
-  //           if (item._id == result._id) {
-  //             return result;
-  //           } else {
-  //             return item;
-  //           }
-  //         });
-  //         setData(newItemData);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+        const newItemData = posts.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setPosts(newItemData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   //unlike feature
 
-  //   const addunlikePost = (id) => {
-  //     fetch("/auth/unlike", {
-  //       method: "put",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //       },
-  //       body: JSON.stringify({
-  //         postId: id,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((result) => {
-  //         console.log(result);
-  //         const newItemData = dataItem.map((item) => {
-  //           if (item._id == result._id) {
-  //             return result;
-  //           } else {
-  //             return item;
-  //           }
-  //         });
-  //         setData(newItemData);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+  const addunlikePost = (id) => {
+    fetch("/auth/unlike", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        const newItemData = posts.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setPosts(newItemData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     loadallPosts();
@@ -108,15 +111,20 @@ const AllpostSection = () => {
             <div className="card main-card">
               <img src={item.photo} className="favpurite-post-image" />
               <div className="fav-post-text-item">
-                <div className="profile-name-date">
-                  <div className="profile-name-avatar">
-                    <p>{item.postedBy.name.substring(0, 2).toUpperCase()}</p>
+                <Link
+                  to={"/userprofile/" + item.postedBy._id}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <div className="profile-name-date">
+                    <div className="profile-name-avatar">
+                      <p>{item.postedBy.name.substring(0, 2).toUpperCase()}</p>
+                    </div>
+                    <div className="profile-name-post-date">
+                      <p className="profile-name-size">{item.postedBy.name}</p>
+                      <p>{moment(item.date).format("MMMM Do YYYY")}</p>
+                    </div>
                   </div>
-                  <div className="profile-name-post-date">
-                    <p className="profile-name-size">{item.postedBy.name}</p>
-                    <p>{moment(item.date).format("MMMM Do YYYY")}</p>
-                  </div>
-                </div>
+                </Link>
                 <Link
                   to={"/details/" + item._id}
                   style={{ textDecoration: "none", color: "black" }}
@@ -127,14 +135,22 @@ const AllpostSection = () => {
                 <div className="like-comments">
                   <div className="like-button-design">
                     <div className="like-icons">
-                      <AiOutlineLike size={17} />
+                      {item.likes.includes(user && user._id) ? (
+                        <p onClick={() =>addunlikePost(item._id) }>
+                          <AiFillLike size={20} />
+                        </p>
+                      ) : (
+                        <p onClick={() =>addlikePost(item._id) }>
+                          <AiOutlineLike size={20} />
+                        </p>
+                      )}
                     </div>
                     <p className="like-count"> {item.likes?.length} likes</p>
                   </div>
 
                   <div className="comment-button-design">
                     <div className="comment-icons">
-                      <FaRegCommentDots size={17} />
+                      <FaRegCommentDots size={20} />
                     </div>
                     <p className="comments-count">
                       {" "}
