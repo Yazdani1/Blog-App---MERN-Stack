@@ -29,34 +29,34 @@ const AllpostSection = () => {
 
   //like feature
 
-  const addlikePost = (id) => {
-    fetch("/auth/like", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-      body: JSON.stringify({
-        postId: id,
-      }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
+//   const addlikePost = (id) => {
+//     fetch("/auth/like", {
+//       method: "put",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+//       },
+//       body: JSON.stringify({
+//         postId: id,
+//       }),
+//     })
+//       .then((res) => res.json())
+//       .then((result) => {
+//         console.log(result);
 
-        const newItemData = posts.map((item) => {
-          if (item._id == result._id) {
-            return result;
-          } else {
-            return item;
-          }
-        });
-        setPosts(newItemData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+//         const newItemData = posts.map((item) => {
+//           if (item._id == result._id) {
+//             return result;
+//           } else {
+//             return item;
+//           }
+//         });
+//         setPosts(newItemData);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   };
 
   //unlike feature
 

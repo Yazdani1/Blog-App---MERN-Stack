@@ -23,3 +23,45 @@ export const getallPosts = () => {
       console.log(err);
     });
 };
+
+//like feature
+
+export const addlikePost = (postId) => {
+  return fetch("/auth/like", {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+    },
+    body: JSON.stringify({
+      postId,
+    }),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+//unlike feature
+
+export const addunlikePost = (postId) => {
+  return fetch("/auth/unlike", {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+    },
+    body: JSON.stringify({
+      postId,
+    }),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
