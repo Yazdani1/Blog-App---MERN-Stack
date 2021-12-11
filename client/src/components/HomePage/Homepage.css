@@ -7,6 +7,9 @@
 }
 
 /* total post count */
+.total-post-info{
+  margin-top: 10px;
+}
 
 .home-post-count {
   height: 250px;

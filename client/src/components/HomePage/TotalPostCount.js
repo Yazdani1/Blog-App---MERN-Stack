@@ -8,9 +8,9 @@ import { Link, useHistory, useParams } from "react-router-dom";
 
 const Totalpostcount = ({ totalpost, totaluser }) => {
   return (
-    <div className="container">
+    <div className="container total-post-info">
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-lg-4 col-md-12 col-sm-12">
           <div className="card home-post-count">
             <div className="profile-items_design">
               <p>Total Posts</p>
@@ -22,7 +22,7 @@ const Totalpostcount = ({ totalpost, totaluser }) => {
           </div>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-lg-4 col-md-12 col-sm-12">
           <div className="card home-post-count">
             <div className="profile-items_design">
               <p>Total Users</p>
@@ -36,7 +36,7 @@ const Totalpostcount = ({ totalpost, totaluser }) => {
           </div>
         </div>
 
-        <div className="col-md-4 ">
+        <div className="col-lg-4 col-md-12 col-sm-12">
           <div className="card home-post-count">
             <div className="profile-items_design">
               <p>Become a Mamber Today</p>
