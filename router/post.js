@@ -74,7 +74,7 @@ router.get("/getpost", (req, res) => {
 router.get("/latestpost", (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
-    .limit(5)
+    .limit(6)
     .populate("postedBy", "name email")
     .then((latestPost) => {
       res.json(latestPost);

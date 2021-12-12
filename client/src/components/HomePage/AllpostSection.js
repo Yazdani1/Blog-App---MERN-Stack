@@ -84,7 +84,9 @@ const AllpostSection = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container all-posts-container">
+      <p className="latest-post-title">All Posts</p>
+
       <div className="row">
         {currentPosts.map((item, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>

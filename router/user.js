@@ -234,32 +234,32 @@ router.put("/remove-favouritepost", requireLogin, (req, res) => {
     });
 });
 
-router.get("/get-favouritepost", requireLogin, (req, res) => {
-  // var getUser = { _id: req.params.id };
+// router.get("/get-favouritepost", requireLogin, (req, res) => {
+//   // var getUser = { _id: req.params.id };
 
-  User.findOne(req.user._id)
-    // .select("favourite")
-    .populate("favourite", "_id des")
-    .exec((err, result) => {
-      if (err) {
-        return res.status(400).json({ error: err });
-      } else {
-        res.json(result);
-      }
-    });
-});
+//   User.findOne(req.user._id)
+//     // .select("favourite")
+//     .populate("favourite", "_id des")
+//     .exec((err, result) => {
+//       if (err) {
+//         return res.status(400).json({ error: err });
+//       } else {
+//         res.json(result);
+//       }
+//     });
+// });
 
-router.put("/update-favouritepost/:postID", (req, res) => {
-  User.findByIdAndUpdate(req.user._id, {
-    $pull: { favourite: req.params.postID },
-  }).exec((err, result) => {
-    if (err) {
-      return res.status(400).json({ error: err });
-    } else {
-      res.json(result);
-    }
-  });
-});
+// router.put("/update-favouritepost/:postID", (req, res) => {
+//   User.findByIdAndUpdate(req.user._id, {
+//     $pull: { favourite: req.params.postID },
+//   }).exec((err, result) => {
+//     if (err) {
+//       return res.status(400).json({ error: err });
+//     } else {
+//       res.json(result);
+//     }
+//   });
+// });
 
 //end wish list route
 
