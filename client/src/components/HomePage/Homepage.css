@@ -102,3 +102,19 @@
 }
 
 /* end pagination design section */
+
+/* Latest posts section design */
+
+.item-card-design{
+  display: flex;
+}
+
+.latest-post-image{
+  width: 200px;
+}
+
+.main-card-latest-post{
+  margin-top: 10px;
+}
+
+/* end latest post section */

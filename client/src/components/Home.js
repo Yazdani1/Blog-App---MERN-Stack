@@ -27,10 +27,9 @@ import Pagination from "./HomePage/Pagination";
 import Footer from "./footer";
 import { AiFillLike } from "react-icons/ai";
 import AllpostSection from "./HomePage/AllpostSection";
+import LatestPost from "./HomePage/LatestPost";
 
-
-
-import { Spin } from 'antd';
+import { Spin } from "antd";
 // import { Pagination } from "antd";
 
 function Home() {
@@ -272,7 +271,7 @@ function Home() {
       <div class="text-center my-5">
         <h1>
           {/* <SyncOutlined spin /> */}
-          <Spin  size="large"/>
+          <Spin size="large" />
         </h1>
       </div>
     );
@@ -528,7 +527,8 @@ function Home() {
       {/* {renderData(currentItems)} */}
 
       {/* {renderData()} */}
-      <AllpostSection/>
+      <LatestPost />
+      <AllpostSection />
 
       <AllUserList />
       <Footer />

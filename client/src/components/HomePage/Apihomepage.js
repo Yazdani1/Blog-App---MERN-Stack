@@ -65,3 +65,17 @@ export const addunlikePost = (postId) => {
       console.log(err);
     });
 };
+
+//latest post feature
+
+export const latestPost = () => {
+  return fetch("/auth/latestpost", {
+    method: "GET",
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
