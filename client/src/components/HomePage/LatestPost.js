@@ -108,7 +108,7 @@ const LatestPost = () => {
                   </div>
 
                   <div className="col-lg-8 col-md-12 col-sm-12 ">
-                    <div className=" latest-post-text-item">
+                    <div className="latest-post-text-item">
                       <Link
                         to={"/userprofile/" + item.postedBy._id}
                         style={{ textDecoration: "none", color: "black" }}
