@@ -15,10 +15,12 @@
   height: 250px;
 }
 
+/* user list information */
+
 .user-info {
   padding: 10px;
   margin: 3px;
-  height: 130px;
+
   background-color: white;
 }
 
@@ -48,10 +50,17 @@
 .view-profile {
   background-color: black;
   color: white;
-  padding: 5px;
+  padding: 7px;
   cursor: pointer;
-  margin-top: 70px;
-  transition: 0.3s;
+  transition: 0.5s;
+  margin-left: 5px;
+  margin-top: 30px;
+  border-radius: 10px;
+
+}
+
+.view-profile-button {
+  margin-top: 30px;
 }
 
 .view-profile:hover {
@@ -60,6 +69,7 @@
   color: aliceblue;
 }
 
+/* end user list information */
 /* Pagination design csss */
 
 .pagination-container {
@@ -125,16 +135,14 @@
 .latest-post-image {
   height: 178px;
   object-fit: cover;
-
 }
 
-.latest-post-text-item{
+.latest-post-text-item {
   padding: 10px;
 }
 
 .main-card-latest-post {
   margin-top: 10px;
-
 }
 
 .main-card-latest-post:hover {

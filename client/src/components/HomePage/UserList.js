@@ -41,7 +41,29 @@ const UserList = () => {
         {currentPosts.map((user, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <div className="user-info card">
-              <div className="row">
+              <Link
+                to={"/userprofile/" + user._id}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <div className="profile-name-date">
+                  <div className="profile-name-avatar">
+                    <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
+                  </div>
+                  <div className="profile-info-view-profile">
+                    <div className="profile-name-post-date">
+                      <p className="profile-name-size">{user.name}</p>
+                      <p>{moment(user.createdAt).format("MMMM Do YYYY")}</p>
+                    </div>
+                    <div className="view-profile-button">
+                      <Link to={"/userprofile/" + user._id}>
+                        <span className="view-profile">View Profile</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* <div className="row">
                 <div className="col-md-2">
                   <div className="userinfo-name-circle">
                     <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
@@ -57,7 +79,7 @@ const UserList = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
