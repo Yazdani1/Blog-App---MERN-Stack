@@ -117,4 +117,16 @@
   margin-top: 10px;
 }
 
+.main-card-latest-post:hover{
+  transition-duration: 2s;
+  cursor: pointer;
+  box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+  -webkit-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: -6px 11px 5px -4px rgba(0, 0, 0, 0.42);
+}
+
+.post-data{
+  padding: 10px;
+}
+
 /* end latest post section */
