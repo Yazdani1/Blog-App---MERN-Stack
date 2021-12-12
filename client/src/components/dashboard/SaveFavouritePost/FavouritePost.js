@@ -8,127 +8,26 @@ import { AiFillLike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 
-import { getFavouritePost, removeFavouritePost } from "./ApiFavourite";
+import {removePostfromWishlist } from "./ApiFavourite";
 import { UserContext } from "../../UserContext";
 
 const FavouritePost = () => {
-  // const [wishlist, setWishlist] = useState([]);
   const [user, setUser] = useContext(UserContext);
 
-  // const loadWishlist = () => {
-  //   getFavouritePost().then((data) => {
-  //     setWishlist(data);
-  //     console.log(data);
-  //   });
-  // };
-
-  const removePostfromWishlist = (e, userID, postID) => {
+  const loadRemovefavouritepost = (e, userID, postID) => {
     e.preventDefault();
-    fetch("/auth/remove-favouritepost", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-      body: JSON.stringify({
-        userID: userID,
-        postID: postID,
-      }),
-    })
-      .then((result) => {
-        if (result) {
-          console.log("Post Saved");
+    removePostfromWishlist(userID, postID)
+      .then((data) => {
+        if (data) {
+          toast.success("This post has been removed!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         }
-        toast.success("This post has been removed!", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
       })
       .catch((err) => {
         console.log(err);
       });
-
-    console.log(userID, postID);
   };
-
-  //like and unlike
-
-  // const addlikePost = (id) => {
-  //   fetch("/auth/like", {
-  //     method: "put",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //     },
-  //     body: JSON.stringify({
-  //       postId: id,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       console.log(result);
-
-  //       // if (dataItem._id == result._id) {
-  //       //   setData(result);
-  //       // } else {
-  //       //   return dataItem;
-  //       // }
-
-  //       const newItemData =
-  //         user.favourite &&
-  //         user.favourite.map((item) => {
-  //           if (item._id == result._id) {
-  //             return result;
-  //           } else {
-  //             return item;
-  //           }
-  //         });
-  //       setData(newItemData);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // const addunlikePost = (id) => {
-  //   fetch("/auth/unlike", {
-  //     method: "put",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //     },
-  //     body: JSON.stringify({
-  //       postId: id,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       console.log(result);
-
-  //       // if (dataItem._id == result._id) {
-  //       //   setData(result);
-  //       // } else {
-  //       //   return dataItem;
-  //       // }
-
-  //       const newItemData =
-  //         user.favourite &&
-  //         user.favourite.map((item) => {
-  //           if (item._id == result._id) {
-  //             return result;
-  //           } else {
-  //             return item;
-  //           }
-  //         });
-  //       setData(newItemData);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   loadWishlist();
-  // }, []);
 
   return (
     <div className="container">
@@ -170,7 +69,7 @@ const FavouritePost = () => {
                   <button
                     className="btn btn-danger"
                     onClick={(e) =>
-                      removePostfromWishlist(e, user && user._id, item._id)
+                      loadRemovefavouritepost(e, user && user._id, item._id)
                     }
                   >
                     Remove

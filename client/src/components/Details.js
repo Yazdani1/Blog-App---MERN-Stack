@@ -18,6 +18,7 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { BsHeartFill } from "react-icons/bs";
 import { UserContext } from "./UserContext";
 import { AiFillLike } from "react-icons/ai";
+import { addtoWishlist } from "./dashboard/SaveFavouritePost/ApiFavourite";
 
 import { postFavourite } from "./dashboard/SaveFavouritePost/ApiFavourite";
 
@@ -125,13 +126,6 @@ const DetailsPage = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-
-        // if (dataItem._id == result._id) {
-        //   setData(result);
-        // } else {
-        //   return dataItem;
-        // }
-
         const newItemData = dataItem.map((item) => {
           if (item._id == result._id) {
             return result;
@@ -160,13 +154,6 @@ const DetailsPage = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-
-        // if (dataItem._id == result._id) {
-        //   setData(result);
-        // } else {
-        //   return dataItem;
-        // }
-
         const newItemData = dataItem.map((item) => {
           if (item._id == result._id) {
             return result;
@@ -284,15 +271,6 @@ const DetailsPage = () => {
     </div>
   );
 
-  // const addtoFavourite = (e, userID) => {
-  //   e.preventDefault();
-
-  //   postFavourite(dataItem && dataItem._id, userID).then((res) => {
-  //     console.log("Added to wish list", res);
-  //     history.push("/Dashboard");
-  //   });
-  // };
-
   const removeComment = (postId, text) => {
     fetch("/auth/remove-comments", {
       method: "put",
@@ -346,31 +324,19 @@ const DetailsPage = () => {
   //   console.log(userID, postID);
   // };
 
-  const addtoWishlist = (e, postID) => {
+  const loadAddtowishlist = (e, postID) => {
     e.preventDefault();
-    fetch("/auth/save-favouritepost", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-      body: JSON.stringify({
-        postID: postID,
-      }),
-    })
-      .then((result) => {
-        if (result) {
-          console.log("Post Saved");
+    addtoWishlist(postID)
+      .then((data) => {
+        if (data) {
+          toast.success("This post has been Saved!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         }
-        toast.success("This post has been Saved!", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
       })
       .catch((err) => {
         console.log(err);
       });
-
-    //console.log(userID, postID);
   };
 
   return (
@@ -472,7 +438,7 @@ const DetailsPage = () => {
                         <div className="comment-buttondesign">
                           <div
                             className="comment-icon"
-                            onClick={(e) => addtoWishlist(e, dataItem._id)}
+                            onClick={(e) => loadAddtowishlist(e, dataItem._id)}
                           >
                             <BsHeartFill size={20} />
                           </div>
