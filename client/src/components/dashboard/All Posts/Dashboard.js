@@ -32,11 +32,7 @@ import Pagination from "../All Posts/../../HomePage/Pagination";
 import "../All Posts/../../HomePage/Homepage.css";
 
 function Dashboard() {
-  const notify = () => {
-    toast.info("Post Deleted Successfully!", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  };
+
 
   const { id } = useParams();
 

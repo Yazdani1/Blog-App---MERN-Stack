@@ -77,27 +77,6 @@ const FavouritePost = () => {
                 </div>
               </div>
             </div>
-
-            // <div className="fav-post-item" key={index}>
-            //   <Link to={"/details/" + item._id}>
-            //     <h5>{item.title}</h5>
-            //   </Link>
-            //   <p>{ReactHtmlParser(item.des)}</p>
-
-            //   <p>Likes-{item.likes?.length}</p>
-            //   <p>Comments-{item.comments?.length}</p>
-            //   <p>{moment(item.date).format("MMMM Do YYYY")}</p>
-
-            //   <div className="comment-count">
-            //     <button className="btn btn-danger"
-            //       onClick={(e) =>
-            //         removePostfromWishlist(e, user && user._id, item._id)
-            //       }
-            //     >
-            //       Remove
-            //     </button>
-            //   </div>
-            // </div>
           ))}
       </div>
 
