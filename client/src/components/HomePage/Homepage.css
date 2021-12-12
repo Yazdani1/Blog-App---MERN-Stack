@@ -122,18 +122,15 @@
   block-size: fit-content;
 }
 
-.item-card-design {
-  display: flex;
-}
-
 .latest-post-image {
-  width: 200px;
   height: 178px;
+  object-fit: cover;
+
 }
 
 .main-card-latest-post {
   margin-top: 10px;
-  height: 180px;
+
 }
 
 .main-card-latest-post:hover {

@@ -133,7 +133,6 @@ const FavouritePost = () => {
   return (
     <div className="container">
       <h5>Favourite Posts: {user && user?.favourite?.length}</h5>
-      <p>{ReactHtmlParser(user && user?.favourite?._id)}</p>
 
       <div className="row">
         {user.favourite &&
