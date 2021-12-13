@@ -44,8 +44,6 @@ function SignUp() {
     setLoading(true);
 
     signUp({ name, email, password }).then((result) => {
-     
-
       if (result.errort) {
         toast.error(result.errort, {
           position: toast.POSITION.TOP_RIGHT,
@@ -117,21 +115,20 @@ function SignUp() {
 
   return (
     <div className="container">
-      <div class="contact-form container">
-        <div class="contact-image">
-          <img
-            src="https://image.ibb.co/kUagtU/rocket_contact.png"
-            alt="rocket_contact"
-          />
-        </div>
-        <form>
-          <h3>Create Your Account</h3>
-
-          {successMessage()}
-          {errorMessage()}
-
-          <div className="row">
-            <div className="col-md-12">
+      <div className="row justify-content-center align-items-center">
+        <div className="col-lg-4 col-md-12 col-sm-12">
+          <div className="form-design card">
+            <form>
+              <div className="text-center">
+                <img
+                  src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/lotus.png"
+                  style={{ width: "185px" }}
+                  alt="logo"
+                />
+                <h5 className="text-center">Create Your Account</h5>
+              </div>
+              {errorMessage()}
+              {successMessage()}
               <div className="form-group">
                 <input
                   type="text"
@@ -162,28 +159,28 @@ function SignUp() {
                   placeholder="Password*"
                 />
               </div>
-            </div>
 
-            {/* <div class="col-md-6">
-              <div>
-                <img height="250px" width="500px" src="https://images.pexels.com/photos/4458/cup-mug-desk-office.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+              <div class="form-group justify-content-center align-items-center">
+                <button
+                  type="submit"
+                  name="btnSubmit"
+                  className="btnContact"
+                  value="Sign In"
+                  onClick={(e) => {
+                    dataSubmit(e);
+                  }}
+                >
+                  {loading ? <SyncOutlined spin /> : "Sign Up"}
+                </button>
               </div>
-            </div> */}
-            <div class="form-group">
-              <button
-                type="submit"
-                name="btnSubmit"
-                class="btnContact"
-                value="Sign Up"
-                onClick={(e) => {
-                  dataSubmit(e);
-                }}
-              >
-                {loading ? <SyncOutlined spin /> : "Sign Up"}
-              </button>
-            </div>
+              <div className="text-center">
+                <Link to={"/signin"}>
+                  <p>Already have an account? Sign In</p>
+                </Link>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
       <ToastContainer autoClose={8000} />
     </div>

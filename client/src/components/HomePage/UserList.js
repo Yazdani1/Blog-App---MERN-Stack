@@ -37,6 +37,8 @@ const UserList = () => {
 
   return (
     <div className="container">
+      <p className="latest-post-title">Visit Member Profile</p>
+
       <div className="row">
         {currentPosts.map((user, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
@@ -62,36 +64,17 @@ const UserList = () => {
                   </div>
                 </div>
               </Link>
-
-              {/* <div className="row">
-                <div className="col-md-2">
-                  <div className="userinfo-name-circle">
-                    <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
-                  </div>
-                </div>
-                <div className="col-md-10">
-                  <div className="user-fullname">
-                    <h5>{user.name}</h5>
-
-                    <p>{moment(user.createdAt).format("MMMM Do YYYY")}</p>
-                    <Link to={"/userprofile/" + user._id}>
-                      <span className="view-profile">View Profile</span>
-                    </Link>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         ))}
-  
       </div>
       <div className="card">
-          {alluser.length > 6 ? (
-            <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
-          ) : (
-            "No Posts so far"
-          )}
-        </div>
+        {alluser.length > 6 ? (
+          <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
+        ) : (
+          "No Posts so far"
+        )}
+      </div>
     </div>
   );
 };
