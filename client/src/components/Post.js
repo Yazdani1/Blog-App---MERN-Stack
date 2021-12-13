@@ -66,11 +66,12 @@ const Post = () => {
         .catch((err) => {
           console.log("Error is:" + err);
         });
+        setTitle("");
+        setDes("");
+        setImageurl("");
+        setUrl("");
     }
-    setTitle("");
-    setDes("");
-    setImageurl("");
-    setUrl("");
+
   }, [url]);
   const dataSubmit = (e) => {
     e.preventDefault();
@@ -87,10 +88,12 @@ const Post = () => {
       .then((res) => res.json())
       .then((data) => {
         setUrl(data.url);
+        setImageurl("");
       })
       .catch((err) => {
         console.log(err);
       });
+      setImageurl("");
 
     // history.push("/myPost");
     // const addItem = { title, des };

@@ -37,7 +37,7 @@ function SignIn() {
     signIn({ email, password })
       .then((result) => {
         if (result.error) {
-          setData({ ...data, error: result.error, success: false });
+          setData({ ...data, error: result.error });
           setLoading(false);
         } else {
           localStorage.setItem("tokenLogin", result.token);
