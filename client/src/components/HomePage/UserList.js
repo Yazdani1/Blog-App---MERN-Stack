@@ -83,14 +83,15 @@ const UserList = () => {
             </div>
           </div>
         ))}
-        <div className="card container">
+  
+      </div>
+      <div className="card">
           {alluser.length > 6 ? (
             <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
           ) : (
             "No Posts so far"
           )}
         </div>
-      </div>
     </div>
   );
 };

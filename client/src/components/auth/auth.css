@@ -1,16 +1,18 @@
+/* 
+
 .contact-form {
   background: #fff;
   margin-top: 10%;
   margin-bottom: 5%;
-  
   border-radius: 10px;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
   text-align: center;
-
-  position: relative;
+  position: absolute;
   margin-bottom: 0px;
+  width: 800px;
+
 }
 .contact-form .form-control {
   border-radius: 10px;
@@ -57,8 +59,55 @@
   cursor: pointer;
 }
 
-.btnContact:hover{
+.btnContact:hover {
+  background-color: rgb(16, 212, 130);
+}
+ */
 
-    background-color: rgb(16, 212, 130);
 
+
+/* new Login form design */
+
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #fff;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #fff, #fff);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #fff, #fff);
+}
+
+
+
+
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}
+
+input.form-control{
+  padding: 10px;
+  height: 80px;
 }

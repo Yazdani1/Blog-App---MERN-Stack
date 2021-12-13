@@ -59,7 +59,7 @@ const UserPublicProfile = () => {
         } else {
           setError("");
           setSuccess(true);
-          toast.success("Your have Successfully saved your changes!", {
+          toast.success("Your message has been sent!", {
             position: toast.POSITION.TOP_RIGHT,
           });
         }
@@ -256,7 +256,7 @@ const UserPublicProfile = () => {
           <div className="row">
             <div className="col-md-12">
               <h5>About Me</h5>
-              
+
               <div className="user-about-page">
                 <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
               </div>
@@ -284,7 +284,7 @@ const UserPublicProfile = () => {
           <div className="row">
             <div className="col-md-12">
               <h5>Experience</h5>
-           
+
               <div className="user-about-page">
                 <p>{ReactHtmlParser(mypost?.userInfo?.experience)}</p>
               </div>

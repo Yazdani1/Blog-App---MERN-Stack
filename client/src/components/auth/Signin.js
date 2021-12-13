@@ -90,65 +90,151 @@ function SignIn() {
   };
 
   return (
-    <div className="container">
-      <div class="contact-form container">
-        <div class="contact-image">
-          <img
-            src="https://image.ibb.co/kUagtU/rocket_contact.png"
-            alt="rocket_contact"
-          />
-        </div>
-        <form>
-          <h3>Create Your Account</h3>
+    <>
+      <div className="container main-container-for-form">
+        <div class="contact-form container">
+          <div class="contact-image">
+            <img
+              src="https://image.ibb.co/kUagtU/rocket_contact.png"
+              alt="rocket_contact"
+            />
+          </div>
+          <form>
+            <h3>Create Your Account</h3>
 
-          {errorMessage()}
+            {errorMessage()}
 
-          <div className="row">
-            <div className="col-md-12">
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="email"
-                  value={email}
-                  onChange={handleChange}
-                  className="form-control"
-                  placeholder="Your E-mail *"
-                />
+            <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Your E-mail *"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    className="form-control"
+                    onChange={handleChange}
+                    placeholder="Password*"
+                  />
+                </div>
               </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  name="password"
-                  value={password}
-                  className="form-control"
-                  onChange={handleChange}
-                  placeholder="Password*"
-                />
+
+   
+              <div class="form-group">
+                <button
+                  type="submit"
+                  name="btnSubmit"
+                  className="btnContact"
+                  value="Sign In"
+                  onClick={(e) => {
+                    submitData(e);
+                  }}
+                >
+                  {loading ? <SyncOutlined spin /> : "Sign In"}
+                </button>
               </div>
             </div>
+          </form>
+        </div>
+      </div>
 
-            {/* <div class="col-md-6">
-              <div>
-                <img height="250px" width="500px" src="https://images.pexels.com/photos/4458/cup-mug-desk-office.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+      <section className="h-100 gradient-form">
+        <div className="container py-5 h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-xl-10">
+              <div className="card rounded-3 text-black">
+                <div className="row g-0">
+                  <div className="col-lg-6">
+                    <div className="card-body p-md-5 mx-md-4">
+                      <div className="text-center">
+                        <img
+                          src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/lotus.png"
+                          style={{ width: "185px" }}
+                          alt="logo"
+                        />
+                        <h4 className="mt-1 mb-5 pb-1">
+                          We are The Lotus Team
+                        </h4>
+                      </div>
+
+                      <form>
+                        <p>Please login to your account</p>
+
+                        <div className="form-outline mb-4">
+                          <input
+                            type="email"
+                            id="form2Example11"
+                            className="form-control"
+                            placeholder="Phone number or email address"
+                          />
+                          <label className="form-label" for="form2Example11">
+                            Username
+                          </label>
+                        </div>
+
+                        <div className="form-outline mb-4">
+                          <input
+                            type="password"
+                            id="form2Example22"
+                            className="form-control"
+                          />
+                          <label className="form-label" for="form2Example22">
+                            Password
+                          </label>
+                        </div>
+
+                        <div className="text-center pt-1 mb-5 pb-1">
+                          <button
+                            className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                            type="button"
+                          >
+                            Log in
+                          </button>
+                          <a className="text-muted" href="#!">
+                            Forgot password?
+                          </a>
+                        </div>
+
+                        <div className="d-flex align-items-center justify-content-center pb-4">
+                          <p className="mb-0 me-2">Don't have an account?</p>
+                          <button
+                            type="button"
+                            className="btn btn-outline-danger"
+                          >
+                            Create new
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
+                    <div className="text-white px-3 py-4 p-md-5 mx-md-4">
+                      <h4 className="mb-4">We are more than just a company</h4>
+                      <p className="small mb-0">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea commodo consequat.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div> */}
-            <div class="form-group">
-              <button
-                type="submit"
-                name="btnSubmit"
-                className="btnContact"
-                value="Sign In"
-                onClick={(e) => {
-                  submitData(e);
-                }}
-              >
-                {loading ? <SyncOutlined spin /> : "Sign In"}
-              </button>
             </div>
           </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      </section>
+    </>
   );
 }
 export default SignIn;
