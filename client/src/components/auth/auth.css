@@ -13,7 +13,7 @@
 .btnContact:hover {
   /* background-color: rgb(16, 212, 130); */
   transition-duration: 1s;
-  background-color: crimson;
+  background-color: #F7CD2E;
 }
 
 .btnContact {
