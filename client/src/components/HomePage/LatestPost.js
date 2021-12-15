@@ -14,6 +14,9 @@ const LatestPost = () => {
   const [latestpost, setLatestpost] = useState([]);
   const [user, setUser] = useContext(UserContext);
 
+  const history = useHistory();
+
+
   const loadLatestpost = () => {
     latestPost()
       .then((data) => {
@@ -142,7 +145,15 @@ const LatestPost = () => {
                                 <AiFillLike size={20} />
                               </p>
                             ) : (
-                              <p onClick={() => loadLikepost(item._id)}>
+                              <p
+                                onClick={() => {
+                                  if (!localStorage.getItem("tokenLogin")) {
+                                    history.push("/signin");
+                                  } else {
+                                    loadLikepost(item._id);
+                                  }
+                                }}
+                              >
                                 <AiOutlineLike size={20} />
                               </p>
                             )}

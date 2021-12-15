@@ -260,6 +260,11 @@ router.get("/total-posts", (req, res) => {
     });
 });
 
+
+//details post
+
+
+
 //to count posts based on the liked
 
 // router.get("/featured-posts", (req, res) => {

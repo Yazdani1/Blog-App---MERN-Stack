@@ -16,6 +16,9 @@ const AllpostSection = () => {
 
   const [user, setUser] = useContext(UserContext);
 
+
+  const history = useHistory();
+
   //for pagination state..number pagination
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -122,7 +125,15 @@ const AllpostSection = () => {
                           <AiFillLike size={20} />
                         </p>
                       ) : (
-                        <p onClick={() => loadLikepost(item._id)}>
+                        <p
+                          onClick={() => {
+                            if (!localStorage.getItem("tokenLogin")) {
+                              history.push("/signin");
+                            } else {
+                              loadLikepost(item._id);
+                            }
+                          }}
+                        >
                           <AiOutlineLike size={20} />
                         </p>
                       )}
