@@ -260,10 +260,19 @@ router.get("/total-posts", (req, res) => {
     });
 });
 
+//details post more post route
 
-//details post
-
-
+router.get("/more-posts", (req, res) => {
+  Post.find({})
+    .limit(8)
+    .populate("postedBy", "name email")
+    .then((result) => {
+      res.json({ result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 //to count posts based on the liked
 
