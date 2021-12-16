@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getSimilarposts } from "./apidetailsPost";
+import { UserContext } from "../UserContext";
 
 const SimilarPosts = () => {
   const [similarposts, setSimilarposts] = useState([]);
+
+  //user context
+  const [user, setUser] = useContext(UserContext);
 
   //load similar posts
   const loadSimilarposts = () => {
@@ -12,6 +16,9 @@ const SimilarPosts = () => {
       }
     });
   };
+
+
+  
 
   useEffect(() => {
     loadSimilarposts();
