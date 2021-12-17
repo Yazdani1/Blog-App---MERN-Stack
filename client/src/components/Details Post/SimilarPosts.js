@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { getSimilarposts } from "./apidetailsPost";
 import { UserContext } from "../UserContext";
+import { addlikePost, addunlikePost } from "../HomePage/Apihomepage";
 
 const SimilarPosts = () => {
   const [similarposts, setSimilarposts] = useState([]);
@@ -17,8 +18,13 @@ const SimilarPosts = () => {
     });
   };
 
+  // load like api
 
-  
+  const loadLike = (postId)=>{
+    addlikePost(postId).then(data>{
+
+    });
+  }
 
   useEffect(() => {
     loadSimilarposts();
