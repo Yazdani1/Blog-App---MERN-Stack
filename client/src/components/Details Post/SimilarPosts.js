@@ -20,8 +20,23 @@ const SimilarPosts = () => {
 
   // load like api
 
-  const loadLike = (postId) => {
+  const loadLikePost = (postId) => {
     addlikePost(postId).then((result) => {
+      const newItemData = similarposts.map((item) => {
+        if (item._id == result._id) {
+          return result;
+        } else {
+          return item;
+        }
+      });
+      setSimilarposts(newItemData);
+    });
+  };
+
+  //load unlike feature
+
+  const loadunLikePost = (postId) => {
+    addunlikePost(postId).then((result) => {
       const newItemData = similarposts.map((item) => {
         if (item._id == result._id) {
           return result;
