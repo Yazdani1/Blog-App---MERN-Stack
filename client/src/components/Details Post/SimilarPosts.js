@@ -20,11 +20,18 @@ const SimilarPosts = () => {
 
   // load like api
 
-  const loadLike = (postId)=>{
-    addlikePost(postId).then(data>{
-
+  const loadLike = (postId) => {
+    addlikePost(postId).then((result) => {
+      const newItemData = similarposts.map((item) => {
+        if (item._id == result._id) {
+          return result;
+        } else {
+          return item;
+        }
+      });
+      setSimilarposts(newItemData);
     });
-  }
+  };
 
   useEffect(() => {
     loadSimilarposts();
