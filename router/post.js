@@ -264,6 +264,7 @@ router.get("/total-posts", (req, res) => {
 
 router.get("/more-posts", (req, res) => {
   Post.find({})
+    .sort({ date: 1 })
     .limit(8)
     .populate("postedBy", "name email")
     .then((moreposts) => {

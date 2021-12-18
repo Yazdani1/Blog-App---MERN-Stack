@@ -28,6 +28,7 @@ import { addlikePost, addunlikePost } from "../HomePage/Apihomepage";
 import { Spin } from "antd";
 import "./details.css";
 import { MdDelete } from "react-icons/md";
+import Footer from "../Footer/footer";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -542,6 +543,7 @@ const DetailsPage = () => {
         </div>
       </div>
       <ToastContainer autoClose={8000} />
+      <Footer/>
     </>
   );
 };
