@@ -27,6 +27,7 @@ import { getDetailsposts } from "./apidetailsPost";
 import { addlikePost, addunlikePost } from "../HomePage/Apihomepage";
 import { Spin } from "antd";
 import "./details.css";
+import { MdDelete } from "react-icons/md";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -351,7 +352,6 @@ const DetailsPage = () => {
                           </div>
                         </div>
                       </Link>
-
                     </div>
 
                     <div className="col-md-4">
@@ -518,6 +518,7 @@ const DetailsPage = () => {
                                       removeComment(dataItem._id, allcomments)
                                     }
                                   >
+                                    <MdDelete size={20} />
                                     Delete
                                   </div>
                                 )}
