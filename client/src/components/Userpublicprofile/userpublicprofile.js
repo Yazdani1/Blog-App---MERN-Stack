@@ -16,16 +16,21 @@ import ReactHtmlParser from "react-html-parser";
 import { SyncOutlined } from "@ant-design/icons";
 import { ToastContainer, toast } from "react-toastify";
 import "./userpublicprofile.css";
+import { addlikePost, addunlikePost } from "../HomePage/Apihomepage";
+import { UserContext } from "../UserContext";
+import { AiFillLike } from "react-icons/ai";
 
 // import { UserProfileContext } from "./UserprofileContext";
 
 const UserPublicProfile = () => {
-  const [mypost, setData] = useState();
+  const [mypost, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useContext(UserContext);
 
   // const [mypost, setData] = useContext(UserProfileContext);
 
   const { id } = useParams();
+  const history = useHistory();
 
   //to send message
 
@@ -82,9 +87,101 @@ const UserPublicProfile = () => {
       });
   };
 
+  const addlikePost = (id) => {
+    fetch("/auth/like", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result) {
+          const newItemData = mypost.map((item) => {
+            if (item._id === result._id) {
+              return result;
+            } else {
+              return item;
+            }
+          });
+          setData(newItemData);
+        }
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const addunlikePost = (id) => {
+    fetch("/auth/unlike", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result) {
+          const newItemData = mypost.map((item) => {
+            if (item._id === result._id) {
+              return result;
+            } else {
+              return item;
+            }
+          });
+          setData(newItemData);
+        }
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // const loadLikePost = (e,postId) => {
+  //   e.preventDefault();
+  //   addlikePost(postId).then((result) => {
+  //     const newItemData = mypost.map((item) => {
+  //       if (item._id == result._id) {
+  //         return result;
+  //       } else {
+  //         return item;
+  //       }
+  //     });
+  //     setData(newItemData);
+  //   });
+  // };
+
+  //load unlike feature
+
+  // const loadunLikePost = (e,postId) => {
+  //   e.preventDefault();
+  //   addunlikePost(postId).then((result) => {
+  //     const newItemData = mypost?.map((item) => {
+  //       if (item._id == result._id) {
+  //         return result;
+  //       } else {
+  //         return item;
+  //       }
+  //     });
+  //     setData(newItemData);
+  //   });
+  // };
+
   useEffect(() => {
     getMypost();
-  }, []);
+  }, [mypost]);
 
   if (loading) {
     return (
@@ -229,7 +326,6 @@ const UserPublicProfile = () => {
                           </button>
                         </form>
                       </div>
-           
                     </div>
                   </div>
                 </div>
@@ -250,7 +346,6 @@ const UserPublicProfile = () => {
                 <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
               </div>
             </div>
-
           </div>
         </div>
       ) : null}
@@ -313,7 +408,27 @@ const UserPublicProfile = () => {
                         <div className="like-comments">
                           <div className="like-button-design">
                             <div className="like-icons">
-                              <AiOutlineLike size={17} />
+                              {item.likes.includes(user && user._id) ? (
+                                <p
+                                  onClick={() =>
+                                    addunlikePost(item && item._id)
+                                  }
+                                >
+                                  <AiFillLike size={20} />
+                                </p>
+                              ) : (
+                                <p
+                                  onClick={() => {
+                                    if (!localStorage.getItem("tokenLogin")) {
+                                      history.push("/signin");
+                                    } else {
+                                      addlikePost(item && item._id);
+                                    }
+                                  }}
+                                >
+                                  <AiOutlineLike size={20} />
+                                </p>
+                              )}
                             </div>
                             <p className="like-count">
                               {" "}
@@ -334,15 +449,12 @@ const UserPublicProfile = () => {
                       </div>
                     </div>
                   </div>
-
                 ))}
               </div>
             </div>
           ) : (
             <h1>Loading...</h1>
           )}
-
-
         </div>
       </div>
       <ToastContainer autoClose={8000} />
