@@ -25,6 +25,8 @@ import { postFavourite } from "../dashboard/SaveFavouritePost/ApiFavourite";
 import { getSimilarposts } from "./apidetailsPost";
 import { getDetailsposts } from "./apidetailsPost";
 import { addlikePost, addunlikePost } from "../HomePage/Apihomepage";
+import { Spin } from "antd";
+import "./details.css";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -40,43 +42,6 @@ const DetailsPage = () => {
   const [loading, setLoading] = useState(true);
 
   const [user, setUser] = useContext(UserContext);
-
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    autoplay: true,
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
 
   // const getDetailsData = async () => {
   //   await axios
@@ -99,6 +64,7 @@ const DetailsPage = () => {
       .then((data) => {
         if (data) {
           setData(data.detailspost);
+          setLoading(false);
         }
       })
       .catch((err) => {
@@ -331,6 +297,17 @@ const DetailsPage = () => {
       });
   };
 
+  if (loading) {
+    return (
+      <div class="text-center my-5">
+        <h1>
+          {/* <SyncOutlined spin /> */}
+          <Spin size="large" />
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="main_details">
@@ -349,33 +326,32 @@ const DetailsPage = () => {
                 <div className="details-postDesign">
                   <div className="row">
                     <div className="col-lg-8 col-md-4 col-sm-12">
-                      <div className="details-post">
-                        <div className="detailspage-user-profile">
-                          <Link to={"/userprofile/"} className="name_design">
-                            <div className="user_pic_home_page">
-                              <p>
-                                {dataItem &&
-                                  dataItem.postedBy?.name
-                                    .substring(0, 2)
-                                    .toUpperCase()}
-                              </p>
-                            </div>
-                          </Link>
+                      <Link
+                        to={"/userprofile/" + dataItem.postedBy?._id}
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        <div className="profile-name-date">
+                          <div className="profile-name-avatar">
+                            <p>
+                              {dataItem &&
+                                dataItem.postedBy?.name
+                                  .substring(0, 2)
+                                  .toUpperCase()}
+                            </p>
+                          </div>
+                          <div className="profile-name-post-date">
+                            <p className="profile-name-size">
+                              {dataItem && dataItem.postedBy?.name}
+                            </p>
+                            <p>
+                              {moment(dataItem && dataItem.date).format(
+                                "MMMM Do YYYY"
+                              )}
+                            </p>
+                          </div>
                         </div>
-                        <div className="detailspage-user-name">
-                          <Link
-                            to={"/userprofile/" + dataItem.postedBy?._id}
-                            className="name_design"
-                          >
-                            <p>{dataItem && dataItem.postedBy?.name}</p>
-                          </Link>
-                          <p>
-                            {moment(dataItem && dataItem.date).format(
-                              "MMMM Do YYYY"
-                            )}
-                          </p>
-                        </div>
-                      </div>
+                      </Link>
+
                     </div>
 
                     <div className="col-md-4">
@@ -392,13 +368,6 @@ const DetailsPage = () => {
                               <AiFillLike size={20} />
                             </div>
                           ) : (
-                            // <p
-                            //   onClick={() => {
-                            //     addunlikePost(dataItem._id);
-                            //   }}
-                            // >
-                            //   <AiOutlineDislike size={20} />
-                            // </p>
                             <div
                               className="like-icon"
                               onClick={() => {
@@ -455,12 +424,6 @@ const DetailsPage = () => {
                 </div>
                 <div className="title-des">
                   <h5>{dataItem && dataItem.title}</h5>
-                  {/* <h4>{dataItem && dataItem._id}</h4> */}
-
-                  {/* {dataItem ? (
-                    <p>{renderHTML(dataItem && dataItem.des)}</p>
-                  ) : null} */}
-
                   <p>{ReactHtmlParser(dataItem.des)}</p>
                 </div>
               </div>
@@ -468,39 +431,21 @@ const DetailsPage = () => {
                 <form>
                   <div className="row">
                     <div className="col-md-9">
-                      {/* <div
-                        className="alert alert-success"
-                        style={{ display: success ? "" : "none" }}
-                      >
-                        Your Comment has been posted Successfully!
-                      </div> */}
                       {showSuccess()}
                       {showError()}
-                      {/* <div
-                        className="alert alert-danger"
-                        style={{ display: error ? "" : "none" }}
-                      >
-                        {error}
-                      </div> */}
+
                       <div className="form-groupgfgf">
                         <textarea
                           type="text"
                           className="form-control rounded-0"
                           onChange={handleChange}
-                          //onChange={(e) => setText(e.target.value)}
                           value={text}
                           placeholder="Type your comments.."
                           rows="3.5"
                         />
-                        {/* {error ? <p className="text-danger">{error}</p> : null} */}
                       </div>
                     </div>
-                    {/* <div
-                        className="alert alert-danger"
-                        style={{ display: error ? "" : "none" }}
-                      >
-                        {error}
-                      </div> */}
+
                     <div class="col-md-3">
                       <div class="form-group">
                         <button
@@ -512,8 +457,6 @@ const DetailsPage = () => {
                               postComment(e, dataItem._id);
                             }
                           }}
-
-                          // onClick={(e) => postComment(e, dataItem._id)}
                         >
                           Post Comment
                         </button>
@@ -522,10 +465,9 @@ const DetailsPage = () => {
                   </div>
                 </form>
 
-                {/* style={{maxHeight:"1200px", overflow:"scroll"}} */}
                 <div
                   className="all-comments"
-                  style={{ maxHeight: "1200px", overflow: "scroll" }}
+                  style={{ maxHeight: "800px", overflow: "scroll" }}
                 >
                   <p>
                     {dataItem.comments?.length > 0
@@ -539,47 +481,34 @@ const DetailsPage = () => {
                       .map((allcomments, index) => {
                         return (
                           <>
-                            <div className="each-comments" key={index}>
-                              <div className="user_info">
-                                <div className="user_pic">
-                                  <Link
-                                    to={"/userprofile/"}
-                                    className="name_design"
-                                  >
-                                    <div className="user_pic_home_page">
-                                      <p className="comment_Des">
-                                        {allcomments.postedBy.name
-                                          .substring(0, 2)
-                                          .toUpperCase()}
-                                      </p>
-                                    </div>
-                                  </Link>
-                                </div>
-                                <div className="user_name">
-                                  <Link
-                                    to={
-                                      "/userprofile/" +
-                                      allcomments.postedBy?._id
-                                    }
-                                    className="name_design"
-                                  >
-                                    <p>{allcomments.postedBy.name}.</p>
-                                  </Link>
-                                </div>
-                                <p>
-                                  {" "}
-                                  {moment(
-                                    allcomments && allcomments.date
-                                  ).format("MMMM Do YYYY")}
-                                </p>
-
-                                {/* <button
-                                className="btn btn-danger"
-                                onClick={() => deleteComment(allcomments.postedBy._id,allcomments.text)}
+                            <div className="comments-items" key={index}>
+                              <Link
+                                to={"/userprofile/" + allcomments.postedBy?._id}
+                                style={{
+                                  textDecoration: "none",
+                                  color: "black",
+                                }}
                               >
-                                Delete
-                              </button> */}
-                              </div>
+                                <div className="profile-name-date">
+                                  <div className="profile-name-avatar">
+                                    <p>
+                                      {allcomments.postedBy.name
+                                        .substring(0, 2)
+                                        .toUpperCase()}
+                                    </p>
+                                  </div>
+                                  <div className="profile-name-post-date">
+                                    <p className="profile-name-size">
+                                      {allcomments.postedBy.name}
+                                    </p>
+                                    <p>
+                                      {moment(
+                                        allcomments && allcomments.date
+                                      ).format("MMMM Do YYYY")}
+                                    </p>
+                                  </div>
+                                </div>
+                              </Link>
                               <p>{allcomments.text}</p>
                               <p>
                                 {user && user._id === allcomments.postedBy._id && (
@@ -593,7 +522,6 @@ const DetailsPage = () => {
                                   </div>
                                 )}
                               </p>
-                              {/* <p>{allcomments && allcomments._id}</p> */}
                             </div>
                           </>
                         );

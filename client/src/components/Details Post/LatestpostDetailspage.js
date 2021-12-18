@@ -17,6 +17,7 @@ import { AiFillLike } from "react-icons/ai";
 const LatestpostDetailspage = () => {
   const [latestpost, setLatestposts] = useState([]);
   const [user, setUser] = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
 
@@ -24,6 +25,8 @@ const LatestpostDetailspage = () => {
     getLatestposts()
       .then((data) => {
         setLatestposts(data.latestposts);
+        setLoading(false);
+
       })
       .catch((err) => {
         console.log(err);
@@ -59,6 +62,18 @@ const LatestpostDetailspage = () => {
   useEffect(() => {
     loadLatestpost();
   }, []);
+
+  if (loading) {
+    return (
+      <div class="text-center my-5">
+        <h1>
+          {/* <SyncOutlined spin /> */}
+          <Spin size="large" />
+        </h1>
+      </div>
+    );
+  }
+
 
   return (
     <div className="container">
