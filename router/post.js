@@ -274,6 +274,21 @@ router.get("/more-posts", (req, res) => {
     });
 });
 
+//details posts latest posts 3 posts
+
+router.get("/detailspage-latestposts", (req, res) => {
+  Post.find({})
+    .sort({ date: "DESC" })
+    .limit(4)
+    .populate("postedBy", "name email")
+    .then((latestposts) => {
+      res.json({ latestposts });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 //to count posts based on the liked
 
 // router.get("/featured-posts", (req, res) => {

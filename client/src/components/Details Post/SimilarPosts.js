@@ -9,8 +9,6 @@ import { AiOutlineLike } from "react-icons/ai";
 import moment from "moment";
 import { AiFillLike } from "react-icons/ai";
 
-
-
 const SimilarPosts = () => {
   const [similarposts, setSimilarposts] = useState([]);
 
@@ -27,7 +25,6 @@ const SimilarPosts = () => {
   };
 
   const history = useHistory();
-
 
   // load like api
 
@@ -65,6 +62,8 @@ const SimilarPosts = () => {
 
   return (
     <div className="container">
+      <p className="latest-post-title">View More Posts</p>
+
       <div className="row">
         {similarposts?.map((item, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>

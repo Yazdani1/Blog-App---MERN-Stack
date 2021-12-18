@@ -22,6 +22,9 @@ import { addtoWishlist } from "../dashboard/SaveFavouritePost/ApiFavourite";
 import SimilarPosts from "./SimilarPosts";
 import LatestpostDetailspage from "./LatestpostDetailspage";
 import { postFavourite } from "../dashboard/SaveFavouritePost/ApiFavourite";
+import { getSimilarposts } from "./apidetailsPost";
+import { getDetailsposts } from "./apidetailsPost";
+import { addlikePost, addunlikePost } from "../HomePage/Apihomepage";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -75,38 +78,28 @@ const DetailsPage = () => {
     ],
   };
 
-  const getDetailsData = async () => {
-    await axios
-      .get("/auth/details/" + id)
+  // const getDetailsData = async () => {
+  //   await axios
+  //     .get("/auth/details/" + id)
 
-      .then((result) => {
-        setData(result.data.detailspost);
-        console.log("Details post yaz" + result.data);
-        history.go(1);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  //     .then((result) => {
+  //       setData(result.data.detailspost);
+  //       console.log("Details post yaz" + result.data);
+  //       history.go(1);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
-  const getlatestPost = async () => {
-    await axios
-      .get("/auth/latestpost")
-      .then((res) => {
-        setLatestpost(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  //load details posts
 
-  //get other posts here
-
-  const morePost = async () => {
-    await axios
-      .get("/auth/getpost")
-      .then((res) => {
-        setPosts(res.data.resultGet);
+  const loadDetailsposts = () => {
+    getDetailsposts(id)
+      .then((data) => {
+        if (data) {
+          setData(data.detailspost);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -170,9 +163,7 @@ const DetailsPage = () => {
   };
 
   useEffect(() => {
-    getDetailsData();
-    getlatestPost();
-    morePost();
+    loadDetailsposts();
   }, [dataItem]);
 
   const handleChange = (e) => {
@@ -345,7 +336,7 @@ const DetailsPage = () => {
       <div className="main_details">
         <div className="container">
           <div className="row">
-            <div className="col-md-7">
+            <div className="col-md-6">
               <div className="details-post card">
                 {/* <button onClick={() => history.goBack()}>Go Back</button> */}
                 <img
@@ -611,16 +602,13 @@ const DetailsPage = () => {
               </div>
             </div>
 
-            <div className="col-md-5">
-              <p className="latest-post-title">Latest Posts</p>
+            <div className="col-md-6">
               <LatestpostDetailspage />
             </div>
           </div>
         </div>
 
         <div className="container">
-          <p className="latest-post-title">View More Posts</p>
-
           <SimilarPosts />
         </div>
       </div>
