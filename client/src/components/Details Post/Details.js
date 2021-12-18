@@ -357,7 +357,7 @@ const DetailsPage = () => {
                 />
                 <div className="details-postDesign">
                   <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-lg-8 col-md-4 col-sm-12">
                       <div className="details-post">
                         <div className="detailspage-user-profile">
                           <Link to={"/userprofile/"} className="name_design">
@@ -612,14 +612,15 @@ const DetailsPage = () => {
             </div>
 
             <div className="col-md-5">
-              <h5 className="latest-posts-title card">Latest posts</h5>
+              <p className="latest-post-title">Latest Posts</p>
               <LatestpostDetailspage />
             </div>
           </div>
         </div>
 
         <div className="container">
-          <h5>View More posts</h5>
+          <p className="latest-post-title">View More Posts</p>
+
           <SimilarPosts />
         </div>
       </div>

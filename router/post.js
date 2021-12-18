@@ -266,8 +266,8 @@ router.get("/more-posts", (req, res) => {
   Post.find({})
     .limit(8)
     .populate("postedBy", "name email")
-    .then((result) => {
-      res.json({ result });
+    .then((moreposts) => {
+      res.json({ moreposts });
     })
     .catch((err) => {
       console.log(err);
