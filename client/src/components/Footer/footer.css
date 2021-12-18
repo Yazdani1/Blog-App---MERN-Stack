@@ -1,0 +1,26 @@
+.footer {
+    height: 100px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+    /* position: fixed; */
+ }
+
+ .footer-text{
+     padding-top: 50px;
+ }
+
+/* .footer p {
+  color: white;
+  border-radius: 90px;
+  height: 150px;
+  width: auto;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+ align-items: center;
+} */

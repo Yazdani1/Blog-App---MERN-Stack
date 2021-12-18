@@ -12,12 +12,12 @@ const UserList = () => {
   //for pagination state..
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(16);
+  const [postsPerPage] = useState(12);
 
   //Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = alluser.slice(indexOfFirstPost, indexOfLastPost);
+  const currentUsers = alluser.slice(indexOfFirstPost, indexOfLastPost);
   const howManyPages = Math.ceil(alluser.length / postsPerPage);
 
   const loadallUser = () => {
@@ -40,7 +40,7 @@ const UserList = () => {
       <p className="latest-post-title">Visit Member Profile</p>
 
       <div className="row">
-        {currentPosts.map((user, index) => (
+        {currentUsers.map((user, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <div className="user-infocard card">
               <div className="profile-pic-and-name">
@@ -49,7 +49,9 @@ const UserList = () => {
                 </div>
                 <p>{user.name}</p>
               </div>
-
+              <p>
+                {moment(user.createdAt).format("MMMM Do YYYY")}
+              </p>
               <div className="view-profile-button">
                 <Link to={"/userprofile/" + user._id}>
                   <span className="view-profile">View Profile</span>

@@ -24,7 +24,7 @@ import renderHTML from "react-render-html";
 import ReactHtmlParser from "react-html-parser";
 import Totalpostcount from "./HomePage/TotalPostCount";
 import Pagination from "./HomePage/Pagination";
-import Footer from "./footer";
+import Footer from "./Footer/footer";
 import { AiFillLike } from "react-icons/ai";
 import AllpostSection from "./HomePage/AllpostSection";
 import LatestPost from "./HomePage/LatestPost";

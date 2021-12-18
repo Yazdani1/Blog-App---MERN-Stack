@@ -1,44 +1,36 @@
-
 /* //user profile information section */
 
 .profile_items_container {
-    margin-top: 10px;
-  }
-  .public-profile-items {
-    height: 150px;
-   margin-top: 10px;
-  }
-  .profile-items_design {
-    position: relative;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  .profile-items_design p {
-    font-size: 20px;
-    font-family: Georgia, "Times New Roman", Times, serif;
-  }
-  .member-accountcreated-date {
-    font-size: 15px;
-    position: relative;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
-  }
-  
-
-
+  margin-top: 10px;
+}
+.public-profile-items {
+  height: 150px;
+  margin-top: 10px;
+}
+.profile-items_design {
+  position: relative;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.profile-items_design p {
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.member-accountcreated-date {
+  font-size: 15px;
+  position: relative;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
 
 /* end user profile page information */
-
-
-
-
 
 .profile-name-date {
   display: flex;
@@ -65,14 +57,15 @@
   vertical-align: middle;
   border-radius: 90px;
 }
-.profile-name-post-date{
-    padding: 5px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    line-height: 3px;
-    margin-top: 5px;
+.profile-name-post-date {
+  padding: 5px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  line-height: 3px;
+  margin-top: 5px;
 }
 
-.profile-name-size{
-    font-size: 15px;
+.profile-name-size {
+  font-size: 15px;
 }
+
