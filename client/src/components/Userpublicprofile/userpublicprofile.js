@@ -229,18 +229,7 @@ const UserPublicProfile = () => {
                           </button>
                         </form>
                       </div>
-                      {/* <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        data-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button type="button" className="btn btn-primary">
-                        Save changes
-                      </button>
-                    </div> */}
+           
                     </div>
                   </div>
                 </div>
@@ -261,18 +250,7 @@ const UserPublicProfile = () => {
                 <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
               </div>
             </div>
-            {/* <div className="col-md-2 edit-button">
-            <Link to={"/update-profile/" + (user && user._id)}>
-              <h5>
-                <AiFillEdit size={20} />
-                Edit
-              </h5>
-            </Link> */}
 
-            {/* <Link to={"/update-profile/" + (user && user._id)}>
-            <button className="btn btn-danger">Edit</button>
-          </Link> */}
-            {/* </div> */}
           </div>
         </div>
       ) : null}
@@ -289,18 +267,6 @@ const UserPublicProfile = () => {
                 <p>{ReactHtmlParser(mypost?.userInfo?.experience)}</p>
               </div>
             </div>
-            {/* <div className="col-md-2 edit-button">
-            <Link to={"/update-profile/" + (user && user._id)}>
-              <h5>
-                <AiFillEdit size={20} />
-                Edit
-              </h5>
-            </Link> */}
-
-            {/* <Link to={"/update-profile/" + (user && user._id)}>
-            <button className="btn btn-danger">Edit</button>
-          </Link> */}
-            {/* </div> */}
           </div>
         </div>
       ) : null}
@@ -369,64 +335,6 @@ const UserPublicProfile = () => {
                     </div>
                   </div>
 
-                  //   <div className="col-md-3">
-                  //     <div className="desing_home card mb-5 shadow-sm">
-                  //       <div className="user_info">
-                  //         <div className="user_pic">
-                  //           <Link
-                  //             to={"/userprofile/" + item.postedBy._id}
-                  //             className="name_design"
-                  //           >
-                  //             <div className="user_pic_home_page">
-                  //               <p>
-                  //                 {item.postedBy.name
-                  //                   .substring(0, 2)
-                  //                   .toUpperCase()}
-                  //               </p>
-                  //             </div>
-                  //           </Link>
-                  //         </div>
-                  //         <div className="user_name">
-                  //           <Link
-                  //             to={"/userprofile/" + item.postedBy._id}
-                  //             className="name_design"
-                  //           >
-                  //             <p>{item.postedBy.name}</p>
-                  //           </Link>
-                  //         </div>
-                  //         <p className="date_color">
-                  //           {moment(item.date).format("MMMM Do YYYY")}
-                  //         </p>
-                  //       </div>
-
-                  //       <img src={item.photo} className="images" />
-
-                  //       <h4>{item.title.substring(0, 15)}</h4>
-                  //       <p>{ReactHtmlParser(item.des.substring(0, 20))}</p>
-                  //       <hr />
-
-                  //       <div className="likes">
-                  //         <p>
-                  //           <AiOutlineLike /> {item.likes.length}.
-                  //           {item.likes.length > 0 ? "Likes" : "Like"}
-                  //         </p>
-
-                  //         <p>
-                  //           <FaRegCommentDots /> {item.comments.length}
-                  //         </p>
-                  //         <p>
-                  //           {item.comments.length > 0 ? "Comments" : "Comment"}
-                  //         </p>
-                  //       </div>
-                  //       <Link to={"/details/" + item._id}>
-                  //         <button className="btn btn-primary">
-                  //           Reade More <AiOutlineArrowRight />
-                  //         </button>
-                  //       </Link>
-
-                  //       {/* <span className="read_more_button">Read More</span> */}
-                  //     </div>
-                  //   </div>
                 ))}
               </div>
             </div>
@@ -434,35 +342,7 @@ const UserPublicProfile = () => {
             <h1>Loading...</h1>
           )}
 
-          {/* 
-                      {mypost ? (
-            <div className="col-md-3 user_profile_details">
-              <div className="desing_home card mb-5 shadow-sm">
-                {/* <div className="profile_pic">{mypost.userInfo.name.charAt(0)}</div> */}
-          {/* <div className="user_profile_pic">
-                  <h2>{mypost.userInfo.name.substring(0, 2)}</h2>
-                </div>
 
-                <h4>{mypost.userInfo.name}</h4>
-
-                <p className="date_color">
-                  Member Since:
-                  {moment(mypost.userInfo.date).format("MMMM Do YYYY")}
-                </p>
-
-                <h4>Published posts: {mypost.postsData.length}</h4>
-                <h4>Total Likes: {mypost.likes?.length}</h4>
-                <h5>
-                  {mypost.postsData.length >= 5 ? <p>Pro User</p> : "New User"}
-                </h5>
-                <p>{mypost.postsData.length === 0 ? "No posts" : null}</p>
-
-              </div>
-            </div> */}
-          {/* ) : (
-
-            <h1>Loading...</h1>
-          )} */}
         </div>
       </div>
       <ToastContainer autoClose={8000} />

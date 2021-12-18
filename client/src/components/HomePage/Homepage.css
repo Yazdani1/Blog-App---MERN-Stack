@@ -17,46 +17,57 @@
 
 /* user list information */
 
-.user-info {
-  padding: 10px;
-  margin: 3px;
-
-  background-color: white;
+.user-infocard {
+  position: relative;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  margin-top: 10px;
 }
 
-.userinfo-name-circle {
-  height: 40px;
-  width: 40px;
+.user-profile-pic {
+  height: 100px;
+  width: 100px;
   background-color: black;
   border-radius: 90px;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
   text-align: center;
-  position: relative; /*makes left effective*/
+  position: relative;
 }
 
-.userinfo-name-circle p {
+.user-profile-pic p {
   color: white;
   border-radius: 90px;
-  height: 40px;
-  width: 40px;
+  height: 100px;
+  width: 100px;
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-  border-radius: 90px; /* may require vendor prefixes */
+  border-radius: 90px;
+  font-size: 25px;
 }
+
+.profile-pic-and-name p{
+  line-height: 40px;
+ 
+}
+
+
 
 .view-profile {
   background-color: black;
   color: white;
-  padding: 7px;
+  padding: 10px;
   cursor: pointer;
   transition: 0.5s;
   margin-left: 5px;
   margin-top: 30px;
-  border-radius: 10px;
-
+  border-radius: 5px;
 }
 
 .view-profile-button {
