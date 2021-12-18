@@ -7,7 +7,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { GoCalendar } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import "../App.css";
+// import "../App.css";
 import renderHTML from "react-render-html";
 import ReactHtmlParser from "react-html-parser";
 import { SyncOutlined } from "@ant-design/icons";
@@ -16,11 +16,12 @@ import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BsHeartFill } from "react-icons/bs";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../UserContext";
 import { AiFillLike } from "react-icons/ai";
-import { addtoWishlist } from "./dashboard/SaveFavouritePost/ApiFavourite";
-
-import { postFavourite } from "./dashboard/SaveFavouritePost/ApiFavourite";
+import { addtoWishlist } from "../dashboard/SaveFavouritePost/ApiFavourite";
+import SimilarPosts from "./SimilarPosts";
+import LatestpostDetailspage from "./LatestpostDetailspage";
+import { postFavourite } from "../dashboard/SaveFavouritePost/ApiFavourite";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -612,93 +613,14 @@ const DetailsPage = () => {
 
             <div className="col-md-5">
               <h5 className="latest-posts-title card">Latest posts</h5>
-
-              <div className="latest-post-positionsss card">
-                {latestPost.map((item) => (
-                  <div className="container">
-                    <hr />
-
-                    <div className="row">
-                      <div className="col-md-4">
-                        <img
-                          src={item.photo}
-                          height="100px"
-                          alt="Post image"
-                          className="det_post_image"
-                          width="100%"
-                        />
-                      </div>
-                      <div className="col-md-8">
-                        <div className="latest_post">
-                          <Link
-                            className="latest_title"
-                            to={"/details/" + item._id}
-                          >
-                            <h5>{item.title.substring(0, 25)}</h5>
-                          </Link>
-                          <p>
-                            <FaUserCircle /> {item.postedBy.name}
-                          </p>
-                          <p>
-                            <GoCalendar />{" "}
-                            {moment(item.date).format("MMMM Do YYYY")}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <LatestpostDetailspage />
             </div>
           </div>
         </div>
 
         <div className="container">
           <h5>View More posts</h5>
-          <Slider {...settings}>
-            {postsmore.map((item) => (
-              <div className="col-md-12">
-                <div className="desing_home card mb-5 shadow-sm">
-                  <div className="user_info">
-                    <div className="user_pic">
-                      <Link
-                        to={"/userprofile/" + item.postedBy._id}
-                        className="name_design"
-                      >
-                        <div className="user_pic_home_page">
-                          <p>
-                            {item.postedBy.name.substring(0, 2).toUpperCase()}
-                          </p>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className="user_name">
-                      <Link
-                        to={"/userprofile/" + item.postedBy._id}
-                        className="name_design"
-                      >
-                        <p>{item.postedBy.name}</p>
-                      </Link>
-                    </div>
-                  </div>
-
-                  <img src={item.photo} className="details_page_image" />
-                  <p className="date_color">
-                    <GoCalendar /> {moment(item.date).format("MMMM Do YYYY")}
-                  </p>
-                  <h4>{item.title.substring(0, 15)}</h4>
-                  <p>{item.des.substring(0, 20)}</p>
-                  <Link to={"/details/" + item._id}>
-                    <button className="btn btn-primary">
-                      Reade More <AiOutlineArrowRight />
-                    </button>
-                  </Link>
-
-                  {/* <span className="read_more_button">Read More</span> */}
-                </div>
-              </div>
-            ))}
-          </Slider>
+          <SimilarPosts />
         </div>
       </div>
       <ToastContainer autoClose={8000} />

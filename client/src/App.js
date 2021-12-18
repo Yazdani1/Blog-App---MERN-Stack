@@ -10,7 +10,7 @@ import Mypost from "./components/Mypost";
 import Postaccouncement from "./components/Postannouncement";
 // import Userprofile from "./components/Userprofile";
 import Edit from "./components/Edit";
-import Details from "./components/Details";
+import Details from "./components/Details Post/Details";
 import { UserProvider } from "./components/UserContext";
 import Dashboard from "./components/dashboard/All Posts/Dashboard";
 import DashboardprotectedRoute from "./components/dashboard/DashboardprotectedRoute";
