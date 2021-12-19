@@ -45,22 +45,6 @@ const DetailsPage = () => {
 
   const [user, setUser] = useContext(UserContext);
 
-  // const getDetailsData = async () => {
-  //   await axios
-  //     .get("/auth/details/" + id)
-
-  //     .then((result) => {
-  //       setData(result.data.detailspost);
-  //       console.log("Details post yaz" + result.data);
-  //       history.go(1);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  //load details posts
-
   const loadDetailsposts = () => {
     getDetailsposts(id)
       .then((data) => {
@@ -182,36 +166,6 @@ const DetailsPage = () => {
     setText("");
   };
 
-  //delete comment
-
-  // const deleteComment = (postId, textId) => {
-
-  //   fetch("/auth/deletecomments", {
-  //     method: "put",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //     },
-  //     body: JSON.stringify({
-  //       text: textId,
-  //       postId: postId,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       // console.log(result);
-  //       // if (result.error) {
-  //       //   setError(result.error);
-  //       // } else {
-  //       //   setError("");
-  //       //   setSuccess(true);
-  //       // }
-
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   const showError = () => (
     <div
