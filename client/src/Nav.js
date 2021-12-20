@@ -23,9 +23,11 @@ function Nav() {
         <div className="menu-bar">
           <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                Navbar
-              </a>
+              <Link to="/">
+                <a class="navbar-brand" href="#">
+                  Blog Portal
+                </a>
+              </Link>
               <button
                 className="navbar-toggler"
                 type="button"
@@ -41,33 +43,59 @@ function Nav() {
                 {/* <span className="navbar-toggler-icon"></span> */}
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">
-                      Home
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Features
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Pricing
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link">Disabled</a>
-                  </li>
-                </ul>
+                {window.localStorage.getItem("tokenLogin") ? (
+                  <>
+                    <ul class="navbar-nav ml-auto">
+                      <Link to="/">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="#">
+                            Home
+                          </a>
+                        </li>
+                      </Link>
+                      <Link to="/Dashboard">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            Dashboard
+                          </a>
+                        </li>
+                      </Link>
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <ul class="navbar-nav ml-auto">
+                      <Link to="/">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="#">
+                            Home
+                          </a>
+                        </li>
+                      </Link>
+                      <Link to="/signup">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="#">
+                            Sign Up
+                          </a>
+                        </li>
+                      </Link>
+                      <Link to="/signin">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            Sign In
+                          </a>
+                        </li>
+                      </Link>
+                    </ul>
+                  </>
+                )}
               </div>
             </div>
           </nav>
         </div>
       </div>
 
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      {/* <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <a className="navbar-brand" href="#">
           Blog App
         </a>
@@ -89,9 +117,9 @@ function Nav() {
                 <Link to="/" className="eachitem">
                   <li>Home</li>
                 </Link>
-                {/* <Link to={"/userprofile/" + user._id} className="eachitem">
+                <Link to={"/userprofile/" + user._id} className="eachitem">
                 <li>{user && user.name}</li>
-              </Link> */}
+              </Link>
                 <div className="dropdown show eachitem">
                   <div
                     className="dropdown-toggle"
@@ -154,7 +182,7 @@ function Nav() {
                     <div className="user_name">
                       <p>{user ? user.name : "Loading"}</p>
 
-                      {/* <p>{JSON.stringify(state)}</p> */}
+                  
                     </div>
                   </div>
                 </div>
@@ -175,18 +203,10 @@ function Nav() {
               </>
             )}
 
-            {/* <a className="nav-item nav-link active" href="#">
-            Home <span className="sr-only">(current)</span>
-          </a>
-          <a className="nav-item nav-link" href="#">
-            Features
-          </a>
-          <a className="nav-item nav-link" href="#">
-            Pricing
-          </a> */}
+      
           </div>
         </div>
-      </nav>
+      </nav> */}
     </>
   );
 }

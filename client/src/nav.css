@@ -32,6 +32,13 @@
   color: white !important;
 }
 
+.menu-bar .navbar-toggler {
+  padding-right: 30px;
+  outline: none !important;
+  border: none !important;
+  padding-top: 10px;
+}
+
 @media only screen and (max-width: 1000px) {
   .nav-link:hover {
     border-bottom: none;
