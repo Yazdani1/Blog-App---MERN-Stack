@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
+import "./nav.css";
 import axios from "axios";
 import { UserContext } from "./components/UserContext";
 import { UserGlobalContext } from "./components/UserGlobalContext";
@@ -8,20 +9,6 @@ function Nav() {
   const [user, setUserState] = useContext(UserContext);
   const history = useHistory();
 
-  // const [user, setUser] = useState("");
-  // const getUser = async () => {
-  //   const res = await axios.get("/auth", {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-  //     },
-  //   });
-  //   setUser(res.data);
-  // };
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
-
-  // const history = useHistory();
 
   const logOut = () => {
     window.localStorage.removeItem("tokenLogin");
