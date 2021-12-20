@@ -385,7 +385,7 @@ const DetailsPage = () => {
               <div className="comments card">
                 <form>
                   <div className="row">
-                    <div className="col-md-9">
+                    <div className="col-lg-9 col-md-12 col-sm-12">
                       {showSuccess()}
                       {showError()}
 
@@ -401,7 +401,7 @@ const DetailsPage = () => {
                       </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-12 col-sm-12">
                       <div class="form-group">
                         <button
                           className="btn btn-success"
