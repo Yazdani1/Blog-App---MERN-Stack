@@ -25,7 +25,7 @@ function Nav() {
             <div class="container-fluid">
               <Link to="/">
                 <a class="navbar-brand" href="#">
-                  Blog Portal
+                  NeyFly
                 </a>
               </Link>
               <button
