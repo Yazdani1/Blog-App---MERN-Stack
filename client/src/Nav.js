@@ -9,122 +9,168 @@ function Nav() {
   const [user, setUserState] = useContext(UserContext);
   const history = useHistory();
 
-
   const logOut = () => {
     window.localStorage.removeItem("tokenLogin");
     setUserState(null);
     history.push("/signin");
   };
 
-
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="#">
-        Blog App
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          {window.localStorage.getItem("tokenLogin") ? (
-            <>
-              <Link to="/" className="eachitem">
-                <li>Home</li>
-              </Link>
-              {/* <Link to={"/userprofile/" + user._id} className="eachitem">
-                <li>{user && user.name}</li>
-              </Link> */}
-              <div className="dropdown show eachitem">
-                <div
-                  className="dropdown-toggle"
-                  data-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  More
-                </div>
-
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuLink"
-                >
-                  <Link to="/post" className="dropdown-item each">
-                    Create Post
-                  </Link>
-                  <Link to="/Dashboard" className="dropdown-item each">
-                    <li>My Post</li>
-                  </Link>
-                  <Link to="/postannouncement" className="dropdown-item each">
-                    <li>Announcement</li>
-                  </Link>
-
-                  <Link to="/Dashboard" className="dropdown-item each">
-                    Dashboard
-                  </Link>
-                  <Link to="/profile" className="dropdown-item each">
-                    Profile
-                  </Link>
-                  <Link
-                    target={"_blank"}
-                    to={"/userprofile/" + (user && user._id)}
-                    className="dropdown-item each item_back"
-                  >
-                    Public Profile
-                  </Link>
-                  <hr />
-                  <Link to="/signin" className="dropdown-item each">
-                    <div onClick={logOut}>Sign Out</div>
-                  </Link>
-                </div>
+    <>
+      <div className="header">
+        <div className="menu-bar">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                Navbar
+              </a>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="#navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon toogl-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">
+                      Home
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      Features
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      Pricing
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link">Disabled</a>
+                  </li>
+                </ul>
               </div>
-              <div className="eachitem">
-                <div className="user_info">
-                  <div className="user_pic">
-                    <Link
-                      to={"/userprofile/" + (user && user._id)}
-                      className="name_design"
-                    >
-                      <div className="user_pic_home_page">
-                        <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="user_name">
-                    <p>{user?user.name:"Loading"}</p>
+            </div>
+          </nav>
+        </div>
+      </div>
 
-                    {/* <p>{JSON.stringify(state)}</p> */}
-                  </div>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="nav_design">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a className="navbar-brand" href="#">
+          Blog App
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            {window.localStorage.getItem("tokenLogin") ? (
+              <>
                 <Link to="/" className="eachitem">
                   <li>Home</li>
                 </Link>
-                <Link to="/signup" className="eachitem">
-                  <li>Sign Up</li>
-                </Link>
-                <Link to="/signin" className="eachitem">
-                  <li>Sign In</li>
-                </Link>
-              </div>
-            </>
-          )}
+                {/* <Link to={"/userprofile/" + user._id} className="eachitem">
+                <li>{user && user.name}</li>
+              </Link> */}
+                <div className="dropdown show eachitem">
+                  <div
+                    className="dropdown-toggle"
+                    data-toggle="dropdown"
+                    href="#"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    More
+                  </div>
 
-          {/* <a className="nav-item nav-link active" href="#">
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <Link to="/post" className="dropdown-item each">
+                      Create Post
+                    </Link>
+                    <Link to="/Dashboard" className="dropdown-item each">
+                      <li>My Post</li>
+                    </Link>
+                    <Link to="/postannouncement" className="dropdown-item each">
+                      <li>Announcement</li>
+                    </Link>
+
+                    <Link to="/Dashboard" className="dropdown-item each">
+                      Dashboard
+                    </Link>
+                    <Link to="/profile" className="dropdown-item each">
+                      Profile
+                    </Link>
+                    <Link
+                      target={"_blank"}
+                      to={"/userprofile/" + (user && user._id)}
+                      className="dropdown-item each item_back"
+                    >
+                      Public Profile
+                    </Link>
+                    <hr />
+                    <Link to="/signin" className="dropdown-item each">
+                      <div onClick={logOut}>Sign Out</div>
+                    </Link>
+                  </div>
+                </div>
+                <div className="eachitem">
+                  <div className="user_info">
+                    <div className="user_pic">
+                      <Link
+                        to={"/userprofile/" + (user && user._id)}
+                        className="name_design"
+                      >
+                        <div className="user_pic_home_page">
+                          <p>
+                            {user && user.name.substring(0, 2).toUpperCase()}
+                          </p>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="user_name">
+                      <p>{user ? user.name : "Loading"}</p>
+
+                      {/* <p>{JSON.stringify(state)}</p> */}
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="nav_design">
+                  <Link to="/" className="eachitem">
+                    <li>Home</li>
+                  </Link>
+                  <Link to="/signup" className="eachitem">
+                    <li>Sign Up</li>
+                  </Link>
+                  <Link to="/signin" className="eachitem">
+                    <li>Sign In</li>
+                  </Link>
+                </div>
+              </>
+            )}
+
+            {/* <a className="nav-item nav-link active" href="#">
             Home <span className="sr-only">(current)</span>
           </a>
           <a className="nav-item nav-link" href="#">
@@ -133,9 +179,10 @@ function Nav() {
           <a className="nav-item nav-link" href="#">
             Pricing
           </a> */}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }
 //nav updated

@@ -1,0 +1,35 @@
+.menu-bar {
+  background-color: blueviolet;
+}
+.nav-link {
+  font-size: 16px;
+  margin: 3px;
+  color: white !important;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  font-weight: 600;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.menu-bar .navbar-toggler {
+  padding-right: 30px;
+  outline: none !important;
+  border: none !important;
+  color: white;
+}
+.navbar .toogl-icon {
+  color: white !important;
+}
+
+/* @media only screen and (max-width: 1000px) {
+  .nav-link:hover {
+    border-bottom: none;
+  }
+} */
