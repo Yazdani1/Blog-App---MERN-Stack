@@ -6,6 +6,7 @@
   margin: 3px;
   color: white !important;
   font-weight: 500;
+  margin-right: 15px;
 }
 
 .nav-link:hover {
@@ -16,7 +17,9 @@
 
 .navbar-nav {
   text-align: center;
+  margin-right: 300px;
 }
+
 
 .menu-bar .navbar-toggler {
   padding-right: 30px;
@@ -28,8 +31,8 @@
   color: white !important;
 }
 
-/* @media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .nav-link:hover {
     border-bottom: none;
   }
-} */
+}
