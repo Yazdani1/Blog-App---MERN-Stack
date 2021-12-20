@@ -5,6 +5,8 @@ import axios from "axios";
 import { UserContext } from "./components/UserContext";
 import { UserGlobalContext } from "./components/UserGlobalContext";
 import { Link, useHistory } from "react-router-dom";
+import { AiOutlineBars } from "react-icons/ai";
+
 function Nav() {
   const [user, setUserState] = useContext(UserContext);
   const history = useHistory();
@@ -33,7 +35,10 @@ function Nav() {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span className="navbar-toggler-icon toogl-icon"></span>
+                <p>
+                  <AiOutlineBars size={25} />
+                </p>
+                {/* <span className="navbar-toggler-icon"></span> */}
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
