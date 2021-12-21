@@ -111,7 +111,6 @@ const UserPublicProfile = () => {
           });
           setData(newItemData);
         }
-        
       })
       .catch((err) => {
         console.log(err);
@@ -142,7 +141,6 @@ const UserPublicProfile = () => {
           });
           setData(newItemData);
         }
-        
       })
       .catch((err) => {
         console.log(err);
@@ -197,15 +195,8 @@ const UserPublicProfile = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-lg-12 col-sm-6">
             <div className="profile-header card">
-
-            <div className="row">
-              <div className="">
-
-              </div>
-            </div>
-
               <div className="profile-pic-user-profile">
                 <h2 className="user-profile-name-incircle">
                   {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
