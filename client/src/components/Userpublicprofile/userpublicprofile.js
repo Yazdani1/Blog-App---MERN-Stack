@@ -195,7 +195,7 @@ const UserPublicProfile = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-lg-12 col-sm-3">
+          <div className="col-lg-12">
             <div className="profile-header card">
               <div className="profile-pic-user-profiles">
                 <h2 className="user-profile-name-incircles">
