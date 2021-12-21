@@ -198,7 +198,14 @@ const UserPublicProfile = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <div className="profile-header">
+            <div className="profile-header card">
+
+            <div className="row">
+              <div className="">
+
+              </div>
+            </div>
+
               <div className="profile-pic-user-profile">
                 <h2 className="user-profile-name-incircle">
                   {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
