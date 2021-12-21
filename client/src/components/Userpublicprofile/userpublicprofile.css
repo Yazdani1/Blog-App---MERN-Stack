@@ -40,11 +40,11 @@
   border-radius: 30px;
   margin-top: 10px;
 }
-.profile-pic-user-profile {
+.profile-pic-user-profiles {
   height: 100px;
   width: 100px;
   border-radius: 90px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background: rgb(222, 236, 14);
   bottom: 20px; 
   /* left: 160px; */
@@ -60,7 +60,7 @@
   position: absolute;
 }
 
-.user-profile-name-incircle {
+.user-profile-name-incircles {
   position: relative;
   display: table-cell;
   text-align: center;
@@ -73,11 +73,10 @@
   color: white;
 }
 
-.profile-pic-user-profile-name {
-  border-radius: 90px;
+.profile-pic-user-profile-names {
   position: absolute;
   bottom: 50px;
-  left: 280px;
+ 
   padding: 0 10px;
 }
 
