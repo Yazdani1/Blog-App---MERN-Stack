@@ -30,6 +30,58 @@
   justify-content: center;
 }
 
+/* profile headerrrr */
+
+.profile-header {
+  height: 150px; /*Specify Height*/
+  width: 100%; /*Specify Width*/
+  text-align: center; /*Align the text to the center*/
+  position: relative;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+.profile-pic-user-profile {
+  height: 100px;
+  width: 100px;
+  border-radius: 90px;
+  border: 1px solid black;
+  background: rgb(222, 236, 14);
+  bottom: 20px; 
+  /* left: 160px; */
+
+  padding: 0 10px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  position: absolute;
+}
+
+.user-profile-name-incircle {
+  position: relative;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+
+  height: 100px;
+  width: 100px;
+  color: white;
+}
+
+.profile-pic-user-profile-name {
+  border-radius: 90px;
+  position: absolute;
+  bottom: 50px;
+  left: 280px;
+  padding: 0 10px;
+}
+
+
 /* end user profile page information */
 
 .profile-name-date {
