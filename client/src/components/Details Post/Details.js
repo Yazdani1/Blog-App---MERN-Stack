@@ -166,7 +166,6 @@ const DetailsPage = () => {
     setText("");
   };
 
-
   const showError = () => (
     <div
       className="alert alert-danger"
@@ -287,14 +286,20 @@ const DetailsPage = () => {
                         style={{ textDecoration: "none", color: "black" }}
                       >
                         <div className="profile-name-date">
-                          <div className="profile-name-avatar">
-                            <p>
-                              {dataItem &&
-                                dataItem.postedBy?.name
+                          {dataItem.postedBy.photo ? (
+                            <div className="profile-name-avatar-image">
+                              <img src={dataItem.postedBy?.photo} />
+                            </div>
+                          ) : (
+                            <div className="profile-name-avatar">
+                              <p>
+                                {dataItem.postedBy?.name
                                   .substring(0, 2)
                                   .toUpperCase()}
-                            </p>
-                          </div>
+                              </p>
+                            </div>
+                          )}
+
                           <div className="profile-name-post-date">
                             <p className="profile-name-size">
                               {dataItem && dataItem.postedBy?.name}
@@ -497,7 +502,7 @@ const DetailsPage = () => {
         </div>
       </div>
       <ToastContainer autoClose={8000} />
-      <Footer/>
+      <Footer />
     </>
   );
 };
