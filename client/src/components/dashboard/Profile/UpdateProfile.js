@@ -64,10 +64,8 @@ const UpdateProfile = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          toast.success("Your have Successfully saved your changes!", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-          // history.push("/Dashboardprofile");
+
+          history.push("/Dashboardprofile");
         }
       })
       .catch((err) => {
@@ -165,7 +163,6 @@ const UpdateProfile = () => {
           </form>
         </div>
       </div>
-      <ToastContainer autoClose={8000} />
     </div>
   );
 };
