@@ -76,18 +76,37 @@ const UpdateProfile = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("/auth/update-user-profile/" + id, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-        },
+    fetch("/auth/update-user-profile/" + id, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setName(data.name);
+          setEmail(data.email);
+          setAbout(data.about);
+        }
       })
-      .then((result) => {
-        setName(result.data.name);
-        setEmail(result.data.email);
-        setAbout(result.data.about);
-        //setAbout(result.data.about);
+      .catch((err) => {
+        console.log(err);
       });
+
+    // axios
+    //   .get("/auth/update-user-profile/" + id, {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+    //     },
+    //   })
+    //   .then((result) => {
+    //     setName(result.data.name);
+    //     setEmail(result.data.email);
+    //     setAbout(result.data.about);
+    //     //setAbout(result.data.about);
+    //   });
   }, []);
 
   return (
