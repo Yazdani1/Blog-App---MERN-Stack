@@ -22,7 +22,6 @@ const SimilarPosts = () => {
       if (data) {
         setSimilarposts(data.moreposts);
         setLoading(false);
-
       }
     });
   };
@@ -61,7 +60,7 @@ const SimilarPosts = () => {
 
   useEffect(() => {
     loadSimilarposts();
-  }, []);
+  }, [similarposts]);
 
   if (loading) {
     return (
@@ -73,8 +72,6 @@ const SimilarPosts = () => {
       </div>
     );
   }
-
-
 
   return (
     <div className="container">
@@ -91,9 +88,18 @@ const SimilarPosts = () => {
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   <div className="profile-name-date">
-                    <div className="profile-name-avatar">
-                      <p>{item.postedBy.name.substring(0, 2).toUpperCase()}</p>
-                    </div>
+                    {item.postedBy.photo ? (
+                      <div className="profile-name-avatar-image">
+                        <img src={item.postedBy.photo} />
+                      </div>
+                    ) : (
+                      <div className="profile-name-avatar">
+                        <p>
+                          {item.postedBy.name.substring(0, 2).toUpperCase()}
+                        </p>
+                      </div>
+                    )}
+
                     <div className="profile-name-post-date">
                       <p className="profile-name-size">{item.postedBy.name}</p>
                       <p>{moment(item.date).format("MMMM Do YYYY")}</p>

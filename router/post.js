@@ -75,7 +75,7 @@ router.get("/latestpost", (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
     .limit(6)
-    .populate("postedBy", "name email")
+    .populate("postedBy", "name email photo")
     .then((latestPost) => {
       res.json(latestPost);
     })
@@ -139,7 +139,7 @@ router.delete("/delete/:id", requireLogin, (req, res) => {
 router.get("/details/:id", (req, res) => {
   var detailsQuery = { _id: req.params.id };
   Post.findOne(detailsQuery)
-    .populate("postedBy", "_id name")
+    .populate("postedBy", "_id name photo")
     .populate("comments.postedBy", "_id name")
     .then((detailspost) => {
       res.json({ detailspost: detailspost });
@@ -266,7 +266,7 @@ router.get("/more-posts", (req, res) => {
   Post.find({})
     .sort({ date: 1 })
     .limit(8)
-    .populate("postedBy", "name email")
+    .populate("postedBy", "name email photo")
     .then((moreposts) => {
       res.json({ moreposts });
     })
@@ -281,7 +281,7 @@ router.get("/detailspage-latestposts", (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
     .limit(4)
-    .populate("postedBy", "name email")
+    .populate("postedBy", "name email photo")
     .then((latestposts) => {
       res.json({ latestposts });
     })

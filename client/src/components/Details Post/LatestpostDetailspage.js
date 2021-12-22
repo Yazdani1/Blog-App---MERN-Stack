@@ -26,7 +26,6 @@ const LatestpostDetailspage = () => {
       .then((data) => {
         setLatestposts(data.latestposts);
         setLoading(false);
-
       })
       .catch((err) => {
         console.log(err);
@@ -61,7 +60,7 @@ const LatestpostDetailspage = () => {
 
   useEffect(() => {
     loadLatestpost();
-  }, []);
+  }, [latestpost]);
 
   if (loading) {
     return (
@@ -73,7 +72,6 @@ const LatestpostDetailspage = () => {
       </div>
     );
   }
-
 
   return (
     <div className="container">
@@ -97,11 +95,18 @@ const LatestpostDetailspage = () => {
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       <div className="profile-name-date">
-                        <div className="profile-name-avatar">
-                          <p>
-                            {item.postedBy.name.substring(0, 2).toUpperCase()}
-                          </p>
-                        </div>
+                        {item.postedBy.photo ? (
+                          <div className="profile-name-avatar-image">
+                            <img src={item.postedBy.photo} />
+                          </div>
+                        ) : (
+                          <div className="profile-name-avatar">
+                            <p>
+                              {item.postedBy.name.substring(0, 2).toUpperCase()}
+                            </p>
+                          </div>
+                        )}
+
                         <div className="profile-name-post-date">
                           <p className="profile-name-size">
                             {item.postedBy.name}
