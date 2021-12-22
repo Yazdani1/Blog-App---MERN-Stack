@@ -4,8 +4,6 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineLike } from "react-icons/ai";
-import { ToastContainer, toast } from "react-toastify";
-
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -52,8 +50,9 @@ const UpdateProfile = () => {
   const dataSubmit = (e) => {
     e.preventDefault();
     fetch("/auth/update-profile-info/" + id, {
-      method: "POST",
+      method: "PUT",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
       },
       body: JSON.stringify({
@@ -62,12 +61,13 @@ const UpdateProfile = () => {
         about,
       }),
     })
-      .then((res) => res.JSON())
+      .then((res) => res.json())
       .then((data) => {
         if (data) {
           toast.success("Your have Successfully saved your changes!", {
             position: toast.POSITION.TOP_RIGHT,
           });
+          // history.push("/Dashboardprofile");
         }
       })
       .catch((err) => {
@@ -83,7 +83,9 @@ const UpdateProfile = () => {
         },
       })
       .then((result) => {
-        setData(result.data);
+        setName(result.data.name);
+        setEmail(result.data.email);
+        setAbout(result.data.about);
         //setAbout(result.data.about);
       });
   }, []);
@@ -101,9 +103,9 @@ const UpdateProfile = () => {
               </label>
               <input
                 type="text"
-                name="name"
+                // name="name"
                 value={name}
-                onChange={(e) => setName(e.target.name)}
+                onChange={(e) => setName(e.target.value)}
                 className="form-control"
               />
             </div>
@@ -113,7 +115,7 @@ const UpdateProfile = () => {
                 type="text"
                 name="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.email)}
+                onChange={(e) => setEmail(e.target.value)}
                 className="form-control"
               />
             </div>
@@ -121,7 +123,6 @@ const UpdateProfile = () => {
               <label for="exampleFormControlTextarea2">About</label>
               <textarea
                 class="form-control rounded-0"
-                name="about"
                 // value={about}
                 rows="3"
                 // onChange={handleChange}
@@ -129,7 +130,7 @@ const UpdateProfile = () => {
                 type="text"
                 //onChange={(e) => setAbout(e.target.value)}
                 // name="des"
-                onChange={(e) => setAbout(e.target.about)}
+                onChange={(e) => setAbout(e.target.value)}
                 value={about}
                 maxLength="250"
               />
