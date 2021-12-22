@@ -59,7 +59,7 @@ router.post("/post", requireLogin, (req, res) => {
 router.get("/getpost", (req, res) => {
   Post.find({})
     .sort({ date: "DESC" })
-    .populate("postedBy", "_id name email")
+    .populate("postedBy", "_id name email photo")
 
     .then((resultGet) => {
       res.json({ resultGet: resultGet });

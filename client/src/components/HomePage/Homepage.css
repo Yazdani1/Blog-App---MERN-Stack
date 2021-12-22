@@ -49,6 +49,19 @@
   position: relative;
 }
 
+.user-profile-picture-image img {
+  height: 100px;
+  width: 100px;
+  border-radius: 90px;
+  border: 3px solid rgb(14, 154, 236);
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  object-fit: cover;
+}
+
 .user-profile-pic p {
   color: white;
   border-radius: 90px;

@@ -43,15 +43,22 @@ const UserList = () => {
         {currentUsers.map((user, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <div className="user-infocard card">
-              <div className="profile-pic-and-name">
-                <div className="user-profile-pic">
-                  <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
+              {user && user.photo ? (
+                <div className="user-profile-picture-image">
+                  <img src={user && user.photo} />
+
+                  <p>{user.name}</p>
                 </div>
-                <p>{user.name}</p>
-              </div>
-              <p>
-                {moment(user.createdAt).format("MMMM Do YYYY")}
-              </p>
+              ) : (
+                <div className="profile-pic-and-name">
+                  <div className="user-profile-pic">
+                    <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
+                  </div>
+                  <p>{user.name}</p>
+                </div>
+              )}
+
+              <p>{moment(user.createdAt).format("MMMM Do YYYY")}</p>
               <div className="view-profile-button">
                 <Link to={"/userprofile/" + user._id}>
                   <span className="view-profile">View Profile</span>

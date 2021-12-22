@@ -16,7 +16,6 @@ const AllpostSection = () => {
 
   const [user, setUser] = useContext(UserContext);
 
-
   const history = useHistory();
 
   //for pagination state..number pagination
@@ -73,7 +72,7 @@ const AllpostSection = () => {
 
   useEffect(() => {
     loadallPosts();
-  }, []);
+  }, [posts]);
 
   if (loading) {
     return (
@@ -101,9 +100,18 @@ const AllpostSection = () => {
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   <div className="profile-name-date">
-                    <div className="profile-name-avatar">
-                      <p>{item.postedBy.name.substring(0, 2).toUpperCase()}</p>
-                    </div>
+                    {item.postedBy.photo ? (
+                      <div className="profile-name-avatar-image">
+                        <img src={item.postedBy.photo} />
+                      </div>
+                    ) : (
+                      <div className="profile-name-avatar">
+                        <p>
+                          {item.postedBy.name.substring(0, 2).toUpperCase()}
+                        </p>
+                      </div>
+                    )}
+
                     <div className="profile-name-post-date">
                       <p className="profile-name-size">{item.postedBy.name}</p>
                       <p>{moment(item.date).format("MMMM Do YYYY")}</p>

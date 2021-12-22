@@ -197,23 +197,26 @@ const UserPublicProfile = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="profile-header card">
-              <div className="profile-pic-user-profiles">
-                {mypost?.userInfo?.photo ? (
-                  "gfg"
-                ) : (
+              {mypost?.userInfo?.photo ? (
+                <div className="user-profile-image-incircles img">
+                  <img src={mypost?.userInfo?.photo} />
+                </div>
+              ) : (
+                <div className="profile-pic-user-profiles">
                   <h2 className="user-profile-name-incircles">
                     {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
                   </h2>
-                )}
-                {/* <h2 className="user-profile-name-incircles">
+
+                  {/* <h2 className="user-profile-name-incircles">
                   {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
                 </h2> */}
-                {/* <img
+                  {/* <img
                   src={mypost?.userInfo?.photo}
                   height="150px"
                   width="150px"
                 /> */}
-              </div>
+                </div>
+              )}
 
               <div className="profile-pic-user-profile-names">
                 <h2>{mypost?.userInfo?.name}</h2>
@@ -396,11 +399,20 @@ const UserPublicProfile = () => {
                       <img src={item.photo} className="favpurite-post-image" />
                       <div className="fav-post-text-item">
                         <div className="profile-name-date">
-                          <div className="profile-name-avatar">
-                            <p>
-                              {item.postedBy.name.substring(0, 2).toUpperCase()}
-                            </p>
-                          </div>
+                          {item?.postedBy?.photo ? (
+                            <div className="profile-name-avatar-image">
+                              <img src={item.postedBy.photo} />
+                            </div>
+                          ) : (
+                            <div className="profile-name-avatar">
+                              <p>
+                                {item.postedBy.name
+                                  .substring(0, 2)
+                                  .toUpperCase()}
+                              </p>
+                            </div>
+                          )}
+
                           <div className="profile-name-post-date">
                             <p className="profile-name-size">
                               {item.postedBy.name}

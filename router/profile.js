@@ -8,7 +8,7 @@ router.get("/userprofileda/:id", (req, res) => {
     .select("-password")
     .then((userInfo) => {
       Post.find({ postedBy: req.params.id })
-        .populate("postedBy", "_id name email")
+        .populate("postedBy", "_id name email photo")
         .populate("comments.postedBy", "_id name")
         .exec((err, postsData) => {
           if (err) {
