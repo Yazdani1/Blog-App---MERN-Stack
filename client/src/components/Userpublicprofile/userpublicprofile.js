@@ -198,9 +198,21 @@ const UserPublicProfile = () => {
           <div className="col-lg-12">
             <div className="profile-header card">
               <div className="profile-pic-user-profiles">
-                <h2 className="user-profile-name-incircles">
+                {mypost?.userInfo?.photo ? (
+                  "gfg"
+                ) : (
+                  <h2 className="user-profile-name-incircles">
+                    {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
+                  </h2>
+                )}
+                {/* <h2 className="user-profile-name-incircles">
                   {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
-                </h2>
+                </h2> */}
+                {/* <img
+                  src={mypost?.userInfo?.photo}
+                  height="150px"
+                  width="150px"
+                /> */}
               </div>
 
               <div className="profile-pic-user-profile-names">

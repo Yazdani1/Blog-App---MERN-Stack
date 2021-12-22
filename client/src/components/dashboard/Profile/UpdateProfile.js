@@ -61,6 +61,7 @@ const UpdateProfile = () => {
           name,
           email,
           about,
+          pic: url,
         }),
       })
         .then((res) => res.json())

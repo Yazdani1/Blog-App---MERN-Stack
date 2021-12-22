@@ -150,7 +150,7 @@ router.put("/update-profile-info/:id", requireLogin, (req, res) => {
       name: req.body.name,
       email: req.body.email,
       about: req.body.about,
-      photo: req.body.photo,
+      photo: req.body.pic,
     },
   })
     .then((result) => {
