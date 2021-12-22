@@ -14,6 +14,8 @@ const UpdateProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [about, setAbout] = useState("");
+  const [imageUrl, setImageurl] = useState("");
+  const [url, setUrl] = useState("");
 
   // const [data, setData] = useState({
   //   name: "",
@@ -47,30 +49,53 @@ const UpdateProfile = () => {
   //   }
   // };
 
+  useEffect(() => {
+    if (url) {
+      fetch("/auth/update-profile-info/" + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          about,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            history.push("/Dashboardprofile");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [url]);
+
   const dataSubmit = (e) => {
     e.preventDefault();
-    fetch("/auth/update-profile-info/" + id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        about,
-      }),
+
+    const data = new FormData();
+    data.append("file", imageUrl);
+    data.append("upload_preset", "blog-app");
+    data.append("cloud_name", "yaz");
+
+    fetch("https://api.cloudinary.com/v1_1/yaz/image/upload", {
+      method: "post",
+      body: data,
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data) {
-
-          history.push("/Dashboardprofile");
-        }
+        setUrl(data.url);
+        setImageurl("");
       })
       .catch((err) => {
         console.log(err);
       });
+    setImageurl("");
   };
 
   useEffect(() => {
@@ -152,6 +177,16 @@ const UpdateProfile = () => {
                 maxLength="250"
               />
               <p>{about ? about.length : 0}/250</p>
+            </div>
+            <div className="form-group">
+              <label for="exampleInputPassword1" className="form-label">
+                Profile Picture
+              </label>
+              <input
+                type="file"
+                onChange={(e) => setImageurl(e.target.files[0])}
+                className="form-control"
+              />
             </div>
             <button
               type="submit"

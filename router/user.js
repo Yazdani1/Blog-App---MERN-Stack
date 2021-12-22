@@ -150,6 +150,7 @@ router.put("/update-profile-info/:id", requireLogin, (req, res) => {
       name: req.body.name,
       email: req.body.email,
       about: req.body.about,
+      photo: req.body.photo,
     },
   })
     .then((result) => {
@@ -213,7 +214,6 @@ router.post("/save-favouritepost", requireLogin, (req, res) => {
       }
     });
 });
-
 
 //to remove saved post
 

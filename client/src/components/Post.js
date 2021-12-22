@@ -95,19 +95,7 @@ const Post = () => {
       });
       setImageurl("");
 
-    // history.push("/myPost");
-    // const addItem = { title, des };
-    // try {
-    //   setData({ ...data, error: null });
-    //   await axios.post("/auth/post", addItem, {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-    //     },
-    //   });
-    //   history.push("/myPost");
-    // } catch (err) {
-    //   setData({ ...data, error: err.response.data.error });
-    // }
+
   };
 
   const showError = () => {

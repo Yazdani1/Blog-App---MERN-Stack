@@ -25,6 +25,11 @@ const userSchema = mongoose.Schema(
       },
     ],
 
+    photo: {
+      type: String,
+      required: true,
+    },
+
     message: [
       {
         text: String,
