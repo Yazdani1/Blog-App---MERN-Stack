@@ -4,6 +4,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineLike } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -11,37 +12,69 @@ import "react-quill/dist/quill.snow.css";
 const UpdateProfile = () => {
   const history = useHistory();
   const { id } = useParams();
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    about: "",
-  });
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [about, setAbout] = useState("");
+
+  // const [data, setData] = useState({
+  //   name: "",
+  //   email: "",
+  //   about: "",
+  // });
 
   // const [about, setAbout] = useState("");
 
-  const { name, email, about } = data;
-  const handleChange = (e) => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const dataSubmit = async (e) => {
-    e.preventDefault();
-    const addItem = { name, email, about };
-    try {
-      //   setData({ ...data, error: null });
-      await axios.put("/auth/update-profile-info/" + id, addItem, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-        },
-      });
+  // const { name, email, about } = data;
+  // const handleChange = (e) => {
+  //   setData({
+  //     ...data,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
+  // const dataSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const addItem = { name, email, about };
+  //   try {
+  //     //   setData({ ...data, error: null });
+  //     await axios.put("/auth/update-profile-info/" + id, addItem, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+  //       },
+  //     });
 
-      history.push("/Dashboardprofile");
-    } catch (err) {
-      //   setData({ ...data, error: err.response.data.error });
-    }
+  //     history.push("/Dashboardprofile");
+  //   } catch (err) {
+  //     //   setData({ ...data, error: err.response.data.error });
+  //   }
+  // };
+
+  const dataSubmit = (e) => {
+    e.preventDefault();
+    fetch("/auth/update-profile-info/" + id, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        about,
+      }),
+    })
+      .then((res) => res.JSON())
+      .then((data) => {
+        if (data) {
+          toast.success("Your have Successfully saved your changes!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   useEffect(() => {
     axios
       .get("/auth/update-user-profile/" + id, {
@@ -70,7 +103,7 @@ const UpdateProfile = () => {
                 type="text"
                 name="name"
                 value={name}
-                onChange={handleChange}
+                onChange={(e) => setName(e.target.name)}
                 className="form-control"
               />
             </div>
@@ -80,7 +113,7 @@ const UpdateProfile = () => {
                 type="text"
                 name="email"
                 value={email}
-                onChange={handleChange}
+                onChange={(e) => setEmail(e.target.email)}
                 className="form-control"
               />
             </div>
@@ -96,11 +129,11 @@ const UpdateProfile = () => {
                 type="text"
                 //onChange={(e) => setAbout(e.target.value)}
                 // name="des"
-                onChange={handleChange}
+                onChange={(e) => setAbout(e.target.about)}
                 value={about}
                 maxLength="250"
               />
-              <p>{about?about.length:0}/250</p>
+              <p>{about ? about.length : 0}/250</p>
             </div>
             <button
               type="submit"
@@ -112,6 +145,7 @@ const UpdateProfile = () => {
           </form>
         </div>
       </div>
+      <ToastContainer autoClose={8000} />
     </div>
   );
 };
