@@ -128,7 +128,7 @@ const AllpostSection = () => {
                 <div className="like-comments">
                   <div className="like-button-design">
                     <div className="like-icons">
-                      {item.likes.includes(user && user.user && user.user._id) ? (
+                      {item.likes.includes(user && user._id) ? (
                         <p onClick={() => loadunLikepost(item._id)}>
                           <AiFillLike size={20} />
                         </p>

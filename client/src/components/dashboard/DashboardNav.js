@@ -12,8 +12,9 @@ import { BsHeartFill } from "react-icons/bs";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { AiFillMessage } from "react-icons/ai";
 
+
 const DashboardNav = () => {
-  const [userdetails, setUserdetails] = useContext(UserContext);
+  const [userdetails,setUserdetails] = useContext(UserContext);
 
   const history = useHistory();
 
@@ -23,6 +24,7 @@ const DashboardNav = () => {
     history.push("/signin");
   };
 
+
   return (
     <div className="admin-nav-back">
       <div className="row">
@@ -30,13 +32,11 @@ const DashboardNav = () => {
           <div className="profile">
             <div className="profile-picture">
               <h4>
-                {userdetails &&
-                  userdetails.user &&
-                  userdetails.user.name?.substring(0, 2).toUpperCase()}
+                {userdetails && userdetails.name.substring(0, 2).toUpperCase()}
               </h4>
             </div>
             <h4 className="profile-name-navbar">
-              {userdetails && userdetails.user && userdetails.user.name}
+              {userdetails && userdetails.name}
             </h4>
           </div>
 
@@ -77,6 +77,8 @@ const DashboardNav = () => {
                 Messages
               </li>
             </Link>
+
+            
 
             <li>
               <RiSettings2Fill size={25} />

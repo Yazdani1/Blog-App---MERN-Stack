@@ -43,7 +43,7 @@ function Dashboard() {
   const [error, setError] = useState(false);
 
   //context api
-  const [state, setstate] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
   //for pagination state.. pagination for number
 
@@ -168,7 +168,7 @@ function Dashboard() {
               <div className="profile-items_design">
                 <MdCardMembership size={35} />
                 <p>Member Since</p>
-                <p>{moment(state && state.user && state.user.createdAt).format("MMMM Do YYYY")}</p>
+                <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
               </div>
             </div>
           </div>
@@ -189,7 +189,7 @@ function Dashboard() {
                 <AiFillMessage size={35} />
 
                 <div className="profile-message">
-                  <h5>{state && state.user && state.user.message?.length}</h5>
+                  <h5>{user && user.message?.length}</h5>
                   <Link to="/message">
                     <button className="btn btn-primary">View Messagees</button>
                   </Link>
@@ -232,7 +232,6 @@ function Dashboard() {
       
         </div>
       </div> */}
-      {JSON.stringify(state)}
       <div className="card container main_container">
         {/* <Allpost posts={mypost} /> */}
 
