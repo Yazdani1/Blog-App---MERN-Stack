@@ -84,9 +84,9 @@ router.post("/login", async (req, res) => {
 
     user.password = undefined;
 
-    //const {_id, name } = user;
+    // const { _id, name, email } = user;
 
-    return res.json({ token,user });
+    // return res.json({ token, user });
   } catch (err) {
     console.log(err);
   }

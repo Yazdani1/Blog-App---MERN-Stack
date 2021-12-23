@@ -15,9 +15,8 @@ const Message = () => {
         <div className="row">
           <div className="col-md-12">
             <div className="message-name">
-            
               {state &&
-                [...(state && state.user && state.user.message)]
+                [...(state && state.user && state.user?.message)]
                   .reverse()
                   .map((message, index) => (
                     <>
@@ -26,8 +25,8 @@ const Message = () => {
                           <div className="col-md-1">
                             <div className="message-name-circle">
                               <p>
-                                {state &&
-                                    state.user && state.user.message?.postedBy?.name?.substring(0, 2)
+                                {message && message?.postedBy?.name
+                                  ?.substring(0, 2)
                                   .toUpperCase()}
                               </p>
                             </div>
@@ -35,30 +34,17 @@ const Message = () => {
                           <div className="col-md-11">
                             <div className="user-fullname">
                               <Link
-                                to={
-                                  "/userprofile/" +
-                                  (state &&
-                                    state.user &&
-                                    state.user.message.postedBy?._id)
-                                }
+                                to={"/userprofile/" + message.postedBy?._id}
                                 style={{ textDecoration: "none" }}
                               >
-                                <h5>
-                                  {state &&
-                                    state.user &&
-                                   message?.postedBy?.name}
-                                </h5>
+                                <h5>{message && message.postedBy?.name}</h5>
                               </Link>
 
                               <p>
-                                {moment(
-                                  state && state.user && state.user.message.date
-                                ).format("lll")}
+                                {moment(message && message.date).format("lll")}
                               </p>
 
-                              <p>
-                                {state && state.user && state.user.message?.text}
-                              </p>
+                              <p>{message.text}</p>
 
                               {/* <Link to={"/userprofile/" + user._id}>
                               <span className="view-profile">View Profile</span>

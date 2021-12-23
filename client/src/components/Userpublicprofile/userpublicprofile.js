@@ -25,7 +25,7 @@ import { AiFillLike } from "react-icons/ai";
 const UserPublicProfile = () => {
   const [mypost, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useContext(UserContext);
+  const [state, setState] = useContext(UserContext);
 
   // const [mypost, setData] = useContext(UserProfileContext);
 
@@ -430,7 +430,9 @@ const UserPublicProfile = () => {
                         <div className="like-comments">
                           <div className="like-button-design">
                             <div className="like-icons">
-                              {item.likes.includes(user && user._id) ? (
+                              {item.likes.includes(
+                                state && state.user && state.user._id
+                              ) ? (
                                 <p
                                   onClick={() =>
                                     addunlikePost(item && item._id)
