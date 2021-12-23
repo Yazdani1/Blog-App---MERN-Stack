@@ -86,7 +86,7 @@ router.post("/login", async (req, res) => {
     // const { _id, name, email } = user;
 
     // return res.json({ token, user });
-     return res.json({ token, user});
+     return res.json({ token});
   } catch (err) {
     console.log(err);
   }

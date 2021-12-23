@@ -20,7 +20,7 @@ function SignIn() {
 
   const [loading, setLoading] = useState(false);
 
-  const [state, setState] = useContext(UserContext);
+  // const [state, setState] = useContext(UserContext);
 
   const { email, password, error } = data;
   const handleChange = (e) => {
@@ -43,13 +43,13 @@ function SignIn() {
           setData({ ...data, error: result.error });
           setLoading(false);
         } else {
-          setState({
-            user: result.user,
-            token: result.token,
-          });
+          // setState({
+          //   user: result.user,
+          //   token: result.token,
+          // });
 
-          // localStorage.setItem("tokenLogin", result.token);
-          window.localStorage.setItem("tokenLogin", JSON.stringify(result));
+          localStorage.setItem("tokenLogin", result.token);
+          // window.localStorage.setItem("tokenLogin", JSON.stringify(result));
 
           history.push("/Dashboard");
           setLoading(false);
