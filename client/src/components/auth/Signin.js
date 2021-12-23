@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 import Dashboard from "../dashboard/All Posts/Dashboard";
 import { signIn } from "./apiAuth";
+import { UserContext } from "../UserContext";
 
 import { SyncOutlined } from "@ant-design/icons";
 
@@ -18,6 +19,8 @@ function SignIn() {
   });
 
   const [loading, setLoading] = useState(false);
+
+  const [user, setUser] = useContext(UserContext);
 
   const { email, password, error } = data;
   const handleChange = (e) => {

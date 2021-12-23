@@ -25,6 +25,7 @@ export const UserProvider = (props) => {
       .then((data) => {
         if(data){
           setUser(data.data);
+          // localStorage.getItem("tokenLogin");
         }
       })
       .catch((err) => {

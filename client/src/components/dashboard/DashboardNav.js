@@ -32,11 +32,11 @@ const DashboardNav = () => {
           <div className="profile">
             <div className="profile-picture">
               <h4>
-                {userdetails && userdetails.name.substring(0, 2).toUpperCase()}
+                {userdetails && userdetails?.name?.substring(0, 2).toUpperCase()}
               </h4>
             </div>
             <h4 className="profile-name-navbar">
-              {userdetails && userdetails.name}
+              {userdetails && userdetails?.name}
             </h4>
           </div>
 
