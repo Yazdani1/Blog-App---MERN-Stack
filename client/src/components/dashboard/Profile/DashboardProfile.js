@@ -6,7 +6,7 @@ import { AiFillEdit } from "react-icons/ai";
 import ReactHtmlParser from "react-html-parser";
 
 const DashboardProfile = () => {
-  const [user, setUser] = useContext(UserContext);
+  const [state, setState] = useContext(UserContext);
 
   return (
     <>
@@ -15,16 +15,22 @@ const DashboardProfile = () => {
           <div className="col-md-10">
             <div className="profile-name">
               <div className="profile-avatar">
-                <p>{user && user.name.substring(0, 2).toUpperCase()}</p>
+                <p>
+                  {state &&
+                    state.user &&
+                    state.user?.name?.substring(0, 2).toUpperCase()}
+                </p>
               </div>
               <div className="profile-user-name">
-                <p>{user && user.name}</p>
-                <p>{user && user.email}</p>
+                <p>{state && state.user && state.user.name}</p>
+                <p>{state && state.user && state.user.email}</p>
               </div>
             </div>
           </div>
           <div className="col-md-2 edit-button">
-            <Link to={"/update-profile/" + (user && user._id)}>
+            <Link
+              to={"/update-profile/" + (state && state.user && state.user._id)}
+            >
               <h5>
                 <AiFillEdit size={20} />
                 Edit
@@ -56,8 +62,12 @@ const DashboardProfile = () => {
             <div className="user-about-page">
               <h5>About Me</h5>
               <hr />
-              {user && user.about ? (
-                <p>{ReactHtmlParser(user && user.about)}</p>
+              {state &&
+                    state.user &&
+                    state.user.about ? (
+                <p>
+                  {ReactHtmlParser(state && state.user && state.user.about)}
+                </p>
               ) : (
                 "You did not add anything about yourself! Update your profile."
               )}

@@ -82,9 +82,11 @@ router.post("/login", async (req, res) => {
       expiresIn: "24h",
     });
 
+    user.password = undefined;
+
     //const {_id, name } = user;
 
-    return res.json({ token });
+    return res.json({ token,user });
   } catch (err) {
     console.log(err);
   }

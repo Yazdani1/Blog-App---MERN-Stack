@@ -113,6 +113,9 @@ function SignUp() {
     );
   };
 
+  if (window.localStorage.getItem("tokenLogin")) {
+    history.push("/Dashboard");
+  }
   return (
     <div className="container">
       <div className="row justify-content-center align-items-center">
