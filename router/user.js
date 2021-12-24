@@ -37,7 +37,7 @@ router.post("/register", async (req, res) => {
     if (user) {
       return res.status(400).json({ errort: "User already exist" });
     }
-    const hash_password = await bcrypt.hash(password, 12);
+    const hash_password = await bcrypt.hash(password, 10);
 
     user = new User({
       name,
@@ -45,12 +45,12 @@ router.post("/register", async (req, res) => {
       password: hash_password,
     });
     await user.save().then((registerData) => {
-      transporter.sendMail({
-        to: registerData.email,
-        from: "shaon1132@gmail.com",
-        subject: "Signup Success",
-        html: "<h1>Welcome to this blog site. You have become a member</h1>",
-      });
+      // transporter.sendMail({
+      //   to: registerData.email,
+      //   from: "shaon1132@gmail.com",
+      //   subject: "Signup Success",
+      //   html: "<h1>Welcome to this blog site. You have become a member</h1>",
+      // });
       res.json(registerData);
     });
     return res.status(201).json({ message: "User created successfully" });

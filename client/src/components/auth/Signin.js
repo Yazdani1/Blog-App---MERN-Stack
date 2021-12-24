@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./auth.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -102,6 +102,30 @@ function SignIn() {
     history.push("/Dashboard");
   }
 
+  //useRef for focus on the input fields.
+
+  const emailRef = useRef(null);
+  const passworRef = useRef(null);
+  const submitButtonRef = useRef(null);
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+
+  const emailKeyDown = (e) => {
+    if (e.key === "Enter") {
+      passworRef.current.focus();
+    }
+  };
+
+  const passwordKeyDown = (e) => {
+    if (e.key === "Enter") {
+      submitButtonRef.current.focus();
+    }
+  };
+
+  // const buttonKeyDown = () => {};
+
   return (
     <>
       <div className="container">
@@ -121,6 +145,8 @@ function SignIn() {
                 <div className="form-group">
                   <input
                     type="text"
+                    onKeyDown={emailKeyDown}
+                    ref={emailRef}
                     name="email"
                     value={email}
                     onChange={handleChange}
@@ -131,6 +157,8 @@ function SignIn() {
                 <div className="form-group">
                   <input
                     type="password"
+                    onKeyDown={passwordKeyDown}
+                    ref={passworRef}
                     name="password"
                     value={password}
                     className="form-control"
@@ -142,6 +170,8 @@ function SignIn() {
                 <div class="form-group justify-content-center align-items-center">
                   <button
                     type="submit"
+                    // onKeyDown={buttonKeyDown}
+                    ref={submitButtonRef}
                     name="btnSubmit"
                     className="btnContact"
                     value="Sign In"
