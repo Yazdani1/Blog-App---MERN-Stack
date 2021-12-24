@@ -303,7 +303,7 @@ function Dashboard() {
         {mypost.length > 1 ? (
           <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
         ) : (
-          "No Posts so far"
+          null
         )}
       </div>
     </>

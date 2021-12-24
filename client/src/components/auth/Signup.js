@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -116,6 +116,40 @@ function SignUp() {
   if (window.localStorage.getItem("tokenLogin")) {
     history.push("/Dashboard");
   }
+
+
+    //useRef for focus on the input fields.
+
+    const nameRef = useRef(null);
+    const emailRef = useRef(null);
+    const passworRef = useRef(null);
+    const submitButtonRef = useRef(null);
+  
+    useEffect(() => {
+      nameRef.current.focus();
+    }, []);
+
+    const nameKeyDown = (e) => {
+      if (e.key === "Enter") {
+        emailRef.current.focus();
+      }
+    };
+
+  
+    const emailKeyDown = (e) => {
+      if (e.key === "Enter") {
+        passworRef.current.focus();
+      }
+    };
+  
+    const passwordKeyDown = (e) => {
+      if (e.key === "Enter") {
+        submitButtonRef.current.focus();
+      }
+    };
+
+
+
   return (
     <div className="container">
       <div className="row justify-content-center align-items-center">
@@ -135,6 +169,9 @@ function SignUp() {
               <div className="form-group">
                 <input
                   type="text"
+                  onKeyDown={nameKeyDown}
+                  ref={nameRef}
+                 
                   name="name"
                   className="form-control"
                   placeholder="Your Name *"
@@ -145,6 +182,8 @@ function SignUp() {
               <div className="form-group">
                 <input
                   type="text"
+                  onKeyDown={emailKeyDown}
+                  ref={emailRef}
                   name="email"
                   value={email}
                   onChange={handleChange}
@@ -155,6 +194,8 @@ function SignUp() {
               <div className="form-group">
                 <input
                   type="password"
+                  onKeyDown={passwordKeyDown}
+                  ref={passworRef}
                   name="password"
                   value={password}
                   className="form-control"
@@ -166,6 +207,7 @@ function SignUp() {
               <div class="form-group justify-content-center align-items-center">
                 <button
                   type="submit"
+                  ref={submitButtonRef}
                   name="btnSubmit"
                   className="btnContact"
                   value="Sign In"
