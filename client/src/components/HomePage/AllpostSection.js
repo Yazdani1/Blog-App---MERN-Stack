@@ -93,7 +93,14 @@ const AllpostSection = () => {
         {currentPosts.map((item, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <div className="card main-card">
-              <img src={item.photo} className="favpurite-post-image" />
+              <div className="favpurite-post-image">
+                <img src={item.photo} />
+            
+                  {item.likes?.length >= 4 ? (
+                    <p className="trending">Trending</p>
+                  ) : null}
+              
+              </div>
               <div className="fav-post-text-item">
                 <Link
                   to={"/userprofile/" + item.postedBy._id}
@@ -124,6 +131,10 @@ const AllpostSection = () => {
                 >
                   <p>{item.title}</p>
                 </Link>
+
+                {item.likes?.length >= 4 ? (
+                  <p className="trending">Trending</p>
+                ) : null}
 
                 <div className="like-comments">
                   <div className="like-button-design">

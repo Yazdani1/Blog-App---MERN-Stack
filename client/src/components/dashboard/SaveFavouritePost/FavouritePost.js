@@ -44,7 +44,7 @@ const FavouritePost = () => {
                     to={"/details/" + item._id}
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <p>{item.title}</p>
+                    <p>{item.title.substring(0,55)}</p>
                   </Link>
                   <p>{moment(item.date).format("MMMM Do YYYY")}</p>
 

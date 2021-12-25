@@ -268,7 +268,7 @@ const DetailsPage = () => {
       <div className="main_details">
         <div className="container">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-lg-6 col-md-6 col-sm-12">
               <div className="details-post card">
                 {/* <button onClick={() => history.goBack()}>Go Back</button> */}
                 <img
@@ -491,7 +491,7 @@ const DetailsPage = () => {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-lg-6 col-md-6 col-sm-12">
               <LatestpostDetailspage />
             </div>
           </div>
