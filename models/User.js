@@ -25,6 +25,13 @@ const userSchema = mongoose.Schema(
       },
     ],
 
+    mycomments: [
+      {
+        type: ObjectId,
+        ref: "Post",
+      },
+    ],
+
     photo: {
       type: String,
       // required: true,

@@ -235,6 +235,12 @@ router.put("/remove-favouritepost", requireLogin, (req, res) => {
     });
 });
 
+//End remove comments
+
+
+
+
+
 // router.get("/get-favouritepost", requireLogin, (req, res) => {
 //   // var getUser = { _id: req.params.id };
 

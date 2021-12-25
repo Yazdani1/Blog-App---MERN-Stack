@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import ReactHtmlParser from "react-html-parser";
-import "./favouritePost.css";
+import "../SaveFavouritePost/favouritePost.css";
 import moment from "moment";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,10 +8,10 @@ import { AiFillLike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 
-import { removePostfromWishlist } from "./ApiFavourite";
+import { removePostfromWishlist } from "../SaveFavouritePost/ApiFavourite";
 import { UserContext } from "../../UserContext";
 
-const FavouritePost = () => {
+const MyComments = () => {
   const [user, setUser] = useContext(UserContext);
 
   const loadRemovefavouritepost = (e, userID, postID) => {
@@ -108,4 +108,4 @@ const FavouritePost = () => {
     </div>
   );
 };
-export default FavouritePost;
+export default MyComments;

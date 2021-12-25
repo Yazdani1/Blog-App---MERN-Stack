@@ -12,9 +12,7 @@ import { BsHeartFill } from "react-icons/bs";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { AiFillMessage } from "react-icons/ai";
 import { GiRamProfile } from "react-icons/gi";
-
-
-
+import { MdQuestionAnswer } from "react-icons/md";
 
 const DashboardNav = () => {
   const [userdetails, setUserdetails] = useContext(UserContext);
@@ -79,6 +77,13 @@ const DashboardNav = () => {
               <li>
                 <BsHeartFill size={25} />
                 Favourite
+              </li>
+            </Link>
+
+            <Link to="/my-comments" style={{ textDecoration: "none" }}>
+              <li>
+                <MdQuestionAnswer size={25} />
+                My Comments
               </li>
             </Link>
 

@@ -23,90 +23,90 @@ import FavouritePost from "./components/dashboard/SaveFavouritePost/FavouritePos
 import { UserProfileProvider } from "./components/UserprofileContext";
 import Message from "./components/dashboard/message/Message";
 import UserPublicProfile from "./components/Userpublicprofile/userpublicprofile";
+import MyComments from "./components/dashboard/MyComments/Mycomments";
 
 function App() {
   return (
+    <UserProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/details/:id" exact>
+            <ProtectedRoute procomp={Details} />
+          </Route>
 
-      <UserProvider>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/details/:id" exact  >
-              <ProtectedRoute procomp={Details} />
-            </Route>
-
-            <Route path="/userprofile/:id" exact>
-              <ProtectedRoute procomp={UserPublicProfile} />
-            </Route>
-            {/* <Route path="/editpost/:id">
+          <Route path="/userprofile/:id" exact>
+            <ProtectedRoute procomp={UserPublicProfile} />
+          </Route>
+          {/* <Route path="/editpost/:id">
             <ProtectedRoute procomp={Edit} />
           </Route> */}
 
-            <Route path="/" exact>
-              <ProtectedRoute procomp={Home} />
-            </Route>
+          <Route path="/" exact>
+            <ProtectedRoute procomp={Home} />
+          </Route>
 
-            <Route path="/postannouncement" exact>
-              <ProtectedRoute procomp={Postaccouncement} />
-            </Route>
+          <Route path="/postannouncement" exact>
+            <ProtectedRoute procomp={Postaccouncement} />
+          </Route>
 
-            <Route path="/signup">
-              <ProtectedRoute procomp={Signup} />
-            </Route>
+          <Route path="/signup">
+            <ProtectedRoute procomp={Signup} />
+          </Route>
 
-            <Route path="/signin">
-              <ProtectedRoute procomp={SignIn} />
-            </Route>
+          <Route path="/signin">
+            <ProtectedRoute procomp={SignIn} />
+          </Route>
 
-            {/* <Route path="/post">
+          {/* <Route path="/post">
             <ProtectedRoute procomp={Post} />
           </Route> */}
 
-            {/* //admin protected route */}
+          {/* //admin protected route */}
 
-            <Route path="/Dashboard" exact>
-              <DashboardprotectedRoute Dashboardprocomp={Dashboard} />
-            </Route>
+          <Route path="/Dashboard" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Dashboard} />
+          </Route>
 
-            <Route path="/createpost" exact>
-              <DashboardprotectedRoute Dashboardprocomp={Post} />
-            </Route>
-            <Route path="/editpost/:id" exact>
-              <DashboardprotectedRoute Dashboardprocomp={Edit} />
-            </Route>
-            <Route path="/Dashboardprofile" exact>
-              <DashboardprotectedRoute Dashboardprocomp={DashboardProfile} />
-            </Route>
+          <Route path="/createpost" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Post} />
+          </Route>
+          <Route path="/editpost/:id" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Edit} />
+          </Route>
+          <Route path="/Dashboardprofile" exact>
+            <DashboardprotectedRoute Dashboardprocomp={DashboardProfile} />
+          </Route>
 
-            <Route path="/profile" exact>
-              <DashboardprotectedRoute Dashboardprocomp={Profile} />
-            </Route>
+          <Route path="/profile" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Profile} />
+          </Route>
 
-            <Route path="/update-profile/:id" exact>
-              <DashboardprotectedRoute Dashboardprocomp={UpdateProfile} />
-            </Route>
+          <Route path="/update-profile/:id" exact>
+            <DashboardprotectedRoute Dashboardprocomp={UpdateProfile} />
+          </Route>
 
-            <Route path="/AddExperience" exact>
-              <DashboardprotectedRoute Dashboardprocomp={AddExperience} />
-            </Route>
+          <Route path="/AddExperience" exact>
+            <DashboardprotectedRoute Dashboardprocomp={AddExperience} />
+          </Route>
 
-            <Route path="/message" exact>
-              <DashboardprotectedRoute Dashboardprocomp={Message} />
-            </Route>
+          <Route path="/message" exact>
+            <DashboardprotectedRoute Dashboardprocomp={Message} />
+          </Route>
 
+          <Route path="/favourite" exact>
+            <DashboardprotectedRoute Dashboardprocomp={FavouritePost} />
+          </Route>
 
-            
+          <Route path="/my-comments" exact>
+            <DashboardprotectedRoute Dashboardprocomp={MyComments} />
+          </Route>
 
-            <Route path="/favourite" exact>
-              <DashboardprotectedRoute Dashboardprocomp={FavouritePost} />
-            </Route>
+          {/* <Redirect exact from="/Dashboard/reload" to="/Dashboard" /> */}
 
-            {/* <Redirect exact from="/Dashboard/reload" to="/Dashboard" /> */}
-
-            <Route path="*" exact component={PagenotFound} />
-          </Switch>
-        </BrowserRouter>
-      </UserProvider>
- 
+          <Route path="*" exact component={PagenotFound} />
+        </Switch>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
