@@ -27,7 +27,7 @@ const userSchema = mongoose.Schema(
 
     photo: {
       type: String,
-      //required: true,
+      // required: true,
     },
 
     message: [

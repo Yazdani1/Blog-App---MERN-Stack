@@ -140,7 +140,7 @@ router.get("/details/:id", (req, res) => {
   var detailsQuery = { _id: req.params.id };
   Post.findOne(detailsQuery)
     .populate("postedBy", "_id name photo")
-    .populate("comments.postedBy", "_id name")
+    .populate("comments.postedBy", "_id name photo")
     .then((detailspost) => {
       res.json({ detailspost: detailspost });
     })
@@ -215,8 +215,8 @@ router.put("/comments", requireLogin, (req, res) => {
       new: true,
     }
   )
-    .populate("comments.postedBy", "_id name")
-    .populate("postedBy", "_id name")
+    .populate("comments.postedBy", "_id name photo")
+    .populate("postedBy", "_id name photo")
 
     .exec((err, result) => {
       if (err) {

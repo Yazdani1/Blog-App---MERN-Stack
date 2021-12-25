@@ -396,7 +396,14 @@ const UserPublicProfile = () => {
                 {mypost.postsData.map((item, index) => (
                   <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
                     <div className="card main-card">
-                      <img src={item.photo} className="favpurite-post-image" />
+                      <div className="favpurite-post-image">
+                        <img src={item.photo} />
+
+                        {item.likes?.length >= 4 ? (
+                          <p className="trending">Trending</p>
+                        ) : null}
+                      </div>
+                      {/* <img src={item.photo} className="favpurite-post-image" /> */}
                       <div className="fav-post-text-item">
                         <div className="profile-name-date">
                           {item?.postedBy?.photo ? (

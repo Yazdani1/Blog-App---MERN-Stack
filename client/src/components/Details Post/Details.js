@@ -278,6 +278,9 @@ const DetailsPage = () => {
                   className="det_posssst_image"
                   width="100%"
                 />
+                {dataItem.likes?.length >= 4 ? (
+                  <p className="trending-details">Trending</p>
+                ) : null}
                 <div className="details-postDesign">
                   <div className="row">
                     <div className="col-lg-8 col-md-4 col-sm-12">
@@ -450,6 +453,32 @@ const DetailsPage = () => {
                                 }}
                               >
                                 <div className="profile-name-date">
+                                  {allcomments.postedBy.photo ? (
+                                    <div className="profile-name-avatar-image">
+                                      <img src={allcomments && allcomments.postedBy.photo}/>
+                                    </div>
+                                  ) : (
+                                    <div className="profile-name-avatar">
+                                      <p>
+                                        {allcomments.postedBy.name
+                                          .substring(0, 2)
+                                          .toUpperCase()}
+                                      </p>
+                                    </div>
+                                  )}
+
+                                  <div className="profile-name-post-date">
+                                    <p className="profile-name-size">
+                                      {allcomments.postedBy.name}
+                                    </p>
+                                    <p>
+                                      {moment(allcomments && allcomments.date).format("MMMM Do YYYY")}
+                                    </p>
+                                  </div>
+                                </div>
+
+                                {/*                                 
+                                <div className="profile-name-date">
                                   <div className="profile-name-avatar">
                                     <p>
                                       {allcomments.postedBy.name
@@ -467,7 +496,7 @@ const DetailsPage = () => {
                                       ).format("MMMM Do YYYY")}
                                     </p>
                                   </div>
-                                </div>
+                                </div> */}
                               </Link>
                               <p>{allcomments.text}</p>
                               <p>
@@ -483,6 +512,8 @@ const DetailsPage = () => {
                                   </div>
                                 )}
                               </p>
+
+                           
                             </div>
                           </>
                         );

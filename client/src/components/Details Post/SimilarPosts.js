@@ -81,7 +81,14 @@ const SimilarPosts = () => {
         {similarposts?.map((item, index) => (
           <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <div className="card main-card">
-              <img src={item.photo} className="favpurite-post-image" />
+              <div className="favpurite-post-image">
+                <img src={item.photo} />
+
+                {item.likes?.length >= 4 ? (
+                  <p className="trending">Trending</p>
+                ) : null}
+              </div>
+              {/* <img src={item.photo} className="favpurite-post-image" /> */}
               <div className="fav-post-text-item">
                 <Link
                   to={"/userprofile/" + item.postedBy._id}
@@ -105,6 +112,8 @@ const SimilarPosts = () => {
                       <p>{moment(item.date).format("MMMM Do YYYY")}</p>
                     </div>
                   </div>
+
+                  
                 </Link>
                 <Link
                   to={"/details/" + item._id}
