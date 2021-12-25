@@ -123,7 +123,10 @@ router.get("/", requireLogin, async (req, res) => {
       .select("-password")
       .populate("message.postedBy", "_id name email photo")
       .populate("favourite", "_id des title likes comments photo date postedBy")
-      .populate("favourite.postedBy", "_id name");
+      .populate(
+        "mycomments",
+        "_id des title likes comments photo date postedBy"
+      );
 
     res.json(user);
   } catch (err) {
@@ -237,38 +240,35 @@ router.put("/remove-favouritepost", requireLogin, (req, res) => {
 
 //End remove comments
 
+//my comments route
 
+router.post("/mycomments", requireLogin, (req, res) => {
+  const { postID } = req.body;
 
+  User.findByIdAndUpdate(req.user._id, {
+    $addToSet: { mycomments: postID },
+  }).exec((err, result) => {
+    if (err) {
+      return res.status(400).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
+});
 
+router.put("/remove-mycomments", requireLogin, (req, res) => {
+  const { postID } = req.body;
 
-// router.get("/get-favouritepost", requireLogin, (req, res) => {
-//   // var getUser = { _id: req.params.id };
-
-//   User.findOne(req.user._id)
-//     // .select("favourite")
-//     .populate("favourite", "_id des")
-//     .exec((err, result) => {
-//       if (err) {
-//         return res.status(400).json({ error: err });
-//       } else {
-//         res.json(result);
-//       }
-//     });
-// });
-
-// router.put("/update-favouritepost/:postID", (req, res) => {
-//   User.findByIdAndUpdate(req.user._id, {
-//     $pull: { favourite: req.params.postID },
-//   }).exec((err, result) => {
-//     if (err) {
-//       return res.status(400).json({ error: err });
-//     } else {
-//       res.json(result);
-//     }
-//   });
-// });
-
-//end wish list route
+  User.findByIdAndUpdate(req.user._id, {
+    $pull: { mycomments: postID },
+  }).exec((err, result) => {
+    if (err) {
+      return res.status(400).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
+});
 
 //message route for sending message to the user.
 

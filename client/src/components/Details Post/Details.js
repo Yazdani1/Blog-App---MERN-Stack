@@ -29,6 +29,7 @@ import { Spin } from "antd";
 import "./details.css";
 import { MdDelete } from "react-icons/md";
 import Footer from "../Footer/footer";
+import { Savemycomments } from "../dashboard/MyComments/Apimycomments";
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -207,6 +208,21 @@ const DetailsPage = () => {
       });
 
     console.log(postId, text);
+  };
+
+  //my comments save to my user profile
+
+  const savemyComments = (e, postID) => {
+    e.preventDefault();
+    Savemycomments(postID)
+      .then((data) => {
+        if (data) {
+          console.log("cooment with post is saved");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // const addtoWishlist = (e, userID, postID) => {
@@ -413,12 +429,13 @@ const DetailsPage = () => {
                       <div class="form-group">
                         <button
                           className="btn btn-success"
+                          disabled={!text}
                           onClick={(e) => {
                             if (!localStorage.getItem("tokenLogin")) {
                               history.push("/signin");
                             } else {
                               postComment(e, dataItem._id);
-                              loadAddtowishlist(e, dataItem._id);
+                              savemyComments(e, dataItem._id);
                             }
                           }}
                         >

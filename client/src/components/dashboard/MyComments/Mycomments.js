@@ -10,13 +10,14 @@ import { FaRegCommentDots } from "react-icons/fa";
 
 import { removePostfromWishlist } from "../SaveFavouritePost/ApiFavourite";
 import { UserContext } from "../../UserContext";
+import { removemycommentsPost } from "./Apimycomments";
 
 const MyComments = () => {
   const [user, setUser] = useContext(UserContext);
 
-  const loadRemovefavouritepost = (e, userID, postID) => {
+  const loadRemovemycommentpost = (e, postID) => {
     e.preventDefault();
-    removePostfromWishlist(userID, postID)
+    removemycommentsPost(postID)
       .then((data) => {
         if (data) {
           toast.success("This post has been removed!", {
@@ -30,14 +31,17 @@ const MyComments = () => {
   };
 
   return (
-    <div className="container" style={{ maxHeight: "1000px", overflow: "scroll" }}>
-      <h5>Favourite Posts: {user && user?.favourite?.length}</h5>
+    <div
+      className="container"
+      style={{ maxHeight: "1000px", overflow: "scroll" }}
+    >
+      <h5>Posted comments: {user && user?.mycomments?.length}</h5>
 
       <div className="row">
-        {user.favourite &&
-          [...user?.favourite].reverse().map((item, index) => (
+        {user.mycomments &&
+          [...user?.mycomments].reverse().map((item, index) => (
             <div className="col-lg-6 col-md-6 col-sm-12 col-xl-4" key={index}>
-              <div className="card main-card-favourite" >
+              <div className="card main-card-favourite">
                 <img src={item.photo} className="favpurite-post-image" />
                 <div className="fav-post-text-item">
                   <Link
@@ -92,9 +96,7 @@ const MyComments = () => {
 
                   <button
                     className="btn btn-danger"
-                    onClick={(e) =>
-                      loadRemovefavouritepost(e, user && user._id, item._id)
-                    }
+                    onClick={(e) => loadRemovemycommentpost(e, item._id)}
                   >
                     Remove
                   </button>
