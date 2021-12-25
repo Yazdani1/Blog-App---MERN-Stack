@@ -193,6 +193,21 @@ router.put("/unlike", requireLogin, (req, res) => {
     });
 });
 
+//To get all the posts where user did comments..
+
+router.get("/mycomments", requireLogin, (req, res) => {
+  Post.find({ comments: { postedBy: req.user._id } })
+    .sort({ date: "DESC" })
+    .populate("postedBy", "_id name photo")
+    .populate("comments.postedBy", "_id name photo")
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      return res.status(422).json({ error: err });
+    });
+});
+
 //comments route
 
 router.put("/comments", requireLogin, (req, res) => {

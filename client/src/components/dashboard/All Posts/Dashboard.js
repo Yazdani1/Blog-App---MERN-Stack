@@ -262,6 +262,10 @@ function Dashboard() {
                     </td>
                     <td>{item.title.substring(0, 30)}</td>
                     <td>{ReactHtmlParser(item.des.substring(0, 80))}</td>
+                    {/* to loops the post comment in the admin dashboard */}
+                    {/* <td>{item.comments.map(c=>(
+                      <h1>{c.text}</h1>
+                    ))}</td> */}
 
                     <td>
                       <Link to={"/details/" + item._id}>
@@ -306,6 +310,7 @@ function Dashboard() {
           null
         )}
       </div>
+      
     </>
   );
 }
