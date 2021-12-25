@@ -91,7 +91,7 @@ const AllpostSection = () => {
 
       <div className="row">
         {currentPosts.map((item, index) => (
-          <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
+          <div className="col-lg-4 col-md-6 col-sm-12 col-xl-3" key={index}>
             <div className="card main-card">
               <div className="favpurite-post-image">
                 <img src={item.photo} />
@@ -126,7 +126,7 @@ const AllpostSection = () => {
                   </div>
 
 
-                  
+
                 </Link>
                 <Link
                   to={"/details/" + item._id}

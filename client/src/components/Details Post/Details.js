@@ -283,7 +283,7 @@ const DetailsPage = () => {
                 ) : null}
                 <div className="details-postDesign">
                   <div className="row">
-                    <div className="col-lg-8 col-md-4 col-sm-12">
+                    <div className="col-lg-12 col-md-12 col-sm-12 col-xl-8">
                       <Link
                         to={"/userprofile/" + dataItem.postedBy?._id}
                         style={{ textDecoration: "none", color: "black" }}
@@ -317,7 +317,7 @@ const DetailsPage = () => {
                       </Link>
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-lg-12 col-md-12 col-sm-12 col-xl-4">
                       <div className="details-post-likes">
                         <div className="like-buttondesign">
                           {dataItem &&
@@ -393,7 +393,7 @@ const DetailsPage = () => {
               <div className="comments card">
                 <form>
                   <div className="row">
-                    <div className="col-lg-9 col-md-12 col-sm-12">
+                    <div className="col-lg-12 col-md-12 col-sm-12 col-xl-8">
                       {showSuccess()}
                       {showError()}
 
@@ -409,7 +409,7 @@ const DetailsPage = () => {
                       </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-12 col-sm-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-3">
                       <div class="form-group">
                         <button
                           className="btn btn-success"
