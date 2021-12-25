@@ -11,6 +11,10 @@ import { Link, useHistory } from "react-router-dom";
 import { BsHeartFill } from "react-icons/bs";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { AiFillMessage } from "react-icons/ai";
+import { GiRamProfile } from "react-icons/gi";
+
+
+
 
 const DashboardNav = () => {
   const [userdetails, setUserdetails] = useContext(UserContext);
@@ -91,7 +95,7 @@ const DashboardNav = () => {
               style={{ textDecoration: "none" }}
             >
               <li>
-                <AiFillMessage size={25} />
+                <GiRamProfile size={25} />
                 Public Profile
               </li>
             </Link>
