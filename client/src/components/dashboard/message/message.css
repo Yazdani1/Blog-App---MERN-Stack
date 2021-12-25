@@ -37,6 +37,20 @@
     text-align: center;
     position: relative; /*makes left effective*/
   }
+
+  .message-image-circle {
+    height: 40px;
+    width: 40px;
+    background-color: black;
+    border-radius: 90px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    object-fit: cover;
+
+    position: relative; /*makes left effective*/
+  }
   
   .message-name-circle p {
   

@@ -41,6 +41,23 @@
   margin-top: 20px;
 }
 
+
+.profile-picture-image {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  border-radius: 90px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  left: 40%;
+  position: relative;
+  margin-top: 20px;
+  object-fit: cover;
+
+}
+
 .profile-picture h4 {
   height: 100px;
   width: 100px;

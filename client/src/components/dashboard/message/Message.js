@@ -11,29 +11,32 @@ const Message = () => {
 
   return (
     <div className="card message-main-section">
-    
-
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-      
             <div className="message-name">
-            <h5>All Messages: {usermessage.message?.length}</h5>
+              <h5>All Messages: {usermessage.message?.length}</h5>
               {usermessage &&
                 [...usermessage.message].reverse().map((message, index) => (
                   <>
                     <div className="message-body" key={index}>
-                    
                       <div className="row">
                         <div className="col-md-1">
-                          <div className="message-name-circle">
-                            <p>
-                              {message &&
-                                message?.postedBy?.name
-                                  .substring(0, 2)
-                                  .toUpperCase()}
-                            </p>
-                          </div>
+                          {usermessage && usermessage.photo ? (
+                            <img
+                              src={usermessage && usermessage.photo}
+                              className="message-image-circle"
+                            />
+                          ) : (
+                            <div className="message-name-circle">
+                              <p>
+                                {message &&
+                                  message?.postedBy?.name
+                                    .substring(0, 2)
+                                    .toUpperCase()}
+                              </p>
+                            </div>
+                          )}
                         </div>
                         <div className="col-md-11">
                           <div className="user-fullname">

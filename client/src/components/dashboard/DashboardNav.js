@@ -12,9 +12,8 @@ import { BsHeartFill } from "react-icons/bs";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { AiFillMessage } from "react-icons/ai";
 
-
 const DashboardNav = () => {
-  const [userdetails,setUserdetails] = useContext(UserContext);
+  const [userdetails, setUserdetails] = useContext(UserContext);
 
   const history = useHistory();
 
@@ -24,17 +23,25 @@ const DashboardNav = () => {
     history.push("/signin");
   };
 
-
   return (
     <div className="admin-nav-back">
       <div className="row">
         <div className="col-md-10">
           <div className="profile">
-            <div className="profile-picture">
-              <h4>
-                {userdetails && userdetails.name.substring(0, 2).toUpperCase()}
-              </h4>
-            </div>
+            {userdetails && userdetails.photo ? (
+              <img
+                src={userdetails && userdetails.photo}
+                className="profile-picture-image"
+              />
+            ) : (
+              <div className="profile-picture">
+                <h4>
+                  {userdetails &&
+                    userdetails.name.substring(0, 2).toUpperCase()}
+                </h4>
+              </div>
+            )}
+
             <h4 className="profile-name-navbar">
               {userdetails && userdetails.name}
             </h4>
@@ -78,12 +85,17 @@ const DashboardNav = () => {
               </li>
             </Link>
 
-            
+            <Link
+              target={"_blank"}
+              to={"/userprofile/" + (userdetails && userdetails._id)}
+              style={{ textDecoration: "none" }}
+            >
+              <li>
+                <AiFillMessage size={25} />
+                Public Profile
+              </li>
+            </Link>
 
-            <li>
-              <RiSettings2Fill size={25} />
-              Setting
-            </li>
             <li className="logout" onClick={logOut}>
               <p>
                 {" "}

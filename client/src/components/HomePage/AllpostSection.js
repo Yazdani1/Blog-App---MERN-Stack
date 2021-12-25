@@ -124,6 +124,9 @@ const AllpostSection = () => {
                       <p>{moment(item.date).format("MMMM Do YYYY")}</p>
                     </div>
                   </div>
+
+
+                  
                 </Link>
                 <Link
                   to={"/details/" + item._id}

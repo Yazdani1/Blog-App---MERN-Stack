@@ -123,7 +123,7 @@ router.get("/", requireLogin, async (req, res) => {
     const user = await User.findById(req.user._id)
 
       .select("-password")
-      .populate("message.postedBy", "_id name email")
+      .populate("message.postedBy", "_id name email photo")
       .populate("favourite", "_id des title likes comments photo date");
 
     res.json(user);
