@@ -418,6 +418,7 @@ const DetailsPage = () => {
                               history.push("/signin");
                             } else {
                               postComment(e, dataItem._id);
+                              loadAddtowishlist(e, dataItem._id);
                             }
                           }}
                         >
@@ -455,7 +456,12 @@ const DetailsPage = () => {
                                 <div className="profile-name-date">
                                   {allcomments.postedBy.photo ? (
                                     <div className="profile-name-avatar-image">
-                                      <img src={allcomments && allcomments.postedBy.photo}/>
+                                      <img
+                                        src={
+                                          allcomments &&
+                                          allcomments.postedBy.photo
+                                        }
+                                      />
                                     </div>
                                   ) : (
                                     <div className="profile-name-avatar">
@@ -472,7 +478,9 @@ const DetailsPage = () => {
                                       {allcomments.postedBy.name}
                                     </p>
                                     <p>
-                                      {moment(allcomments && allcomments.date).format("MMMM Do YYYY")}
+                                      {moment(
+                                        allcomments && allcomments.date
+                                      ).format("MMMM Do YYYY")}
                                     </p>
                                   </div>
                                 </div>
@@ -512,8 +520,6 @@ const DetailsPage = () => {
                                   </div>
                                 )}
                               </p>
-
-                           
                             </div>
                           </>
                         );

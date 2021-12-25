@@ -82,11 +82,10 @@ router.post("/login", async (req, res) => {
       expiresIn: "24h",
     });
 
-
     // const { _id, name, email } = user;
 
     // return res.json({ token, user });
-     return res.json({ token});
+    return res.json({ token });
   } catch (err) {
     console.log(err);
   }
@@ -121,10 +120,10 @@ router.get("/", requireLogin, async (req, res) => {
   console.log(req.user);
   try {
     const user = await User.findById(req.user._id)
-
       .select("-password")
       .populate("message.postedBy", "_id name email photo")
-      .populate("favourite", "_id des title likes comments photo date");
+      .populate("favourite", "_id des title likes comments photo date postedBy")
+      .populate("favourite.postedBy", "_id name");
 
     res.json(user);
   } catch (err) {

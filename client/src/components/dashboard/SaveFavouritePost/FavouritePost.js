@@ -8,7 +8,7 @@ import { AiFillLike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 
-import {removePostfromWishlist } from "./ApiFavourite";
+import { removePostfromWishlist } from "./ApiFavourite";
 import { UserContext } from "../../UserContext";
 
 const FavouritePost = () => {
@@ -36,19 +36,42 @@ const FavouritePost = () => {
       <div className="row">
         {user.favourite &&
           [...user?.favourite].reverse().map((item, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
-              <div className="card main-card">
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xl-4" key={index}>
+              <div className="card main-card-favourite">
                 <img src={item.photo} className="favpurite-post-image" />
                 <div className="fav-post-text-item">
                   <Link
                     to={"/details/" + item._id}
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <p>{item.title.substring(0,55)}</p>
+                    <p>{item.title.substring(0, 55)}</p>
                   </Link>
+                  <p>{item && item.postedBy?.name}</p>
+
                   <p>{moment(item.date).format("MMMM Do YYYY")}</p>
 
                   <div className="like-comments">
+                    <div className="like-button-design">
+                      <div className="like-icons">
+                        <p>
+                          <AiFillLike size={20} />
+                        </p>
+                      </div>
+                      <p className="like-count"> {item.likes?.length} likes</p>
+                    </div>
+
+                    <div className="comment-button-design">
+                      <div className="comment-icons">
+                        <FaRegCommentDots size={17} />
+                      </div>
+                      <p className="comments-count">
+                        {" "}
+                        {item.comments?.length} comments
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* <div className="like-comments">
                     <div className="like-button-design">
                       <div className="like-icons">
                         <AiOutlineLike size={17} />
@@ -65,7 +88,8 @@ const FavouritePost = () => {
                         {item.comments?.length} comments
                       </p>
                     </div>
-                  </div>
+                  </div> */}
+
                   <button
                     className="btn btn-danger"
                     onClick={(e) =>
