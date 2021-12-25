@@ -28,7 +28,7 @@ const DashboardNav = () => {
   return (
     <div className="admin-nav-back">
       <div className="row">
-        <div className="col-md-10">
+        <div className="col-lg-8 col-md-8 col-sm-12 col-xl-10">
           <div className="profile">
             {userdetails && userdetails.photo ? (
               <img

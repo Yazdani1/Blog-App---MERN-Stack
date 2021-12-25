@@ -153,7 +153,7 @@ function Dashboard() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-lg-3 col-md-6 col-sm-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
             <div className="card public-profile-items">
               <div className="profile-items_design">
                 <SiMicrodotblog size={35} />
@@ -163,7 +163,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-6 col-sm-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
             <div className="card public-profile-items">
               <div className="profile-items_design">
                 <MdCardMembership size={35} />
@@ -173,7 +173,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-6 col-sm-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
             <div className="card public-profile-items">
               <div className="profile-items_design">
                 <FaUserGraduate size={35} />
@@ -183,7 +183,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-6 col-sm-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
             <div className="card public-profile-items">
               <div className="profile-items_design">
                 <AiFillMessage size={35} />
