@@ -14,7 +14,7 @@
   vertical-align: middle;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .profile-items_design p {
   font-size: 20px;
@@ -38,7 +38,7 @@
   text-align: center; /*Align the text to the center*/
   position: relative;
   border-radius: 30px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   display: flex;
 }
 .profile-pic-user-profiles {

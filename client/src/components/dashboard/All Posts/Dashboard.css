@@ -635,7 +635,7 @@
   }
   .profile-items{
     height: 170px;
-    margin: 5px;
+    /* margin: 5px; */
    
   }
   .profile-items_design{
@@ -645,7 +645,6 @@
     vertical-align: middle;
     align-items: center;
     justify-content: center;
- 
 
   }
 
