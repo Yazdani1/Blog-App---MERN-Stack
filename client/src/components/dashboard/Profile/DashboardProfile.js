@@ -83,7 +83,7 @@ const DashboardProfile = () => {
         </div>
       </div>
 
-      <div className="container card">
+      {/* <div className="container card">
         <h5>Your Selected Date is: {selectedDate?.toString()}</h5>
 
         <DatePicker
@@ -95,9 +95,14 @@ const DashboardProfile = () => {
           dateFormat="dd/MM/yyyy"
           minDate={new Date()}
           isClearable
+          showYearDropdown
+          showWeekNumbers
+          
         />
     
-      </div>
+      </div> */}
+
+
     </>
   );
 };
