@@ -102,7 +102,32 @@ const DashboardProfile = () => {
     
       </div> */}
 
+      {user && user.photo ? (
+        <div className="container card profile-main-container">
+          <div className="row">
+            <div className="col-md-10">
+              {user && user.photo ? (
+                <img
+                  src={user && user.photo}
+                  className="profile-avatar-picture"
+                />
+              ) : null}
+            </div>
+            <div className="col-md-2 edit-button">
+              <Link to={"/update-profile/" + (user && user._id)}>
+                <h5>
+                  <AiFillEdit size={20} />
+                  Edit
+                </h5>
+              </Link>
 
+              {/* <Link to={"/update-profile/" + (user && user._id)}>
+            <button className="btn btn-danger">Edit</button>
+          </Link> */}
+            </div>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 };

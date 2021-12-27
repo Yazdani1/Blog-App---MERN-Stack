@@ -11,6 +11,13 @@
   position: relative;
 }
 
+.profile-avatar-picture {
+  height: 100px;
+  width: 100px;
+  border-radius: 90px;
+  object-fit: cover;
+}
+
 .profile-avatar p {
   height: 30px;
   width: 30px;
@@ -22,20 +29,20 @@
   border-radius: 50%; /* may require vendor prefixes */
   background: rgb(48, 22, 107);
 }
-.profile-user-name p{
-    margin-left: 10px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
+.profile-user-name p {
+  margin-left: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
-.edit-button{
+.edit-button {
   margin-bottom: 0px;
 }
 
-.profile-main-container{
- padding: 30px;
- margin-top: 20px;
+.profile-main-container {
+  padding: 30px;
+  margin-top: 20px;
 }
-.profile-about-container{
+.profile-about-container {
   margin-top: 20px;
 }

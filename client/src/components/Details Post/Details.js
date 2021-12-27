@@ -425,7 +425,7 @@ const DetailsPage = () => {
                       </div>
                     </div>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-3">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-4">
                       <div class="form-group">
                         <button
                           className="btn btn-success"
