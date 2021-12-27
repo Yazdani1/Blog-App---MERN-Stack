@@ -4,9 +4,14 @@ import { UserContext } from "../../UserContext";
 import { Link, useHistory } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import ReactHtmlParser from "react-html-parser";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const DashboardProfile = () => {
   const [user, setUser] = useContext(UserContext);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   return (
     <>
@@ -76,6 +81,22 @@ const DashboardProfile = () => {
           </Link> */}
           {/* </div> */}
         </div>
+      </div>
+
+      <div className="container card">
+        <h5>Your Selected Date is: {selectedDate?.toString()}</h5>
+
+        <DatePicker
+          selected={selectedDate}
+          onChange={(date) => {
+            setSelectedDate(date);
+          }}
+          placeholderText="Select Your Date"
+          dateFormat="dd/MM/yyyy"
+          minDate={new Date()}
+          isClearable
+        />
+    
       </div>
     </>
   );
