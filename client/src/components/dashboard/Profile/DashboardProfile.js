@@ -8,10 +8,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { options } from "nodemon/lib/config";
 
 const DashboardProfile = () => {
   const [user, setUser] = useContext(UserContext);
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const [prolanguage, setProlanguage] = useState("");
 
   return (
     <>
@@ -128,6 +131,23 @@ const DashboardProfile = () => {
           </div>
         </div>
       ) : null}
+
+      <div className="container p-5">
+        <select
+          className="custom-select"
+          value={prolanguage}
+          onChange={(e) => setProlanguage(e.target.value)}
+        >
+          <option value="JavaScript">JavaScript</option>
+          <option value="Nodejsddddddddddd">Nodejs</option>
+
+          <option value="Reactjs">React js</option>
+
+          <option value="VueJS">Vue JS</option>
+        </select>
+
+        <h5>{prolanguage}</h5>
+      </div>
     </>
   );
 };
