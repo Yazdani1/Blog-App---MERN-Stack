@@ -22,9 +22,9 @@ const Message = () => {
                     <div className="message-body" key={index}>
                       <div className="row">
                         <div className="col-md-1">
-                          {usermessage && usermessage.photo ? (
+                          {message && message?.postedBy?.photo ? (
                             <img
-                              src={usermessage && usermessage.photo}
+                              src={message && message?.postedBy?.photo}
                               className="message-image-circle"
                             />
                           ) : (
