@@ -14,7 +14,11 @@ const DashboardProfile = () => {
   const [user, setUser] = useContext(UserContext);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const [prolanguage, setProlanguage] = useState("");
+  const [prolanguage, setProlanguage] = useState("JavaScript");
+
+  //to show and hide a state value
+
+  const [show, setShow] = useState(false);
 
   return (
     <>
@@ -132,22 +136,47 @@ const DashboardProfile = () => {
         </div>
       ) : null}
 
-      <div className="container p-5">
-        <select
-          className="custom-select"
-          value={prolanguage}
-          onChange={(e) => setProlanguage(e.target.value)}
-        >
-          <option value="JavaScript">JavaScript</option>
-          <option value="Nodejsddddddddddd">Nodejs</option>
+      {/* <div className="container p-5">
+        <div className="row">
+          <div className="col-md-6">
+            <select
+              className="custom-select"
+              value={prolanguage}
+              onChange={(e) => setProlanguage(e.target.value)}
+            >
+              <option value="JavaScript">JavaScript</option>
+              <option value="Nodejsddddddddddd">Nodejs</option>
 
-          <option value="Reactjs">React js</option>
+              <option value="Reactjs">React js</option>
 
-          <option value="VueJS">Vue JS</option>
-        </select>
+              <option value="VueJS">Vue JS</option>
+            </select>
 
-        <h5>{prolanguage}</h5>
+            <h5>{prolanguage}</h5>
+          </div>
+        </div>
+      </div> */}
+
+      {/* show and hide button */}
+
+      {/* <div className="container p-5">
+        <button onClick={() => setShow(true)} className="btn btn-primary">
+          Show
+        </button>
+        <button onClick={() => setShow(false)} className="btn btn-danger">
+          Hide
+        </button>
       </div>
+      <button onClick={() => setShow(!show)} className="btn btn-danger">
+        {show ? "Close" : "Add"}
+      </button>
+
+      {show ? (
+        <div className="card m-10">
+          <input type="text" placeholder="Your name.." />
+          <input type="text" placeholder="Your name.." />
+        </div>
+      ) : null} */}
     </>
   );
 };
