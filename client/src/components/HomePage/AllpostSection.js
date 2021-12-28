@@ -138,6 +138,7 @@ const AllpostSection = () => {
                 {item.likes?.length >= 4 ? (
                   <p className="trending">Trending</p>
                 ) : null}
+                
 
                 <div className="like-comments">
                   <div className="like-button-design">
