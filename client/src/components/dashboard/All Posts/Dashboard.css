@@ -687,6 +687,9 @@
     /* height: 100px !important; */
     overflow: scroll;
   }
+  .main_containers{
+    margin-top: 10px;
+  }
 
   /* 
   

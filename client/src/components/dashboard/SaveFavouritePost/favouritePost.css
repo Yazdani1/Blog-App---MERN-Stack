@@ -8,7 +8,8 @@
 
 .main-card {
   height: 95%;
-  margin: 5px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .main-card-favourite {

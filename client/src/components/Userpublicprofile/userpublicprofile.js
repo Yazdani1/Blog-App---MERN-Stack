@@ -193,10 +193,10 @@ const UserPublicProfile = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container profile-headers card">
         <div className="row">
           <div className="col-lg-12">
-            <div className="profile-header card">
+            <div className="profile-headers ">
               {mypost?.userInfo?.photo ? (
                 <div className="user-profile-image-incircles img">
                   <img src={mypost?.userInfo?.photo} />
@@ -225,10 +225,10 @@ const UserPublicProfile = () => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container profile_items_container">
         <div className="row">
-          <div className="col-lg-3 col-md-6 col-sm-12">
-            <div className="card public-profile-items">
+          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
+            {/* <div className="public-profile-items card"> */}
               <div className="profile-items_design">
                 <MdCardMembership size={35} />
                 <p>Member Since</p>
@@ -236,21 +236,21 @@ const UserPublicProfile = () => {
               <p className="member-accountcreated-date">
                 {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
               </p>
-            </div>
+            {/* </div> */}
           </div>
 
-          <div className="col-lg-3 col-md-6 col-sm-12">
-            <div className="card public-profile-items">
+          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
+            {/* <div className="card public-profile-items"> */}
               <div className="profile-items_design">
                 <SiMicrodotblog size={35} />
                 <p>Published Posts</p>
                 <h4>{mypost?.postsData?.length}</h4>
               </div>
-            </div>
+            {/* </div> */}
           </div>
 
-          <div className="col-lg-3 col-md-6 col-sm-12">
-            <div className="card public-profile-items">
+          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
+            {/* <div className="card public-profile-items"> */}
               <div className="profile-items_design">
                 <FaUserGraduate size={35} />
                 <p>Member Type</p>
@@ -263,11 +263,11 @@ const UserPublicProfile = () => {
                   )}
                 </p>
               </div>
-            </div>
+            {/* </div> */}
           </div>
 
-          <div className="col-lg-3 col-md-6 col-sm-12">
-            <div className="card public-profile-items">
+          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
+            {/* <div className="card public-profile-items"> */}
               <div className="profile-items_design">
                 <p>
                   <AiFillMessage size={35} />
@@ -343,7 +343,7 @@ const UserPublicProfile = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </div>
