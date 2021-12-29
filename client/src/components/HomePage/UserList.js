@@ -41,7 +41,7 @@ const UserList = () => {
 
       <div className="row">
         {currentUsers.map((user, index) => (
-          <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
+          <div className="col-lg-4 col-md-6 col-sm-6 col-xl-3" key={index}>
             <div className="user-infocard card">
               {user && user.photo ? (
                 <div className="user-profile-picture-image">

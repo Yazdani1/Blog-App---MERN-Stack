@@ -1,5 +1,6 @@
 .menu-bar {
   background-color: blueviolet;
+  height: 70px;
 }
 .nav-link {
   font-size: 16px;
@@ -10,9 +11,12 @@
 }
 
 .nav-link:hover {
-  font-weight: 600;
-  color: white;
-  border-bottom: 1px solid white;
+  font-size: 16px;
+  margin: 3px;
+  color: white !important;
+  font-weight: 500;
+  margin-right: 30px;
+  border-bottom: 1px solid white!important;
 }
 
 .navbar-nav {
@@ -41,6 +45,11 @@
 
 @media only screen and (max-width: 1000px) {
   .nav-link:hover {
-    border-bottom: none;
+    border-bottom: none !important;
+  }
+  .menu-bar{
+    height: auto;
+    background-color: blueviolet;
+   
   }
 }
