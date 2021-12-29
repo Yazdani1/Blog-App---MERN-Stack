@@ -32,8 +32,6 @@ import Pagination from "../All Posts/../../HomePage/Pagination";
 import "../All Posts/../../HomePage/Homepage.css";
 
 function Dashboard() {
-
-
   const { id } = useParams();
 
   let iconStyles = { color: "white" };
@@ -155,50 +153,51 @@ function Dashboard() {
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3 card public-profile-items">
             {/* <div className="card public-profile-items"> */}
-              <div className="profile-items_design">
-                <SiMicrodotblog size={35} />
-                <p>Published Posts</p>
-                <h4>{mypost.length}</h4>
-              </div>
+            <div className="profile-items_design">
+              <SiMicrodotblog size={35} />
+              <p>Published Posts</p>
+              <h4>{mypost.length}</h4>
+            </div>
             {/* </div> */}
           </div>
 
           <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3 card public-profile-items">
             {/* <div className="card public-profile-items"> */}
-              <div className="profile-items_design">
-                <MdCardMembership size={35} />
-                <p>Member Since</p>
-                <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
-              </div>
+            <div className="profile-items_design">
+              <MdCardMembership size={35} />
+              <p>Member Since</p>
+              <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
+            </div>
             {/* </div> */}
           </div>
 
           <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3 card public-profile-items">
             {/* <div className="card public-profile-items"> */}
-              <div className="profile-items_design">
-                <FaUserGraduate size={35} />
-                <p>Member Type</p>
-                <p> {mypost.length >= 5 ? "Pro Account" : "Starter Account"}</p>
-              </div>
+            <div className="profile-items_design">
+              <FaUserGraduate size={35} />
+              <p>Member Type</p>
+              <p> {mypost.length >= 5 ? "Pro Account" : "Starter Account"}</p>
+            </div>
             {/* </div> */}
           </div>
 
           <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3 card public-profile-items">
             {/* <div className="card public-profile-items"> */}
-              <div className="profile-items_design">
-                <AiFillMessage size={35} />
+            <div className="profile-items_design">
+              <AiFillMessage size={35} />
 
-                <div className="profile-message">
-                  <h5>{user && user.message?.length}</h5>
-                  <Link to="/message">
-                    <button className="btn btn-primary">View Messagees</button>
-                  </Link>
-                </div>
+              <div className="profile-message">
+                <h5>{user && user.message?.length}</h5>
+                <Link to="/message">
+                  <button className="btn btn-primary">View Messagees</button>
+                </Link>
               </div>
+            </div>
             {/* </div> */}
           </div>
         </div>
       </div>
+
       {/* <div className="container">
         <div className="row">
           <div className="col-md-4">
@@ -306,11 +305,8 @@ function Dashboard() {
 
         {mypost.length > 1 ? (
           <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
-        ) : (
-          null
-        )}
+        ) : null}
       </div>
-      
     </>
   );
 }
