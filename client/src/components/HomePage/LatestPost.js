@@ -100,7 +100,7 @@ const LatestPost = () => {
       <div className="row">
         <Slider {...settings}>
           {latestpost.map((item, index) => (
-            <div className="col-lg-12 col-md-12 col-sm-12" key={index}>
+            <div className="col-lg-12 col-md-12 col-sm-12" key={item._id}>
               <div className="card main-card-latest-post">
                 <div className="row">
                   <div className="col-lg-4 col-md-12 col-sm-12">
@@ -112,18 +112,18 @@ const LatestPost = () => {
                   <div className="col-lg-8 col-md-12 col-sm-12 ">
                     <div className="latest-post-text-item">
                       <Link
-                        to={"/userprofile/" + item.postedBy._id}
+                        to={"/userprofile/" + item.postedBy?._id}
                         style={{ textDecoration: "none", color: "black" }}
                       >
                         <div className="profile-name-date">
-                          {item.postedBy.photo ? (
+                          {item.postedBy?.photo ? (
                             <div className="profile-name-avatar-image">
-                              <img src={item.postedBy.photo} />
+                              <img src={item.postedBy?.photo} />
                             </div>
                           ) : (
                             <div className="profile-name-avatar">
                               <p>
-                                {item.postedBy.name
+                                {item.postedBy?.name
                                   .substring(0, 2)
                                   .toUpperCase()}
                               </p>
@@ -132,7 +132,7 @@ const LatestPost = () => {
 
                           <div className="profile-name-post-date">
                             <p className="profile-name-size">
-                              {item.postedBy.name}
+                              {item.postedBy?.name}
                             </p>
                             <p>{moment(item.date).format("MMMM Do YYYY")}</p>
                           </div>
