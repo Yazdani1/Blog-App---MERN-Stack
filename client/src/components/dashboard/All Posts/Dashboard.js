@@ -254,7 +254,7 @@ function Dashboard() {
                 </tr>
 
                 {currentPosts.map((item, index) => (
-                  <tr>
+                  <tr key={item._id}>
                     <th scope="row">{index + 1}</th>
                     <td>
                       <img src={item.photo} height="80px" width="80px"></img>

@@ -7,7 +7,7 @@ const FirstSection = () => {
 
   return (
     <>
-      <div className="homepage-first">
+      <div className="container-fluid homepage-first">
         <div className="container first_section">
           <div className="row">
             <div className="col-md-12">

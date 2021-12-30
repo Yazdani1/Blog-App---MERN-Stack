@@ -2,6 +2,19 @@ const router = require("express").Router();
 const { requireLogin } = require("../middleware/auth");
 const Post = require("../models/Post");
 const Wishlist = require("../models/Wishlist");
+const User = require("../models/User");
+
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+
+//to send email
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: process.env.API_SENDGRID,
+    },
+  })
+);
 
 //post data api
 router.post("/post", requireLogin, (req, res) => {
@@ -26,8 +39,16 @@ router.post("/post", requireLogin, (req, res) => {
       photo: pic,
     });
 
+    // let user = User.findOne({ email });
+
     Post.create(postData)
       .then((ourPostData) => {
+        transporter.sendMail({
+          to: req.user.email,
+          from: "yaz4noor@gmail.com",
+          subject: "Your Post has been published",
+          html: "<h1>Congratulations! Your post is live now.</h1>",
+        });
         res.json({ ourPostData });
       })
       .catch((err) => {

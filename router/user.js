@@ -9,10 +9,11 @@ const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 require("dotenv").config();
 
+//to send email
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key: process.env.API,
+      api_key: process.env.API_SENDGRID,
     },
   })
 );
@@ -45,12 +46,12 @@ router.post("/register", async (req, res) => {
       password: hash_password,
     });
     await user.save().then((registerData) => {
-      // transporter.sendMail({
-      //   to: registerData.email,
-      //   from: "shaon1132@gmail.com",
-      //   subject: "Signup Success",
-      //   html: "<h1>Welcome to this blog site. You have become a member</h1>",
-      // });
+      transporter.sendMail({
+        to: registerData.email,
+        from: "yaz4noor@gmail.com",
+        subject: "Signup Success",
+        html: "<h1>Welcome to this blog site. You have become a member</h1>",
+      });
       res.json(registerData);
     });
     return res.status(201).json({ message: "User created successfully" });
@@ -85,6 +86,18 @@ router.post("/login", async (req, res) => {
     // const { _id, name, email } = user;
 
     // return res.json({ token, user });
+    transporter.sendMail({
+      to: user.email,
+      from: "yaz4noor@gmail.com",
+      subject: "Sign in Success",
+      html: "<h1> You have successfully loged in to your account</h1>",
+      // html: (
+      //   <div className="card">
+      //     <h1>You have logged in to your account.</h1>
+      //     <p>If you did not log in then please contact with the support.</p>
+      //   </div>
+      // ),
+    });
     return res.json({ token });
   } catch (err) {
     console.log(err);
