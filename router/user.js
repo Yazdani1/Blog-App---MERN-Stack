@@ -50,7 +50,16 @@ router.post("/register", async (req, res) => {
         to: registerData.email,
         from: "yaz4noor@gmail.com",
         subject: "Signup Success",
-        html: "<h1>Welcome to this blog site. You have become a member</h1>",
+        html: `<h1>Welcome to this blog site. You have become a member
+        
+        <h5>Your Details</h5>
+        <ul>
+        <li><p>Your Name: ${registerData.name}</p></li>
+        <li><p>Your E-mail: ${registerData.email}</p></li>
+        <li><p>You have joined: ${registerData.createdAt}</p></li>
+
+        </ul>
+        </h1>`,
       });
       res.json(registerData);
     });
@@ -90,13 +99,12 @@ router.post("/login", async (req, res) => {
       to: user.email,
       from: "yaz4noor@gmail.com",
       subject: "Sign in Success",
-      html: "<h1> You have successfully loged in to your account</h1>",
-      // html: (
-      //   <div className="card">
-      //     <h1>You have logged in to your account.</h1>
-      //     <p>If you did not log in then please contact with the support.</p>
-      //   </div>
-      // ),
+      html: `<h1> You have successfully loged in to your account. Your name is: ${user.name}
+      You Joined on ${user.createdAt}
+      <ul>
+      <li>Your About is: ${user.about}</li>
+      </ul>
+      </h1>`,
     });
     return res.json({ token });
   } catch (err) {

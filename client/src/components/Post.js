@@ -57,7 +57,7 @@ const Post = () => {
             setImageurl("");
             setUrl("");
             setSuccess(true);
-            toast.success("Post Created Successfully!", {
+            toast.success("Post Created Successfully! ", {
               position: toast.POSITION.TOP_RIGHT,
             });
             //history.push("/Dashboard");
@@ -66,12 +66,11 @@ const Post = () => {
         .catch((err) => {
           console.log("Error is:" + err);
         });
-        setTitle("");
-        setDes("");
-        setImageurl("");
-        setUrl("");
+      setTitle("");
+      setDes("");
+      setImageurl("");
+      setUrl("");
     }
-
   }, [url]);
   const dataSubmit = (e) => {
     e.preventDefault();
@@ -93,9 +92,7 @@ const Post = () => {
       .catch((err) => {
         console.log(err);
       });
-      setImageurl("");
-
-
+    setImageurl("");
   };
 
   const showError = () => {
