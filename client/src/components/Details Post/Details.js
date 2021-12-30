@@ -305,7 +305,7 @@ const DetailsPage = () => {
                         style={{ textDecoration: "none", color: "black" }}
                       >
                         <div className="profile-name-date">
-                          {dataItem.postedBy.photo ? (
+                          {dataItem.postedBy?.photo ? (
                             <div className="profile-name-avatar-image">
                               <img src={dataItem.postedBy?.photo} />
                             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../App.css";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +6,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../node_modules/react-toastify/dist/ReactToastify.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { UserContext } from "./UserContext";
+// const nodemailer = require("nodemailer");
+// const sendgridTransport = require("nodemailer-sendgrid-transport");
 
+// const mail = require("@sendgrid/mail");
+
+// require("dotenv").config();
 const Post = () => {
   const history = useHistory();
   // const [data, setData] = useState({
@@ -34,6 +40,20 @@ const Post = () => {
   const [picerror, setpicError] = useState(null);
   const [success, setSuccess] = useState(false);
 
+  const [user, setUser] = useContext(UserContext);
+
+  //to send email
+  // const transporter = nodemailer.createTransport(
+  //   sendgridTransport({
+  //     auth: {
+  //       api_key: process.env.API_SENDGRID,
+  //     },
+  //   })
+  // );
+
+  // mail.setApiKey(process.env.API_SENDGRID);
+
+
   useEffect(() => {
     if (url) {
       fetch("/auth/post", {
@@ -57,9 +77,22 @@ const Post = () => {
             setImageurl("");
             setUrl("");
             setSuccess(true);
-            toast.success("Post Created Successfully! ", {
-              position: toast.POSITION.TOP_RIGHT,
-            });
+            toast.success(
+              "Post Created Successfully! " + (user && user.email),
+              {
+                position: toast.POSITION.TOP_RIGHT,
+              }
+            );
+            // mail.send({
+            //   to: "yaz4good@gmail.com",
+            //   from: "yaz4noor@gmail.com",
+            //   subject: "Post  Success",
+            //   html: `<h1>Welcome to this blog site. You have Published a post
+              
+            //   <h5>Your Details</h5>
+            
+            //   </h1>`,
+            // });
             //history.push("/Dashboard");
           }
         })

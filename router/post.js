@@ -22,7 +22,6 @@ const transporter = nodemailer.createTransport(
 router.post("/post", requireLogin, (req, res) => {
   const { title, des, pic } = req.body;
 
-
   try {
     if (!title) {
       return res.status(400).json({ error: "Please add Post Title.." });
@@ -43,16 +42,21 @@ router.post("/post", requireLogin, (req, res) => {
       photo: pic,
     });
 
-    let user = User.findOne({email: req.user.email});
-
+    // let user = User.findOne({ email: req.user.email });
 
     Post.create(postData)
       .then((ourPostData) => {
         transporter.sendMail({
-          to: user.email,
+          to: "yaz4good@gmail.com",
           from: "yaz4noor@gmail.com",
           subject: "Your Post has been published",
-          html: "<h1>Congratulations! Your post is live now.</h1>",
+          html: `<h1 className="card">Congratulations! Your post is live now.
+          <ul>
+          <li>Post Title:${ourPostData.title} </li>
+          <li>Post Description:${ourPostData.des} </li>
+
+          </ul>
+          </h1>`,
         });
         res.json({ ourPostData });
       })
