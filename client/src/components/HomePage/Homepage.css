@@ -179,7 +179,7 @@
   opacity: 0.2;
 }
 .pagination-container a:hover:not(.active) {
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(26, 29, 23);
 }
 
 /* end pagination design section */
