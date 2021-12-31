@@ -99,7 +99,7 @@ const LatestPost = () => {
       <p className="latest-post-title">Latest Post</p>
       <div className="row">
         <Slider {...settings}>
-          {latestpost.map((item, index) => (
+          {latestpost?.map((item, index) => (
             <div className="col-lg-12 col-md-12 col-sm-12" key={item._id}>
               <div className="card main-card-latest-post">
                 <div className="row">

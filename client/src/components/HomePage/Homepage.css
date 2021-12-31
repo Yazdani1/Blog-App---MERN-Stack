@@ -81,7 +81,7 @@
 .user-profile-pic {
   height: 100px;
   width: 100px;
-  background-color: black;
+  background-color: rgb(236, 22, 22);
   border-radius: 90px;
   align-items: center;
   justify-content: center;
