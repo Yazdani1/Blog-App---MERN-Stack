@@ -20,7 +20,7 @@ import { addlikePost, addunlikePost } from "../HomePage/Apihomepage";
 import { UserContext } from "../UserContext";
 import { AiFillLike } from "react-icons/ai";
 
-import { FcComboChart } from "react-icons/fc";
+import { FcButtingIn } from "react-icons/fc";
 
 // import { UserProfileContext } from "./UserprofileContext";
 
@@ -197,7 +197,7 @@ const UserPublicProfile = () => {
     <>
       <div className="container profile-headers card">
         <div className="row">
-          <div className="col-lg-12">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xl-12">
             <div className="profile-headers ">
               {mypost?.userInfo?.photo ? (
                 <div className="user-profile-image-incircles img">
@@ -379,7 +379,7 @@ const UserPublicProfile = () => {
         <h5>
           {mypost?.postsData?.length === 0 ? (
             <h5 className="card noposts-design">
-              <FcComboChart size={200} />
+              <FcButtingIn size={200} />
               This user did not publish any posts yet!
             </h5>
           ) : (
