@@ -30,14 +30,17 @@ const FavouritePost = () => {
   };
 
   return (
-    <div className="container" style={{ maxHeight: "1000px", overflow: "scroll" }}>
+    <div
+      className="container"
+      style={{ maxHeight: "1000px", overflow: "scroll" }}
+    >
       <h5>Favourite Posts: {user && user?.favourite?.length}</h5>
 
       <div className="row">
         {user.favourite &&
           [...user?.favourite].reverse().map((item, index) => (
             <div className="col-lg-6 col-md-6 col-sm-12 col-xl-4" key={index}>
-              <div className="card main-card-favourite" >
+              <div className="card main-card-favourite">
                 <img src={item.photo} className="favpurite-post-image" />
                 <div className="fav-post-text-item">
                   <Link
@@ -102,6 +105,11 @@ const FavouritePost = () => {
               </div>
             </div>
           ))}
+        {user && user?.favourite?.length === 0 ? (
+          <h5 className="card noposts-design">
+            You dont't have Any Favourite Posts Yet!
+          </h5>
+        ) : null}
       </div>
 
       <ToastContainer autoClose={8000} />

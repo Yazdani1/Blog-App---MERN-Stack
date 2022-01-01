@@ -104,6 +104,12 @@ const MyComments = () => {
               </div>
             </div>
           ))}
+
+        {user && user?.mycomments?.length === 0 ? (
+          <h5 className="card noposts-design">
+           No data to show!
+          </h5>
+        ) : null}
       </div>
 
       <ToastContainer autoClose={8000} />
