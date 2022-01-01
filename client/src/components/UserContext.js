@@ -18,9 +18,9 @@ export const UserProvider = (props) => {
           Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
         },
       })
-      .then((data) => {
-        if (data) {
-          setUser(data.data);
+      .then((userresult) => {
+        if (userresult) {
+          setUser(userresult.data);
           // localStorage.getItem("tokenLogin");
         }
       })
