@@ -2,6 +2,10 @@
 
 /* profile headerrrr */
 
+.profile-header-margin{
+  margin-top: 10px;
+}
+
 .profile-headers {
   height: 150px; /*Specify Height*/
   width: 100%; /*Specify Width*/
@@ -156,4 +160,11 @@
 
 .profile-name-size {
   font-size: 15px;
+}
+
+
+/* user about information */
+
+.user-about-page{
+  padding: 10px;
 }

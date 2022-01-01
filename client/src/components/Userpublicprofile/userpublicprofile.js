@@ -195,9 +195,32 @@ const UserPublicProfile = () => {
 
   return (
     <>
+      <div className="container profile-header-margin">
+        <div className="card">
+          <div className="profile-headers">
+            {mypost?.userInfo?.photo ? (
+              <div className="user-profile-image-incircles img">
+                <img src={mypost?.userInfo?.photo} />
+              </div>
+            ) : (
+              <div className="profile-pic-user-profiles">
+                <h2 className="user-profile-name-incircles">
+                  {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
+                </h2>
+
+              </div>
+            )}
+
+            <div className="profile-pic-user-profile-names">
+              <h2>{mypost?.userInfo?.name}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 
       <div className="container profile-headers card">
         <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+          <div className="card">
             <div className="profile-headers ">
               {mypost?.userInfo?.photo ? (
                 <div className="user-profile-image-incircles img">
@@ -209,14 +232,7 @@ const UserPublicProfile = () => {
                     {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
                   </h2>
 
-                  {/* <h2 className="user-profile-name-incircles">
-                  {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
-                </h2> */}
-                  {/* <img
-                  src={mypost?.userInfo?.photo}
-                  height="150px"
-                  width="150px"
-                /> */}
+          
                 </div>
               )}
 
@@ -226,152 +242,165 @@ const UserPublicProfile = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+
       <div className="container profile_items_container">
         <div className="row">
-          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
-            {/* <div className="public-profile-items card"> */}
-            <div className="profile-items_design">
-              <MdCardMembership size={35} />
-              <p>Member Since</p>
-            </div>
-            <p className="member-accountcreated-date">
-              {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
-            </p>
-            {/* </div> */}
-          </div>
-
-          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
-            <div className="profile-items_design">
-              <SiMicrodotblog size={35} />
-              <p>Published Posts</p>
-              <h4>{mypost?.postsData?.length}</h4>
-            </div>
-            {/* </div> */}
-          </div>
-
-          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
-            <div className="profile-items_design">
-              <FaUserGraduate size={35} />
-              <p>Member Type</p>
-              <p>
-                {" "}
-                {mypost?.postsData?.length >= 5 ? <p>Pro User</p> : "New User"}
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="public-profile-items card">
+              <div className="profile-items_design">
+                <MdCardMembership size={35} />
+                <p>Member Since</p>
+              </div>
+              <p className="member-accountcreated-date">
+                {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
               </p>
             </div>
-            {/* </div> */}
           </div>
 
-          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
-            <div className="profile-items_design">
-              <p>
-                <AiFillMessage size={35} />
-              </p>
-              <button
-                className="btn btn-success"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
-              >
-                Send Message <RiSendPlaneFill size={25} />
-              </button>
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <SiMicrodotblog size={35} />
+                <p>Published Posts</p>
+                <h4>{mypost?.postsData?.length}</h4>
+              </div>
+            </div>
+          </div>
 
-              <div
-                className="modal fade"
-                id="exampleModalCenter"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true"
-              >
-                <div
-                  className="modal-dialog modal-dialog-centered"
-                  role="document"
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <FaUserGraduate size={35} />
+                <p>Member Type</p>
+                <p>
+                  {" "}
+                  {mypost?.postsData?.length >= 5 ? (
+                    <p>Pro User</p>
+                  ) : (
+                    "New User"
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card public-profile-items">
+              <div className="profile-items_design">
+                <p>
+                  <AiFillMessage size={35} />
+                </p>
+                <button
+                  className="btn btn-success"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
                 >
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLongTitle">
-                        Write your message
-                      </h5>
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        data-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                    </div>
-                    <div className="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea2"></label>
-                          <textarea
-                            class="form-control rounded-0"
-                            placeholder="Type your message.."
-                            // value={about}
-                            rows="8"
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            //value={experience}
-                            //onChange={(e) => setExperience(e.target.value)}
-                            // onChange={handleChange}
-                            maxLength="150"
-                            //   type="text"
-                            //onChange={(e) => setAbout(e.target.value)}
-                            // name="des"
-                            //   onChange={handleChange}
-                            //   value={about}
-                          />
-                          <p>{text ? text.length : 0} </p>
-                        </div>
+                  Send Message <RiSendPlaneFill size={25} />
+                </button>
+
+                <div
+                  className="modal fade"
+                  id="exampleModalCenter"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalCenterTitle"
+                  aria-hidden="true"
+                >
+                  <div
+                    className="modal-dialog modal-dialog-centered"
+                    role="document"
+                  >
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">
+                          Write your message
+                        </h5>
                         <button
-                          type="submit"
-                          class="btn btn-success custBtn"
-                          onClick={(e) => sendmessage(e, mypost?.userInfo?._id)}
+                          type="button"
+                          className="btn btn-danger"
+                          data-dismiss="modal"
                         >
-                          SEND
+                          Close
                         </button>
-                      </form>
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea2"></label>
+                            <textarea
+                              class="form-control rounded-0"
+                              placeholder="Type your message.."
+                              // value={about}
+                              rows="8"
+                              value={text}
+                              onChange={(e) => setText(e.target.value)}
+                              //value={experience}
+                              //onChange={(e) => setExperience(e.target.value)}
+                              // onChange={handleChange}
+                              maxLength="150"
+                              //   type="text"
+                              //onChange={(e) => setAbout(e.target.value)}
+                              // name="des"
+                              //   onChange={handleChange}
+                              //   value={about}
+                            />
+                            <p>{text ? text.length : 0} </p>
+                          </div>
+                          <button
+                            type="submit"
+                            class="btn btn-success custBtn"
+                            onClick={(e) =>
+                              sendmessage(e, mypost?.userInfo?._id)
+                            }
+                          >
+                            SEND
+                          </button>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* </div> */}
           </div>
         </div>
       </div>
       {/* user about section */}
 
       {mypost?.userInfo?.about ? (
-        <div className="container card profile-about-container">
-          <div className="row">
-            <div className="col-md-12">
+        <div className="container profile-about-container">
+          <div className="card">
+            <div className="user-about-page">
               <h5>About Me</h5>
 
-              <div className="user-about-page">
-                <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
-              </div>
+              <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
             </div>
           </div>
+
+          {/* <div className="row">
+            <div className="col-md-12"> */}
+
+          {/* </div>
+          </div> */}
         </div>
       ) : null}
 
       {/* user experience section */}
 
       {mypost?.userInfo?.experience ? (
-        <div className="container card profile-about-container">
-          <div className="row">
-            <div className="col-md-12">
+        <div className="container  profile-about-container">
+          <div className="card">
+            <div className="user-about-page">
               <h5>Experience</h5>
-
-              <div className="user-about-page">
-                <p>{ReactHtmlParser(mypost?.userInfo?.experience)}</p>
-              </div>
+              <p>{ReactHtmlParser(mypost?.userInfo?.experience)}</p>
             </div>
           </div>
+          {/* <div className="row">
+            <div className="col-md-12"> */}
+
+          {/* </div>
+          </div> */}
         </div>
       ) : null}
 
