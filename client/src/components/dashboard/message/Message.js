@@ -63,6 +63,11 @@ const Message = () => {
                     </div>
                   </>
                 ))}
+              {usermessage && usermessage?.message?.length === 0 ? (
+                <h5 className="card noposts-design">
+                  No don't have any message!
+                </h5>
+              ) : null}
             </div>
           </div>
         </div>
