@@ -8,6 +8,8 @@ import { AiFillLike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 
+import { FcComments } from "react-icons/fc";
+
 import { removePostfromWishlist } from "../SaveFavouritePost/ApiFavourite";
 import { UserContext } from "../../UserContext";
 import { removemycommentsPost } from "./Apimycomments";
@@ -107,7 +109,8 @@ const MyComments = () => {
 
         {user && user?.mycomments?.length === 0 ? (
           <h5 className="card noposts-design">
-           No data to show!
+            <FcComments size={200} />
+            No data to show!
           </h5>
         ) : null}
       </div>

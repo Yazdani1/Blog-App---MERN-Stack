@@ -8,6 +8,8 @@ import { AiFillLike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 
+import { FcBullish } from "react-icons/fc";
+
 import { removePostfromWishlist } from "./ApiFavourite";
 import { UserContext } from "../../UserContext";
 
@@ -107,6 +109,7 @@ const FavouritePost = () => {
           ))}
         {user && user?.favourite?.length === 0 ? (
           <h5 className="card noposts-design">
+            <FcBullish size={300} />
             You dont't have Any Favourite Posts Yet!
           </h5>
         ) : null}

@@ -22,6 +22,8 @@ import { FaUserGraduate } from "react-icons/fa";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
+import { FcCustomerSupport } from "react-icons/fc";
+import { FcComboChart } from "react-icons/fc";
 
 import { EyeOutlined } from "@ant-design/icons";
 
@@ -151,38 +153,38 @@ function Dashboard() {
     <>
       <div className="container profile_items_container">
         <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+            <div className="card public-profile-items">
             <div className="profile-items_design">
               <SiMicrodotblog size={35} />
               <p>Published Posts</p>
               <h4>{mypost.length}</h4>
             </div>
-            {/* </div> */}
+            </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+            <div className="card public-profile-items">
             <div className="profile-items_design">
               <MdCardMembership size={35} />
               <p>Member Since</p>
               <p>{moment(user && user.createdAt).format("MMMM Do YYYY")}</p>
             </div>
-            {/* </div> */}
+            </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+            <div className="card public-profile-items">
             <div className="profile-items_design">
               <FaUserGraduate size={35} />
               <p>Member Type</p>
               <p> {mypost.length >= 5 ? "Pro Account" : "Starter Account"}</p>
             </div>
-            {/* </div> */}
+            </div>
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+            <div className="card public-profile-items">
             <div className="profile-items_design">
               <AiFillMessage size={35} />
 
@@ -193,10 +195,11 @@ function Dashboard() {
                 </Link>
               </div>
             </div>
-            {/* </div> */}
+            </div>
           </div>
         </div>
       </div>
+
 
       {/* <div className="container">
         <div className="row">
@@ -231,13 +234,13 @@ function Dashboard() {
       
         </div>
       </div> */}
-      <div className="card container main_containers">
+      <div className="container main_containers">
         {/* <Allpost posts={mypost} /> */}
 
         {/* table start */}
 
         {currentPosts.length > 0 ? (
-          <div className="table-horizontal">
+          <div className="card table-horizontal">
             <table class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -298,7 +301,10 @@ function Dashboard() {
             </table>
           </div>
         ) : (
-          "You Did no add any posts yet"
+          <h5 className="card noposts-design">
+            <FcComboChart size={200} />
+            No data to show!
+          </h5>
         )}
 
         <ToastContainer autoClose={8000} />

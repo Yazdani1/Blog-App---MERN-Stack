@@ -3,6 +3,11 @@ import "./message.css";
 import { UserContext } from "../../UserContext";
 import { Link, useHistory, useParams } from "react-router-dom";
 import moment from "moment";
+import { FcCustomerSupport } from "react-icons/fc";
+
+
+
+
 
 const Message = () => {
   const [usermessage, setuserMessage] = useContext(UserContext);
@@ -65,7 +70,8 @@ const Message = () => {
                 ))}
               {usermessage && usermessage?.message?.length === 0 ? (
                 <h5 className="card noposts-design">
-                  No don't have any message!
+                  <FcCustomerSupport size={200} />
+                  You don't have any message!
                 </h5>
               ) : null}
             </div>

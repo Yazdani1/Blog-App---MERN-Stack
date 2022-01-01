@@ -20,6 +20,8 @@ import { addlikePost, addunlikePost } from "../HomePage/Apihomepage";
 import { UserContext } from "../UserContext";
 import { AiFillLike } from "react-icons/ai";
 
+import { FcComboChart } from "react-icons/fc";
+
 // import { UserProfileContext } from "./UserprofileContext";
 
 const UserPublicProfile = () => {
@@ -229,120 +231,114 @@ const UserPublicProfile = () => {
         <div className="row">
           <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
             {/* <div className="public-profile-items card"> */}
-              <div className="profile-items_design">
-                <MdCardMembership size={35} />
-                <p>Member Since</p>
-              </div>
-              <p className="member-accountcreated-date">
-                {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
+            <div className="profile-items_design">
+              <MdCardMembership size={35} />
+              <p>Member Since</p>
+            </div>
+            <p className="member-accountcreated-date">
+              {moment(mypost?.userInfo?.createdAt).format("MMMM Do YYYY")}
+            </p>
+            {/* </div> */}
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
+            {/* <div className="card public-profile-items"> */}
+            <div className="profile-items_design">
+              <SiMicrodotblog size={35} />
+              <p>Published Posts</p>
+              <h4>{mypost?.postsData?.length}</h4>
+            </div>
+            {/* </div> */}
+          </div>
+
+          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
+            {/* <div className="card public-profile-items"> */}
+            <div className="profile-items_design">
+              <FaUserGraduate size={35} />
+              <p>Member Type</p>
+              <p>
+                {" "}
+                {mypost?.postsData?.length >= 5 ? <p>Pro User</p> : "New User"}
               </p>
+            </div>
             {/* </div> */}
           </div>
 
           <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
             {/* <div className="card public-profile-items"> */}
-              <div className="profile-items_design">
-                <SiMicrodotblog size={35} />
-                <p>Published Posts</p>
-                <h4>{mypost?.postsData?.length}</h4>
-              </div>
-            {/* </div> */}
-          </div>
+            <div className="profile-items_design">
+              <p>
+                <AiFillMessage size={35} />
+              </p>
+              <button
+                className="btn btn-success"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                Send Message <RiSendPlaneFill size={25} />
+              </button>
 
-          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
-              <div className="profile-items_design">
-                <FaUserGraduate size={35} />
-                <p>Member Type</p>
-                <p>
-                  {" "}
-                  {mypost?.postsData?.length >= 5 ? (
-                    <p>Pro User</p>
-                  ) : (
-                    "New User"
-                  )}
-                </p>
-              </div>
-            {/* </div> */}
-          </div>
-
-          <div className="col-lg-3 col-md-6 col-sm-12 card public-profile-items">
-            {/* <div className="card public-profile-items"> */}
-              <div className="profile-items_design">
-                <p>
-                  <AiFillMessage size={35} />
-                </p>
-                <button
-                  className="btn btn-success"
-                  data-toggle="modal"
-                  data-target="#exampleModalCenter"
-                >
-                  Send Message <RiSendPlaneFill size={25} />
-                </button>
-
+              <div
+                className="modal fade"
+                id="exampleModalCenter"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+              >
                 <div
-                  className="modal fade"
-                  id="exampleModalCenter"
-                  tabindex="-1"
-                  role="dialog"
-                  aria-labelledby="exampleModalCenterTitle"
-                  aria-hidden="true"
+                  className="modal-dialog modal-dialog-centered"
+                  role="document"
                 >
-                  <div
-                    className="modal-dialog modal-dialog-centered"
-                    role="document"
-                  >
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLongTitle">
-                          Write your message
-                        </h5>
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="exampleModalLongTitle">
+                        Write your message
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn btn-danger"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                    <div className="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea2"></label>
+                          <textarea
+                            class="form-control rounded-0"
+                            placeholder="Type your message.."
+                            // value={about}
+                            rows="8"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                            //value={experience}
+                            //onChange={(e) => setExperience(e.target.value)}
+                            // onChange={handleChange}
+                            maxLength="150"
+                            //   type="text"
+                            //onChange={(e) => setAbout(e.target.value)}
+                            // name="des"
+                            //   onChange={handleChange}
+                            //   value={about}
+                          />
+                          <p>{text ? text.length : 0} </p>
+                        </div>
                         <button
-                          type="button"
-                          className="btn btn-danger"
-                          data-dismiss="modal"
+                          type="submit"
+                          class="btn btn-success custBtn"
+                          onClick={(e) => sendmessage(e, mypost?.userInfo?._id)}
                         >
-                          Close
+                          SEND
                         </button>
-                      </div>
-                      <div className="modal-body">
-                        <form>
-                          <div class="form-group">
-                            <label for="exampleFormControlTextarea2"></label>
-                            <textarea
-                              class="form-control rounded-0"
-                              placeholder="Type your message.."
-                              // value={about}
-                              rows="8"
-                              value={text}
-                              onChange={(e) => setText(e.target.value)}
-                              //value={experience}
-                              //onChange={(e) => setExperience(e.target.value)}
-                              // onChange={handleChange}
-                              maxLength="150"
-                              //   type="text"
-                              //onChange={(e) => setAbout(e.target.value)}
-                              // name="des"
-                              //   onChange={handleChange}
-                              //   value={about}
-                            />
-                            <p>{text ? text.length : 0} </p>
-                          </div>
-                          <button
-                            type="submit"
-                            class="btn btn-success custBtn"
-                            onClick={(e) =>
-                              sendmessage(e, mypost?.userInfo?._id)
-                            }
-                          >
-                            SEND
-                          </button>
-                        </form>
-                      </div>
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
             {/* </div> */}
           </div>
         </div>
@@ -382,9 +378,10 @@ const UserPublicProfile = () => {
       <div className="container user-main-posts-section">
         <h5>
           {mypost?.postsData?.length === 0 ? (
-            <div className="card">
-              <h4>This User Did Not Publish Any Posts Yet</h4>
-            </div>
+            <h5 className="card noposts-design">
+              <FcComboChart size={200} />
+              This user did not publish any posts yet!
+            </h5>
           ) : (
             "All Posts"
           )}
@@ -394,7 +391,10 @@ const UserPublicProfile = () => {
             <div className="container">
               <div className="row">
                 {mypost.postsData.map((item, index) => (
-                  <div className="col-lg-4 col-md-6 col-sm-6 col-xl-3" key={index}>
+                  <div
+                    className="col-lg-4 col-md-6 col-sm-6 col-xl-3"
+                    key={index}
+                  >
                     <div className="card main-card">
                       <div className="favpurite-post-image">
                         <img src={item.photo} />
