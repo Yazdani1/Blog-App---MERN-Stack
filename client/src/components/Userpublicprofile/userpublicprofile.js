@@ -198,6 +198,8 @@ const UserPublicProfile = () => {
       <div className="container profile-header-margin">
         <div className="card">
           <div className="profile-headers">
+
+
             {mypost?.userInfo?.photo ? (
               <div className="user-profile-image-incircles img">
                 <img src={mypost?.userInfo?.photo} />
