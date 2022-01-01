@@ -149,35 +149,6 @@ const UserPublicProfile = () => {
       });
   };
 
-  // const loadLikePost = (e,postId) => {
-  //   e.preventDefault();
-  //   addlikePost(postId).then((result) => {
-  //     const newItemData = mypost.map((item) => {
-  //       if (item._id == result._id) {
-  //         return result;
-  //       } else {
-  //         return item;
-  //       }
-  //     });
-  //     setData(newItemData);
-  //   });
-  // };
-
-  //load unlike feature
-
-  // const loadunLikePost = (e,postId) => {
-  //   e.preventDefault();
-  //   addunlikePost(postId).then((result) => {
-  //     const newItemData = mypost?.map((item) => {
-  //       if (item._id == result._id) {
-  //         return result;
-  //       } else {
-  //         return item;
-  //       }
-  //     });
-  //     setData(newItemData);
-  //   });
-  // };
 
   useEffect(() => {
     getMypost();
@@ -198,8 +169,6 @@ const UserPublicProfile = () => {
       <div className="container profile-header-margin">
         <div className="card">
           <div className="profile-headers">
-
-
             {mypost?.userInfo?.photo ? (
               <div className="user-profile-image-incircles img">
                 <img src={mypost?.userInfo?.photo} />
@@ -209,7 +178,6 @@ const UserPublicProfile = () => {
                 <h2 className="user-profile-name-incircles">
                   {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
                 </h2>
-
               </div>
             )}
 
@@ -219,32 +187,6 @@ const UserPublicProfile = () => {
           </div>
         </div>
       </div>
-      {/* 
-      <div className="container profile-headers card">
-        <div className="row">
-          <div className="card">
-            <div className="profile-headers ">
-              {mypost?.userInfo?.photo ? (
-                <div className="user-profile-image-incircles img">
-                  <img src={mypost?.userInfo?.photo} />
-                </div>
-              ) : (
-                <div className="profile-pic-user-profiles">
-                  <h2 className="user-profile-name-incircles">
-                    {mypost?.userInfo?.name.substring(0, 2).toUpperCase()}
-                  </h2>
-
-          
-                </div>
-              )}
-
-              <div className="profile-pic-user-profile-names">
-                <h2>{mypost?.userInfo?.name}</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
 
       <div className="container profile_items_container">
         <div className="row">
@@ -337,15 +279,7 @@ const UserPublicProfile = () => {
                               rows="8"
                               value={text}
                               onChange={(e) => setText(e.target.value)}
-                              //value={experience}
-                              //onChange={(e) => setExperience(e.target.value)}
-                              // onChange={handleChange}
                               maxLength="150"
-                              //   type="text"
-                              //onChange={(e) => setAbout(e.target.value)}
-                              // name="des"
-                              //   onChange={handleChange}
-                              //   value={about}
                             />
                             <p>{text ? text.length : 0} </p>
                           </div>
@@ -379,12 +313,6 @@ const UserPublicProfile = () => {
               <p>{ReactHtmlParser(mypost?.userInfo?.about)}</p>
             </div>
           </div>
-
-          {/* <div className="row">
-            <div className="col-md-12"> */}
-
-          {/* </div>
-          </div> */}
         </div>
       ) : null}
 
@@ -398,11 +326,6 @@ const UserPublicProfile = () => {
               <p>{ReactHtmlParser(mypost?.userInfo?.experience)}</p>
             </div>
           </div>
-          {/* <div className="row">
-            <div className="col-md-12"> */}
-
-          {/* </div>
-          </div> */}
         </div>
       ) : null}
 
@@ -434,7 +357,6 @@ const UserPublicProfile = () => {
                           <p className="trending">Trending</p>
                         ) : null}
                       </div>
-                      {/* <img src={item.photo} className="favpurite-post-image" /> */}
                       <div className="fav-post-text-item">
                         <div className="profile-name-date">
                           {item?.postedBy?.photo ? (

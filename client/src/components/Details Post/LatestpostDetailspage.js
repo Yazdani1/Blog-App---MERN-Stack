@@ -82,11 +82,11 @@ const LatestpostDetailspage = () => {
           <div className="col-lg-12 col-md-12 col-sm-12" key={index}>
             <div className="card main-card-latest-post">
               <div className="row">
-                <div className="col-lg-4 col-md-12 col-sm-12">
-                  <div className="card latest-post-image">
-                    <img src={item.photo} height="178px" />
+              <div className="col-lg-4 col-md-12 col-sm-12">
+                    <div className="card latest-post-image">
+                      <img src={item.photo} height="178px" />
+                    </div>
                   </div>
-                </div>
 
                 <div className="col-lg-8 col-md-12 col-sm-12 ">
                   <div className="latest-post-text-item">

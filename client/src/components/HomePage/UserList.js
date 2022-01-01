@@ -68,7 +68,7 @@ const UserList = () => {
           </div>
         ))}
       </div>
-      <div className="card">
+      <div className="card pagination-user-list">
         {alluser.length > 6 ? (
           <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
         ) : (

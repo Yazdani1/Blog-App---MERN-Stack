@@ -140,6 +140,10 @@
   color: aliceblue;
 }
 
+.pagination-user-list{
+  margin-top: 10px;
+}
+
 /* end user list information */
 /* Pagination design csss */
 
