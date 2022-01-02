@@ -84,9 +84,9 @@ const SimilarPosts = () => {
               <div className="favpurite-post-image">
                 <img src={item.photo} />
 
-                {/* {item.likes?.length >= 4 ? (
+                {item.likes?.length >= 4 ? (
                   <p className="trending">Trending</p>
-                ) : null} */}
+                ) : null}
               </div>
               {/* <img src={item.photo} className="favpurite-post-image" /> */}
               <div className="fav-post-text-item">
