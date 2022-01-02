@@ -20,31 +20,72 @@ const Post = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const dataSubmit = async (e) => {
+  const dataSubmit = (e) => {
     e.preventDefault();
     const addItem = { title, des };
-    try {
-      setData({ ...data, error: null });
-      await axios.put("/auth/update/" + id, addItem, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-        },
+
+    fetch("/auth/update/" + id, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+      body: JSON.stringify({
+        title,
+        des,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          toast.success("Post Created Successfully! ", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+          history.push("/Dashboard");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      history.push("/Dashboard");
-    } catch (err) {
-      setData({ ...data, error: err.response.data.error });
-    }
+
+    // try {
+    //   setData({ ...data, error: null });
+    //   await axios.put("/auth/update/" + id, addItem, {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+    //     },
+    //   });
+    //   history.push("/Dashboard");
+    // } catch (err) {
+    //   setData({ ...data, error: err.response.data.error });
+    // }
   };
   useEffect(() => {
-    axios
-      .get("/auth/edit/" + id, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-        },
-      })
+
+    fetch("/auth/edit/" + id, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+    })
+      .then((res) => res.json())
       .then((result) => {
-        setData(result.data);
+        setData(result);
+      })
+      .catch((err) => {
+        console.log(err);
       });
+
+    // axios
+    //   .get("/auth/edit/" + id, {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+    //     },
+    //   })
+    //   .then((result) => {
+    //     setData(result.data);
+    //   });
   }, []);
 
   //   const getMypost = () => {
@@ -105,9 +146,9 @@ const Post = () => {
           </form>
         </div>
       </div>
+      <ToastContainer autoClose={8000} />
     </div>
   );
 };
-
 
 export default Post;

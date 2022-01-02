@@ -200,6 +200,9 @@ const DetailsPage = () => {
       .then((result) => {
         if (result) {
           console.log("Comment removed");
+          toast.success("Your Comment has been removed!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
           // getDetailsData();
         }
       })
