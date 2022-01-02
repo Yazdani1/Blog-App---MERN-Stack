@@ -294,9 +294,9 @@ const DetailsPage = () => {
                   className="det_posssst_image"
                   width="100%"
                 />
-                {dataItem.likes?.length >= 4 ? (
+                {/* {dataItem.likes?.length >= 4 ? (
                   <p className="trending-details">Trending</p>
-                ) : null}
+                ) : null} */}
                 <div className="details-postDesign">
                   <div className="row">
                     <div className="col-lg-12 col-md-12 col-sm-12 col-xl-8">

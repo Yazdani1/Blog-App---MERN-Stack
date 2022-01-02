@@ -353,9 +353,9 @@ const UserPublicProfile = () => {
                       <div className="favpurite-post-image">
                         <img src={item.photo} />
 
-                        {item.likes?.length >= 4 ? (
+                        {/* {item.likes?.length >= 4 ? (
                           <p className="trending">Trending</p>
-                        ) : null}
+                        ) : null} */}
                       </div>
                       <div className="fav-post-text-item">
                         <div className="profile-name-date">

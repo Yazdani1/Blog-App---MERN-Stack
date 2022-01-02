@@ -199,15 +199,7 @@ function Home() {
     getOpinion();
   }, []);
 
-  //to count all post from database used this effect
 
-  // useEffect(() => {
-  //   try {
-  //     axios.get("/auth/total-posts").then(({ data }) => setTotalPosts(data));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, []);
 
   const addlikePost = (id) => {
     fetch("/auth/like", {
@@ -465,56 +457,6 @@ function Home() {
         <div className="container">
           <h5>Visit User Profile</h5>
           <AllUserList />
-
-          {/* <Slider {...settings}>
-            {user.map((useritem) => (
-              <div className="useritems">
-                <div className="desing_home card mb-5 shadow-sm">
-                  <div className="profile_pic">
-                    <h2>
-                      {useritem.name.match(/\b\w/g).join("").toUpperCase()}
-                    </h2>
-                  </div>
-
-                  <h4>{useritem.name}</h4>
-
-                  <p className="date_color">
-                    Member Since:
-                    <GoCalendar />{" "}
-                    {moment(useritem.date).format("MMMM Do YYYY")}
-                  </p>
-
-                  <Link to={"/userprofile/" + useritem._id}>
-                    <button className="btn btn-success profile_button">
-                      View Profile
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </Slider> */}
-
-          {/* <>
-            {opinion ? (
-              <div className="text-center my-5 userwords">
-                <h5 className="usersopinion_text">Users Words</h5>
-                <div className="container">
-                  <div className="row">
-                    <Slider {...userOpinion}>
-                      {opinion.map((opinionitem) => (
-                        <div className="card allopinion">
-                          <h3>{opinionitem.postedBy.name}</h3>
-                          <h4>{opinionitem.des}</h4>
-                        </div>
-                      ))}
-                    </Slider>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <h1>Loading..</h1>
-            )}
-          </> */}
         </div>
       </div>
     );

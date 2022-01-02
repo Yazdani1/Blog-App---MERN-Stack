@@ -90,16 +90,15 @@ const AllpostSection = () => {
       <p className="latest-post-title">All Posts</p>
 
       <div className="row">
-        {currentPosts.map((item, index) => (
-          <div className="col-lg-4 col-md-6 col-sm-6 col-xl-3" key={index}>
+        {currentPosts.map((item) => (
+          <div className="col-lg-4 col-md-6 col-sm-6 col-xl-3" key={item._id}>
             <div className="card main-card">
               <div className="favpurite-post-image">
                 <img src={item.photo} />
-            
-                  {item.likes?.length >= 4 ? (
-                    <p className="trending">Trending</p>
-                  ) : null}
-              
+
+                {item.likes?.length >= 4 ? (
+                  <p className="trending">Trending</p>
+                ) : null}
               </div>
               <div className="fav-post-text-item">
                 <Link
@@ -124,9 +123,6 @@ const AllpostSection = () => {
                       <p>{moment(item.date).format("MMMM Do YYYY")}</p>
                     </div>
                   </div>
-
-
-
                 </Link>
                 <Link
                   to={"/details/" + item._id}
@@ -134,12 +130,6 @@ const AllpostSection = () => {
                 >
                   <p>{item.title}</p>
                 </Link>
-
-                {item.likes?.length >= 4 ? (
-                  <p className="trending">Trending</p>
-                ) : null}
-
-            
 
                 <div className="like-comments">
                   <div className="like-button-design">
