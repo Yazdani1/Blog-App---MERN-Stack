@@ -32,6 +32,8 @@ const DashboardProfile = () => {
               <div className="profile-user-name">
                 <p>{user && user.name}</p>
                 <p>{user && user.email}</p>
+
+          
               </div>
             </div>
           </div>

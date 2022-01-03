@@ -47,6 +47,9 @@ const userSchema = mongoose.Schema(
         },
       },
     ],
+
+    resetToken: String,
+    expireToken: Date,
   },
   { timestamps: true }
 );
