@@ -122,7 +122,14 @@ router.post("/reset-password", (req, res) => {
       console.log(err);
     }
     const token = buffer.toString("hex");
-    User.findOne({ email: req.body.email }).then((user) => {
+
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(422).json({ error: "Please add your valid E-mail!" });
+    }
+
+    User.findOne({ email: email }).then((user) => {
       if (!user) {
         return res
           .status(422)
