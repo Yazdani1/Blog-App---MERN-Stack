@@ -128,6 +128,20 @@ router.post("/reset-password", (req, res) => {
           .status(422)
           .json({ error: "No user with this email address" });
       }
+      user.resetToken = token;
+      user.expireToken = Date.now() + 3600000;
+      user.save().then((result) => {
+        transporter.sendMail({
+          to: user.email,
+          from: "yaz4noor@gmail.com",
+          subject: "Reset Password",
+          html: `
+          <p>You have requested to reset your password</p>
+          <h4>Click in this <a href="http://localhost:3000/reset/${token}" > link </a> to reset your password</h4>
+          `,
+        });
+        res.json({ message: "Check your email for password reset" });
+      });
     });
   });
 });

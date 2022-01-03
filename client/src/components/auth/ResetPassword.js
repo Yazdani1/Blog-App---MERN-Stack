@@ -10,19 +10,19 @@ import { UserContext } from "../UserContext";
 
 import { SyncOutlined } from "@ant-design/icons";
 
-function SignIn() {
+function ResetPassword() {
   const history = useHistory();
   const [data, setData] = useState({
     email: "",
-    password: "",
     error: "",
+    success: false,
   });
 
   const [loading, setLoading] = useState(false);
 
   // const [state, setState] = useContext(UserContext);
 
-  const { email, password, error } = data;
+  const { email, error, success } = data;
   const handleChange = (e) => {
     setData({
       ...data,
@@ -34,58 +34,35 @@ function SignIn() {
   const submitData = async (e) => {
     e.preventDefault();
     setData({ ...data, error: false });
-
     setLoading(true);
 
-    signIn({ email, password })
+    fetch("/auth/reset-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then((res) => res.json())
       .then((result) => {
         if (result.error) {
-          setData({ ...data, error: result.error });
+          setData({ ...data, error: result.error, success: false });
           setLoading(false);
         } else {
-          // setState({
-          //   user: result.user,
-          //   token: result.token,
-          // });
-
-          localStorage.setItem("tokenLogin", result.token);
-          // window.localStorage.setItem("tokenLogin", JSON.stringify(result));
-
-          history.push("/Dashboard");
           setLoading(false);
+          setData({
+            email: "",
+            error: "",
+            success: true,
+          });
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.console.log(err);
       });
   };
-
-  // const submitData = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     setData({ ...data, error: null });
-  //     const res = await axios.post(
-  //       "/auth/login",
-  //       { email, password },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     //console.log("rrrrrrrr"+res.data.user);
-  //     // setState({ token: res.data.token, user: res.data.user });
-
-  //     localStorage.setItem("tokenLogin", res.data.token);
-  //     // localStorage.setItem("username", JSON.stringify(res.data.user));
-
-  //     // window.localStorage.setItem("tokenLogin", JSON.stringify(res.data.token));
-
-  //     history.push("/Dashboard");
-  //   } catch (err) {
-  //     setData({ ...data, error: err.response.data.error });
-  //   }
-  // };
 
   const errorMessage = () => {
     return (
@@ -98,6 +75,17 @@ function SignIn() {
     );
   };
 
+  const successMessage = () => {
+    return (
+      <div
+        className="alert alert-success"
+        style={{ display: success ? "" : "none" }}
+      >
+        We have sent you the password reset instructions to your email!
+      </div>
+    );
+  };
+
   if (window.localStorage.getItem("tokenLogin")) {
     history.push("/Dashboard");
   }
@@ -105,7 +93,6 @@ function SignIn() {
   //useRef for focus on the input fields.
 
   const emailRef = useRef(null);
-  const passworRef = useRef(null);
   const submitButtonRef = useRef(null);
 
   useEffect(() => {
@@ -113,12 +100,6 @@ function SignIn() {
   }, []);
 
   const emailKeyDown = (e) => {
-    if (e.key === "Enter") {
-      passworRef.current.focus();
-    }
-  };
-
-  const passwordKeyDown = (e) => {
     if (e.key === "Enter") {
       submitButtonRef.current.focus();
     }
@@ -139,9 +120,10 @@ function SignIn() {
                     style={{ width: "185px" }}
                     alt="logo"
                   />
-                  <h5 className="text-center">Sign In To Your Account</h5>
+                  <h5 className="text-center">Reset Your Password</h5>
                 </div>
                 {errorMessage()}
+                {successMessage()}
                 <div className="form-group">
                   <input
                     type="text"
@@ -152,18 +134,6 @@ function SignIn() {
                     onChange={handleChange}
                     className="form-control"
                     placeholder="Your E-mail *"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    onKeyDown={passwordKeyDown}
-                    ref={passworRef}
-                    name="password"
-                    value={password}
-                    className="form-control"
-                    onChange={handleChange}
-                    placeholder="Password*"
                   />
                 </div>
 
@@ -179,15 +149,12 @@ function SignIn() {
                       submitData(e);
                     }}
                   >
-                    {loading ? <SyncOutlined spin /> : "Sign In"}
+                    {loading ? <SyncOutlined spin /> : "Reset Password"}
                   </button>
                 </div>
                 <div className="text-center">
-                  <Link to={"/reset"}>
-                    <p>Forgot password?</p>
-                  </Link>
-                  <Link to={"/signup"}>
-                    <p>Don't have an account? Create now</p>
+                  <Link to={"/signin"}>
+                    <p>Sign In to your account!</p>
                   </Link>
                 </div>
               </form>
@@ -198,4 +165,4 @@ function SignIn() {
     </>
   );
 }
-export default SignIn;
+export default ResetPassword;

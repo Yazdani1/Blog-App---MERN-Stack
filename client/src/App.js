@@ -24,6 +24,7 @@ import { UserProfileProvider } from "./components/UserprofileContext";
 import Message from "./components/dashboard/message/Message";
 import UserPublicProfile from "./components/Userpublicprofile/userpublicprofile";
 import MyComments from "./components/dashboard/MyComments/Mycomments";
+import ResetPassword from "./components/auth/ResetPassword";
 
 function App() {
   return (
@@ -51,6 +52,10 @@ function App() {
 
           <Route path="/signup">
             <ProtectedRoute procomp={Signup} />
+          </Route>
+
+          <Route path="/reset">
+            <ProtectedRoute procomp={ResetPassword} />
           </Route>
 
           <Route path="/signin">
