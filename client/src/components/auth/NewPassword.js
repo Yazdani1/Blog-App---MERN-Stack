@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "./auth.css";
 import { ToastContainer, toast } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
@@ -10,8 +10,11 @@ import { UserContext } from "../UserContext";
 
 import { SyncOutlined } from "@ant-design/icons";
 
-function SignIn() {
+function NewPassword() {
   const history = useHistory();
+
+  const { token } = useParams();
+  console.log(token);
   const [data, setData] = useState({
     password: "",
     error: "",
@@ -33,7 +36,7 @@ function SignIn() {
     setData({ ...data, error: false });
     setLoading(true);
 
-    fetch("/auth/reset-password", {
+    fetch("/auth/new-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +48,7 @@ function SignIn() {
       .then((res) => res.json())
       .then((result) => {
         if (result.error) {
-          setData({ ...data, error: result.error, success: false });
+          setData({ ...data, error: result.error });
           setLoading(false);
         } else {
           setLoading(false);
@@ -146,4 +149,4 @@ function SignIn() {
     </>
   );
 }
-export default SignIn;
+export default NewPassword;

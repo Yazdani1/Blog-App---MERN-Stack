@@ -153,6 +153,35 @@ router.post("/reset-password", (req, res) => {
   });
 });
 
+//new password
+
+router.post("/new-password", (req, res) => {
+  const newpassword = req.body.password;
+  const sentToken = req.body.token;
+
+  User.findOne({ resetToken: sentToken, expireToken: { $gt: Date.now() } })
+    .then((user) => {
+      if (!user) {
+        return res
+          .status(422)
+          .json({ error: "Try again later. Your session has expired" });
+      }
+
+      bcrypt.hash(newpassword, 12).then((hashedpassword) => {
+        user.password = newpassword;
+        user.resetToken = undefined;
+        user.expireToken = undefined;
+
+        user.save().then((savedpassword) => {
+          res.json({ message: "You have changed your password" });
+        });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 //all usesers
 
 router.get("/allusers", (req, res) => {

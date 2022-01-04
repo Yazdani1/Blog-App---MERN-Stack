@@ -74,12 +74,6 @@ const Post = () => {
           console.log(data);
           if (data.error) {
             // setError(data.error);
-            toast.success(
-              "Post Created Successfully! " + (user && user.email),
-              {
-                position: toast.POSITION.TOP_RIGHT,
-              }
-            );
           } else {
             setImageurl("");
             setUrl("");
