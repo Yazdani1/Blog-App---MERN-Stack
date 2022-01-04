@@ -54,7 +54,7 @@ function App() {
             <ProtectedRoute procomp={Signup} />
           </Route>
 
-          <Route path="/reset-password">
+          <Route path="/reset">
             <ProtectedRoute procomp={ResetPassword} />
           </Route>
 

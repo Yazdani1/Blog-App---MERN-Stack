@@ -36,7 +36,7 @@ const Post = () => {
   const [des, setDes] = useState("");
   const [imageUrl, setImageurl] = useState("");
   const [url, setUrl] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [picerror, setpicError] = useState(null);
   const [success, setSuccess] = useState(false);
 
@@ -56,6 +56,7 @@ const Post = () => {
 
   useEffect(() => {
     if (url) {
+      setError("");
       fetch("/auth/post", {
         method: "post",
         headers: {
@@ -72,10 +73,17 @@ const Post = () => {
         .then((data) => {
           console.log(data);
           if (data.error) {
-            setError(data.error);
+            // setError(data.error);
+            toast.success(
+              "Post Created Successfully! " + (user && user.email),
+              {
+                position: toast.POSITION.TOP_RIGHT,
+              }
+            );
           } else {
             setImageurl("");
             setUrl("");
+            setError("");
             setSuccess(true);
             toast.success(
               "Post Created Successfully! " + (user && user.email),
@@ -107,6 +115,8 @@ const Post = () => {
   }, [url]);
   const dataSubmit = (e) => {
     e.preventDefault();
+    setError("");
+
     setSuccess(false);
     const data = new FormData();
     data.append("file", imageUrl);

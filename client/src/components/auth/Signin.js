@@ -183,7 +183,7 @@ function SignIn() {
                   </button>
                 </div>
                 <div className="text-center">
-                  <Link to={"/reset-password"}>
+                  <Link to={"/reset"}>
                     <p>Forgot password?</p>
                   </Link>
                   <Link to={"/signup"}>
