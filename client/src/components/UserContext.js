@@ -10,23 +10,41 @@ export const UserContext = createContext();
 export const UserProvider = (props) => {
   const [user, setUser] = useState("");
 
-  const getUser = async () => {
-    await axios
-      .get("/auth", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
-        },
-      })
-      .then((userresult) => {
-        if (userresult) {
-          setUser(userresult.data);
+  const getUser = () => {
+    fetch("/auth", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          setUser(result);
           // localStorage.getItem("tokenLogin");
         }
       })
       .catch((err) => {
         console.log(err);
       });
+
+    // await axios
+    //   .get("/auth", {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
+    //     },
+    //   })
+    //   .then((userresult) => {
+    //     if (userresult) {
+    //       setUser(userresult.data);
+    //       // localStorage.getItem("tokenLogin");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
   useEffect(() => {
     getUser();

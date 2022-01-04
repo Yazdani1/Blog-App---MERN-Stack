@@ -21,6 +21,9 @@ export const UserProfileProvider = (props) => {
 
         console.log(result.data);
       });
+
+
+      
   };
 
   useEffect(() => {

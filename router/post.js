@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { requireLogin } = require("../middleware/auth");
 const Post = require("../models/Post");
-const Wishlist = require("../models/Wishlist");
+
 const User = require("../models/User");
 
 const nodemailer = require("nodemailer");
