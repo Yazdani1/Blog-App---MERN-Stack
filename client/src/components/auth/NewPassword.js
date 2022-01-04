@@ -13,16 +13,13 @@ import { SyncOutlined } from "@ant-design/icons";
 function SignIn() {
   const history = useHistory();
   const [data, setData] = useState({
-    email: "",
     password: "",
     error: "",
   });
 
   const [loading, setLoading] = useState(false);
 
-  // const [state, setState] = useContext(UserContext);
-
-  const { email, password, error } = data;
+  const { password, error } = data;
   const handleChange = (e) => {
     setData({
       ...data,
@@ -34,58 +31,35 @@ function SignIn() {
   const submitData = async (e) => {
     e.preventDefault();
     setData({ ...data, error: false });
-
     setLoading(true);
 
-    signIn({ email, password })
+    fetch("/auth/reset-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        password,
+      }),
+    })
+      .then((res) => res.json())
       .then((result) => {
         if (result.error) {
-          setData({ ...data, error: result.error });
+          setData({ ...data, error: result.error, success: false });
           setLoading(false);
         } else {
-          // setState({
-          //   user: result.user,
-          //   token: result.token,
-          // });
-
-          localStorage.setItem("tokenLogin", result.token);
-          // window.localStorage.setItem("tokenLogin", JSON.stringify(result));
-
-          history.push("/Dashboard");
           setLoading(false);
+          setData({
+            password: "",
+            error: "",
+            success: true,
+          });
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.console.log(err);
       });
   };
-
-  // const submitData = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     setData({ ...data, error: null });
-  //     const res = await axios.post(
-  //       "/auth/login",
-  //       { email, password },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     //console.log("rrrrrrrr"+res.data.user);
-  //     // setState({ token: res.data.token, user: res.data.user });
-
-  //     localStorage.setItem("tokenLogin", res.data.token);
-  //     // localStorage.setItem("username", JSON.stringify(res.data.user));
-
-  //     // window.localStorage.setItem("tokenLogin", JSON.stringify(res.data.token));
-
-  //     history.push("/Dashboard");
-  //   } catch (err) {
-  //     setData({ ...data, error: err.response.data.error });
-  //   }
-  // };
 
   const errorMessage = () => {
     return (
@@ -104,19 +78,12 @@ function SignIn() {
 
   //useRef for focus on the input fields.
 
-  const emailRef = useRef(null);
   const passworRef = useRef(null);
   const submitButtonRef = useRef(null);
 
   useEffect(() => {
-    emailRef.current.focus();
+    passworRef.current.focus();
   }, []);
-
-  const emailKeyDown = (e) => {
-    if (e.key === "Enter") {
-      passworRef.current.focus();
-    }
-  };
 
   const passwordKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -142,18 +109,7 @@ function SignIn() {
                   <h5 className="text-center">Sign In To Your Account</h5>
                 </div>
                 {errorMessage()}
-                <div className="form-group">
-                  <input
-                    type="text"
-                    onKeyDown={emailKeyDown}
-                    ref={emailRef}
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Your E-mail *"
-                  />
-                </div>
+
                 <div className="form-group">
                   <input
                     type="password"
@@ -163,7 +119,7 @@ function SignIn() {
                     value={password}
                     className="form-control"
                     onChange={handleChange}
-                    placeholder="Password*"
+                    placeholder="Type a new password*"
                   />
                 </div>
 
@@ -179,16 +135,8 @@ function SignIn() {
                       submitData(e);
                     }}
                   >
-                    {loading ? <SyncOutlined spin /> : "Sign In"}
+                    {loading ? <SyncOutlined spin /> : "Submit"}
                   </button>
-                </div>
-                <div className="text-center">
-                  <Link to={"/reset-password"}>
-                    <p>Forgot password?</p>
-                  </Link>
-                  <Link to={"/signup"}>
-                    <p>Don't have an account? Create now</p>
-                  </Link>
                 </div>
               </form>
             </div>
