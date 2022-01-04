@@ -85,7 +85,7 @@ function NewPassword() {
         className="alert alert-success"
         style={{ display: success ? "" : "none" }}
       >
-        We have sent you the password reset instructions to your email!
+        You have changed you'r password. Sign in to your account.
       </div>
     );
   };
@@ -124,7 +124,7 @@ function NewPassword() {
                     style={{ width: "185px" }}
                     alt="logo"
                   />
-                  <h5 className="text-center">Sign In To Your Account</h5>
+                  <h5 className="text-center">Create You'r New Password</h5>
                 </div>
                 {errorMessage()}
                 {successMessage()}
@@ -154,8 +154,13 @@ function NewPassword() {
                       submitData(e);
                     }}
                   >
-                    {loading ? <SyncOutlined spin /> : "Submit"}
+                    {loading ? <SyncOutlined spin /> : "Change Password"}
                   </button>
+                </div>
+                <div className="text-center">
+                  <Link to={"/signin"}>
+                    <p>Sign In to your account!</p>
+                  </Link>
                 </div>
               </form>
             </div>
