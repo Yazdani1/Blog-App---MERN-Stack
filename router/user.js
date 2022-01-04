@@ -157,6 +157,11 @@ router.post("/reset-password", (req, res) => {
 
 router.post("/new-password", (req, res) => {
   const newpassword = req.body.password;
+
+  if (!newpassword) {
+    return res.status(422).json({error: "Add your new password"})
+  }
+
   const sentToken = req.body.token;
 
   User.findOne({ resetToken: sentToken, expireToken: { $gt: Date.now() } })
@@ -168,9 +173,9 @@ router.post("/new-password", (req, res) => {
       }
 
       bcrypt.hash(newpassword, 12).then((hashedpassword) => {
-        user.password = newpassword;
-        user.resetToken = undefined;
-        user.expireToken = undefined;
+        user.password = hashedpassword
+        user.resetToken = undefined
+        user.expireToken = undefined
 
         user.save().then((savedpassword) => {
           res.json({ message: "You have changed your password" });

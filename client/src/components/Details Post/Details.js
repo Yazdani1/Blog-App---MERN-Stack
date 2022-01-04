@@ -147,7 +147,7 @@ const DetailsPage = () => {
          
         } else {
           setError("");
-          // setSuccess(true);
+          setSuccess(true);
           toast.success("Your Comment has been posted!", {
             position: toast.POSITION.TOP_RIGHT,
           });

@@ -18,11 +18,13 @@ function NewPassword() {
   const [data, setData] = useState({
     password: "",
     error: "",
+    success: false,
+
   });
 
   const [loading, setLoading] = useState(false);
 
-  const { password, error } = data;
+  const { password, error,success } = data;
   const handleChange = (e) => {
     setData({
       ...data,
@@ -43,12 +45,13 @@ function NewPassword() {
       },
       body: JSON.stringify({
         password,
+        token
       }),
     })
       .then((res) => res.json())
       .then((result) => {
         if (result.error) {
-          setData({ ...data, error: result.error });
+          setData({ ...data, error: result.error,success: false });
           setLoading(false);
         } else {
           setLoading(false);
@@ -62,6 +65,7 @@ function NewPassword() {
       .catch((err) => {
         console.console.log(err);
       });
+
   };
 
   const errorMessage = () => {
@@ -71,6 +75,17 @@ function NewPassword() {
         style={{ display: error ? "" : "none" }}
       >
         {error}
+      </div>
+    );
+  };
+
+  const successMessage = () => {
+    return (
+      <div
+        className="alert alert-success"
+        style={{ display: success ? "" : "none" }}
+      >
+        We have sent you the password reset instructions to your email!
       </div>
     );
   };
@@ -112,6 +127,7 @@ function NewPassword() {
                   <h5 className="text-center">Sign In To Your Account</h5>
                 </div>
                 {errorMessage()}
+                {successMessage()}
 
                 <div className="form-group">
                   <input
