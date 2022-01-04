@@ -3,7 +3,6 @@ import "./App.css";
 import "./nav.css";
 import axios from "axios";
 import { UserContext } from "./components/UserContext";
-import { UserGlobalContext } from "./components/UserGlobalContext";
 import { Link, useHistory } from "react-router-dom";
 import { AiOutlineBars } from "react-icons/ai";
 

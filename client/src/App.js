@@ -6,7 +6,6 @@ import SignIn from "./components/auth/Signin";
 import ProtectedRoute from "./components/Protectedroute";
 import Profile from "./components/Profile";
 import Post from "./components/Post";
-import Mypost from "./components/Mypost";
 import Postaccouncement from "./components/Postannouncement";
 // import Userprofile from "./components/Userprofile";
 import Edit from "./components/Edit";

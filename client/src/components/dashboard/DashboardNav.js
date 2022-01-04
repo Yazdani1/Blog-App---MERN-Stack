@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Mypost from "../Mypost";
 import "./DashboardNav.css";
 import { AiFillDashboard } from "react-icons/ai";
 import { RiEditFill } from "react-icons/ri";
