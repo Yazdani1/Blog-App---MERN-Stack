@@ -98,13 +98,8 @@
 }
 
 
-.row{
-  margin: 0px;
-}
-.container-fluid {
+.designforit{
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0px;
+  padding: 0px;
 }

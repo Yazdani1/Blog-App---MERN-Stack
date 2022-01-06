@@ -35,15 +35,16 @@ const DashboardprotectedRoute = (props) => {
 
 
   return (
-    <div className="container-fluidssss">
+    <div className="container-fluid designforit">
       {/* <Nav /> */}
       {/* <Navheader /> */}
 
+      
       <Navheader data={openNavbar} />
 
   
 
-      <div className="container-fluid">
+      {/* <div className="container-fluid"> */}
         <div className="row">
           <div className="col-xl-2">
             <Navwebview sidebar={sidebar}/>
@@ -53,7 +54,7 @@ const DashboardprotectedRoute = (props) => {
             <DashboardProtected />
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };
