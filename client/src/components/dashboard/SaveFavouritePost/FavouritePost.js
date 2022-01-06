@@ -33,7 +33,7 @@ const FavouritePost = () => {
 
   return (
     <div
-      className="container"
+      className="container-fluid"
       style={{ maxHeight: "1000px", overflow: "scroll" }}
     >
       <h5>Favourite Posts: {user && user?.favourite?.length}</h5>
@@ -41,7 +41,7 @@ const FavouritePost = () => {
       <div className="row">
         {user.favourite &&
           [...user?.favourite].reverse().map((item, index) => (
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xl-4" key={index}>
+            <div className="col-lg-3 col-md-6 col-sm-12 col-xl-3" key={index}>
               <div className="card main-card-favourite">
                 <img src={item.photo} className="favpurite-post-image" />
                 <div className="fav-post-text-item">

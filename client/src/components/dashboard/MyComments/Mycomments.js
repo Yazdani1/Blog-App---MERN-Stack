@@ -42,7 +42,7 @@ const MyComments = () => {
       <div className="row">
         {user.mycomments &&
           [...user?.mycomments].reverse().map((item, index) => (
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xl-4" key={index}>
+            <div className="col-lg-3 col-md-4 col-sm-6 col-xl-3" key={index}>
               <div className="card main-card-favourite">
                 <img src={item.photo} className="favpurite-post-image" />
                 <div className="fav-post-text-item">

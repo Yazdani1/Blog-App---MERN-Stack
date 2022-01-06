@@ -112,7 +112,7 @@ const DashboardProfile = () => {
       </div> */}
 
       {user && user.photo ? (
-        <div className="container-fluid card profile-main-container">
+        <div className="container-fluid card  profile-main-container">
           <div className="row">
             <div className="col-md-10">
               {user && user.photo ? (

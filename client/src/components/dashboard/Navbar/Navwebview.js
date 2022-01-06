@@ -6,7 +6,7 @@ import { FcOk } from "react-icons/fc";
 import { FcRight } from "react-icons/fc";
 import { GiBlackball, GiHamburgerMenu } from "react-icons/gi";
 
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { AiFillHome } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
@@ -14,6 +14,22 @@ import { SiResurrectionremixos } from "react-icons/si";
 import { GrUserExpert } from "react-icons/gr";
 import { AiOutlineLogout } from "react-icons/ai";
 import NavMobileview from "./NavMobileview";
+
+
+import { AiFillDashboard } from "react-icons/ai";
+import { RiEditFill } from "react-icons/ri";
+import { FaUserNurse } from "react-icons/fa";
+import { RiSettings2Fill } from "react-icons/ri";
+import { GiSkills } from "react-icons/gi";
+import { Link, useHistory } from "react-router-dom";
+import { BsHeartFill } from "react-icons/bs";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { AiFillMessage } from "react-icons/ai";
+import { GiRamProfile } from "react-icons/gi";
+import { MdQuestionAnswer } from "react-icons/md";
+
+
+
 
 import Navheader from "./Navheader";
 
@@ -26,19 +42,7 @@ const Navwebview = (props) => {
 
   return (
     <div>
-            {/* <Navheader data={openNavbar} /> */}
-
-      {/* <div className="nav-header">
-        <GiHamburgerMenu size={25} onClick={() => setSidebar(!sidebar)} />
-
-        <ul>
-          <li>Home</li>
-          <li>Dashboard</li>
-        </ul>
-      </div> */}
-
-      {/* <button onClick={() => setSidebar(false)}>Hide Navbar</button> */}
-
+            
       {props.sidebar ? (
         <div className="sidebar-small-design">
           <NavLink
@@ -50,10 +54,10 @@ const Navwebview = (props) => {
               <div className="sidebar-items">
                 <span>
                   {/* <AiFillHome size={20} onClick={() => setSidebar(!sidebar)} /> */}
-                  <AiFillHome size={20} />
+                  <AiFillDashboard size={20} />
                 </span>
 
-                <p>Home</p>
+                <p>Dashboard</p>
               </div>
             </div>
           </NavLink>
@@ -66,7 +70,7 @@ const Navwebview = (props) => {
             <div className="sidebar-item-back">
               <div className="sidebar-items">
                 <span>
-                  <SiResurrectionremixos size={20} />
+                  <RiEditFill size={20} />
                 </span>
 
                 <p>CreatePost</p>
@@ -82,7 +86,7 @@ const Navwebview = (props) => {
             <div className="sidebar-item-back">
               <div className="sidebar-items">
                 <span>
-                  <CgProfile size={20} />
+                  <FaUserNurse size={20} />
                 </span>
 
                 <p>Profile</p>
@@ -97,13 +101,50 @@ const Navwebview = (props) => {
             <div className="sidebar-item-back">
               <div className="sidebar-items">
                 <span>
-                  <GrUserExpert size={20} />
+                  <GiSkills size={20} />
                 </span>
 
                 <p>Experience</p>
               </div>
             </div>
           </NavLink>
+
+
+          
+
+          <NavLink
+            to="/favourite"
+            style={{ textDecoration: "none" }}
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+          >
+            <div className="sidebar-item-back">
+              <div className="sidebar-items">
+                <span>
+                  <BsHeartFill size={20} />
+                </span>
+
+                <p>Favourite</p>
+              </div>
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/my-comments"
+            style={{ textDecoration: "none" }}
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+          >
+            <div className="sidebar-item-back">
+              <div className="sidebar-items">
+                <span>
+                  <MdQuestionAnswer size={20} />
+                </span>
+
+                <p>Comments</p>
+              </div>
+            </div>
+          </NavLink>
+
+
 
           <NavLink
             to="/LogOut"
