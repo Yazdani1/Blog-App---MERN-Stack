@@ -1,38 +1,45 @@
+/* Mobile nav css */
 
-  /* Mobile nav css */
-  
-.mobile-view-header{
-
+.mobile-view-header {
   width: 100%;
-
   background-color: #ffffff;
   color: black;
   justify-content: space-between;
   display: flex;
   list-style-type: none;
 }
+.profile-name{
+  margin-top: 15px;
+}
 
-  .responsivenav p svg{
-    margin-left: 20px;
-    margin-top: 20px;
-  }
-  
-  .mobile-nav {
-    height: 62vh;
-    width: 190px;
-    margin-left: 20px;
-    background-color: #ffffff;
-    color: black;
-  }
-  
-  .sidebar-mobile-nav{
-    margin-left: 10px;
-    padding: 25px;
-    list-style-type: none;
-    line-height: 0px;
-  }
+.responsivenav p svg {
+  margin-left: 10px;
+  margin-top: 20px;
+}
 
-  .sidebar-mobile-nav li svg{
-    margin-right: 5px;
-  }
-  
+.mobile-nav {
+  height: 90vh;
+  width: 210px;
+  margin-left: 20px;
+  background-color: #ffffff;
+  color: black;
+  margin-top: 20px;
+}
+
+.sidebar-mobile-nav {
+  margin-left: 10px;
+  padding: 25px;
+  list-style-type: none;
+  line-height: 0px;
+}
+
+.sidebar-mobile-nav li svg {
+  margin-right: 15px;
+}
+
+.largenavactive p {
+  color: rgb(30, 100, 252);
+  border-left: 2px dotted black;
+  padding: 10px;
+  /* height: fit-content; */
+}

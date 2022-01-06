@@ -98,6 +98,7 @@ const Navwebview = (props) => {
               </div>
             </div>
           </NavLink>
+          
           <NavLink
             to="/AddExperience"
             style={{ textDecoration: "none" }}
@@ -191,6 +192,8 @@ const Navwebview = (props) => {
         </div>
       ) : (
         <div className="sidebar-large">
+
+
           <NavLink
             to="/Dashboard"
             style={{textDecoration: "none"}}
@@ -309,6 +312,9 @@ const Navwebview = (props) => {
               <AiOutlineLogout size={15} /> Log Out
             </p>
           </div>
+
+
+
         </div>
       )}
 
