@@ -14,16 +14,12 @@ import { SiResurrectionremixos } from "react-icons/si";
 import { GrUserExpert } from "react-icons/gr";
 import { AiOutlineLogout } from "react-icons/ai";
 
-
 const NavMobileview = () => {
-  
   const [mobilesidebar, setMobilesidebar] = useState(false);
 
   return (
-    <div>
-      {/* <button onClick={() => setSidebar(false)}>Hide Navbar</button> */}
-
-      <div className="responsivenav">
+    <div className="responsivenav">
+      {/* <div className="mobile-view-header"> */}
         <p>
           <GiHamburgerMenu
             size={25}
@@ -108,7 +104,7 @@ const NavMobileview = () => {
           </div>
         ) : null}
       </div>
-    </div>
+    // </div>
   );
 };
 

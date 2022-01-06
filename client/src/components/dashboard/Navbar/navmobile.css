@@ -1,6 +1,17 @@
 
   /* Mobile nav css */
   
+.mobile-view-header{
+
+  width: 100%;
+
+  background-color: #ffffff;
+  color: black;
+  justify-content: space-between;
+  display: flex;
+  list-style-type: none;
+}
+
   .responsivenav p svg{
     margin-left: 20px;
     margin-top: 20px;

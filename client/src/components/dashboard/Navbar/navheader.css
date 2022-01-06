@@ -54,9 +54,11 @@
 }
 
 .profile-nave-avatar {
-  height: 60px;
-  width: 60px;
-  background-color: black;
+  height: 45px;
+  width: 45px;
+  /* background-color: black; */
+  background: rgb(14, 154, 236);
+
   border-radius: 90px;
   align-items: center;
   justify-content: center;
@@ -64,17 +66,18 @@
   text-align: center;
 
   position: relative;
-  margin-top: 2px;
+  margin-top: 10px;
 }
 
 .profile-nave-avatar h4 {
-  height: 60px;
-  width: 60px;
+  height: 45px;
+  width: 45px;
   display: table-cell;
   text-align: center;
   vertical-align: middle;
   color: aliceblue;
   border-radius: 50%;
+  font-size: 15px;
 }
 
 /* .nav-header{
