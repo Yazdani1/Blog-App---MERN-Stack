@@ -110,8 +110,8 @@
   display: none;
 }
 
-@media (max-width: 800px) {
-  .sidebar {
+@media (max-width: 1024px) {
+  .sidebar-large {
     display: none;
   }
   .sidebar-small-design {

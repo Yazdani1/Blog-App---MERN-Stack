@@ -42,7 +42,7 @@ const NavMobileview = () => {
 
   return (
     <div className="responsivenav">
-      <div className=" mobile-view-header">
+      <div className="container-fluid mobile-view-header">
         <p>
           <GiHamburgerMenu
             size={25}
