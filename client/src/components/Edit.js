@@ -109,7 +109,7 @@ const Post = () => {
 
   return (
     <div>
-      <div className="container designdata card">
+      <div className="container-fluid designdata card">
         <div className="row">
           <h1 className="toptest">Update Post</h1>
           <form>

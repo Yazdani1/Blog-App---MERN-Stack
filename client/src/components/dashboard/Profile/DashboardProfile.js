@@ -22,7 +22,7 @@ const DashboardProfile = () => {
 
   return (
     <>
-      <div className="container card profile-main-container">
+      <div className="container-fluid card profile-main-container">
         <div className="row">
           <div className="col-md-10">
             <div className="profile-name">
@@ -51,7 +51,7 @@ const DashboardProfile = () => {
           </div>
         </div>
       </div>
-      <div className="container card profile-about-container">
+      <div className="container-fluid card profile-about-container">
         <div className="row">
           <div className="col-md-12">
             {/* {user && user.about ? (
@@ -112,7 +112,7 @@ const DashboardProfile = () => {
       </div> */}
 
       {user && user.photo ? (
-        <div className="container card profile-main-container">
+        <div className="container-fluid card profile-main-container">
           <div className="row">
             <div className="col-md-10">
               {user && user.photo ? (

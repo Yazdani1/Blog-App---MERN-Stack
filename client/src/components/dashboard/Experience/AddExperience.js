@@ -76,42 +76,46 @@ const AddExperience = () => {
 
   return (
     <div>
-      <div className="container designdata card">
+      <div className="container-fluid designdata card">
         <div className="row">
-          <h5 className="toptest">Add Experience</h5>
+          <div className="col-md-8 col-lg-8 col-sm-8 col-xl-8">
+            <div className="cards">
+              <h5 className="toptest">Add Experience</h5>
 
-          {showSuccess()}
+              {showSuccess()}
 
-          {/* {JSON.stringify(experience)} */}
+              {/* {JSON.stringify(experience)} */}
 
-          <form>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea2"></label>
-              <textarea
-                class="form-control rounded-0"
-                placeholder="Add your experience.."
-                // value={about}
-                rows="8"
-                value={experience}
-                onChange={(e) => setExperience(e.target.value)}
-                // onChange={handleChange}
-                maxLength="150"
-                //   type="text"
-                //onChange={(e) => setAbout(e.target.value)}
-                // name="des"
-                //   onChange={handleChange}
-                //   value={about}
-              />
-              <p> {experience ? experience.length : 0}/150</p>
+              <form>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea2"></label>
+                  <textarea
+                    class="form-control rounded-0"
+                    placeholder="Add your experience.."
+                    // value={about}
+                    rows="8"
+                    value={experience}
+                    onChange={(e) => setExperience(e.target.value)}
+                    // onChange={handleChange}
+                    maxLength="150"
+                    //   type="text"
+                    //onChange={(e) => setAbout(e.target.value)}
+                    // name="des"
+                    //   onChange={handleChange}
+                    //   value={about}
+                  />
+                  <p> {experience ? experience.length : 0}/150</p>
+                </div>
+                <button
+                  type="submit"
+                  onClick={(e) => createExperience(e, user && user._id)}
+                  class="btn btn-success custBtn"
+                >
+                  Add Experience
+                </button>
+              </form>
             </div>
-            <button
-              type="submit"
-              onClick={(e) => createExperience(e, user && user._id)}
-              class="btn btn-success custBtn"
-            >
-              Add Experience
-            </button>
-          </form>
+          </div>
         </div>
       </div>
       <ToastContainer autoClose={8000} />

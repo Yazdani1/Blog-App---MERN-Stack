@@ -34,7 +34,7 @@ const MyComments = () => {
 
   return (
     <div
-      className="container"
+      className="container-fluid"
       style={{ maxHeight: "1000px", overflow: "scroll" }}
     >
       <h5>Posted comments: {user && user?.mycomments?.length}</h5>

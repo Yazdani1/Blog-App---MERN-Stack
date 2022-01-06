@@ -16,7 +16,7 @@ const Message = () => {
 
   return (
     <div className="card message-main-section">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
             <div className="message-name">

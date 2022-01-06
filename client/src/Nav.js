@@ -5,6 +5,8 @@ import axios from "axios";
 import { UserContext } from "./components/UserContext";
 import { Link, useHistory,NavLink } from "react-router-dom";
 import { AiOutlineBars } from "react-icons/ai";
+import {GiHamburgerMenu } from "react-icons/gi";
+
 
 function Nav() {
   const [user, setUserState] = useContext(UserContext);
@@ -24,7 +26,7 @@ function Nav() {
             <div class="container-fluid">
               <Link to="/">
                 <a class="navbar-brand" href="#">
-                  NeyFly
+                  NeyFly <GiHamburgerMenu size={25}/>
                 </a>
               </Link>
               <button

@@ -119,7 +119,7 @@ function Dashboard() {
 
   return (
     <>
-      <div className="container profile_items_container">
+      <div className="container-fluid profile_items_container">
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12 col-xl-3">
             <div className="card public-profile-items">
@@ -168,7 +168,7 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className="container main_containers">
+      <div className="container-fluid main_containers">
         {/* <Allpost posts={mypost} /> */}
 
         {/* table start */}

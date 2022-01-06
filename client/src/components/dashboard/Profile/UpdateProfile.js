@@ -135,7 +135,7 @@ const UpdateProfile = () => {
 
   return (
     <div>
-      <div className="container designdata card">
+      <div className="container-fluid designdata card">
         <div className="row">
           <h5 className="toptest">Update Profile</h5>
 

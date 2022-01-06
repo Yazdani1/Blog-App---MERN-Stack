@@ -13,28 +13,30 @@ import { CgProfile } from "react-icons/cg";
 import { SiResurrectionremixos } from "react-icons/si";
 import { GrUserExpert } from "react-icons/gr";
 import { AiOutlineLogout } from "react-icons/ai";
-import NavMoibleview from "./NavMobileview";
+import NavMobileview from "./NavMobileview";
+
+
 
 const Navwebview = () => {
   const [sidebar, setSidebar] = useState(true);
 
   return (
     <div>
-      <div className="nav-header">
+      {/* <div className="nav-header">
         <GiHamburgerMenu size={25} onClick={() => setSidebar(!sidebar)} />
 
         <ul>
           <li>Home</li>
           <li>Dashboard</li>
         </ul>
-      </div>
+      </div> */}
 
       {/* <button onClick={() => setSidebar(false)}>Hide Navbar</button> */}
 
       {sidebar ? (
         <div className="sidebar-small-design">
           <NavLink
-            to="/home"
+            to="/Dashboard"
             style={{ textDecoration: "none" }}
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
@@ -51,7 +53,7 @@ const Navwebview = () => {
           </NavLink>
 
           <NavLink
-            to="/Post"
+            to="/createpost"
             style={{ textDecoration: "none" }}
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
@@ -67,7 +69,7 @@ const Navwebview = () => {
           </NavLink>
 
           <NavLink
-            to="/Profile"
+            to="/Dashboardprofile"
             style={{ textDecoration: "none" }}
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
@@ -82,7 +84,7 @@ const Navwebview = () => {
             </div>
           </NavLink>
           <NavLink
-            to="/Experience"
+            to="/AddExperience"
             style={{ textDecoration: "none" }}
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
@@ -190,7 +192,7 @@ const Navwebview = () => {
         </div>
       )}
 
-      <NavMoibleview />
+      <NavMobileview />
     </div>
   );
 };
