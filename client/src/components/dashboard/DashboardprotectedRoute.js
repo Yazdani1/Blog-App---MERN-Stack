@@ -16,7 +16,6 @@ const DashboardprotectedRoute = (props) => {
   const [user, setUser] = useContext(UserContext);
 
   const history = useHistory();
-
   let DashboardProtected = props.Dashboardprocomp;
 
   useEffect(() => {
@@ -26,17 +25,28 @@ const DashboardprotectedRoute = (props) => {
       // history.push("/Dashboard");
     }
   }, [user, setUser]);
+
+
+  const [sidebar, setSidebar] = useState(true);
+
+  const openNavbar = () => {
+    setSidebar(!sidebar);
+  };
+
+
   return (
     <div>
       {/* <Nav /> */}
-      <Navheader />
+      {/* <Navheader /> */}
+
+      <Navheader data={openNavbar} />
 
   
 
       <div className="dashboard-nav-protected">
         <div className="row">
           <div className="col-xl-1">
-            <Navwebview />
+            <Navwebview sidebar={sidebar}/>
             {/* <DashboardNav /> */}
           </div>
           <div className="col-xl-11">

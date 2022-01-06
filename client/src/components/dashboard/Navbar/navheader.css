@@ -18,8 +18,32 @@
 .nav-dashboard-headear li svg{
     margin-top: 15px;
     margin-left: 30px;
-
+    color: rgb(0, 174, 255);
 }
+
+.nav-dashboard-headear ul{
+    display: flex;
+    justify-content: center;
+    margin-right: 30%;
+    height: 70px;
+}
+
+.nav-dashboard-headear ul li{
+   text-align: center;
+    list-style-type: none;
+    margin-right: 70px;
+    height: 70px;
+    display: flex;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 800px) {
+    .nav-dashboard-headear {
+      display: none;
+    }
+    
+  }
 
 
 

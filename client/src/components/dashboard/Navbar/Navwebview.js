@@ -15,13 +15,19 @@ import { GrUserExpert } from "react-icons/gr";
 import { AiOutlineLogout } from "react-icons/ai";
 import NavMobileview from "./NavMobileview";
 
+import Navheader from "./Navheader";
 
+const Navwebview = (props) => {
+  // const [sidebar, setSidebar] = useState(true);
 
-const Navwebview = () => {
-  const [sidebar, setSidebar] = useState(true);
+  // const openNavbar = () => {
+  //   setSidebar(!sidebar);
+  // };
 
   return (
     <div>
+            {/* <Navheader data={openNavbar} /> */}
+
       {/* <div className="nav-header">
         <GiHamburgerMenu size={25} onClick={() => setSidebar(!sidebar)} />
 
@@ -33,7 +39,7 @@ const Navwebview = () => {
 
       {/* <button onClick={() => setSidebar(false)}>Hide Navbar</button> */}
 
-      {sidebar ? (
+      {props.sidebar ? (
         <div className="sidebar-small-design">
           <NavLink
             to="/Dashboard"
