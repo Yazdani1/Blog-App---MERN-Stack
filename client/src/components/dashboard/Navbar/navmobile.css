@@ -1,0 +1,27 @@
+
+  /* Mobile nav css */
+  
+  .responsivenav p svg{
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+  .mobile-nav {
+    height: 62vh;
+    width: 190px;
+    margin-left: 20px;
+    background-color: #ffffff;
+    color: black;
+  }
+  
+  .sidebar-mobile-nav{
+    margin-left: 10px;
+    padding: 25px;
+    list-style-type: none;
+    line-height: 0px;
+  }
+
+  .sidebar-mobile-nav li svg{
+    margin-right: 5px;
+  }
+  
