@@ -30,7 +30,6 @@ function SignIn() {
       [e.target.name]: e.target.value,
     });
   };
-
   const submitData = async (e) => {
     e.preventDefault();
     setData({ ...data, error: false });

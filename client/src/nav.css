@@ -43,6 +43,13 @@
   padding-top: 10px;
 }
 
+
+.active-nav-link{
+  background-color: blueviolet;
+}
+
+
+
 @media only screen and (max-width: 1000px) {
   .nav-link:hover {
     border-bottom: none !important;
