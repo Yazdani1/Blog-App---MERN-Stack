@@ -3,7 +3,7 @@ import "./navheader.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Navwebview from "./Navwebview";
 import { UserContext } from "../../UserContext";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navheader = (props) => {
   const [userdetails, setUserdetails] = useContext(UserContext);
@@ -15,9 +15,9 @@ const Navheader = (props) => {
           <GiHamburgerMenu size={25} onClick={props.data} />
         </li>
         <ul>
-          <NavLink to={"/"} style={{ textDecoration: "none" }}>
+          <Link to={"/"} style={{ textDecoration: "none" }}>
             <li>Home</li>
-          </NavLink>
+          </Link>
           <li>{userdetails && userdetails.name}</li>
 
           <div className="profile-image">
