@@ -6,7 +6,7 @@ import "./DashboardNav.css";
 import { UserContext } from "../UserContext";
 import Navwebview from "../dashboard/Navbar/Navwebview";
 import Navheader from "../dashboard/Navbar/Navheader";
-import {GiHamburgerMenu } from "react-icons/gi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 import "../dashboard/Navbar/navheader.css";
 import "../dashboard/Navbar/navweb.css";
@@ -26,35 +26,31 @@ const DashboardprotectedRoute = (props) => {
     }
   }, [user, setUser]);
 
-
   const [sidebar, setSidebar] = useState(true);
 
   const openNavbar = () => {
     setSidebar(!sidebar);
   };
 
-
   return (
-    <div className="container-fluid designforit">
+    <div className="container-fluid">
       {/* <Nav /> */}
       {/* <Navheader /> */}
 
-      
-      <Navheader data={openNavbar} />
+        <Navheader data={openNavbar} />
 
-  
-
-      {/* <div className="container-fluid"> */}
+        {/* <div className="container fluid"> */}
         <div className="row">
           <div className="col-xl-2">
-            <Navwebview sidebar={sidebar}/>
+            <Navwebview sidebar={sidebar} />
             {/* <DashboardNav /> */}
           </div>
           <div className="col-xl-10">
             <DashboardProtected />
           </div>
+          {/* </div> */}
         </div>
-      {/* </div> */}
+   
     </div>
   );
 };

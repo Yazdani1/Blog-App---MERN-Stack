@@ -12,7 +12,7 @@ const FirstSection = () => {
           <div className="row">
             <div className="col-md-12">
               <div class="top-left">
-                <div className="card first_Section_data">
+                <div className="first_Section_data">
                   <h5>Welcome to this Blog Site</h5>
                   <p>Learn from others and share your posts with others</p>
                   <h5>Become a member Today</h5>
