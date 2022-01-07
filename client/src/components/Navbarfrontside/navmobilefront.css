@@ -21,7 +21,6 @@
     height: auto;
     width: 210px;
     background-color: #ffffff;
-    
     margin-top: 10px;
   }
   
@@ -43,5 +42,19 @@
     border-left: 2px dotted black;
     padding: 5px;
     height: fit-content;
+  }
+
+
+
+  .responsivenav {
+    display: none;
+  }
+  
+  @media (max-width: 400px) {
+  
+    .responsivenav {
+      display: flex;
+      flex-direction: column;
+    }
   }
   

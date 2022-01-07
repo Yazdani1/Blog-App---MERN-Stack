@@ -4,6 +4,7 @@ import "./navmobilefront.css";
 import "./navwebfront.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import Navmobileviewfront from "./Navmobileviewfront";
 
 
 const Navbarwebviewfront = () => {
@@ -39,6 +40,7 @@ const Navbarwebviewfront = () => {
 
         </ul>
       </div>
+      <Navmobileviewfront/>
     </>
   );
 };
