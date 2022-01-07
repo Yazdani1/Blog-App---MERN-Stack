@@ -1,10 +1,10 @@
 .homepage-first {
-  height: 450px;
+  height: 350px;
   background-color: #ffffff;
 
   /* background-color: #e8424a; */
   color: white;
-  margin: 0px;
+  margin-top: 10px;
   padding: 0px;
 }
 
