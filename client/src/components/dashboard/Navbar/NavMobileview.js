@@ -8,6 +8,7 @@ import { FcRight } from "react-icons/fc";
 import { GiBlackball, GiHamburgerMenu } from "react-icons/gi";
 
 import { Link, NavLink, useHistory } from "react-router-dom";
+import { AiTwotoneHome } from "react-icons/ai";
 
 import { AiFillHome } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
@@ -153,6 +154,17 @@ const NavMobileview = () => {
               </li>
             </div>
           </NavLink>
+
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+          >
+            <div className="sidebar-mobile-nav">
+              <li onClick={() => setMobilesidebar(!mobilesidebar)}>
+                <AiTwotoneHome size={15} /> Home
+              </li>
+            </div>
+          </Link>
 
           <NavLink
             target={"_blank"}

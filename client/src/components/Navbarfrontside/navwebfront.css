@@ -29,7 +29,11 @@
     height: 70px;
     display: flex;
     margin-top: 20px;
+    color: black;
+    font-weight: bold;
   }
+
+
   
   @media (max-width: 600px) {
     .nav-dashboard-front {
