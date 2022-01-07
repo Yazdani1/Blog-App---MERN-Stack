@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../UserContext";
+import "./navmobilefront.css";
+import "./navwebfront.css";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
+
 
 const Navbarwebviewfront = () => {
+
+    const [userdetails, setUserdetails] = useContext(UserContext);
+
+
   return (
     <>
       <div className="nav-dashboard-headear">
         <li>
-          <GiHamburgerMenu size={25} onClick={props.data} />
+          <GiHamburgerMenu size={25} />
         </li>
         <ul>
           <Link to={"/"} style={{ textDecoration: "none" }}>
