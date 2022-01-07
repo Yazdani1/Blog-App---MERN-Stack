@@ -13,10 +13,8 @@ const Navbarwebviewfront = () => {
 
   return (
     <>
-      <div className="nav-dashboard-headear">
-        <li>
-          <GiHamburgerMenu size={25} />
-        </li>
+      <div className="nav-dashboard-front">
+        
         <ul>
           <Link to={"/"} style={{ textDecoration: "none" }}>
             <li>Home</li>

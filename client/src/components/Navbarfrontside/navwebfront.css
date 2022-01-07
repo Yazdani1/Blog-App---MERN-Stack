@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .nav-dashboard-front {
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    color: black;
+    justify-content: right;
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .nav-dashboard-front ul {
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
+    height: 70px;
+  }
+  
+  .nav-dashboard-front ul li {
+    text-align: center;
+    list-style-type: none;
+    margin-right: 50px;
+    height: 70px;
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 1200px) {
+    .nav-dashboard-front {
+      display: none;
+    }
+  }
+  
+  /* Profile name and picture design on the nav bar */
+  
+  .profile-image img {
+    height: 50px;
+    width: 50px;
+    border-radius: 90px;
+    margin-top: 8px;
+  }
+  
+  .profile-nave-avatar {
+    height: 45px;
+    width: 45px;
+    /* background-color: black; */
+    background: rgb(14, 154, 236);
+  
+    border-radius: 90px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+  
+    position: relative;
+    margin-top: 10px;
+  }
+  
+  .profile-nave-avatar h4 {
+    height: 45px;
+    width: 45px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: aliceblue;
+    border-radius: 50%;
+    font-size: 15px;
+  }
+  
+  
