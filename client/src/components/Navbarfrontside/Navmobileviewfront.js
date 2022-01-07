@@ -38,7 +38,7 @@ const Navmobileviewfront = () => {
 
     return (
 
-        <div className="responsivenav">
+        <div className="responsivenav-for-frontclient">
         <div className="container-fluid mobile-view-header">
           <p>
             <GiHamburgerMenu

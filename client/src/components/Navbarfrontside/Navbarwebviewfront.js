@@ -6,16 +6,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import Navmobileviewfront from "./Navmobileviewfront";
 
-
 const Navbarwebviewfront = () => {
-
-    const [userdetails, setUserdetails] = useContext(UserContext);
-
+  const [userdetails, setUserdetails] = useContext(UserContext);
 
   return (
     <>
       <div className="nav-dashboard-front">
-        
         <ul>
           <Link to={"/"} style={{ textDecoration: "none" }}>
             <li>Home</li>
@@ -37,10 +33,9 @@ const Navbarwebviewfront = () => {
               </div>
             )}
           </div>
-
         </ul>
       </div>
-      <Navmobileviewfront/>
+      <Navmobileviewfront />
     </>
   );
 };

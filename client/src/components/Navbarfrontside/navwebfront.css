@@ -31,9 +31,14 @@
     margin-top: 20px;
   }
   
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     .nav-dashboard-front {
       display: none;
+    }
+
+    .responsivenav-for-frontclient {
+      display: flex;
+      flex-direction: column;
     }
   }
   
@@ -43,7 +48,7 @@
     height: 50px;
     width: 50px;
     border-radius: 90px;
-    margin-top: 8px;
+    margin-top: 3px;
   }
   
   .profile-nave-avatar {
