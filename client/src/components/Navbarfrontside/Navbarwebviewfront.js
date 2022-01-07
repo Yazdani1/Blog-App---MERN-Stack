@@ -19,6 +19,9 @@ const Navbarwebviewfront = () => {
           <Link to={"/"} style={{ textDecoration: "none" }}>
             <li>Home</li>
           </Link>
+          <Link to={"/Dashboard"} style={{ textDecoration: "none" }}>
+            <li>Dashboard</li>
+          </Link>
           <li>{userdetails && userdetails.name}</li>
 
           <div className="profile-image">

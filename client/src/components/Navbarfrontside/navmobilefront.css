@@ -1,0 +1,47 @@
+/* Mobile nav css */
+
+.mobile-view-header {
+    width: 100%;
+    background-color: #ffffff;
+    color: black;
+    justify-content: space-between;
+    display: flex;
+    list-style-type: none;
+  }
+  .profile-name {
+    margin-top: 15px;
+  }
+  
+  .responsivenav p svg {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  
+  .mobile-nav {
+    height: auto;
+    width: 210px;
+    background-color: #ffffff;
+    
+    margin-top: 10px;
+  }
+  
+  .sidebar-mobile-nav {
+    margin-left: 10px;
+    padding: 25px;
+    list-style-type: none;
+    line-height: 0px;
+    color: black;
+  }
+  
+  .sidebar-mobile-nav li svg {
+    margin-right: 15px;
+    color: black;
+  }
+  
+  .active li {
+    color: rgb(30, 100, 252);
+    border-left: 2px dotted black;
+    padding: 5px;
+    height: fit-content;
+  }
+  
