@@ -14,8 +14,8 @@ import { GiSkills } from "react-icons/gi";
 import { BsHeartFill } from "react-icons/bs";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { AiTwotoneHome } from "react-icons/ai";
-import { GiRamProfile } from "react-icons/gi";
-import { MdQuestionAnswer } from "react-icons/md";
+import { RiAccountPinBoxFill } from "react-icons/ri";
+import { RiAccountPinCircleFill } from "react-icons/ri";
 
 const Navmobileviewfront = () => {
   const [mobilesidebar, setMobilesidebar] = useState(false);
@@ -99,7 +99,7 @@ const Navmobileviewfront = () => {
               <Link to="/signup" style={{ textDecoration: "none" }}>
                 <div className="sidebar-mobile-nav">
                   <li onClick={() => setMobilesidebar(!mobilesidebar)}>
-                    <AiFillDashboard size={20} /> Sign Up
+                    <RiAccountPinBoxFill size={20} /> Sign Up
                   </li>
                 </div>
               </Link>
@@ -107,7 +107,7 @@ const Navmobileviewfront = () => {
               <Link to="/signin" style={{ textDecoration: "none" }}>
                 <div className="sidebar-mobile-nav">
                   <li onClick={() => setMobilesidebar(!mobilesidebar)}>
-                    <AiFillDashboard size={20} /> Sign In
+                    <RiAccountPinCircleFill size={20} /> Sign In
                   </li>
                 </div>
               </Link>

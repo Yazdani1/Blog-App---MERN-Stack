@@ -24,9 +24,9 @@
   font-size: 15px;
 }
 .create-account:hover{
-  background-color: #ffffff;
+  background-color: #ff0000;
   border: 1px solid black;
-  color: black;
+  color: white;
   transition-duration: 0.7s;
 }
 
