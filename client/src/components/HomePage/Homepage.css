@@ -5,7 +5,29 @@
   /* background-color: #e8424a; */
   color: white;
   margin-top: 10px;
-  padding: 0px;
+}
+
+.first_Section_data p {
+  font-size: 17px;
+  line-height: 35px;
+  height: 40px;
+
+}
+
+.create-account {
+  background: rgb(18, 14, 236);
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 90px;
+  color: white;
+  line-height: 50px;
+  font-size: 15px;
+}
+.create-account:hover{
+  background-color: #ffffff;
+  border: 1px solid black;
+  color: black;
+  transition-duration: 0.7s;
 }
 
 /* total post count */
@@ -16,7 +38,6 @@
 .home-post-count {
   height: 250px;
 }
-
 
 /* trending */
 
@@ -29,8 +50,7 @@
 
 } */
 
-
-.favpurite-post-image img{
+.favpurite-post-image img {
   /* background-position: center top; */
   /* background-size: 100% 100%; */
   height: 200px;
@@ -40,10 +60,7 @@
   /* background-repeat: no-repeat; */
 }
 
-
-
-.trending{
-
+.trending {
   block-size: fit-content;
   color: white;
   width: fit-content;
@@ -142,7 +159,7 @@
   color: aliceblue;
 }
 
-.pagination-user-list{
+.pagination-user-list {
   margin-top: 10px;
 }
 
