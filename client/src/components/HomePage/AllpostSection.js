@@ -41,9 +41,7 @@ const AllpostSection = () => {
         console.log(err);
       });
   };
-
   //like feature
-
   const loadLikepost = (postId) => {
     addlikePost(postId).then((result) => {
       const newItemData = posts.map((item) => {
@@ -69,7 +67,6 @@ const AllpostSection = () => {
       setPosts(newItemData);
     });
   };
-
   useEffect(() => {
     loadallPosts();
   }, [posts]);
@@ -84,7 +81,6 @@ const AllpostSection = () => {
       </div>
     );
   }
-
   return (
     <div className="container all-posts-container">
       <p className="latest-post-title">All Posts</p>
