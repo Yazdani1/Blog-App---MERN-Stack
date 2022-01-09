@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
+require('dotenv').config();
 
   // "proxy": "http://localhost:8080"
     // "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
