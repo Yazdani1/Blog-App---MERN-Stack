@@ -8,7 +8,6 @@
     "server": "nodemon app.js",
     "dev": "concurrently \"npm run server\" \"npm start --prefix client\""
 
-
   },
   "author": "",
   "license": "ISC",
