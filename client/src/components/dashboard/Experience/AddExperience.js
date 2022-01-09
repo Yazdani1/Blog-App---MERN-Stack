@@ -88,7 +88,7 @@ const AddExperience = () => {
                 {/* {JSON.stringify(experience)} */}
 
                 <form>
-                  <div class="form-group">
+                  <div className="form-group">
                     <label for="exampleFormControlTextarea2"></label>
                     <textarea
                       class="form-control rounded-0"
