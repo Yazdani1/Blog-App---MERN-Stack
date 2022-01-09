@@ -130,7 +130,6 @@ const AllpostSection = () => {
                 >
                   <p>{item.title}</p>
                 </Link>
-
                 <div className="like-comments">
                   <div className="like-button-design">
                     <div className="like-icons">
@@ -154,7 +153,6 @@ const AllpostSection = () => {
                     </div>
                     <p className="like-count"> {item.likes?.length} likes</p>
                   </div>
-
                   <div className="comment-button-design">
                     <div className="comment-icons">
                       <FaRegCommentDots size={20} />
