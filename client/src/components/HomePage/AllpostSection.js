@@ -9,7 +9,7 @@ import { UserContext } from "../UserContext";
 import { AiFillLike } from "react-icons/ai";
 import { addlikePost, addunlikePost } from "./Apihomepage";
 import Pagination from "./Pagination";
-
+import axios from "axios";
 const AllpostSection = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -57,12 +57,13 @@ function Dashboard() {
   const howManyPages = Math.ceil(mypost.length / postsPerPage);
 
   const loadMypost = () => {
-    getMypost().then((data) => {
-      if (data.error) {
-        setError(data.error);
-        console.log(data.error);
+    getMypost().then((dataresult) => {
+      if (dataresult.error) {
+        setError(dataresult.error);
+        console.log(dataresult.error);
       } else {
-        setData(data.mypostdata);
+        setData(dataresult);
+        console.log(dataresult);
         setLoading(false);
       }
     });

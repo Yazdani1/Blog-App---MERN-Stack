@@ -26,7 +26,7 @@ export const UserProvider = (props) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log({err});
       });
 
     // await axios

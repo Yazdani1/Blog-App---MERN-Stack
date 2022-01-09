@@ -120,7 +120,7 @@ router.get("/mypost", requireLogin, (req, res) => {
     .sort({ date: "DESC" })
     .populate("postedBy", "_id name email")
     .then((mypostdata) => {
-      res.json({ mypostdata: mypostdata });
+      res.json(mypostdata);
     })
     .catch((err) => {
       console.log(err);

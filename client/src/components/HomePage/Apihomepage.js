@@ -31,6 +31,7 @@ export const addlikePost = (postId) => {
     method: "put",
     headers: {
       "Content-Type": "application/json",
+      "Accept": "application/json",
       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
     },
     body: JSON.stringify({
@@ -52,6 +53,7 @@ export const addunlikePost = (postId) => {
     method: "put",
     headers: {
       "Content-Type": "application/json",
+      "Accept": "application/json",
       Authorization: `Bearer ${localStorage.getItem("tokenLogin")}`,
     },
     body: JSON.stringify({

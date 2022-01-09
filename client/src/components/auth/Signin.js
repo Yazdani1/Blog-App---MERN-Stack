@@ -36,26 +36,29 @@ function SignIn() {
 
     setLoading(true);
 
+  //  await axios
+  //     .post("/auth/login", { email, password })
+  //     .then((result) => {
+  //       localStorage.setItem("tokenLogin", result.data.token);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
     signIn({ email, password })
       .then((result) => {
         if (result.error) {
           setData({ ...data, error: result.error });
           setLoading(false);
         } else {
-          // setState({
-          //   user: result.user,
-          //   token: result.token,
-          // });
 
           localStorage.setItem("tokenLogin", result.token);
-          // window.localStorage.setItem("tokenLogin", JSON.stringify(result));
 
           history.push("/Dashboard");
           setLoading(false);
         }
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 

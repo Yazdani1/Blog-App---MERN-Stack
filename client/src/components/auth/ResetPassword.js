@@ -40,6 +40,7 @@ function ResetPassword() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
         email,
@@ -60,7 +61,7 @@ function ResetPassword() {
         }
       })
       .catch((err) => {
-        console.console.log(err);
+        console.log(err);
       });
   };
 

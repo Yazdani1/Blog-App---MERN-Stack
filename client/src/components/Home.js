@@ -132,16 +132,16 @@ function Home() {
 
   const [opinion, setOpinion] = useState(null);
   const history = useHistory();
-  const getOpinion = async () => {
-    await axios
-      .get("/auth/opinion")
-      .then((res) => {
-        setOpinion(res.data.mypostdata);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const getOpinion = async () => {
+  //   await axios
+  //     .get("/auth/opinion")
+  //     .then((res) => {
+  //       setOpinion(res.data.mypostdata);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   // const [pageNumberLimit, setpageNumberLimit] = useState(5);
   // const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(6);
@@ -196,7 +196,7 @@ function Home() {
     newsFeed();
     getLatestPost();
     getUser();
-    getOpinion();
+    // getOpinion();
   }, []);
 
 
@@ -477,37 +477,5 @@ function Home() {
     </>
   );
 
-  //currentItems
-
-  // <div className="container">
-  //   <div className="row">
-  //     <div className="col-md-8">
-  //       {dataItem.map((item) => (
-  //         <div className="card top">
-  //           <img src={item.photo} className="img-fluid"  height="200px"/>
-  //           {/* <h3>{item.postedBy.name}</h3>
-  //           <h3>{item.postedBy.email}</h3> */}
-  //           <p>Published on:{moment(item.date).format("MMMM Do YYYY")}</p>
-  //           <h5>{item.title}</h5>
-  //           <p>{item.des.substring(0, 50)}</p>
-  //           <Link to={"/userprofile/" + item.postedBy._id}>
-  //             <p>Posted by: {item.postedBy.name}</p>
-  //           </Link>
-  //           <span className="read">Read More ...</span>
-  //         </div>
-  //       ))}
-  //     </div>
-  //     <div className="col-md-4">
-  //       <h5 className="title lstestpostTitle">New Posts</h5>
-  //       {latestPost.map((item) => (
-  //         <div className="card latestPosts">
-  //           <h5>{item.title}</h5>
-  //           <p>{item.des.substring(0, 50)}</p>
-  //           <p>Posted by: {item.postedBy.name}</p>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   </div>
-  // </div>
 }
 export default Home;
