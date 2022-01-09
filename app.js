@@ -22,7 +22,7 @@ app.use("/auth", require("./router/post"));
 app.use("/auth", require("./router/announcement"));
 app.use("/auth", require("./router/profile"));
 
-
+//to deploy heroku
 // Serve static assets if in production
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(express.static('client/build'));
@@ -31,6 +31,8 @@ app.use("/auth", require("./router/profile"));
 //     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 //   });
 // }
+
+//to deploy vercel
 
 if(process.env.NODE_ENV=='production'){
   const path = require('path')
