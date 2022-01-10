@@ -7,12 +7,13 @@ import "./HomePage/Homepage.css";
 import Footer from "./Footer/footer";
 import AllpostSection from "./HomePage/AllpostSection";
 import LatestPost from "./HomePage/LatestPost";
+import Totalpostcount from "./HomePage/TotalPostCount";
 
 const Home = () => {
   return (
     <div>
       <FirstSection />
-
+      <Totalpostcount />
       <LatestPost />
       <AllpostSection />
 

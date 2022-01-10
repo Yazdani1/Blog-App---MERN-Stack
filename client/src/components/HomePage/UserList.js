@@ -5,9 +5,14 @@ import { CgProfile } from "react-icons/cg";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Pagination from "./Pagination";
 import { BsCalendar2DateFill } from "react-icons/bs";
+import Totalpostcount from "./TotalPostCount";
+
 
 const UserList = () => {
   const [alluser, setAlluser] = useState([]);
+
+
+
 
   //for pagination state..
 

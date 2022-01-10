@@ -10,6 +10,8 @@ import { AiFillLike } from "react-icons/ai";
 import { addlikePost, addunlikePost } from "./Apihomepage";
 import Pagination from "./Pagination";
 import axios from "axios";
+import Totalpostcount from "./TotalPostCount";
+
 const AllpostSection = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,6 +30,7 @@ const AllpostSection = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const howManyPages = Math.ceil(posts.length / postsPerPage);
+
 
   const loadallPosts = () => {
     getallPosts()
@@ -84,7 +87,6 @@ const AllpostSection = () => {
   return (
     <div className="container all-posts-container">
       <p className="latest-post-title">All Posts</p>
-
       <div className="row">
         {currentPosts.map((item) => (
           <div className="col-lg-4 col-md-6 col-sm-6 col-xl-3" key={item._id}>
