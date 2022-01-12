@@ -187,9 +187,7 @@ function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                </tr>
+                
 
                 {currentPosts.map((item, index) => (
                   <tr key={item._id}>
