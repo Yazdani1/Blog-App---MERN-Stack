@@ -300,6 +300,7 @@ const UserPublicProfile = () => {
               </div>
             </div>
           </div>
+          
         </div>
       </div>
       {/* user about section */}
@@ -358,6 +359,9 @@ const UserPublicProfile = () => {
                         ) : null}
                       </div>
                       <div className="fav-post-text-item">
+
+
+
                         <div className="profile-name-date">
                           {item?.postedBy?.photo ? (
                             <div className="profile-name-avatar-image">
@@ -380,6 +384,8 @@ const UserPublicProfile = () => {
                             <p>{moment(item.date).format("MMMM Do YYYY")}</p>
                           </div>
                         </div>
+
+                        
                         <Link
                           to={"/details/" + item._id}
                           style={{ textDecoration: "none", color: "black" }}
@@ -428,6 +434,9 @@ const UserPublicProfile = () => {
                             </p>
                           </div>
                         </div>
+
+
+
                       </div>
                     </div>
                   </div>
