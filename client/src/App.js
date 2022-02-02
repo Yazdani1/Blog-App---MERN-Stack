@@ -113,6 +113,7 @@ function App() {
           {/* <Redirect exact from="/Dashboard/reload" to="/Dashboard" /> */}
 
           <Route path="*" exact component={PagenotFound} />
+          
         </Switch>
       </BrowserRouter>
     </UserProvider>
