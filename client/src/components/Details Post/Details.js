@@ -144,7 +144,6 @@ const DetailsPage = () => {
         console.log(result);
         if (result.error) {
           setError(result.error);
-         
         } else {
           setError("");
           setSuccess(true);
@@ -529,16 +528,43 @@ const DetailsPage = () => {
                               </Link>
                               <p>{allcomments.text}</p>
                               <p>
-                                {user && user._id === allcomments.postedBy._id && (
-                                  <div
-                                    className="btn btn-danger"
-                                    onClick={(e) =>
-                                      removeComment(dataItem._id, allcomments)
-                                    }
-                                  >
-                                    <MdDelete size={20} />
-                                    Delete
-                                  </div>
+                                {user &&
+                                user._id === allcomments.postedBy._id ? (
+                                  <p>
+                                    {user &&
+                                      user._id === allcomments.postedBy._id && (
+                                        <div
+                                          className="btn btn-danger"
+                                          onClick={(e) =>
+                                            removeComment(
+                                              dataItem._id,
+                                              allcomments
+                                            )
+                                          }
+                                        >
+                                          <MdDelete size={20} />
+                                          
+                                        </div>
+                                      )}
+                                  </p>
+                                ) : (
+                                  <p>
+                                    {user &&
+                                      user._id === dataItem.postedBy?._id && (
+                                        <div
+                                          className="btn btn-danger"
+                                          onClick={(e) =>
+                                            removeComment(
+                                              dataItem._id,
+                                              allcomments
+                                            )
+                                          }
+                                        >
+                                          <MdDelete size={20} />
+                                          
+                                        </div>
+                                      )}
+                                  </p>
                                 )}
                               </p>
                             </div>
